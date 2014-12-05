@@ -1,0 +1,49 @@
+<html>
+<head>
+	<title>binding elements</title>
+	<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('.hoverMe').hover(
+				function(){
+					$('#tip').fadeIn('slow');
+				},
+				function(){
+					$('#tip').fadeOut('slow');
+				});
+			$('.hoverMe').mousemove(function(e){
+				var topPos=e.pageY+5;
+				var leftPos=e.pageX+5;
+				$('#tip').css({
+					'top':topPos+'px',
+					'left':leftPos+'px'
+				});
+			});
+		});
+	</script>
+	<style type="text/css">
+		div{
+			border:1px solid rgb(0,0,0);
+			width: 200px;
+			height: 200px;
+			float: left;
+			margin-right: 20px;
+			font-size: 14px;
+		}
+
+		div#tip{
+			position: absolute;
+			width: 100px;
+			height: auto;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="tip" style="display:none;">i am a tooltip</div>
+
+	<div class="hoverMe">hover me for a tooltip</div>
+	<div>this will not provide a tooltip</div>
+	<div class="hoverMe">hover me for a tooltip</div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<html>
+<head>
+	<title>binding elements</title>
+	<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#handle').click(function(){
+				if($(this).attr('checked')==true){
+					$('.toggle').attr('checked','true');
+				}else{
+					$('.toggle').removeAttr('checked');
+				}
+			});
+
+			$('.toggle').click(function(){
+
+			});
+
+			$('input:button').bind('click',function(){
+				var values='';
+				if($('.toggle:checked').length){
+					$('.toggle:checked').each(function(){
+						values+=$(this).next('label').html()+',';
+					});
+					$('#selected').html('selected values are:'+values);
+				}else{
+					$('#selected').html('nothing selected');
+				}
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<ul>
+		<li>
+			<input type="checkbox" id="handle"/>
+			<label for="handle" ><strong>toggle all checkBoxes</strong></label>
+		</li>
+		<li>
+			<input type="checkbox" class="toggle">
+			<label>A</label>
+		</li>
+		<li>
+			<input type="checkbox" class="toggle">
+			<label>B</label>
+		</li>
+		<li>
+			<input type="button" id="getValue" value="get selected values">
+		</li>
+		<li id="selected"></li>
+	</ul>
+</body>
+</html>

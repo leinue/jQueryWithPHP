@@ -1,0 +1,37 @@
+<html>
+<head>
+	<title>binding elements</title>
+	<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.min.js"></script>
+	<style type="text/css">
+		ul{
+			background-color: rgb(250,250,250);
+			list-style: none;
+			margin: 0pt;
+			padding: 0pt;
+			width: 250px;
+		}
+		li{
+			cursor: pointer;
+			margin: 10px 10px;
+		}
+	</style>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#btn').bind('click',function(){
+				$('body').append('<div>i am a new div</div>');
+			});
+
+			$('div').live('click',function(){
+				alert('2333');
+			});
+		});
+	</script>
+</head>
+
+<body>
+	
+	<div class="future">already on page</div>
+
+	<input type="button" id="btn" value="create new elements" />
+</body>
+</html>

@@ -1,0 +1,56 @@
+<html>
+<head>
+	<title>binding elements</title>
+	<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var altPressed=false;
+			$(document).keydown(function(event){
+				if(event.which==18){
+					altPressed=true;
+				}
+				if(altPressed){
+					switch(event.which){
+						case 83:
+							$('div:first').slideToggle('slow');
+							return false;
+							break;
+						case 71:
+							$('div:last').slideToggle('slow');
+							return false;
+							break;
+						case 66:
+							$('div').slideToggle('slow');
+							return false;
+							break;
+					}
+				}
+			});
+
+			$(document).keyup(function(event){
+				if(event.which==18){
+					altPressed=false;
+				}
+			});
+		});
+	</script>
+	<style type="text/css">
+		div{
+			border:1px solid rgb(0,0,0);
+			width: 200px;
+			height: 200px;
+			float: left;
+			margin-right: 20px;
+			font-size: 14px;
+		}
+	</style>
+</head>
+
+<body>
+	<div>you can toggle this div using Alt+s</div>
+	<div>you can toggle this div using Alt+G</div>
+
+	<p style="clear:both;">&nbsp;</p>
+	<p>press Alt+B to toggle both divs</p>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<html>
+<head>
+	<title>aborting AJAX request</title>
+	<style type="text/css">
+		body{
+			width: 500px;
+		}
+		p{
+			border: 1px solid black;
+			height:200px;
+			width:300px;
+		}
+		.float{
+			border: 1px solid black;
+			position: absolute;
+			right: 50px;
+			height: 100px;
+			width: 100px;
+			padding: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<p>this is some text</p>
+	<p>this is some text</p>
+	<p>this is some text</p>
+	<p>this is some text</p>
+	<p>this is some text</p>
+	<p>this is some text</p>
+	<p>this is some text</p>
+	<p>this is some text</p>
+	<p>this is some text</p>
+
+	<div id="float" class="float">floating box</div>
+
+	<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var defaultOffset=100;
+			function floatDIV(){
+				var offsetTop=$(document).scrollTop()+defaultOffset;
+				$('#float').animate(
+				{
+					top:offsetTop+'px'
+				},
+				{
+					duration:500,queue:false
+				});
+			}
+			$(window).scroll(floatDIV);
+			floatDIV();
+		});
+	</script>
+</body>
+</html>

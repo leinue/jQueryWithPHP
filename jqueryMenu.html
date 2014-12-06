@@ -1,0 +1,106 @@
+<html>
+<head>
+	<title>jquery menu</title>
+	<style type="text/css">
+		body{
+			width: 500px;
+		}
+
+		ul{
+			list-style: none;
+			margin: 0px;
+			padding: 0px;
+		}
+
+		li.menuHeader{
+			border: 1px solid rgb(250,250,250);
+			float: left;
+			padding:5px 10px;
+			text-align: center;
+			width: 120px;
+			margin-right: 10px;
+		}
+
+		ul.menuItem{
+			display: none;
+			margin-top: 5px;
+		}
+
+		.menuItem > li{
+			padding: 5px 10px;
+		}
+
+		a{
+			color: #fff;
+		}
+
+		.menu{
+			margin-bottom: 20px;
+		}
+
+		.about,.products,.tech{
+			background-color: rgb(200,200,200);
+		}
+
+	</style>
+</head>
+
+<body>
+	<div class="menu">
+		<ul>
+			<li class="menuHeader about">
+				<a href="#">about</a>
+				<ul class="menuItem">
+					<li><a href="#">google</a></li>
+					<li><a href="#">culture</a></li>
+					<li><a href="#">motto</a></li>
+				</ul>
+			</li>
+
+			<li class="menuHeader products">
+				<a href="#">products</a>
+				<ul class="menuItem">
+					<li><a href="#">cms</a></li>
+					<li><a href="#">blog</a></li>
+					<li><a href="#">cart</a></li>
+				</ul>
+			</li>
+
+			<li class="menuHeader tech">
+				<a href="#">technology</a>
+				<ul class="menuItem">
+					<li><a href="#">javascript</a></li>
+					<li><a href="#">php</a></li>
+					<li><a href="#">mysql</a></li>
+				</ul>
+			</li>
+
+		</ul>
+	</div>	
+	<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('li.menuHeader').css("opacity",'0.5');
+
+			$('li.menuHeader').hover(
+				function(){
+					$(this).stop().animate({opacity:1},'slow');
+				},
+				function(){
+					$(this).stop().animate({opacity:0.5},'slow');
+				}
+			);
+
+			$('ul.menuItem').hide();
+			$('li.menuHeader').hover(
+				function(){
+					$('ul',this).slideDown('fast');
+				},
+				function(){
+					$('ul',this).slideUp('fast');
+				}
+			);
+		});
+	</script>
+</body>
+</html>

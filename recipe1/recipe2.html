@@ -1,0 +1,33 @@
+<html>
+<head>
+	<title>detecting AJAX request</title>
+	<style type="text/css">
+		ul{
+			
+		}
+		li{
+
+		}
+	</style>
+</head>
+
+<body>
+	<form>
+		<p>
+			<input type="button" value="load some data" />
+		</p>
+	</form>
+	<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('input:button').click(function(){
+				$.get(
+					'checkAJAX.php',
+					function(data){
+						$('input:button').after(data);
+					});
+			});
+		});
+	</script>
+</body>
+</html>

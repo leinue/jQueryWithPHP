@@ -1,0 +1,50 @@
+<html>
+<head>
+	<title>recipe</title>
+	<style type="text/css">
+		ul{
+			border:1px solid rgb(0,0,0);
+			list-style: none;
+			margin: 0px;
+			padding: 0px;
+			float: left;
+			width: 300px;
+			font-size: 12px;
+		}
+		li{
+			padding: 10px 5px;
+			border-bottom: 1px solid rgb(0,0,0);
+		}
+	</style>
+</head>
+
+<body>
+	<form>
+		<p>
+			show list of:
+			<select id="choice">
+				<option value="">select</option>
+				<option value="good">good guys</option>
+				<option value="bad">bad guys</option>
+			</select>
+		</p>
+		<p id="result"></p>
+	</form>
+
+	<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#choice').change(function(){
+				if($(this).val()!=''){
+					$.get(
+						'data.php',
+						{what:$(this).val()},
+						function(data){
+							$('#result').html(data);
+						});
+				}
+			});
+		});
+	</script>
+</body>
+</html>

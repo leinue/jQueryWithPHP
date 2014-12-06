@@ -1,0 +1,23 @@
+<html>
+<head>
+	<title>ajax audio</title>
+</head>
+
+<body>
+	<audio src="rain.mp3" autoplay>
+		您的浏览器不支持 audio 标签。
+	</audio>
+
+	<input type="button" id="next" value="加载下一个页面" />
+
+	<div class="secondAudio"></div>
+	<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#next').click(function(){
+				$('.secondAudio').load('audioChild.html');
+			});
+		});
+	</script>
+</body>
+</html>

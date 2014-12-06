@@ -1,0 +1,46 @@
+<html>
+<head>
+	<title>aborting AJAX request</title>
+	<style type="text/css">
+		fieldset{
+			width: 450px;
+		}
+		ul{
+			padding: 2px;
+			list-style: none;
+		}
+		label{
+			float: left;
+			width: 100px;
+		}
+	</style>
+</head>
+
+<body>
+	<form>
+		<fieldset>
+			<legend>websites you visited</legend>
+			<ul id="sites">
+				<li>
+					<label>name</label><input type="text" value="" />
+				</li>
+			</ul>
+			<input type="button" id="add" value="add more" />
+		</fieldset>
+	</form>
+	<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#add').click(function(){
+				var added='<li>';
+				added+='<label>name</label><input type="text" value="" /><input type="button" value="remove" class="remove" /></li>';
+				$('#sites').append(added);
+			});
+
+			$('.remove').live('click',function(){
+				$(this).parent('li').remove();
+			});
+		});
+	</script>
+</body>
+</html>

@@ -96,7 +96,25 @@
 	<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
+			$('.container').hide();
+			$('.accordion > h1').click(function(){
+				$('h1.active').removeClass('active');
+				$('.container:visible').slideUp('fast');
+				$(this).addClass('active').next('div').slideToggle('fast');
+			});
 
+			$('.container > a').click(getData);
+
+			function getData(){
+				var url=$(this).attr('href');
+				$.get(
+					url,
+					{},
+					function(data){
+						$('#rightPanel').html(data);
+					}
+				);
+			}
 		});
 	</script>
 </body>

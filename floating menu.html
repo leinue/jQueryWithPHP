@@ -1,0 +1,78 @@
+<html>
+<head>
+	<title>detecting AJAX request</title>
+	<style type="text/css">
+		body{
+			width: 500px;
+			font-size: 14px;
+		}
+
+		.longP,ul{
+			list-style: none;
+		}
+
+		.longP{
+			border: 1px solid rgb(0,0,0);
+			height: 1000px;
+			width: 300px;
+		}
+
+		#floatingbox{
+			border: 1px solid rgb(0,0,0);
+			padding: 10px;
+			position: absolute;
+			right: 50px;
+			width: 200px;
+		}
+
+		.menu{
+			font-weight: bold;
+			margin-top: 10px;
+		}
+
+		span{
+			
+		}
+	</style>
+</head>
+
+<body>
+	<div id="floatingbox">
+		<ul>
+			<li>
+				<span class="menu">menu item 1</span>
+				<ul class="menuItem">
+					<li><a href="">link 1</a></li>
+					<li><a href="">link 2</a></li>
+					<li><a href="">link 3</a></li>
+				</ul>
+			</li>
+			<li>
+				<span class="menu">menu item 2</span>
+				<ul class="menuItem">
+					<li>
+						<span class="menu">sub menu</span>
+						<ul class="menuItem">
+							<li>
+								<span>3rd level menu</span>
+								<li><a href="">sub link 1</a></li>
+								<li><a href="">sub link 2</a></li>
+								<li><a href="">sub link 3</a></li>
+							</li>
+						</ul>
+					</li>
+					<li><a href="">link 1</a></li>
+					<li><a href="">link 2</a></li>
+					<li><a href="">link 3</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+		});
+	</script>
+</body>
+</html>

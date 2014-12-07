@@ -31,7 +31,9 @@
 		}
 
 		span{
-			
+			color: rgb(0,0,0);
+			cursor: pointer;
+			text-decoration:  underline;
 		}
 	</style>
 </head>
@@ -68,10 +70,27 @@
 			</li>
 		</ul>
 	</div>
+	<p class="longP">
+		this is a paragraph with height set to 1000 to create a long page
+	</p>
 	<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			
+			$('menuItem').hide();
+			$(window).scroll(floatDIV);
+			floatDIV();
+
+			function floatDIV(){
+				$('#floatingbox').animate({
+					top:$(document).scrollTop()+5+'px'
+					},{
+						duration:250,queue:false
+				});
+			}
+
+			$('span.menu').click(function(){
+				$(this).next('ul').slideToggle('fast');
+			});
 		});
 	</script>
 </body>

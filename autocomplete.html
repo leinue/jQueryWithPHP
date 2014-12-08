@@ -1,0 +1,63 @@
+ <html>
+<head>
+	<title>tab container</title>
+	<style type="text/css">
+		.autocomplete{
+			margin: 0 auto;
+			width: 500px;
+		}
+
+		.autocomplete input{width: 502px;}
+
+		#error,#loader{display: none;}
+
+		#suggestions{
+			border:1px solid rgb(170,170,170);
+			width: 500px;
+			position: absolute;
+			margin: 0;
+			padding: 0;
+			margin-top: -1px;
+		}
+
+		#suggestions li{
+			list-style: none;
+			border-bottom: 1px solid rgb(170,170,170);
+			background-color: rgb(250,250,250);
+			cursor: pointer;
+		}
+
+		#suggestions li:hover{
+			background-color: rgb(252,252,252);
+		}
+
+		#error{
+			font-weight: bold;
+			font-size: 16px;
+		}
+
+		.active{
+			background-color: rgb(252,252,252);
+		}
+	</style>
+</head>
+
+<body>
+	<div class="autocomplete">
+		<input type="text" class="autotext" />
+		<ul id="suggestions">
+			<li>sddssd</li>
+			<li>dsdssdds</li>
+		</ul>
+		<br><br><br>
+		<div id="loader">loading</div>
+		<span id="error">dsd</span>
+	</div>
+	<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var token=""
+		});
+	</script>
+</body>
+</html>

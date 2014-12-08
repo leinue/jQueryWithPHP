@@ -1,0 +1,64 @@
+<html>
+<head>
+	<title>endless scroll</title>
+	<style type="text/css">
+
+	</style>
+</head>
+
+<body>
+	<div id="container">
+		<p>123</p>
+		<p>123</p>
+		<p>123</p>
+		<p>123</p>
+		<p>123</p>
+		<p>123</p>
+		<p>123</p>
+		<p>123</p>
+		<p>123</p>
+		<p>123</p>
+		<p>123</p>
+		<p>123</p>
+		<p>123</p>
+		<p>123</p>
+		<p>123</p>
+		<p>123</p>
+		<p>123</p>
+		<p>123</p>
+		<p>123</p>
+		<p>123</p>
+		<p>123</p>
+		<p>123</p>
+		<p>123</p>
+		<p>123</p>
+		<p>123</p>
+		<p>123</p>
+		<p>123</p>
+		<p>123</p>
+		<p>123</p>
+	</div>
+	<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$(window).scroll(loadData);
+
+			function loadData(){
+				if(isUserAtBottom()){
+					getData();
+				}
+			}
+
+			function isUserAtBottom(){
+				return (($(document).height()-$(window).height())-$(window).scrollTop())<=50 ? true:false;
+			}
+
+			function getData(){
+				$(window).unbind('scroll');
+				$('#container').append('endless scroll');
+				$(window).scroll(loadData);
+			}
+		});
+	</script>
+</body>
+</html>

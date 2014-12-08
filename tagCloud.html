@@ -1,0 +1,56 @@
+ <html>
+<head>
+	<title>tag cloud</title>
+	<style type="text/css">
+		#cloud{
+			border:1px solid rgb(0,0,0);
+			width: 500px;
+			float: left;
+			position: relative;
+		}
+
+		a{
+			text-decoration: none;
+			margin: 5px;
+			float: left;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="cloud"></div>
+	<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var tags=new Array();
+			var weight=new Array();
+			tags[0]="a";weight[0]=250;
+			tags[1]='b';weight[1]=360;
+			tags[2]='c';weight[2]=1210;
+			tags[3]='d';weight[3]=221;
+			tags[4]='ed';weight[4]=321;
+			tags[5]='f';weight[5]=421;
+			tags[6]='g';weight[6]=752;
+			tags[7]='h';weight[7]=651;
+			tags[8]='i';weight[8]=521;
+			tags[9]='j';weight[9]=981;
+			tags[10]='t';weight[10]=981;
+			tags[11]='k';weight[11]=681;
+			tags[12]='m';weight[12]=581;
+
+			var color='';
+			var fontSize=0;
+
+			var str='';
+
+			for(i=0;i<12;i++){
+				color=weight[i]%2==0 ? '#52A2A':'#6495ED';
+				fontSize=Math.ceil(parseInt(weight[i],10)/20);
+				str+='<a href="#" style="color:'+color+';font-size:'+fontSize+'px;">'+tags[i]+'</a>';
+			}
+
+			$('#cloud').html(str);
+		});
+	</script>
+</body>
+</html>

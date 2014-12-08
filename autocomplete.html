@@ -18,6 +18,7 @@
 			margin: 0;
 			padding: 0;
 			margin-top: -1px;
+			display: none;
 		}
 
 		#suggestions li{
@@ -46,8 +47,6 @@
 	<div class="autocomplete">
 		<input type="text" class="autotext" />
 		<ul id="suggestions">
-			<li>sddssd</li>
-			<li>dsdssdds</li>
 		</ul>
 		<br><br><br>
 		<div id="loader">loading</div>
@@ -56,7 +55,50 @@
 	<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			var token=""
+			var token="fuck,shit,bitch";
+			$('.autotext').keyup(getSuggestions);
+			$('.autotext').keydown(navigateList);
+
+			function getSuggestions(event){
+				var value=jQuery.trim($(this).val());
+
+				if(value==''){
+					$('#suggestions').hide();
+				}
+
+				if(value!=''){
+					showSuggestions(token);
+				}
+			}
+
+			function showSuggestions(data){
+				var solo=data.split(',');
+				var str='';
+				for(var i=0;i<3;i++){
+					str+="<li>"+solo[i]+"</li>";
+				}
+
+				$('#suggestions').html(str).show();
+			}
+
+			function navigateList(event){
+				switch(event.which){
+					case 38: //up
+						if($('#suggestions>li.active').length>0){
+							$('#suggestions>li.active').removeClass('active').prev().addClass('active');
+						}else{
+							$('#suggestions>li:last').addClass('active');
+						}
+						break;
+					case 40: //down
+						if($('#suggestions>li.active').length>0){
+							$('#suggestions>li.active').removeClass('active').next().addClass('active');
+						}else{
+							$('#suggestions>li:last').addClass('active');
+						}
+						break;
+				}
+			}
 		});
 	</script>
 </body>

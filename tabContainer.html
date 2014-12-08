@@ -2,15 +2,9 @@
 <head>
 	<title>tab container</title>
 	<style type="text/css">
-		body{
-			margin: 50 auto;
-			width: 800px;
-		}
+		body{margin: 50 auto;width: 800px;}
 
-		h3{
-			margin: 0;
-			padding: 0;
-		}
+		h3{margin: 0;padding: 0;}
 
 		ul{
 			float: left;
@@ -29,6 +23,12 @@
 			width: 100px;
 		}
 
+		.tabContainer{
+			border:1px solid rgb(0,0,0);
+			float: left;
+			width: 600px;
+		}
+
 		.tabContent{
 			border: 1px solid rgb(0,0,0);
 			float: left;
@@ -38,14 +38,38 @@
 			width: 590px;
 		}
 
-		.active{
-			background-color: #6AA63B;
-			color: white;
+		.newTabHolder{float: left;width: 300px;}
+
+		.active{background-color: #6AA63B;color: white;}
+
+		.hide{display: none;}
+
+		#error{color: #FF0000;}
+
+		.remove{
+			float: right;
+			font-weight: bold;
+			color: #FF0000;
 		}
+
+		h4{margin: 0px;padding: 0px;}
+
+		label{float: left;width: 100px;}
+
+		input,textarea{width: 180px;}
 	</style>
 </head>
 
 <body>
+	<div class="newTabHolder">
+		<h4>add a new tab</h4>
+		<label for="tabName">tab name</label>
+		<input type="text" id='tabName' />
+		<label for="tabHTML">tab html</label>
+		<textarea id="tabHTML" rows="10"></textarea>
+		<input type="button" id="addTab" value="add new tab"><br/>
+		<span id="error"></span>
+	</div>
 	<div class="tabContainer">
 		<ul class="tabHeader">
 			<li>tab 1</li>
@@ -73,6 +97,8 @@
 			$('.tabContent:gt(0)').hide();
 			$('.tabHeader > li:eq(0)').addClass('active');
 			$('.tabHeader > li').click(showHideTabs);
+			$('.tabHeader > li').live('click',showHideTabs);
+			$('#addTab').click(addTab);
 
 			function showHideTabs(){
 				var allLI=$('.tabHeader > li').removeClass('active');
@@ -81,6 +107,22 @@
 				var index=allLI.index(this);
 				$('.tabContent:visible').hide();
 				$('.tabContent:eq('+index+')').show();
+			}
+
+			function addTab(){
+				if(jQuery.trim($('#tabName').val())!='' && jQuery.trim($('#tabHTML').val())!=''){
+					$('#error').empty();
+					$('.tabHeader').append('<li>'+$('#tabName').val()+'</li>');
+					$('.contents').append('<div class="tabContent hide">'+$('#tabHTML').val()+'</div>');
+
+					//display
+					$('.tabHeader > li').removeClass('active');
+					$('.tabHeader > li:last').addClass('active');
+					$('.tabContent:visible').hide();
+					$('.tabContent:last').show();
+				}else{
+					$('#error').html('please provide a tab name');
+				}
 			}
 		});
 	</script>

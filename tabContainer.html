@@ -1,0 +1,88 @@
+ <html>
+<head>
+	<title>tab container</title>
+	<style type="text/css">
+		body{
+			margin: 50 auto;
+			width: 800px;
+		}
+
+		h3{
+			margin: 0;
+			padding: 0;
+		}
+
+		ul{
+			float: left;
+			list-style: none;
+			margin: 0pt;
+			padding: 0pt;
+			width: 600px;
+		}
+
+		li{
+			border: 1px solid rgb(0,0,0);
+			cursor: pointer;
+			float: left;
+			padding: 5px;
+			text-align: center;
+			width: 100px;
+		}
+
+		.tabContent{
+			border: 1px solid rgb(0,0,0);
+			float: left;
+			height: 100px;
+			padding: 5px;
+			text-align: justify;
+			width: 590px;
+		}
+
+		.active{
+			background-color: #6AA63B;
+			color: white;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="tabContainer">
+		<ul class="tabHeader">
+			<li>tab 1</li>
+			<li>tab 2</li>
+			<li>tab 3</li>
+		</ul>
+		<div class="contents">
+			<div class="tabContent">
+				<h3>tab 1</h3>
+				content for tab 1
+			</div>
+			<div class="tabContent">
+				<h3>tab 2</h3>
+				content for tab 2
+			</div>
+			<div class="tabContent">
+				<h3>tab 3</h3>
+				content for tab 3
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('.tabContent:gt(0)').hide();
+			$('.tabHeader > li:eq(0)').addClass('active');
+			$('.tabHeader > li').click(showHideTabs);
+
+			function showHideTabs(){
+				var allLI=$('.tabHeader > li').removeClass('active');
+				$(this).addClass('active');
+
+				var index=allLI.index(this);
+				$('.tabContent:visible').hide();
+				$('.tabContent:eq('+index+')').show();
+			}
+		});
+	</script>
+</body>
+</html>

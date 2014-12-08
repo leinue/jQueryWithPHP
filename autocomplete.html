@@ -38,7 +38,7 @@
 		}
 
 		.active{
-			background-color: rgb(252,252,252);
+			background-color: rgb(255,255,255);
 		}
 	</style>
 </head>
@@ -58,6 +58,7 @@
 			var token="fuck,shit,bitch";
 			$('.autotext').keyup(getSuggestions);
 			$('.autotext').keydown(navigateList);
+			$('#suggestions>li').live('click',hoverList);
 
 			function getSuggestions(event){
 				var value=jQuery.trim($(this).val());
@@ -94,9 +95,17 @@
 						if($('#suggestions>li.active').length>0){
 							$('#suggestions>li.active').removeClass('active').next().addClass('active');
 						}else{
-							$('#suggestions>li:last').addClass('active');
+							$('#suggestions>li:first').addClass('active');
 						}
 						break;
+				}
+			}
+
+			function hoverList(event){
+				if(event.type=='click'){
+					$('.autotext').val($(this).html());
+					$('#suggestions').hide();
+					$('.autotext').focus();
 				}
 			}
 		});

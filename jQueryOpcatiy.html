@@ -14,6 +14,7 @@
 		height: 200px;
 		display: none;
 		background: rgb(0,0,0);
+		margin-top: -21px;
 	}
 	</style>
 </head>
@@ -21,18 +22,19 @@
 <body>
 	<div class="main">
 		ssdssd
-		<div class="outer">515</div>
+		<div class="outer"></div>
 	</div>
 	<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$('main').hover(
+			$('.outer').css("opacity",'0.5');
+			$('.main').hover(
 				function(){
-				$('outer').fadeIn('fast')
-			},
+					$('.outer').fadeIn('fast');
+				},
 				function(){
-				$('outer').fadeOut('fast')
-			});
+					$('.outer').fadeOut('fast');
+				});
 		});
 	</script>
 </body>

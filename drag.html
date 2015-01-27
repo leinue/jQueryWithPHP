@@ -1,0 +1,81 @@
+<html>
+<head>
+	<title>drag</title>
+	<style type="text/css">
+		body {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+		}
+
+		.dragMe{
+			border: 1px solid rgb(0,0,0);
+			width: 150px;
+			height: 200px;
+			float: left;
+			margin: 20px;
+		}
+
+		.left-panel{
+			float: left;
+			width: 200px;
+			background: rgb(250,250,250);
+			overflow-y: auto;
+			height: 102%;
+		}
+
+		.right-panel{
+			float: right;
+			height: 102%;
+			width: 280px;
+			background: rgb(250,250,250);
+		}
+
+		.mid-panel{
+			margin-left:200px;
+			background: rgb(238,238,238);
+			height: 102%;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="left-panel">
+		<div class="dragMe" id="a">drag me</div>
+		<div class="dragMe" id="b">drag me too</div>
+	</div>
+	<div class="right-panel"></div>
+	<div class="mid-panel"></div>
+
+	<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var mousex=0,mousey=0;
+			var divleft,divtop;
+			$(".dragMe").mousedown(function(e){
+				var offset=$(this).offset();
+				divleft=parseInt(offset.left,10);
+				divtop=parseInt(offset.top,10);
+				mousey=e.pageY;
+				mousex=e.pageX;
+				$(this).bind('mousemove',dragElement);
+			});
+
+			function dragElement(event){
+				var left=divleft+(event.pageX-mousex);
+				var top=divtop+(event.pageY-mousey);
+				$(this).css({
+					'top':top+'px',
+					'left':left+'px',
+					'position':'absolute'
+				});
+				return false;
+			}
+
+			$(document).mouseup(function(){
+				$('.dragMe').unbind('mousemove');
+			});
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+ <html>
+<head>
+	<title>drag</title>
+	<meta charset="utf8">
+	<link rel="stylesheet" href="/css/jquery-ui-1.10.4.custom.css" />
+	<style type="text/css">
+  		.draggable{
+  			border: 1px solid rgb(0,0,0);
+  			width: 150px;
+  			height: 100px;
+  		}
+
+  		.droppable{
+  			border: 1px solid rgb(0,0,0);
+  			width: 200px;
+  			height: 500px;
+  		}
+
+  		.active{
+  			background: rgb(250,250,250);
+  		}
+	</style>
+</head>
+
+<body>
+	<div class="draggable">
+		<div>请把我拖拽到目标处！</div>
+	</div>
+ 
+	<div class="droppable">
+  		<p>请放置在这里！</p>
+	</div>
+
+	<script src="external/jquery/jquery.js"></script>
+	<script src="jquery-ui.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$(function(){
+    			$(".draggable").draggable({ revert: "valid" });
+    			$(".droppable").droppable({
+    				accept: ".draggable",
+    				activeClass:"active",
+      				drop:function(event,ui){
+        				$(this)
+          				.addClass("ui-state-highlight")
+          				.find("p")
+            			.html("Dropped!");
+      				}
+    			});
+  			});			
+		});
+	</script>
+</body>
+</html>

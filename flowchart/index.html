@@ -106,23 +106,40 @@
 		$(document).ready(function(){
 			$(function(){
 
-				/*var hollowCircle = {
-                	endpoint: ["Dot"， { radius: 8 }]，  //端点的外形
-                	connectorStyle: connectorPaintStyle，//连接线的色彩，大小样式
-                	connectorHoverStyle: connectorHoverStyle，
-                	paintStyle: {
-                    	strokeStyle: "＃1e8151"，
-                    	fillStyle: "transparent"，
-                    	radius: 2，
-                    	lineWidth: 2
-                	}，        //端点的色彩样式
-                	//anchor: "AutoDefault"，
-                	isSource: true，    //是否可以拖动（作为连线出发点）
-                	connector: ["Flowchart"， { stub: [40， 60]， gap: 10， cornerRadius: 5， alwaysRespectStubs: true }]，  //连接线的样式种类有[Bezier]，[Flowchart]，[StateMachine ]，[Straight ]
-                	isTarget: true，    //是否可以放置（连线终点）
-                	maxConnections: -1，    // 设置连接点最多可以连接几条线
-                	connectorOverlays: [["Arrow"， { width: 10， length: 10， location: 1 }]]
-            	};*/
+    		//根蒂根基连接线样式
+            var connectorPaintStyle = {
+                lineWidth: 4,
+                strokeStyle: "#61B7CF",
+                joinstyle: "round",
+                outlineColor: "rgb(251,251,251)",
+                outlineWidth: 2
+             };
+
+            // 鼠标悬浮在连接线上的样式
+            var connectorHoverStyle = {
+                lineWidth: 4,
+                strokeStyle: "#216477",
+                outlineWidth: 2,
+                outlineColor: "rgb(251,251,251)"
+             };
+
+			var hollowCircle = {
+                endpoint: ["Dot", { radius: 8 }],  //端点的外形
+                connectorStyle: connectorPaintStyle,//连接线的色彩,大小样式
+                connectorHoverStyle: connectorHoverStyle,
+                paintStyle: {
+                    strokeStyle: "#1e8151",
+                    fillStyle: "transparent",
+                    radius: 2,
+                    lineWidth: 2
+                },//端点的色彩样式
+                //anchor: "AutoDefault",
+                isSource: true,    //是否可以拖动（作为连线出发点）
+                connector: ["Flowchart", { stub: [40, 60], gap: 10, cornerRadius: 5, alwaysRespectStubs: true }],  //连接线的样式种类有[Bezier],[Flowchart],[StateMachine ],[Straight ]
+                isTarget: true,    //是否可以放置（连线终点）
+                maxConnections: -1,    // 设置连接点最多可以连接几条线
+                connectorOverlays: [["Arrow", { width: 10, length: 10, location: 1 }]]
+            };
 
 				var idIndex=0;
 
@@ -150,10 +167,10 @@
         				$("#"+trueId).css("left",left).css("top",top).css("position","absolute");
 
         				//用jsPlumb添加锚点
-        				/*jsPlumb.addEndpoint(trueId,{anchors: "TopCenter"},hollowCircle);
+        				jsPlumb.addEndpoint(trueId,{anchors: "TopCenter"},hollowCircle);
         				jsPlumb.addEndpoint(trueId,{anchors: "RightMiddle"},hollowCircle);
         				jsPlumb.addEndpoint(trueId,{anchors: "BottomCenter"},hollowCircle);
-        				jsPlumb.addEndpoint(trueId,{anchors: "LeftMiddle"},hollowCircle);*/
+        				jsPlumb.addEndpoint(trueId,{anchors: "LeftMiddle"},hollowCircle);
 
         				jsPlumb.draggable(trueId);
         				$("#"+trueId).draggable({containment: "parent"});//保证拖动不跨界

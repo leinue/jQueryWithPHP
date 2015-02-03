@@ -133,9 +133,9 @@
                     	lineWidth: 2
                 	},//端点的色彩样式
                 	//anchor: "AutoDefault",
-                	isSource: true,    //是否可以拖动（作为连线出发点）
+                	isSource: true,    //是否可以拖动(作为连线出发点)
                 	connector: ["Flowchart", { stub: [40, 60], gap: 10, cornerRadius: 5, alwaysRespectStubs: true }],  //连接线的样式种类有[Bezier],[Flowchart],[StateMachine ],[Straight ]
-                	isTarget: true,    //是否可以放置（连线终点）
+                	isTarget: true,    //是否可以放置(连线终点)
                 	maxConnections: -1,    // 设置连接点最多可以连接几条线
                 	connectorOverlays: [["Arrow", { width: 10, length: 10, location: 1 }]]
             	};
@@ -174,6 +174,8 @@
 
         				jsPlumb.draggable(trueId);
         				$("#"+trueId).draggable({containment: "parent"});//保证拖动不跨界
+
+        				changeValue("#"+trueId);
       				}
     			});
 
@@ -199,13 +201,36 @@
             	});
 
             	$(".droppable").on("click","img",function(){
+            		//要先保存父元素的DOM,因为出现确认对话框之后(this)会消失
             		var parentDOM=$(this).parent();
             		var parentID=parentDOM.attr('id');
-                	if(confirm("确定要删除吗？")) {
+                	if(confirm("确定要删除吗?")) {
                     	jsPlumb.removeAllEndpoints(parentID);
                     	parentDOM.remove();
                 	}
              	});
+
+            	//删除连接线
+             	jsPlumb.bind("click",function(conn,originalEvent){
+                	if(confirm("确定删除吗?")){
+                		jsPlumb.detach(conn);
+                	}
+             	});
+
+             	//双击修改文本
+             	function changeValue(id){
+            		$(id).dblclick(function(){
+                 		var text=$(this).text();
+                		$(this).html("");
+                		$(this).append("<input type=\"text\" value=\"" + text + "\" />");
+                 		$(this).mouseleave(function(){
+                     		$(this).html($("input[type=\"text\"]").val());
+                 		});
+             		});
+         		}
+
+         		//序列化流程图数据,json格式
+         		
 
   			});
 

@@ -1,4 +1,5 @@
- <html>
+<!DOCTYPE>
+<html>
 <head>
 	<title>工作流程图</title>
 	<meta charset="utf-8">
@@ -35,7 +36,7 @@
 			background: rgb(251,251,251);
 			margin-top: 0px;
 			padding-left: 40px;
-			height: 102%;
+			
   		}
 
   		.drop-active{
@@ -44,10 +45,12 @@
 
   		.right-panel{
 			float: right;
-			width: 150px;
+			width: 100px;
 			background: rgb(244,244,244);
-			margin-top: -17px;
-			height: 102%;
+			margin-top: 0px;
+			
+			padding-top:10px;
+			padding-left:10px; 
 		}
 
 		.roundedRect{
@@ -94,7 +97,9 @@
 		<div class="draggable circle" id="circle">文本</div>
 		<div class="draggable rhombus" id="rhombus">文本</div>
 	</div>
-	<div class="right-panel"></div>
+	<div class="right-panel">
+		<input type="button" id="serialization" value="保存">
+	</div>
 	<div class="droppable"></div>
 
 	<script src="external/jquery/jquery.js"></script>
@@ -104,6 +109,9 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$(function(){
+				$('.area,.droppable,.right-panel').css('height',$(document).height());
+
+				var list;
 
     			//根蒂根基连接线样式
             	var connectorPaintStyle = {
@@ -176,6 +184,8 @@
         				$("#"+trueId).draggable({containment: "parent"});//保证拖动不跨界
 
         				changeValue("#"+trueId);
+
+        				list=jsPlumb.getAllConnections();//获取所有的连接
       				}
     			});
 
@@ -219,6 +229,7 @@
 
              	//双击修改文本
              	function changeValue(id){
+
             		$(id).dblclick(function(){
                  		var text=$(this).text();
                 		$(this).html("");
@@ -230,7 +241,37 @@
          		}
 
          		//序列化流程图数据,json格式
-         		
+         		function save(){
+         			var connects=[];
+        			for(var i in list){
+            			for(var j in list[i]){
+            				connects.push({
+            					ConnectionId:list[i][j]['id'],
+            					PageSourceId:list[i][j]['sourceId'],
+            					PageTargetId:list[i][j]['targetId']
+            				});
+                    		console.log(list[i][j]['source'].innerText+"->"+list[i][j]['targetId']);  
+            			}
+       	 			}
+
+             		var blocks=[];
+             		$(".droppable .draggable").each(function(idx, elem){
+                 		var elem=$(elem);
+                		blocks.push({
+                     		BlockId:elem.attr('id'),
+                     		BlockContent:elem.html(),
+                     		BlockX:parseInt(elem.css("left"), 10),
+                     		BlockY:parseInt(elem.css("top"), 10)
+                 		});
+             		});
+
+             		var serliza="{"+'"connects":'+JSON.stringify(connects)+',"block":'+JSON.stringify(blocks)+"}";
+             		console.log(serliza);
+         		}
+
+         		$('#serialization').on("click",function(){
+         			save();
+         		});
 
   			});
 

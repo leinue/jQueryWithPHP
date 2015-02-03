@@ -7,7 +7,6 @@
 		body {
 			margin: 0;
 			padding: 0;
-			
 		}
 
 		.area{
@@ -23,50 +22,53 @@
   			margin-top: 3px;
   			margin-bottom: 10px;
   			background: rgb(221,221,221);
+  			text-align: center;
+  			line-height: 100px;
+  		}
+
+  		.draggable:hover{
+  			cursor:pointer;
   		}
 
   		.droppable{
-  			height: 100%;
 			margin-left: 150px;
-			background: rgb(238,238,238);
-			margin-top: -17px;
+			background: rgb(251,251,251);
+			margin-top: 0px;
+			padding-left: 40px;
+			height: 102%;
   		}
 
   		.drop-active{
-  			background: rgb(251,251,251);
+  			background: rgb(238,238,238);
   		}
 
   		.right-panel{
 			float: right;
-			height: 102%;
 			width: 150px;
 			background: rgb(244,244,244);
 			margin-top: -17px;
-		}
-		
-		#rect{
-
+			height: 102%;
 		}
 
-		#roundedRect{
+		.roundedRect{
 			border-radius: 20px;
 		}
 
-		#circle{
+		.circle{
 			height: 120px;
 			width: 120px;
 			border-radius: 60px;
 			margin-left: 15px;
 		}
 
-		#arrow{
+		.arrow{
 			background: url(img/arrow.png) no-repeat;
 			background-size: 120px 120px;
 			height: 120px;
 			margin-left: 20px;
 		}
 
-		#rhombus{    
+		.rhombus{    
 			width: 100px;
 			height: 100px;
 			margin-top: 50px;
@@ -87,35 +89,79 @@
 
 <body>
 	<div class="area">
-		<div class="draggable" id="arrow"></div>
-		<div class="draggable" id="rect"></div>
-		<div class="draggable" id="roundedRect"></div>
-		<div class="draggable" id="circle"></div>
-		<div class="draggable" id="rhombus"></div>
+		<div class="draggable arrow" id="arrow">文本</div>
+		<div class="draggable" id="rect">文本</div>
+		<div class="draggable roundedRect" id="roundedRect">文本</div>
+		<div class="draggable circle" id="circle">文本</div>
+		<div class="draggable rhombus" id="rhombus">文本</div>
 	</div>
 	<div class="right-panel"></div>
-	<div class="droppable">
-  		<p>请放置在这里！</p>
-	</div>
+	<div class="droppable"></div>
 
 	<script src="external/jquery/jquery.js"></script>
 	<script src="js/jquery-ui.js"></script>
+	<script src="js/jquery.jsPlumb-1.4.0-all.js"></script>
 
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$(function(){
-    			$(".draggable").draggable({ revert: "valid" });
+
+				/*var hollowCircle = {
+                	endpoint: ["Dot"， { radius: 8 }]，  //端点的外形
+                	connectorStyle: connectorPaintStyle，//连接线的色彩，大小样式
+                	connectorHoverStyle: connectorHoverStyle，
+                	paintStyle: {
+                    	strokeStyle: "＃1e8151"，
+                    	fillStyle: "transparent"，
+                    	radius: 2，
+                    	lineWidth: 2
+                	}，        //端点的色彩样式
+                	//anchor: "AutoDefault"，
+                	isSource: true，    //是否可以拖动（作为连线出发点）
+                	connector: ["Flowchart"， { stub: [40， 60]， gap: 10， cornerRadius: 5， alwaysRespectStubs: true }]，  //连接线的样式种类有[Bezier]，[Flowchart]，[StateMachine ]，[Straight ]
+                	isTarget: true，    //是否可以放置（连线终点）
+                	maxConnections: -1，    // 设置连接点最多可以连接几条线
+                	connectorOverlays: [["Arrow"， { width: 10， length: 10， location: 1 }]]
+            	};*/
+
+				var idIndex=0;
+
+    			$(".area").children().draggable({ 
+    				revert: "valid",
+    				helper: "clone",
+    				scope: "dragflag"
+    			});
+
     			$(".droppable").droppable({
-    				accept: ".draggable",
-    				activeClass:"drop-active",
+    				accept: ".draggable", //只接受来自类.dragable的元素
+    				activeClass:"drop-active", //开始拖动时放置区域显示
+    				scope: "dragflag",
       				drop:function(event,ui){
-        				$(this)
-          				.addClass("ui-state-highlight")
-          				.find("p")
-            			.html("Dropped!");
+      					idIndex=idIndex+1;
+      					//获取鼠标坐标
+      					var left=parseInt(ui.offset.left-$(this).offset().left)+150;
+      					var top=parseInt(ui.offset.top-$(this).offset().top);
+
+      					var name=ui.draggable[0].id;//返回被拖动元素的ID
+      					var trueId=name+"-"+idIndex;
+
+      					//在div内append元素
+        				$(this).append("<div class=\"draggable "+name+"\" id=\""+trueId+"\">"+$(ui.helper).html()+"</div>");
+        				$("#"+trueId).css("left",left).css("top",top).css("position","absolute");
+
+        				//用jsPlumb添加锚点
+        				/*jsPlumb.addEndpoint(trueId,{anchors: "TopCenter"},hollowCircle);
+        				jsPlumb.addEndpoint(trueId,{anchors: "RightMiddle"},hollowCircle);
+        				jsPlumb.addEndpoint(trueId,{anchors: "BottomCenter"},hollowCircle);
+        				jsPlumb.addEndpoint(trueId,{anchors: "LeftMiddle"},hollowCircle);*/
+
+        				jsPlumb.draggable(trueId);
+        				$("#"+trueId).draggable({containment: "parent"});//保证拖动不跨界
       				}
     			});
-  			});			
+
+  			});
+
 		});
 	</script>
 </body>

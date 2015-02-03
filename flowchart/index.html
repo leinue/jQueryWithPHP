@@ -1,7 +1,7 @@
  <html>
 <head>
-	<title>drag</title>
-	<meta charset="utf8">
+	<title>工作流程图</title>
+	<meta charset="utf-8">
 	<link rel="stylesheet" href="/css/jquery-ui-1.10.4.custom.css" />
 	<style type="text/css">
 		body {
@@ -61,12 +61,12 @@
 			margin-left: 15px;
 		}
 
-		.arrow{
+		/*.arrow{
 			background: url(img/arrow.png) no-repeat;
 			background-size: 120px 120px;
 			height: 120px;
 			margin-left: 20px;
-		}
+		}*/
 
 		.rhombus{    
 			width: 100px;
@@ -89,7 +89,6 @@
 
 <body>
 	<div class="area">
-		<div class="draggable arrow" id="arrow">文本</div>
 		<div class="draggable" id="rect">文本</div>
 		<div class="draggable roundedRect" id="roundedRect">文本</div>
 		<div class="draggable circle" id="circle">文本</div>
@@ -106,47 +105,48 @@
 		$(document).ready(function(){
 			$(function(){
 
-    		//根蒂根基连接线样式
-            var connectorPaintStyle = {
-                lineWidth: 4,
-                strokeStyle: "#61B7CF",
-                joinstyle: "round",
-                outlineColor: "rgb(251,251,251)",
-                outlineWidth: 2
-             };
+    			//根蒂根基连接线样式
+            	var connectorPaintStyle = {
+                	lineWidth: 4,
+                	strokeStyle: "#61B7CF",
+                	joinstyle: "round",
+                	outlineColor: "rgb(251,251,251)",
+                	outlineWidth: 2
+             	};
 
-            // 鼠标悬浮在连接线上的样式
-            var connectorHoverStyle = {
-                lineWidth: 4,
-                strokeStyle: "#216477",
-                outlineWidth: 2,
-                outlineColor: "rgb(251,251,251)"
-             };
+            	// 鼠标悬浮在连接线上的样式
+            	var connectorHoverStyle = {
+                	lineWidth: 4,
+                	strokeStyle: "#216477",
+                	outlineWidth: 2,
+                	outlineColor: "rgb(251,251,251)"
+             	};
 
-			var hollowCircle = {
-                endpoint: ["Dot", { radius: 8 }],  //端点的外形
-                connectorStyle: connectorPaintStyle,//连接线的色彩,大小样式
-                connectorHoverStyle: connectorHoverStyle,
-                paintStyle: {
-                    strokeStyle: "#1e8151",
-                    fillStyle: "transparent",
-                    radius: 2,
-                    lineWidth: 2
-                },//端点的色彩样式
-                //anchor: "AutoDefault",
-                isSource: true,    //是否可以拖动（作为连线出发点）
-                connector: ["Flowchart", { stub: [40, 60], gap: 10, cornerRadius: 5, alwaysRespectStubs: true }],  //连接线的样式种类有[Bezier],[Flowchart],[StateMachine ],[Straight ]
-                isTarget: true,    //是否可以放置（连线终点）
-                maxConnections: -1,    // 设置连接点最多可以连接几条线
-                connectorOverlays: [["Arrow", { width: 10, length: 10, location: 1 }]]
-            };
+				var hollowCircle = {
+                	endpoint: ["Dot", { radius: 8 }],  //端点的外形
+                	connectorStyle: connectorPaintStyle,//连接线的色彩,大小样式
+                	connectorHoverStyle: connectorHoverStyle,
+                	paintStyle: {
+                    	strokeStyle: "#1e8151",
+                    	fillStyle: "transparent",
+                    	radius: 2,
+                    	lineWidth: 2
+                	},//端点的色彩样式
+                	//anchor: "AutoDefault",
+                	isSource: true,    //是否可以拖动（作为连线出发点）
+                	connector: ["Flowchart", { stub: [40, 60], gap: 10, cornerRadius: 5, alwaysRespectStubs: true }],  //连接线的样式种类有[Bezier],[Flowchart],[StateMachine ],[Straight ]
+                	isTarget: true,    //是否可以放置（连线终点）
+                	maxConnections: -1,    // 设置连接点最多可以连接几条线
+                	connectorOverlays: [["Arrow", { width: 10, length: 10, location: 1 }]]
+            	};
 
 				var idIndex=0;
 
+				//允许元素拖动
     			$(".area").children().draggable({ 
-    				revert: "valid",
-    				helper: "clone",
-    				scope: "dragflag"
+    				revert: "valid",//拖动之后原路返回
+    				helper: "clone",//复制自身
+    				scope: "dragflag"//标识
     			});
 
     			$(".droppable").droppable({
@@ -164,7 +164,7 @@
 
       					//在div内append元素
         				$(this).append("<div class=\"draggable "+name+"\" id=\""+trueId+"\">"+$(ui.helper).html()+"</div>");
-        				$("#"+trueId).css("left",left).css("top",top).css("position","absolute");
+        				$("#"+trueId).css("left",left).css("top",top).css("position","absolute").css("margin","0px");
 
         				//用jsPlumb添加锚点
         				jsPlumb.addEndpoint(trueId,{anchors: "TopCenter"},hollowCircle);
@@ -176,6 +176,36 @@
         				$("#"+trueId).draggable({containment: "parent"});//保证拖动不跨界
       				}
     			});
+
+ 				//删除元素按钮
+        		$(".droppable").on("mouseenter",".draggable",function(){
+                	$(this).append("<img src=\"img\/delete.png\" id=\"fuck\" style=\"position:absolute;width:20px;height:16px;\"/>");
+                	
+                	//因为流程图的形状不一样,所以要获取特定的流程图名称来指定删除按钮的位置
+                	var wholeID=$(this).attr('id');
+        			var wholeIDSep=wholeID.split('-');
+
+                	if(wholeIDSep[0]=="circle") {
+                    	$("img").css("left", 80).css("top", 20);
+                	}else if(wholeIDSep[0]=="rhombus"){
+                    	$("img").css("left", 75).css("top", 10);
+                    }else{
+                    	$("img").css("left", 125).css("top", 10);
+                    }
+            	});
+
+            	$(".droppable").on("mouseleave",".draggable",function(){
+                	$("img").remove();
+            	});
+
+            	$(".droppable").on("click","img",function(){
+            		var parentDOM=$(this).parent();
+            		var parentID=parentDOM.attr('id');
+                	if(confirm("确定要删除吗？")) {
+                    	jsPlumb.removeAllEndpoints(parentID);
+                    	parentDOM.remove();
+                	}
+             	});
 
   			});
 

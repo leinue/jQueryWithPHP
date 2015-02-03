@@ -3,7 +3,6 @@
 <head>
 	<title>工作流程图</title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" href="/css/jquery-ui-1.10.4.custom.css" />
 	<style type="text/css">
 		body {
 			margin: 0;
@@ -100,7 +99,7 @@
 	<div class="right-panel">
 		<input type="button" id="serialization" value="保存">
         <textarea id="jsonContainer" style="width:90px;height:400px"></textarea>
-        <input type="button" id="serialization" value="导入">
+        <input type="button" id="loadChart" value="导入">
 	</div>
 	<div class="droppable"></div>
 
@@ -109,7 +108,44 @@
 	<script src="js/jquery.jsPlumb-1.4.0-all.js"></script>
 
 	<script type="text/javascript">
+    
         var list;//连接点列表
+
+        //根蒂根基连接线样式
+        var connectorPaintStyle = {
+            lineWidth: 4,
+            strokeStyle: "#61B7CF",
+            joinstyle: "round",
+            outlineColor: "rgb(251,251,251)",
+            outlineWidth: 2
+        };
+
+        // 鼠标悬浮在连接线上的样式
+        var connectorHoverStyle = {
+            lineWidth: 4,
+            strokeStyle: "#216477",
+            outlineWidth: 2,
+            outlineColor: "rgb(251,251,251)"
+        };
+
+        var hollowCircle = {
+            endpoint: ["Dot", { radius: 8 }],  //端点的外形
+            connectorStyle: connectorPaintStyle,//连接线的色彩,大小样式
+            connectorHoverStyle: connectorHoverStyle,
+            paintStyle: {
+                strokeStyle: "#1e8151",
+                fillStyle: "transparent",
+                radius: 2,
+                lineWidth: 2
+            },//端点的色彩样式
+            //anchor: "AutoDefault",
+            isSource: true,    //是否可以拖动(作为连线出发点)
+            connector: ["Flowchart", { stub: [40, 60], gap: 10, cornerRadius: 5, alwaysRespectStubs: true }],  //连接线的样式种类有[Bezier],[Flowchart],[StateMachine ],[Straight ]
+            isTarget: true,    //是否可以放置(连线终点)
+            maxConnections: -1,    // 设置连接点最多可以连接几条线
+            connectorOverlays: [["Arrow", { width: 10, length: 10, location: 1 }]]
+        };
+
         //序列化流程图数据,json格式
         function save(){
             var connects=[];
@@ -139,48 +175,60 @@
             return serliza;
         }
 
-        function loadJson(){
-            
+        //从json数据导入流程图
+        function loadJson(data){
+            var unpack=JSON.parse(data);
+
+            if(!unpack){
+                return false;
+            }
+
+            flowConnector={
+                anchors:["BottomCenter","TopCenter"],
+                endpoints:["dot","blank"]
+            };
+
+            for(var i=0;i<unpack['block'].length;i++){
+                var BlockId=unpack['block'][i]['BlockId'];
+                var BlockContent=unpack['block'][i]['BlockContent'];
+                var BlockX=unpack['block'][i]['BlockX'];
+                var BlockY=unpack['block'][i]['BlockY'];
+
+                var blockAttr=BlockId.split('-')[0];
+                var htmlText='<div class="draggable '+blockAttr+'" style="position:absolute;left:'+BlockX+';top:'+BlockY+';" id="'+BlockId+'">'+BlockContent+'</div>';
+                $('.droppable').append(htmlText);            
+            }
+
+            for(i=0;i<unpack['connects'].length;i++){
+                var ConnectionId=unpack['connects'][i]['ConnectionId'];
+                var PageSourceId=unpack['connects'][i]['PageSourceId'];
+                var PageTargetId=unpack['connects'][i]['PageTargetId'];
+
+                jsPlumb.draggable(PageSourceId);
+                jsPlumb.draggable(PageTargetId);
+
+                //用jsPlumb添加锚点
+                jsPlumb.addEndpoint(PageSourceId,{anchors: "TopCenter"},hollowCircle);
+                jsPlumb.addEndpoint(PageSourceId,{anchors: "RightMiddle"},hollowCircle);
+                jsPlumb.addEndpoint(PageSourceId,{anchors: "BottomCenter"},hollowCircle);
+                jsPlumb.addEndpoint(PageSourceId,{anchors: "LeftMiddle"},hollowCircle);
+
+                jsPlumb.addEndpoint(PageTargetId,{anchors: "TopCenter"},hollowCircle);
+                jsPlumb.addEndpoint(PageTargetId,{anchors: "RightMiddle"},hollowCircle);
+                jsPlumb.addEndpoint(PageTargetId,{anchors: "BottomCenter"},hollowCircle);
+                jsPlumb.addEndpoint(PageTargetId,{anchors: "LeftMiddle"},hollowCircle);
+
+                jsPlumb.connect({
+                    source:PageSourceId,target:PageTargetId},
+                    flowConnector);
+            }
+
+            return true;
         }
 
 		$(document).ready(function(){
 			$(function(){
 				$('.area,.droppable,.right-panel').css('height',$(document).height());
-
-    			//根蒂根基连接线样式
-            	var connectorPaintStyle = {
-                	lineWidth: 4,
-                	strokeStyle: "#61B7CF",
-                	joinstyle: "round",
-                	outlineColor: "rgb(251,251,251)",
-                	outlineWidth: 2
-             	};
-
-            	// 鼠标悬浮在连接线上的样式
-            	var connectorHoverStyle = {
-                	lineWidth: 4,
-                	strokeStyle: "#216477",
-                	outlineWidth: 2,
-                	outlineColor: "rgb(251,251,251)"
-             	};
-
-				var hollowCircle = {
-                	endpoint: ["Dot", { radius: 8 }],  //端点的外形
-                	connectorStyle: connectorPaintStyle,//连接线的色彩,大小样式
-                	connectorHoverStyle: connectorHoverStyle,
-                	paintStyle: {
-                    	strokeStyle: "#1e8151",
-                    	fillStyle: "transparent",
-                    	radius: 2,
-                    	lineWidth: 2
-                	},//端点的色彩样式
-                	//anchor: "AutoDefault",
-                	isSource: true,    //是否可以拖动(作为连线出发点)
-                	connector: ["Flowchart", { stub: [40, 60], gap: 10, cornerRadius: 5, alwaysRespectStubs: true }],  //连接线的样式种类有[Bezier],[Flowchart],[StateMachine ],[Straight ]
-                	isTarget: true,    //是否可以放置(连线终点)
-                	maxConnections: -1,    // 设置连接点最多可以连接几条线
-                	connectorOverlays: [["Arrow", { width: 10, length: 10, location: 1 }]]
-            	};
 
 				var idIndex=0;
 
@@ -274,10 +322,20 @@
              		});
          		}
 
+                //保存
          		$('#serialization').on("click",function(){
          			var jsondata=save();
-                    $('#jsonContainer').html(jsondata);
+                    $('#jsonContainer').val(jsondata);
          		});
+
+                //导入
+                $('#loadChart').on("click",function(){
+                    var jsondata=$('#jsonContainer').val();
+                    if(jsondata!=''){
+                        $('.droppable').html('');
+                        var isloaded=loadJson(jsondata);
+                    }
+                });
 
   			});
 

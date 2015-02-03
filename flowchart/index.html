@@ -99,6 +99,8 @@
 	</div>
 	<div class="right-panel">
 		<input type="button" id="serialization" value="保存">
+        <textarea id="jsonContainer" style="width:90px;height:400px"></textarea>
+        <input type="button" id="serialization" value="导入">
 	</div>
 	<div class="droppable"></div>
 
@@ -107,11 +109,43 @@
 	<script src="js/jquery.jsPlumb-1.4.0-all.js"></script>
 
 	<script type="text/javascript">
+        var list;//连接点列表
+        //序列化流程图数据,json格式
+        function save(){
+            var connects=[];
+            for(var i in list){
+                for(var j in list[i]){
+                    connects.push({
+                        ConnectionId:list[i][j]['id'],
+                        PageSourceId:list[i][j]['sourceId'],
+                        PageTargetId:list[i][j]['targetId']
+                    });
+                }
+            }
+
+            var blocks=[];
+            $(".droppable .draggable").each(function(idx, elem){
+                var elem=$(elem);
+                blocks.push({
+                    BlockId:elem.attr('id'),
+                    BlockContent:elem.html(),
+                    BlockX:parseInt(elem.css("left"), 10),
+                    BlockY:parseInt(elem.css("top"), 10)
+                });
+            });
+
+            var serliza="{"+'"connects":'+JSON.stringify(connects)+',"block":'+JSON.stringify(blocks)+"}";
+            console.log(serliza);
+            return serliza;
+        }
+
+        function loadJson(){
+            
+        }
+
 		$(document).ready(function(){
 			$(function(){
 				$('.area,.droppable,.right-panel').css('height',$(document).height());
-
-				var list;
 
     			//根蒂根基连接线样式
             	var connectorPaintStyle = {
@@ -240,37 +274,9 @@
              		});
          		}
 
-         		//序列化流程图数据,json格式
-         		function save(){
-         			var connects=[];
-        			for(var i in list){
-            			for(var j in list[i]){
-            				connects.push({
-            					ConnectionId:list[i][j]['id'],
-            					PageSourceId:list[i][j]['sourceId'],
-            					PageTargetId:list[i][j]['targetId']
-            				});
-                    		console.log(list[i][j]['source'].innerText+"->"+list[i][j]['targetId']);  
-            			}
-       	 			}
-
-             		var blocks=[];
-             		$(".droppable .draggable").each(function(idx, elem){
-                 		var elem=$(elem);
-                		blocks.push({
-                     		BlockId:elem.attr('id'),
-                     		BlockContent:elem.html(),
-                     		BlockX:parseInt(elem.css("left"), 10),
-                     		BlockY:parseInt(elem.css("top"), 10)
-                 		});
-             		});
-
-             		var serliza="{"+'"connects":'+JSON.stringify(connects)+',"block":'+JSON.stringify(blocks)+"}";
-             		console.log(serliza);
-         		}
-
          		$('#serialization').on("click",function(){
-         			save();
+         			var jsondata=save();
+                    $('#jsonContainer').html(jsondata);
          		});
 
   			});

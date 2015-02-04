@@ -27,7 +27,8 @@
       dssdsd
     </div>
     <div class="chart-ratio">
-      <input class="chart-ratio-form" required min="10" max="500" placeholder="10" type="number">
+      <input id="rear-ratio" class="chart-ratio-form" value="100" min="10" max="500" placeholder="10" type="range" onchange="ratioDisplay.value=value" step="10">
+      <div class="rare-ratio">100%</div>
       <div class="chart-ratio-cover"></div>
     </div>
   </div>

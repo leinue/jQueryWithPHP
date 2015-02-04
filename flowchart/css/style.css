@@ -56,17 +56,25 @@ body{
 	width: 100%;
 }
 
+.chart-ratio-form{
+	width: 150px;
+	border: none;
+	height: 20px;
+	padding-right: 10px;
+	border-right: 2px solid rgb(210,209,210);
+}
+
+.rare-ratio{
+	margin-left: 164px;
+	margin-top: -20px;
+	width: 40px;
+}
+
 .chart-ratio-cover{
 	float: right;
 	margin-right: 228px;
 	background: rgb(255,255,255);
 	width: 20px;
 	height: 20px;
-}
-
-.chart-ratio-form{
-	width: 100px;
-	border: none;
-	border-right: 2px solid rgb(210,209,210);
-	height: 20px;
+	margin-top: -19px;
 }

@@ -1,7 +1,23 @@
 body{
 	margin: 0px;
 	left: 0px;
+	font-family: "arial";
 }
+
+/*全局按钮CSS*/
+.fl-btn{
+	border-radius: 6px;
+	background: rgb(255,255,255);
+	font-family: "arial";
+	border: none;
+	height: 24px;
+	margin-left: 8px;
+}
+
+.fl-btn:hover{
+	background: rgb(249,249,249);
+}
+/*全局按钮CSS*/
 
 .top-panel{
 	height: 50px;
@@ -21,3 +37,4 @@ body{
 	margin-right: 60px;
 	margin-top: 14px;
 }
+

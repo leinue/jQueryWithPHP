@@ -108,7 +108,7 @@
 	<script src="js/jquery.jsPlumb-1.4.0-all.js"></script>
 
 	<script type="text/javascript">
-    
+
         var list;//连接点列表
 
         //根蒂根基连接线样式
@@ -195,17 +195,15 @@
                 var BlockY=unpack['block'][i]['BlockY'];
 
                 var blockAttr=BlockId.split('-')[0];
-                var htmlText='<div class="draggable '+blockAttr+'" style="position:absolute;left:'+BlockX+';top:'+BlockY+';" id="'+BlockId+'">'+BlockContent+'</div>';
-                $('.droppable').append(htmlText);            
+                var htmlText='<div class="draggable '+blockAttr+'" style="position:absolute;left:'+BlockX+'px;top:'+BlockY+'px;" id="'+BlockId+'">'+BlockContent+'</div>';
+                $('.droppable').append(htmlText);
+                console.log(htmlText);
             }
 
             for(i=0;i<unpack['connects'].length;i++){
                 var ConnectionId=unpack['connects'][i]['ConnectionId'];
                 var PageSourceId=unpack['connects'][i]['PageSourceId'];
                 var PageTargetId=unpack['connects'][i]['PageTargetId'];
-
-                jsPlumb.draggable(PageSourceId);
-                jsPlumb.draggable(PageTargetId);
 
                 //用jsPlumb添加锚点
                 jsPlumb.addEndpoint(PageSourceId,{anchors: "TopCenter"},hollowCircle);
@@ -217,6 +215,12 @@
                 jsPlumb.addEndpoint(PageTargetId,{anchors: "RightMiddle"},hollowCircle);
                 jsPlumb.addEndpoint(PageTargetId,{anchors: "BottomCenter"},hollowCircle);
                 jsPlumb.addEndpoint(PageTargetId,{anchors: "LeftMiddle"},hollowCircle);
+
+                jsPlumb.draggable(PageSourceId);
+                jsPlumb.draggable(PageTargetId);
+
+                $("#"+PageSourceId).draggable({containment: "parent"});//保证拖动不跨界
+                $("#"+PageTargetId).draggable({containment: "parent"});//保证拖动不跨界
 
                 jsPlumb.connect({
                     source:PageSourceId,target:PageTargetId},

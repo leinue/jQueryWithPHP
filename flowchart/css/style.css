@@ -1,0 +1,23 @@
+body{
+	margin: 0px;
+	left: 0px;
+}
+
+.top-panel{
+	height: 50px;
+	width: 100%;
+	background: rgb(228,226,227);
+	border-bottom: 2px solid rgb(210,209,210);
+}
+
+.top-left-panel{
+	float: left;
+	margin-left: 60px;
+	margin-top: 14px;
+}
+
+.top-right-panel{
+	float: right;
+	margin-right: 60px;
+	margin-top: 14px;
+}

@@ -38,3 +38,35 @@ body{
 	margin-top: 14px;
 }
 
+.chart-right-panel{
+	float: right;
+	width: 228px;
+	border-left: 2px solid rgb(210,209,210);
+    position: absolute;
+    top: 52px;
+    bottom: 0px;
+    right: 0px;
+}
+
+.chart-ratio{
+	bottom: 0px;
+	border-top: 2px solid rgb(210,209,210);
+	height: 20px;
+	position: absolute;
+	width: 100%;
+}
+
+.chart-ratio-cover{
+	float: right;
+	margin-right: 228px;
+	background: rgb(255,255,255);
+	width: 20px;
+	height: 20px;
+}
+
+.chart-ratio-form{
+	width: 100px;
+	border: none;
+	border-right: 2px solid rgb(210,209,210);
+	height: 20px;
+}

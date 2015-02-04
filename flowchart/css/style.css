@@ -83,7 +83,7 @@ body{
 .chart-list{
 	color: rgb(136,136,136);
 	font-size: 14px;
-	margin-top: 18px;
+	margin-top: 19px;
 }
 
 .chart-list h4{
@@ -92,8 +92,9 @@ body{
 	padding-left: 10px;
 	height: 20px;
 	padding-top: 4px;
-	margin-top: -18px;
+	margin-top: -20px;
 	border-bottom: 1px solid rgb(210,209,210);
+	border-top: 1px solid rgb(210,209,210);
 }
 
 .chart-list h4:hover{

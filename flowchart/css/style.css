@@ -78,3 +78,27 @@ body{
 	height: 20px;
 	margin-top: -19px;
 }
+
+/*属性面板*/
+.chart-list{
+	color: rgb(136,136,136);
+	font-size: 14px;
+}
+
+.chart-list h4{
+	font-weight: lighter;
+	border: 2px solid rgb(248,248,248);
+	margin-top: 5px;
+	background: rgb(248,248,248);
+}
+
+.chart-list h4:hover{
+	border: 2px solid rgb(238,238,238);
+	background: rgb(238,238,238);
+}
+
+.chart-list .list-content{
+	color: rgb(69,69,69);
+	border: 2px solid rgb(248,248,248);
+	margin-top: -20px;
+}

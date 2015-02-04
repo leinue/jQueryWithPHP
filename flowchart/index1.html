@@ -24,7 +24,33 @@
   <div class="chart-content">
     <div class="chart-design"></div>
     <div class="chart-right-panel">
-      dssdsd
+      <div class="chart-right-list">
+        <div class="chart-list chart-object">
+          <h4>部分 1</h4>
+          <div class="list-content">
+            <p>65296596</p>
+          </div>
+          <h4>部分 2</h4>
+          <div class="list-content">
+            <p>agsddfgd</p>
+          </div>
+          <h4>部分 3</h4>
+          <div class="list-content">
+          <p>rfytuuyuy</p>
+          <ul>
+            <li>List item one</li>
+            <li>List item two</li>
+            <li>List item three</li>
+          </ul>
+          </div>
+        </div>
+        <div class="chart-text">
+          
+        </div>
+        <div class="chart-style">
+          
+        </div>
+      </div>
     </div>
     <div class="chart-ratio">
       <input id="rear-ratio" class="chart-ratio-form" value="100" min="10" max="500" placeholder="10" type="range" onchange="ratioDisplay.value=value" step="10">
@@ -32,6 +58,15 @@
       <div class="chart-ratio-cover"></div>
     </div>
   </div>
-  
+
+  <script src="external/jquery/jquery.js"></script>
+  <script src="js/jquery-ui.js"></script>
+  <script src="js/jquery.jsPlumb-1.4.0-all.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $(".chart-object").accordion();
+    });
+  </script>
 </body>
 </html>

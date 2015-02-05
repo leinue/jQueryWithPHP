@@ -261,7 +261,7 @@
       var idIndex=0;
 
       //允许元素拖动
-      $(".area").children().draggable({ 
+      $(".list-content .area").children().draggable({ 
         //revert: "valid",//拖动之后原路返回
         helper: "clone",//复制自身
         scope: "dragflag"//标识
@@ -273,9 +273,10 @@
         scope: "dragflag",
           drop:function(event,ui){
             idIndex=idIndex+1;
+
             //获取鼠标坐标
-            var left=parseInt(ui.offset.left-$(this).offset().left)+150;
-            var top=parseInt(ui.offset.top-$(this).offset().top);
+            var left=parseInt(ui.offset.left-$(this).offset().left);
+            var top=parseInt(ui.offset.top-$(this).offset().top)+4;
 
             var name=ui.draggable[0].id;//返回被拖动元素的ID
             var trueId=name+"-"+idIndex;
@@ -297,7 +298,57 @@
 
             list=jsPlumb.getAllConnections();//获取所有的连接
           }
-      });      
+      });
+
+      //删除元素按钮
+      $(".droppable").on("mouseenter",".draggable",function(){
+        $(this).append("<img src=\"img\/delete.png\" id=\"fuck\" style=\"position:absolute;width:20px;height:16px;\"/>");
+                  
+        //因为流程图的形状不一样,所以要获取特定的流程图名称来指定删除按钮的位置
+        var wholeID=$(this).attr('id');
+        var wholeIDSep=wholeID.split('-');
+
+        if(wholeIDSep[0]=="circle") {
+          $("img").css("left", 80).css("top", 20);
+        }else if(wholeIDSep[0]=="rhombus"){
+          $("img").css("left", 75).css("top", 10);
+        }else{
+          $("img").css("left", 125).css("top", 10);
+        }
+      });
+
+      $(".droppable").on("mouseleave",".draggable",function(){
+        $("img").remove();
+      });
+
+      $(".droppable").on("click","img",function(){
+        //要先保存父元素的DOM,因为出现确认对话框之后(this)会消失
+        var parentDOM=$(this).parent();
+        var parentID=parentDOM.attr('id');
+        if(confirm("确定要删除吗?")) {
+          jsPlumb.removeAllEndpoints(parentID);
+          parentDOM.remove();
+        }
+      });
+
+      //删除连接线
+      jsPlumb.bind("click",function(conn,originalEvent){
+        if(confirm("确定删除吗?")){
+          jsPlumb.detach(conn);
+        }
+      });
+
+      //双击修改文本
+      function changeValue(id){
+        $(id).dblclick(function(){
+            var text=$(this).text();
+            $(this).html("");
+            $(this).append("<input type=\"text\" value=\"" + text + "\" />");
+            $(this).mouseleave(function(){
+                $(this).html($("input[type=\"text\"]").val());
+            });
+        });
+      }
 
       //***********************************元素拖动控制部分************************************
     });

@@ -16,9 +16,9 @@
       <input type="button" class="fl-btn" value="Save">
     </div>
     <div class="top-right-panel">
-      <input type="button" class="fl-btn" value="Object">
-      <input type="button" class="fl-btn" value="Text">
-      <input type="button" class="fl-btn" value="Style">
+      <input type="button" class="fl-btn" id="btn-object" value="Object">
+      <input type="button" class="fl-btn" id="btn-text" value="Text">
+      <input type="button" class="fl-btn" id="btn-style" value="Style">
     </div>
   </div>
   <div class="chart-content">
@@ -109,7 +109,24 @@
       $('.chart-design').css('width',designWidth-4);
     }
 
+    
+
     $(document).ready(function(){
+
+      //初始化动画效果
+      $('.chart-ratio-form').css("opacity",'0.6');
+
+      //为按钮,列表添加动画效果
+      $('.fl-btn,h4').hover(
+        function(){$(this).stop().animate({opacity:0.5},'fast');},
+        function(){$(this).stop().animate({opacity:1},'fast');}
+      );
+
+      //为左下角大小调节添加动画效果
+      $('.chart-ratio-form').hover(
+        function(){$(this).stop().animate({opacity:1},'fast');},
+        function(){$(this).stop().animate({opacity:0.6},'fast');}
+      );
 
       //给左侧工具栏分页
       $(".chart-object").accordion();

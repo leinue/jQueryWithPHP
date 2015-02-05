@@ -127,9 +127,14 @@
       chartRatioDom.value=chartRatioDisplayDom.value;
     }
 
-    //设置右边属性栏当前显示的是哪个
+    //设置右边属性栏当前显示的是哪个工具(object/text/style)
     function setChartRightListFlag(value){
-      $('chart-right-list-flag').html(value);
+      $('.chart-right-list-flag').html(value);
+    }
+
+    //获得当前右边属性栏当前显示的是哪个工具(object/text/style)
+    function getChartRightListFlag(){
+      return $('.chart-right-list-flag').html();
     }
 
     $(document).ready(function(){
@@ -163,7 +168,8 @@
       $('.fl-btn').click(function(){
         //取被点击按钮的ID
         var flBtnID=$(this).attr('id');
-
+        var currentListFlag=getChartRightListFlag();//当前显示的属性面板
+        console.log(currentListFlag);
         switch(flBtnID){
           case 'new-box':
             //新建流程图框
@@ -179,16 +185,28 @@
             break;
           case 'btn-object':
             //显示object面板
-            $('.chart-object').fadeToggle();
+            if(currentListFlag!='object'){
+              $(".chart-"+currentListFlag).hide();
+              $('.chart-object').fadeIn();
+              setChartRightListFlag('object');
+            }
             break; 
           case 'btn-text':
             //显示text面板
-            $('.chart-text').fadeToggle();
+            if(currentListFlag!='text'){
+              $(".chart-"+currentListFlag).hide();
+              $('.chart-text').fadeIn();
+              setChartRightListFlag('text');
+            }
             break; 
           case 'btn-style':
-            //显示style面板
-            $('.chart-style').fadeToggle();
-            break;         
+            //显示style面板`
+            if(currentListFlag!='style'){
+              $(".chart-"+currentListFlag).hide();
+              $('.chart-style').fadeIn();
+              setChartRightListFlag('style');
+            }
+            break;
           default:
             break;
         }

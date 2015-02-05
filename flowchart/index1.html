@@ -27,29 +27,7 @@
     </div>
     <div class="chart-right-panel">
       <div class="chart-right-list">
-      <!--
-        <div class="chart-list chart-text">
-          <h4>Font</h4>
-          <div class="list-content">
-            <p>65296596</p>
-          </div>
-          <h4>Size</h4>
-          <div class="list-content">
-            <p>agsddfgd</p>
-          </div>
-          <h4>Color</h4>
-          <div class="list-content">
-          <p>rfytuuyuy</p>
-            <ul>
-              <li>List item one</li>
-              <li>List item two</li>
-              <li>List item three</li>
-            </ul>
-          </div>
-        </div>
-        -->
-      
-      
+        <div class="chart-right-list-flag" style="display:none;visibility:hidden;">object</div>
         <div class="chart-list chart-object">
           <h4>Shape</h4>
           <div class="list-content">
@@ -77,12 +55,36 @@
             <p>agsddfgd</p>
           </div>
         </div>
+
+        <div class="chart-list chart-text" style="display:none;">
+          <h4>Font</h4>
+          <div class="list-content">
+            <p>65296596</p>
+          </div>
+          <h4>Size</h4>
+          <div class="list-content">
+            <p>agsddfgd</p>
+          </div>
+          <h4>Color</h4>
+          <div class="list-content">
+            <p>rfytuuyuy</p>
+          </div>
+          <h4>Fill</h4>
+          <div class="list-content">
+            <p>agsddfgd</p>
+          </div>
+          <h4>Shadow</h4>
+          <div class="list-content">
+            <p>agsddfgd</p>
+          </div>
+        </div>
         
-        <!--<div class="chart-list chart-style">
+        <div class="chart-list chart-style" style="display:none;">
           <h4>Style1</h4>
           <h4>Style2</h4>
           <h4>Style3</h4>
-        </div>-->
+          <h4>Style3</h4>
+        </div>
        
       </div>
     </div>
@@ -125,6 +127,11 @@
       chartRatioDom.value=chartRatioDisplayDom.value;
     }
 
+    //设置右边属性栏当前显示的是哪个
+    function setChartRightListFlag(value){
+      $('chart-right-list-flag').html(value);
+    }
+
     $(document).ready(function(){
 
       //**************************************UI控制部分**************************************
@@ -153,36 +160,39 @@
       });
 
       //页面上方按钮事件
-      $('.fl-btn'){
+      $('.fl-btn').click(function(){
         //取被点击按钮的ID
         var flBtnID=$(this).attr('id');
 
         switch(flBtnID){
-          case:'new-box':
+          case 'new-box':
             //新建流程图框
             break;
-          case:'new-node':
+          case 'new-node':
             //新建结点
             break;
-          case:'text-chart-align':
+          case 'text-chart-align':
             //流程图框对齐或文本对齐
             break;
-          case:'chart-save':
+          case 'chart-save':
             //分享或保存(生成JSON)
             break;
-          case:'btn-object':
+          case 'btn-object':
             //显示object面板
+            $('.chart-object').fadeToggle();
             break; 
-          case:'btn-text':
+          case 'btn-text':
             //显示text面板
+            $('.chart-text').fadeToggle();
             break; 
-          case:'btn-style':
+          case 'btn-style':
             //显示style面板
+            $('.chart-style').fadeToggle();
             break;         
           default:
             break;
         }
-      }
+      });
 
       //**************************************UI控制部分**************************************
 

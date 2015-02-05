@@ -109,7 +109,6 @@
       var domWidth=$(window).width();
 
       designWidth=domWidth-$('.chart-right-panel').width();
-
       $('.chart-design').css('width',designWidth-4);
     }
 
@@ -135,6 +134,17 @@
     //获得当前右边属性栏当前显示的是哪个工具(object/text/style)
     function getChartRightListFlag(){
       return $('.chart-right-list-flag').html();
+    }
+
+    //负责属性面板的切换,
+    //参数will代表即将要切换的属性面板[text|object|style]
+    //参数current代表当前属性面板,可由getChartRightListFlag()获得
+    function attrToggle(will,current){
+        if(current!=will){
+          $(".chart-"+current).hide();
+          $('.chart-'+will).fadeIn();
+          setChartRightListFlag(will);
+        }
     }
 
     $(document).ready(function(){
@@ -185,27 +195,15 @@
             break;
           case 'btn-object':
             //显示object面板
-            if(currentListFlag!='object'){
-              $(".chart-"+currentListFlag).hide();
-              $('.chart-object').fadeIn();
-              setChartRightListFlag('object');
-            }
+            attrToggle('object',currentListFlag);
             break; 
           case 'btn-text':
             //显示text面板
-            if(currentListFlag!='text'){
-              $(".chart-"+currentListFlag).hide();
-              $('.chart-text').fadeIn();
-              setChartRightListFlag('text');
-            }
+            attrToggle('text',currentListFlag);
             break; 
           case 'btn-style':
             //显示style面板`
-            if(currentListFlag!='style'){
-              $(".chart-"+currentListFlag).hide();
-              $('.chart-style').fadeIn();
-              setChartRightListFlag('style');
-            }
+            attrToggle('style',currentListFlag);
             break;
           default:
             break;

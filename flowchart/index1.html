@@ -155,7 +155,7 @@
         //根蒂根基连接线样式
         var connectorPaintStyle = {
             lineWidth: 4,
-            strokeStyle: "#61B7CF",
+            strokeStyle: "rgb(0,32,80)",
             joinstyle: "round",
             outlineColor: "rgb(251,251,251)",
             outlineWidth: 2
@@ -174,8 +174,8 @@
             connectorStyle: connectorPaintStyle,//连接线的色彩,大小样式
             connectorHoverStyle: connectorHoverStyle,
             paintStyle: {
-                strokeStyle: "rgb(97,183,207)",
-                fillStyle: "rgb(97,183,207)",
+                strokeStyle: "rgb(0,32,80)",
+                fillStyle: "rgb(0,32,80)",
                 opacity: 0.5,
                 radius: 2,
                 lineWidth: 2
@@ -190,6 +190,42 @@
         };
 
     //*********************************jsPlumb基础信息配置区域*********************************
+
+    //*********************************流程图数据操作区域*********************************
+      var list;//连接点列表
+
+      //序列化流程图数据,json格式
+      function save(){
+
+        var connects=[];
+
+        for(var i in list){
+          for(var j in list[i]){
+            connects.push({
+              ConnectionId:list[i][j]['id'],
+              PageSourceId:list[i][j]['sourceId'],
+              PageTargetId:list[i][j]['targetId']
+            });
+          }
+        }
+
+        var blocks=[];
+        $(".droppable .draggable").each(function(idx, elem){
+          var elem=$(elem);
+          blocks.push({
+            BlockId:elem.attr('id'),
+            BlockContent:elem.html(),
+            BlockX:parseInt(elem.css("left"), 10),
+            BlockY:parseInt(elem.css("top"), 10)
+          });
+        });
+
+        var serliza="{"+'"connects":'+JSON.stringify(connects)+',"block":'+JSON.stringify(blocks)+"}";
+        return serliza;
+    }
+
+
+    //*********************************流程图数据操作区域*********************************
 
     $(document).ready(function(){
 
@@ -223,7 +259,6 @@
         //取被点击按钮的ID
         var flBtnID=$(this).attr('id');
         var currentListFlag=getChartRightListFlag();//当前显示的属性面板
-        console.log(currentListFlag);
         switch(flBtnID){
           case 'new-box':
             //新建流程图框
@@ -236,6 +271,7 @@
             break;
           case 'chart-save':
             //分享或保存(生成JSON)
+            var jsondata=save();
             break;
           case 'btn-object':
             //显示object面板
@@ -309,11 +345,11 @@
         var wholeIDSep=wholeID.split('-');
 
         if(wholeIDSep[0]=="circle") {
-          $("img").css("left", 80).css("top", 20);
+          $("img").css("left", $(this).width()-20).css("top", 20);
         }else if(wholeIDSep[0]=="rhombus"){
-          $("img").css("left", 75).css("top", 10);
+          $("img").css("left", $(this).width()-18).css("top", 10);
         }else{
-          $("img").css("left", 125).css("top", 10);
+          $("img").css("left", $(this).width()-20).css("top", 10);
         }
       });
 

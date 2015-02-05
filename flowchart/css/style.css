@@ -195,4 +195,13 @@ body{
 
 .chart-location-form{border:none;}
 
-/*size*/
+.chart-fill-display{margin-top: 30px;}
+
+.chart-shadow-display{margin-top: 10px;}
+
+/*font*/
+#json-display-area{
+	width: 208px;
+	bottom: 20px;
+	height: auto;
+}

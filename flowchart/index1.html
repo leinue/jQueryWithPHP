@@ -10,10 +10,10 @@
 
   <div class="top-panel">
     <div class="top-left-panel">
-      <input type="button" class="fl-btn" id="new-box" value="New Box">
-      <input type="button" class="fl-btn" id="new-node" value="New Node">
-      <input type="button" class="fl-btn" id="text-chart-align" value="Align">
-      <input type="button" class="fl-btn" id="chart-save" value="Save">
+      <input type="button" class="fl-btn" id="new-box" value="新部件">
+      <input type="button" class="fl-btn" id="line-mode" value="线条">
+      <input type="button" class="fl-btn" id="text-chart-align" value="对齐">
+      <input type="button" class="fl-btn" id="chart-save" value="保存">
     </div>
     <div class="top-right-panel">
       <input type="button" class="fl-btn" id="btn-object" value="Object">
@@ -54,46 +54,67 @@
           </div>
           <h4>Fill</h4>
           <div class="list-content">
-            <div class="lo-xy-display">
-              <label>填充颜色:</label><input id="chart-width-display" type="text" class="chart-location-form" value="0" width="40">
+            <div class="lo-xy-display chart-fill-display">
+              <label>填充颜色:</label><input id="chart-color-display" type="text" class="chart-location-form" value="0" width="40">
               <p></p>
-              <label>线粗:</label><input id="chart-height-display" type="number" class="chart-location-form" value="0" width="40">
+              <label>线粗:</label><input id="chart-stroke-width-display" type="number" class="chart-location-form" value="0" width="40">
+              <p></p>
+              <label>线颜色:</label><input id="chart-line-color-display" type="text" class="chart-location-form" value="0" width="40">
             </div>
           </div>
           <h4>Shadow</h4>
           <div class="list-content">
-            <p>agsddfgd</p>
+            <div class="lo-xy-display chart-shadow-display">
+              <label>Shadow:</label><input id="chart-width-display" type="number" class="chart-location-form" value="0" width="40">
+              <p></p>
+            </div>
           </div>
         </div>
 
         <div class="chart-list chart-text" style="display:none;">
           <h4>Font</h4>
           <div class="list-content">
-            <p>65296596</p>
+            <div class="chart-font-display">
+              <label>Font:</label><input id="chart-width-display" type="text" class="chart-location-form" value="微软雅黑" width="40">
+              <p></p>
+            </div>
           </div>
           <h4>Size</h4>
           <div class="list-content">
-            <p>agsddfgd</p>
+            <div class="chart-font-display">
+              <label>Font:</label><input id="chart-width-display" type="number" class="chart-location-form" value="14" width="40">
+              <p></p>
+            </div>
+          </div>
+          <h4>Lign</h4>
+          <div class="list-content">
+            <div class="chart-font-display">
+              <label>Align:</label><input id="chart-width-display" type="text" class="chart-location-form" value="居中" width="40">
+              <p></p>
+            </div>
           </div>
           <h4>Color</h4>
           <div class="list-content">
-            <p>rfytuuyuy</p>
+            <div class="chart-font-display">
+              <label>Font:</label><input id="chart-width-display" type="text" class="chart-location-form" value="rgb(0,0,0)" width="40">
+              <p></p>
+            </div>
           </div>
-          <h4>Fill</h4>
+          <h4>JSON</h4>
           <div class="list-content">
-            <p>agsddfgd</p>
-          </div>
-          <h4>Shadow</h4>
-          <div class="list-content">
-            <p>agsddfgd</p>
+            <div class="chart-font-display">
+              <label>JSON:</label><textarea id="json-display-area"></textarea>
+              <p></p>
+            </div>
           </div>
         </div>
         
         <div class="chart-list chart-style" style="display:none;">
-          <h4>Style1</h4>
-          <h4>Style2</h4>
-          <h4>Style3</h4>
-          <h4>Style3</h4>
+          <h4>default</h4>
+          <h4>dark</h4>
+          <h4>blue</h4>
+          <h4>green</h4>
+          <h4>pink</h4>
         </div>
        
       </div>
@@ -158,6 +179,9 @@
     }
 
     //*********************************jsPlumb基础信息配置区域*********************************
+
+        //流程图ID唯一标识,用来防止重复,每次新建一个部件时此值必须加1,否则会出现异常
+        sessionStorage['idIndex']=0;
 
         //根蒂根基连接线样式
         var connectorPaintStyle = {
@@ -231,6 +255,32 @@
         return serliza;
     }
 
+    //新增一个部件
+    //参数newChartArea代表新增部件的区域
+    //参数chartID代表新流程图部件的ID,格式为元素名称-index
+    //参数left,top代表新部件的插入位置
+    //参数blockName代表新部件的文本
+    function addNewChart(newChartArea,chartID,left,top,blockName){
+
+      var name=chartID.split('-')[0];
+
+      //在div内append元素
+      $(newChartArea).append("<div class=\"draggable "+name+"\" id=\""+chartID+"\">"+blockName+"</div>");
+      $("#"+chartID).css("left",left).css("top",top).css("position","absolute").css("margin","0px");
+
+      //用jsPlumb添加锚点
+      jsPlumb.addEndpoint(chartID,{anchors: "TopCenter"},hollowCircle);
+      jsPlumb.addEndpoint(chartID,{anchors: "RightMiddle"},hollowCircle);
+      jsPlumb.addEndpoint(chartID,{anchors: "BottomCenter"},hollowCircle);
+      jsPlumb.addEndpoint(chartID,{anchors: "LeftMiddle"},hollowCircle);
+
+      jsPlumb.draggable(chartID);
+      $("#"+chartID).draggable({containment: "parent"});//保证拖动不跨界
+
+      sessionStorage['idIndex']=sessionStorage['idIndex']+1;
+
+      changeValue("#"+chartID);
+    }
 
     //*********************************流程图数据操作区域*********************************
 
@@ -269,8 +319,10 @@
         switch(flBtnID){
           case 'new-box':
             //新建流程图框
+            //newChartArea,chartID,left,top,other
+            addNewChart('.chart-design',"roundedRect-"+sessionStorage['idIndex'],100,100,'新部件');
             break;
-          case 'new-node':
+          case 'line-mode':
             //新建结点
             break;
           case 'text-chart-align':
@@ -301,8 +353,6 @@
 
       //***********************************元素拖动控制部分************************************
 
-      var idIndex=0;
-
       //允许元素拖动
       $(".list-content .area").children().draggable({ 
         //revert: "valid",//拖动之后原路返回
@@ -315,14 +365,15 @@
         activeClass:"drop-active", //开始拖动时放置区域显示
         scope: "dragflag",
           drop:function(event,ui){
-            idIndex=idIndex+1;
+
+            sessionStorage['idIndex']=sessionStorage['idIndex']+1;
 
             //获取鼠标坐标
             var left=parseInt(ui.offset.left-$(this).offset().left);
             var top=parseInt(ui.offset.top-$(this).offset().top)+4;
 
             var name=ui.draggable[0].id;//返回被拖动元素的ID
-            var trueId=name+"-"+idIndex;
+            var trueId=name+"-"+sessionStorage['idIndex'];
 
             //在div内append元素
             $(this).append("<div class=\"draggable "+name+"\" id=\""+trueId+"\">"+$(ui.helper).html()+"</div>");
@@ -392,6 +443,11 @@
             });
         });
       }
+
+      //设计区域元素被点击事件,同步右侧属性面板
+      $('.draggable').on('click',function(){
+        console.log('dssd');
+      });
 
       //***********************************元素拖动控制部分************************************
     });

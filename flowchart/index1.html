@@ -22,7 +22,7 @@
     </div>
   </div>
   <div class="chart-content">
-    <div class="chart-design droppable"></div>
+    <div class="chart-design droppable" style="border:1px solid rgb(0,0,0)"></div>
     <div class="chart-right-panel">
       <div class="chart-right-list">
         <div class="chart-right-list-flag" style="display:none;visibility:hidden;">object</div>
@@ -178,17 +178,25 @@
           $('.chart-right-panel').show();
           sessionStorage['rightToolsIsDisplay']=true;
           if(current!=will){
+            $('.chart-design').css("right","230px");
+            console.log('sasaas');
             $(".chart-"+current).hide();
             $('.chart-'+will).fadeIn();
             setChartRightListFlag(will);
           }
+          $('.chart-design').css("right","230px");
         }else{
           $('.chart-right-panel').hide();
           sessionStorage['rightToolsIsDisplay']=false;
+          //递归调用切换属性面板函数
           attrToggle(will,current);
+          $('.chart-design').css("right","0px");
+          //如果当前点击的和将要切换的属性面板一直则隐藏整个右侧
           if(will==current){
             $('.chart-right-panel').hide();
             sessionStorage['rightToolsIsDisplay']=false;
+          }else{
+            $('.chart-design').css("right","230px");
           }
         }
     }

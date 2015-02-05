@@ -187,3 +187,12 @@ body{
 	-ms-transform:rotate(-45deg);
 	transform:rotate(-45deg);
 }
+
+/******************右侧属性栏******************/
+
+/*location|size|fill|shadow*/
+.lo-xy-display{margin-top: 50px; }
+
+.chart-location-form{border:none;}
+
+/*size*/

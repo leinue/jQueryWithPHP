@@ -14,9 +14,17 @@ body{
 	margin-left: 8px;
 }
 
-.fl-btn:hover{
-	background: rgb(249,249,249);
+.fl-btn:hover{background: rgb(249,249,249);}
+
+.fl-btn:active{
+	outline:0 none !important;
+	border:none;
 }
+.fl-btn::-moz-focus-inner{
+	border-color:transparent!important;
+}
+
+
 /*全局按钮CSS*/
 
 .top-panel{

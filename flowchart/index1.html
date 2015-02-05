@@ -134,6 +134,9 @@
 
   <script type="text/javascript">
 
+    //标识右侧工具栏是否已显示,默认显示
+    sessionStorage['rightToolsIsDisplay']=true;
+
     //指定流程图设计区域宽度高度
     function adjustDesignWidth(){
       var designWidth=0;
@@ -171,10 +174,22 @@
     //参数will代表即将要切换的属性面板[text|object|style]
     //参数current代表当前属性面板,可由getChartRightListFlag()获得
     function attrToggle(will,current){
-        if(current!=will){
-          $(".chart-"+current).hide();
-          $('.chart-'+will).fadeIn();
-          setChartRightListFlag(will);
+        if(sessionStorage['rightToolsIsDisplay']=='false'){
+          $('.chart-right-panel').show();
+          sessionStorage['rightToolsIsDisplay']=true;
+          if(current!=will){
+            $(".chart-"+current).hide();
+            $('.chart-'+will).fadeIn();
+            setChartRightListFlag(will);
+          }
+        }else{
+          $('.chart-right-panel').hide();
+          sessionStorage['rightToolsIsDisplay']=false;
+          attrToggle(will,current);
+          if(will==current){
+            $('.chart-right-panel').hide();
+            sessionStorage['rightToolsIsDisplay']=false;
+          }
         }
     }
 
@@ -305,6 +320,9 @@
       //初始化动画效果
       $('.chart-ratio-form').css("opacity",'0.6');
 
+      //隐藏右侧属性面板
+      //$('.chart-right-panel').hide();
+
       //为按钮,列表添加动画效果
       $('.fl-btn,h4').hover(
         function(){$(this).stop().animate({opacity:0.5},'fast');},
@@ -348,7 +366,7 @@
             }
             break;
           case 'line-mode':
-            //新建结点
+            //设置线条样式
             break;
           case 'text-chart-align':
             //流程图框对齐或文本对齐

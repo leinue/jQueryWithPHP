@@ -22,7 +22,9 @@
     </div>
   </div>
   <div class="chart-content">
-    <div class="chart-design"></div>
+    <div class="chart-design">
+      岁的大叔大叔
+    </div>
     <div class="chart-right-panel">
       <div class="chart-right-list">
       <!--
@@ -82,12 +84,6 @@
           <h4>Style3</h4>
         </div>-->
        
-        <div class="chart-text">
-          
-        </div>
-        <div class="chart-style">
-          
-        </div>
       </div>
     </div>
     <div class="chart-ratio">
@@ -102,8 +98,22 @@
   <script src="js/jquery.jsPlumb-1.4.0-all.js"></script>
 
   <script type="text/javascript">
+
+    //指定流程图设计区域宽度高度
+    function adjustDesignWidth(){
+      var designWidth=0;
+      var domWidth=$(window).width();
+
+      designWidth=domWidth-$('.chart-right-panel').width();
+
+      $('.chart-design').css('width',designWidth-4);
+    }
+
     $(document).ready(function(){
+
+      //给左侧工具栏分页
       $(".chart-object").accordion();
+
     });
   </script>
 </body>

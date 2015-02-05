@@ -38,6 +38,19 @@ body{
 	margin-top: 14px;
 }
 
+
+/*左侧设计区域*/
+.chart-design{
+	border: 1px solid rgb(0,0,0);
+	position: absolute;
+	bottom: 22px;
+	top: 52px;
+	right: 230px;
+	left: 0px;
+	width: auto;
+}
+
+/*右侧工具栏*/
 .chart-right-panel{
 	float: right;
 	width: 228px;

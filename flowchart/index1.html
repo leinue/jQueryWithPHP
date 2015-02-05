@@ -22,16 +22,19 @@
     </div>
   </div>
   <div class="chart-content">
-    <div class="chart-design">
-      岁的大叔大叔
-    </div>
+    <div class="chart-design droppable"></div>
     <div class="chart-right-panel">
       <div class="chart-right-list">
         <div class="chart-right-list-flag" style="display:none;visibility:hidden;">object</div>
         <div class="chart-list chart-object">
           <h4>Shape</h4>
           <div class="list-content">
-            <p>65296596</p>
+              <div class="area">
+                <div class="draggable" id="rect">文本</div>
+                <div class="draggable roundedRect" id="roundedRect">文本</div>
+                <div class="draggable circle" id="circle">文本</div>
+                <div class="draggable rhombus" id="rhombus">文本</div>
+              </div>
           </div>
           <h4>Location</h4>
           <div class="list-content">
@@ -147,9 +150,50 @@
         }
     }
 
+    //*********************************jsPlumb基础信息配置区域*********************************
+
+        //根蒂根基连接线样式
+        var connectorPaintStyle = {
+            lineWidth: 4,
+            strokeStyle: "#61B7CF",
+            joinstyle: "round",
+            outlineColor: "rgb(251,251,251)",
+            outlineWidth: 2
+        };
+
+        // 鼠标悬浮在连接线上的样式
+        var connectorHoverStyle = {
+            lineWidth: 4,
+            strokeStyle: "#216477",
+            outlineWidth: 0,
+            outlineColor: "rgb(251,251,251)"
+        };
+
+        var hollowCircle = {
+            endpoint: ["Dot", { radius: 8 }],  //端点的外形
+            connectorStyle: connectorPaintStyle,//连接线的色彩,大小样式
+            connectorHoverStyle: connectorHoverStyle,
+            paintStyle: {
+                strokeStyle: "rgb(97,183,207)",
+                fillStyle: "rgb(97,183,207)",
+                opacity: 0.5,
+                radius: 2,
+                lineWidth: 2
+            },//端点的色彩样式
+            //anchor: "AutoDefault",
+            isSource: true,    //是否可以拖动(作为连线出发点)
+            //connector: ["Flowchart", { stub: [40, 60], gap: 10, cornerRadius: 5, alwaysRespectStubs: true }],  //连接线的样式种类有[Bezier],[Flowchart],[StateMachine ],[Straight ]
+            connector: ["Bezier", { curviness:100 } ],//设置连线为贝塞尔曲线
+            isTarget: true,    //是否可以放置(连线终点)
+            maxConnections: -1,    // 设置连接点最多可以连接几条线
+            connectorOverlays: [["Arrow", { width: 10, length: 10, location: 1 }]]
+        };
+
+    //*********************************jsPlumb基础信息配置区域*********************************
+
     $(document).ready(function(){
 
-      //**************************************UI控制部分**************************************
+      //**************************************UI控制部分***************************************
 
       //初始化动画效果
       $('.chart-ratio-form').css("opacity",'0.6');
@@ -210,8 +254,52 @@
         }
       });
 
-      //**************************************UI控制部分**************************************
+      //**************************************UI控制部分***************************************
 
+      //***********************************元素拖动控制部分************************************
+
+      var idIndex=0;
+
+      //允许元素拖动
+      $(".area").children().draggable({ 
+        //revert: "valid",//拖动之后原路返回
+        helper: "clone",//复制自身
+        scope: "dragflag"//标识
+      });
+
+      $(".droppable").droppable({
+        accept: ".draggable", //只接受来自类.dragable的元素
+        activeClass:"drop-active", //开始拖动时放置区域显示
+        scope: "dragflag",
+          drop:function(event,ui){
+            idIndex=idIndex+1;
+            //获取鼠标坐标
+            var left=parseInt(ui.offset.left-$(this).offset().left)+150;
+            var top=parseInt(ui.offset.top-$(this).offset().top);
+
+            var name=ui.draggable[0].id;//返回被拖动元素的ID
+            var trueId=name+"-"+idIndex;
+
+            //在div内append元素
+            $(this).append("<div class=\"draggable "+name+"\" id=\""+trueId+"\">"+$(ui.helper).html()+"</div>");
+            $("#"+trueId).css("left",left).css("top",top).css("position","absolute").css("margin","0px");
+
+            //用jsPlumb添加锚点
+            jsPlumb.addEndpoint(trueId,{anchors: "TopCenter"},hollowCircle);
+            jsPlumb.addEndpoint(trueId,{anchors: "RightMiddle"},hollowCircle);
+            jsPlumb.addEndpoint(trueId,{anchors: "BottomCenter"},hollowCircle);
+            jsPlumb.addEndpoint(trueId,{anchors: "LeftMiddle"},hollowCircle);
+
+            jsPlumb.draggable(trueId);
+            $("#"+trueId).draggable({containment: "parent"});//保证拖动不跨界
+
+            changeValue("#"+trueId);
+
+            list=jsPlumb.getAllConnections();//获取所有的连接
+          }
+      });      
+
+      //***********************************元素拖动控制部分************************************
     });
   </script>
 </body>

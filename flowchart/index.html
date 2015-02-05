@@ -17,13 +17,14 @@
 		}
 
   		.draggable{
-  			width: 150px;
-  			height: 100px;
+  			width: 120px;
+  			height: 30px;
   			margin-top: 3px;
   			margin-bottom: 10px;
-  			background: rgb(221,221,221);
+  			background: rgb(255,255,255);
   			text-align: center;
   			line-height: 100px;
+            border:1px solid rgb(136,242,75);
   		}
 
   		.draggable:hover{
@@ -53,7 +54,7 @@
 		}
 
 		.roundedRect{
-			border-radius: 20px;
+			border-radius: 8px;
 		}
 
 		.circle{
@@ -124,7 +125,7 @@
         var connectorHoverStyle = {
             lineWidth: 4,
             strokeStyle: "#216477",
-            outlineWidth: 2,
+            outlineWidth: 0,
             outlineColor: "rgb(251,251,251)"
         };
 
@@ -133,14 +134,16 @@
             connectorStyle: connectorPaintStyle,//连接线的色彩,大小样式
             connectorHoverStyle: connectorHoverStyle,
             paintStyle: {
-                strokeStyle: "#1e8151",
-                fillStyle: "transparent",
+                strokeStyle: "rgb(97,183,207)",
+                fillStyle: "rgb(97,183,207)",
+                opacity: 0.5,
                 radius: 2,
                 lineWidth: 2
             },//端点的色彩样式
             //anchor: "AutoDefault",
             isSource: true,    //是否可以拖动(作为连线出发点)
-            connector: ["Flowchart", { stub: [40, 60], gap: 10, cornerRadius: 5, alwaysRespectStubs: true }],  //连接线的样式种类有[Bezier],[Flowchart],[StateMachine ],[Straight ]
+            //connector: ["Flowchart", { stub: [40, 60], gap: 10, cornerRadius: 5, alwaysRespectStubs: true }],  //连接线的样式种类有[Bezier],[Flowchart],[StateMachine ],[Straight ]
+            connector: ["Bezier", { curviness:100 } ],//设置连线为贝塞尔曲线
             isTarget: true,    //是否可以放置(连线终点)
             maxConnections: -1,    // 设置连接点最多可以连接几条线
             connectorOverlays: [["Arrow", { width: 10, length: 10, location: 1 }]]

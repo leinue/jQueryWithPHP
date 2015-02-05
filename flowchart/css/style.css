@@ -124,4 +124,66 @@ body{
 	margin-top: -20px;
 	padding-left: 10px;
 	padding-top: 6px;
+	margin-bottom: 22px;
+}
+
+/************拖动/画流程图部分CSS************/
+
+.draggable{
+  	width: 120px;
+  	height: 20px;
+  	margin-top: 3px;
+  	margin-bottom: 10px;
+  	background: rgb(255,255,255);
+  	text-align: center;
+    border:1px solid rgb(136,242,75);
+    font-size: 14px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+ }
+
+.draggable:hover{
+  	cursor:pointer;
+}
+
+.droppable{
+	margin-top: 0px;
+	padding-left: 0px;		
+}
+
+.drop-active{
+  	background: rgb(238,238,238);
+}
+
+/*圆角矩形*/
+.roundedRect{
+	border-radius: 8px;
+}
+
+/*圆*/
+.circle{
+	height: 60px;
+	width: 60px;
+	border-radius: 30px;
+	padding: 0px;
+	margin-bottom: 10px;
+}
+
+/*菱形*/
+.rhombus{
+	padding: 0px;
+	width: 40px;
+	height: 40px;
+	margin-top: -50px;
+	margin-left: 100px;
+	-webkit-transform-origin: 0 100%;
+	-moz-transform-origin: 0 100%;
+	-o-transform-origin: 0 100%;
+	-ms-transform-origin: 0 100%;
+	transform-origin: 0 100%;
+	-webkit-transform:rotate(-45deg);
+	-moz-transform:rotate(-45deg);
+	-o-transform:rotate(-45deg);
+	-ms-transform:rotate(-45deg);
+	transform:rotate(-45deg);
 }

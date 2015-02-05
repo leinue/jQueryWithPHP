@@ -10,10 +10,10 @@
 
   <div class="top-panel">
     <div class="top-left-panel">
-      <input type="button" class="fl-btn" value="New Box">
-      <input type="button" class="fl-btn" value="New Node">
-      <input type="button" class="fl-btn" value="Align">
-      <input type="button" class="fl-btn" value="Save">
+      <input type="button" class="fl-btn" id="new-box" value="New Box">
+      <input type="button" class="fl-btn" id="new-node" value="New Node">
+      <input type="button" class="fl-btn" id="text-chart-align" value="Align">
+      <input type="button" class="fl-btn" id="chart-save" value="Save">
     </div>
     <div class="top-right-panel">
       <input type="button" class="fl-btn" id="btn-object" value="Object">
@@ -87,8 +87,10 @@
       </div>
     </div>
     <div class="chart-ratio">
-      <input id="rear-ratio" class="chart-ratio-form" value="100" min="10" max="500" placeholder="10" type="range" onchange="ratioDisplay.value=value" step="10">
-      <div class="rare-ratio">100%</div>
+      <input id="rear-ratio" class="chart-ratio-form" value="100" min="50" max="300" placeholder="10" type="range" onchange="ratioDisplay()" step="10">
+      <div class="rare-ratio">
+        <input id="rear-ratio-display" class="chart-ratio-form" value="100" width="40" min="50" max="300" placeholder="10" type="number" onchange="ratioDisplay2()" step="10">
+      </div>
       <div class="chart-ratio-cover"></div>
     </div>
   </div>
@@ -109,9 +111,23 @@
       $('.chart-design').css('width',designWidth-4);
     }
 
-    
+    //滑动条改变时触发的事件
+    function ratioDisplay(){
+      var chartRatioDom=document.getElementById('rear-ratio');
+      var chartRatioDisplayDom=document.getElementById('rear-ratio-display');
+      chartRatioDisplayDom.value=chartRatioDom.value;
+    }
+
+    //大小选择框值改变时触发
+    function ratioDisplay2(){
+      var chartRatioDisplayDom=document.getElementById('rear-ratio-display');
+      var chartRatioDom=document.getElementById('rear-ratio');
+      chartRatioDom.value=chartRatioDisplayDom.value;
+    }
 
     $(document).ready(function(){
+
+      //**************************************UI控制部分**************************************
 
       //初始化动画效果
       $('.chart-ratio-form').css("opacity",'0.6');
@@ -130,6 +146,45 @@
 
       //给左侧工具栏分页
       $(".chart-object").accordion();
+
+      //调节区域双击可输入数字更改
+      $('.rare-ratio').dblclick(function(){
+        var chartRatioValue=document.getElementById('rear-ratio').value;       
+      });
+
+      //页面上方按钮事件
+      $('.fl-btn'){
+        //取被点击按钮的ID
+        var flBtnID=$(this).attr('id');
+
+        switch(flBtnID){
+          case:'new-box':
+            //新建流程图框
+            break;
+          case:'new-node':
+            //新建结点
+            break;
+          case:'text-chart-align':
+            //流程图框对齐或文本对齐
+            break;
+          case:'chart-save':
+            //分享或保存(生成JSON)
+            break;
+          case:'btn-object':
+            //显示object面板
+            break; 
+          case:'btn-text':
+            //显示text面板
+            break; 
+          case:'btn-style':
+            //显示style面板
+            break;         
+          default:
+            break;
+        }
+      }
+
+      //**************************************UI控制部分**************************************
 
     });
   </script>

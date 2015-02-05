@@ -41,7 +41,7 @@ body{
 
 /*左侧设计区域*/
 .chart-design{
-	border: 1px solid rgb(0,0,0);
+	padding-left: 10px;
 	position: absolute;
 	bottom: 22px;
 	top: 52px;
@@ -81,6 +81,10 @@ body{
 	margin-left: 164px;
 	margin-top: -20px;
 	width: 40px;
+}
+
+#rear-ratio-display{
+	width: 60px;
 }
 
 .chart-ratio-cover{

@@ -182,6 +182,8 @@
 
         //流程图ID唯一标识,用来防止重复,每次新建一个部件时此值必须加1,否则会出现异常
         sessionStorage['idIndex']=0;
+        //检测设计区域中间区域是否被占据,页面刚加载时默认没有被占据
+        sessionStorage['midIsOccupied']='not';
 
         //根蒂根基连接线样式
         var connectorPaintStyle = {
@@ -255,6 +257,18 @@
         return serliza;
     }
 
+    //双击修改文本
+    function changeValue(id){
+      $(id).dblclick(function(){
+        var text=$(this).text();
+        $(this).html("");
+        $(this).append("<input type=\"text\" value=\"" + text + "\" />");
+        $(this).mouseleave(function(){
+          $(this).html($("input[type=\"text\"]").val());
+        });
+      });
+    }
+
     //新增一个部件
     //参数newChartArea代表新增部件的区域
     //参数chartID代表新流程图部件的ID,格式为元素名称-index
@@ -319,8 +333,19 @@
         switch(flBtnID){
           case 'new-box':
             //新建流程图框
-            //newChartArea,chartID,left,top,other
-            addNewChart('.chart-design',"roundedRect-"+sessionStorage['idIndex'],100,100,'新部件');
+            if(sessionStorage['midIsOccupied']=='not'){
+              //如果中间位置没有被占据则在中间位置新建一个部件
+              var left=$('.chart-design').width()/2;
+              var top=$('.chart-design').height()/2;
+              addNewChart('.chart-design',"roundedRect-"+sessionStorage['idIndex'],left-30,top,'新部件');
+              sessionStorage['midIsOccupied']='yes';
+              console.log(sessionStorage['midIsOccupied']);
+            }else{
+              //如果中间位置被占据则根据随机数新建一个部件
+              var randomLeft=Math.ceil(Math.random()*$('.chart-design').width());
+              var randomTop=Math.ceil(Math.random()*($('.chart-design').height()-25));
+              addNewChart('.chart-design',"roundedRect-"+sessionStorage['idIndex'],randomLeft,randomTop,'新部件');
+            }
             break;
           case 'line-mode':
             //新建结点
@@ -391,6 +416,7 @@
             changeValue("#"+trueId);
 
             list=jsPlumb.getAllConnections();//获取所有的连接
+            sessionStorage['idIndex']=sessionStorage['idIndex']+1;
           }
       });
 
@@ -431,18 +457,6 @@
           jsPlumb.detach(conn);
         }
       });
-
-      //双击修改文本
-      function changeValue(id){
-        $(id).dblclick(function(){
-            var text=$(this).text();
-            $(this).html("");
-            $(this).append("<input type=\"text\" value=\"" + text + "\" />");
-            $(this).mouseleave(function(){
-                $(this).html($("input[type=\"text\"]").val());
-            });
-        });
-      }
 
       //设计区域元素被点击事件,同步右侧属性面板
       $('.draggable').on('click',function(){

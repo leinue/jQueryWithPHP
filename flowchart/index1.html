@@ -171,6 +171,14 @@
     //标识当前点击的流程图框,默认为none
     sessionStorage['currentChartSelected']='none';
 
+    //栈,记录用户操作的先后顺序,用来进行撤销操作,数据结构为JSON,期中的copy用来复制部件
+    //是个二维栈,包括新增/删除/粘贴操作
+    var chartOperationStack=new Array;
+    chartOperationStack['add']=[];
+    chartOperationStack['delete']=[];
+    chartOperationStack['paste']=[];
+    chartOperationStack['copy']=[];
+
     //指定流程图设计区域宽度高度
     function adjustDesignWidth(){
       var designWidth=0;
@@ -363,9 +371,9 @@
     //*********************************jsPlumb基础信息配置区域*********************************
 
     //*********************************流程图数据操作区域*********************************
-      var list;//连接点列表
+      var list=[];//全部的连接点列表
 
-      //序列化流程图数据,json格式
+      //序列化全部流程图数据,json格式
       function save(){
 
         var connects=[];
@@ -387,12 +395,52 @@
             BlockId:elem.attr('id'),
             BlockContent:elem.html(),
             BlockX:parseInt(elem.css("left"), 10),
-            BlockY:parseInt(elem.css("top"), 10)
+            BlockY:parseInt(elem.css("top"), 10),
+            BlockWidth:parseInt(elem.css("width"),10),
+            BlockHeight:parseInt(elem.css("height"),10)
           });
         });
 
         var serliza="{"+'"connects":'+JSON.stringify(connects)+',"block":'+JSON.stringify(blocks)+"}";
+        console.log(serliza);
         return serliza;
+    }
+
+    //生成单个流程图数据,用在新建流程图框时使用
+    //参数ID表示被push进栈的ID
+    function getSingleChartJson(id){
+
+      var chartNum=list.length;
+      console.log(chartNum);
+
+      //获得最新的流程图框
+      var latestChart=list[list.length-1];
+
+      var connects=[];
+
+      console.log(latestChart);
+      for(var j in latestChart){
+        connects.push({
+          ConnectionId:latestChart[j]['id'],
+          PageSourceId:latestChart[j]['sourceId'],
+          PageTargetId:latestChart[j]['targetId']
+        });
+      }
+
+      var blocks=[];
+      var elem=$("#"+id);
+      blocks.push({
+        BlockId:elem.attr('id'),
+        BlockContent:elem.html(),
+        BlockX:parseInt(elem.css("left"), 10),
+        BlockY:parseInt(elem.css("top"), 10),
+        BlockWidth:parseInt(elem.css("width"),10),
+        BlockHeight:parseInt(elem.css("height"),10)
+      });
+
+      var serliza="{"+'"connects":'+JSON.stringify(connects)+',"block":'+JSON.stringify(blocks)+"}";
+      console.log(serliza);
+      return serliza;
     }
 
     //双击修改文本
@@ -432,6 +480,8 @@
       sessionStorage['idIndex']=sessionStorage['idIndex']+1;
 
       changeValue("#"+chartID);
+
+      chartOperationStack['add'].push(getSingleChartJson(chartID));
     }
 
     //*********************************流程图数据操作区域*********************************
@@ -488,6 +538,7 @@
         $(element).toggle('fast');
       }
 
+      //上方工具栏的按钮点击事件
       $('.fl-btn').click(function(event){
         //取被点击按钮的ID
         var flBtnID=$(this).attr('id');
@@ -603,6 +654,9 @@
 
             //设置当前选择的流程框图
             sessionStorage['currentChartSelected']=trueId;
+
+            //将新拖进来的流程图框JSON数据push进栈
+            chartOperationStack['add'].push(getSingleChartJson(trueId));
           }
       });
 
@@ -697,11 +751,16 @@
       $(document).on("keydown", function(event){
         if(event.ctrlKey && event.which==90){
           //按下 CTRL+Z 进行撤销操作
-          console.log('dssd');
+          console.log(chartOperationStack['add'].pop());
+          console.log(chartOperationStack['delete'].pop());
+          console.log(chartOperationStack['paste'].pop());
         }
         if(event.ctrlKey && event.which==67){
           //CTRL+C 进行复制部件操作
-          
+          if(sessionStorage['currentChartSelected']!='none'){
+            chartOperationStack['copy'].push(getSingleChartJson(sessionStorage['currentChartSelected']));
+            console.log(sessionStorage['currentChartSelected']);
+          }
         }
         if(event.ctrlKey && event.which==86){
           //CTRL+V 进行粘贴部件操作
@@ -711,8 +770,11 @@
           //DELETE 进行删除部件操作
           if(sessionStorage['currentChartSelected']!='none'){
             if(confirm("确定要删除吗?")){
+              chartOperationStack['delete'].push(getSingleChartJson(sessionStorage['currentChartSelected']));
               jsPlumb.removeAllEndpoints(sessionStorage['currentChartSelected']);
               $("#"+sessionStorage['currentChartSelected']).remove();
+              setChartLocation(0,0);
+              setChartSize(0,0);
             }
           }
         }

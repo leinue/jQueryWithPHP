@@ -414,14 +414,12 @@
     function getSingleChartJson(id){
 
       var chartNum=list.length;
-      console.log(chartNum);
 
       //获得最新的流程图框
       var latestChart=list[list.length-1];
 
       var connects=[];
 
-      console.log(latestChart);
       for(var j in latestChart){
         connects.push({
           ConnectionId:latestChart[j]['id'],
@@ -433,6 +431,7 @@
       var blocks=[];
       var elem=$("#"+id);
       var rareHTML=elem.html();
+      console.log('sss'+rareHTML);
       var resultHTML=rareHTML;
       //去掉在进行复制操作时误复制的img部件
       if(rareHTML.indexOf('<img src=\"img/delete.png\"')!=-1){
@@ -493,6 +492,14 @@
 
       chartOperationStack['add'].push(getSingleChartJson(chartID));
       chartRareOperationStack.push('add');
+    }
+
+    function deleteChart(id){
+        var DOM=$('#'+id);
+        chartOperationStack['delete'].push(getSingleChartJson(id));
+        jsPlumb.removeAllEndpoints(id);
+        DOM.remove();
+        chartRareOperationStack.push('delete');
     }
 
     //*********************************流程图数据操作区域*********************************
@@ -767,19 +774,21 @@
           //按下 CTRL+Z 进行撤销操作
           var rareOperation=chartRareOperationStack.pop();//取出用户最近一次的操作
           var operationJSON=chartOperationStack[rareOperation].pop();//根据用户最后一次进行的操作弹出最近一次的流程框图数据
-          console.log('sss'+operationJSON);
           operationJSON=JSON.parse(operationJSON);
-          var chartDeletedData=operationJSON['block'][0];
+          var chartOperationData=operationJSON['block'][0];
           switch(rareOperation){
             case 'delete':
               //用户操作为删除,撤销操作为添加
-              addNewChart('.chart-design',chartDeletedData['BlockId']+sessionStorage['idIndex'],chartDeletedData['BlockX'],chartDeletedData['BlockY'],chartDeletedData['BlockContent']);
+              addNewChart('.chart-design',chartOperationData['BlockId']+sessionStorage['idIndex'],chartOperationData['BlockX'],chartOperationData['BlockY'],chartOperationData['BlockContent']);
               break;
             case 'add':
               //用户操作为添加,撤销操作为删除
+              deleteChart(chartOperationData['BlockId']);
               break;
             case 'paste':
               //用户操作为粘贴,撤销操作为删除
+              console.log(chartOperationData['BlockId']);
+              deleteChart(chartOperationData['BlockId']);
               break;
           }
         }
@@ -787,7 +796,7 @@
           //CTRL+C 进行复制部件操作
           if(sessionStorage['currentChartSelected']!='none'){
             chartOperationStack['copy'].push(getSingleChartJson(sessionStorage['currentChartSelected']));
-            console.log(sessionStorage['currentChartSelected']);
+            //console.log(sessionStorage['currentChartSelected']);
             chartRareOperationStack.push('copy');
           }
         }
@@ -795,22 +804,25 @@
           //CTRL+V 进行粘贴部件操作
           var chartCopiedJson=chartOperationStack['copy'][chartOperationStack['copy'].length-1];
           var unpackChart=JSON.parse(chartCopiedJson);
+          var chartBlockObj=unpackChart['block'][0];
+          var chartPastedID=chartBlockObj['BlockId']+sessionStorage['idIndex'];//设置被粘贴部件的新ID
           if(unpackChart['connects'].length==0){
-            var chartBlockObj=unpackChart['block'][0];
-            addNewChart('.chart-design',chartBlockObj['BlockId']+sessionStorage['idIndex'],chartBlockObj['BlockX'],chartBlockObj['BlockY'],chartBlockObj['BlockContent']);
+            addNewChart('.chart-design',chartPastedID,chartBlockObj['BlockX'],chartBlockObj['BlockY']-20,chartBlockObj['BlockContent']);
           }else{
           }
-          chartOperationStack['paste'].push(chartCopiedJson);
+          unpackChart['block'][0]['BlockId']=chartPastedID;
+          chartOperationStack['paste'].push(JSON.stringify(unpackChart));
           chartRareOperationStack.push('paste');
         }
         if(event.which==46){
           //DELETE 进行删除部件操作
           if(sessionStorage['currentChartSelected']!='none'){
             if(confirm("确定要删除吗?")){
-              chartRareOperationStack.push('delete');
-              chartOperationStack['delete'].push(getSingleChartJson(sessionStorage['currentChartSelected']));
-              jsPlumb.removeAllEndpoints(sessionStorage['currentChartSelected']);
-              $("#"+sessionStorage['currentChartSelected']).remove();
+              //chartRareOperationStack.push('delete');
+              //chartOperationStack['delete'].push(getSingleChartJson(sessionStorage['currentChartSelected']));
+              //jsPlumb.removeAllEndpoints(sessionStorage['currentChartSelected']);
+              //$("#"+sessionStorage['currentChartSelected']).remove();
+              deleteChart(sessionStorage['currentChartSelected']);
               setChartLocation(0,0);
               setChartSize(0,0);
             }

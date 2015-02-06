@@ -161,11 +161,30 @@
       $('.chart-design').css('width',designWidth-4);
     }
 
+    //对页面进行缩小或放大
+    function setZoom(instance,scale,container){
+      //jsPlumb.setContainer("chart-container");
+      $("#"+container).css({
+        "-webkit-transform":"scale("+scale+")",
+        "-moz-transform":"scale("+scale+")",
+        "-ms-transform":"scale("+scale+")",
+        "-o-transform":"scale("+scale+")",
+        "transform":"scale("+scale+")",
+        "TransformOrigin":"0% 0%"
+      });
+      instance.setZoom(scale);
+    }
+
     //滑动条改变时触发的事件
     function ratioDisplay(){
       var chartRatioDom=document.getElementById('rear-ratio');
       var chartRatioDisplayDom=document.getElementById('rear-ratio-display');
       chartRatioDisplayDom.value=chartRatioDom.value;
+      setZoom(jsPlumb,chartRatioDom.value/100,'chart-container');
+      $('#chart-container').css({
+        'left':'0px',
+        'right':'180px'
+      });
     }
 
     //大小选择框值改变时触发
@@ -173,6 +192,11 @@
       var chartRatioDisplayDom=document.getElementById('rear-ratio-display');
       var chartRatioDom=document.getElementById('rear-ratio');
       chartRatioDom.value=chartRatioDisplayDom.value;
+      setZoom(jsPlumb,chartRatioDisplayDom.value/100,'chart-container');
+      $('#chart-container').css({
+        'left':'0px',
+        'right':'180px'
+      });
     }
 
     //设置右边属性栏当前显示的是哪个工具(object/text/style)
@@ -292,22 +316,6 @@
             maxConnections: -1,    // 设置连接点最多可以连接几条线
             connectorOverlays: [["Arrow", { width: 10, length: 10, location: 1 }]]
         };
-
-        function setZoom(instance,scale,container){
-          //jsPlumb.setContainer("chart-container");
-          $("#"+container).css({
-            "-webkit-transform":"scale("+scale+")",
-            "-moz-transform":"scale("+scale+")",
-            "-ms-transform":"scale("+scale+")",
-            "-o-transform":"scale("+scale+")",
-            "transform":"scale("+scale+")",
-            "TransformOrigin":"50% 50%"
-          });
-          instance.setZoom(scale);
-        }
-
-        setZoom(jsPlumb,0.5,'chart-container');
-        $('#chart-container').css('right','0');
 
     //*********************************jsPlumb基础信息配置区域*********************************
 

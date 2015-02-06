@@ -469,7 +469,8 @@
     //参数chartID代表新流程图部件的ID,格式为元素名称-index
     //参数left,top代表新部件的插入位置
     //参数blockName代表新部件的文本
-    function addNewChart(newChartArea,chartID,left,top,blockName){
+    //参数undo表示是否进行撤销操作,如果进行撤销操作则不进行入栈,默认为false
+    function addNewChart(newChartArea,chartID,left,top,blockName,undo=false){
 
       var name=chartID.split('-')[0];
 
@@ -490,16 +491,23 @@
 
       changeValue("#"+chartID);
 
-      chartOperationStack['add'].push(getSingleChartJson(chartID));
-      chartRareOperationStack.push('add');
+      if(undo==false){
+        chartOperationStack['add'].push(getSingleChartJson(chartID));
+        chartRareOperationStack.push('add');
+      }
     }
 
-    function deleteChart(id){
+    //删除一个流程框图,若参数undo为true则在进行操作时不进行入栈操作,默认为false
+    function deleteChart(id,undo=false){
         var DOM=$('#'+id);
-        chartOperationStack['delete'].push(getSingleChartJson(id));
+        if(undo==false){
+          chartOperationStack['delete'].push(getSingleChartJson(id));
+        }
         jsPlumb.removeAllEndpoints(id);
         DOM.remove();
-        chartRareOperationStack.push('delete');
+        if(undo==false){
+          chartRareOperationStack.push('delete');
+        }
     }
 
     //*********************************流程图数据操作区域*********************************
@@ -779,16 +787,16 @@
           switch(rareOperation){
             case 'delete':
               //用户操作为删除,撤销操作为添加
-              addNewChart('.chart-design',chartOperationData['BlockId']+sessionStorage['idIndex'],chartOperationData['BlockX'],chartOperationData['BlockY'],chartOperationData['BlockContent']);
+              addNewChart('.chart-design',chartOperationData['BlockId']+sessionStorage['idIndex'],chartOperationData['BlockX'],chartOperationData['BlockY'],chartOperationData['BlockContent'],true);
               break;
             case 'add':
               //用户操作为添加,撤销操作为删除
-              deleteChart(chartOperationData['BlockId']);
+              deleteChart(chartOperationData['BlockId'],true);
               break;
             case 'paste':
               //用户操作为粘贴,撤销操作为删除
               console.log(chartOperationData['BlockId']);
-              deleteChart(chartOperationData['BlockId']);
+              deleteChart(chartOperationData['BlockId'],true);
               break;
           }
         }
@@ -818,10 +826,6 @@
           //DELETE 进行删除部件操作
           if(sessionStorage['currentChartSelected']!='none'){
             if(confirm("确定要删除吗?")){
-              //chartRareOperationStack.push('delete');
-              //chartOperationStack['delete'].push(getSingleChartJson(sessionStorage['currentChartSelected']));
-              //jsPlumb.removeAllEndpoints(sessionStorage['currentChartSelected']);
-              //$("#"+sessionStorage['currentChartSelected']).remove();
               deleteChart(sessionStorage['currentChartSelected']);
               setChartLocation(0,0);
               setChartSize(0,0);

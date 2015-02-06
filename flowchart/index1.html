@@ -143,6 +143,14 @@
     </div>
   </div>
 
+  <div class="line-select" style="display:none">
+    <div class="chart-list chart-style">
+      <h4>直线</h4>
+      <h4>曲线</h4>
+      <h4>流程线</h4>
+    </div>
+  </div>
+
   <script src="external/jquery/jquery.js"></script>
   <script src="js/jquery-ui.js"></script>
   <script src="js/jquery.jsPlumb-1.4.0-all.js"></script>
@@ -433,7 +441,7 @@
       });
 
       //页面上方按钮事件
-      $('.fl-btn').click(function(){
+      $('.fl-btn').click(function(event){
         //取被点击按钮的ID
         var flBtnID=$(this).attr('id');
         var currentListFlag=getChartRightListFlag();//当前显示的属性面板
@@ -456,6 +464,17 @@
             break;
           case 'line-mode':
             //设置线条样式
+            //取消事件冒泡
+            event.stopPropagation();
+            //设置弹出层的位置
+            var offset=$(event.target).offset();
+            $('.line-select').css({
+              top:offset.top+$(event.target).height()+"px",
+              left:offset.left
+            });
+
+            //按钮的toggle,如果div是可见的,点击按钮切换为隐藏的;如果是隐藏的,切换为可见的。  
+            $('.line-select').toggle('fast');
             break;
           case 'text-chart-align':
             //流程图框对齐或文本对齐
@@ -618,26 +637,12 @@
 
       //上方工具栏按钮点击事件
       $('#btnShow').click(function(event){
-        //取消事件冒泡
-        event.stopPropagation();
-        //设置弹出层的位置
-        var offset=$(event.target).offset();
-        $('#divTop').css({
-          top:offset.top+$(event.target).height()+"px",
-          left:offset.left
-        });
-
-        //按钮的toggle,如果div是可见的,点击按钮切换为隐藏的;如果是隐藏的,切换为可见的。  
-        $('#divTop').toggle('slow');
+        
       });
       
       //点击空白处或者自身隐藏弹出层，下面分别为滑动和淡出效果。  
       $(document).click(function(event){
-        $('#divTop').slideUp('slow')
-      });
-
-      $('#divTop').click(function(event){
-        $(this).fadeOut(1000)
+        $('.line-select').slideUp('fast')
       });
 
       //***********************************元素拖动控制部分************************************

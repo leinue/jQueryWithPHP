@@ -46,6 +46,33 @@ body{
 
 /**********按钮的选择菜单***********/
 
+.line-select{
+	width: 64px;
+	border: 2px solid rgb(210,209,210);
+	border-radius: 2px;
+	margin-top: -2px;
+	height: 73px;
+}
+
+.line-select ul{
+	list-style: none;
+	margin-top: 0px;
+}
+
+.line-select ul li{
+	width: 170px;
+	height: 25px;
+	border: 1px solid rgb(0,0,0);
+}
+
+.line-select ul li:hover{
+	background: rgb(248,248,248);
+}
+
+.line-select h4:hover{
+	cursor: pointer;
+}
+
 
 /**********按钮的选择菜单***********/
 

@@ -429,9 +429,16 @@
 
       var blocks=[];
       var elem=$("#"+id);
+      var rareHTML=elem.html();
+      var resultHTML=rareHTML;
+      //去掉在进行复制操作时误复制的img部件
+      if(rareHTML.indexOf('<img src=\"img/delete.png\"')!=-1){
+        rareHTML=rareHTML.split('<img src=\"img/delete.png\"');
+        resultHTML=rareHTML[0];
+      }
       blocks.push({
         BlockId:elem.attr('id'),
-        BlockContent:elem.html(),
+        BlockContent:resultHTML,
         BlockX:parseInt(elem.css("left"), 10),
         BlockY:parseInt(elem.css("top"), 10),
         BlockWidth:parseInt(elem.css("width"),10),
@@ -764,7 +771,14 @@
         }
         if(event.ctrlKey && event.which==86){
           //CTRL+V 进行粘贴部件操作
-          
+          var chartCopiedJson=chartOperationStack['copy'][chartOperationStack['copy'].length-1];
+          var unpackChart=JSON.parse(chartCopiedJson);
+          if(unpackChart['connects'].length==0){
+            console.log(unpackChart['block'][0]);
+          }else{
+
+          }
+          chartOperationStack['paste'].push(chartCopiedJson);
         }
         if(event.which==46){
           //DELETE 进行删除部件操作

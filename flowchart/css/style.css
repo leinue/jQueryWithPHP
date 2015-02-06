@@ -44,6 +44,10 @@ body{
 	margin-top: 14px;
 }
 
+/**********按钮的选择菜单***********/
+
+
+/**********按钮的选择菜单***********/
 
 /*左侧设计区域*/
 .chart-design{
@@ -142,7 +146,7 @@ body{
   	margin-bottom: 10px;
   	background: rgb(255,255,255);
   	text-align: center;
-    border:1px solid rgb(136,242,75);
+    border:2px solid rgb(136,242,75);
     font-size: 14px;
     padding-top: 5px;
     padding-bottom: 5px;

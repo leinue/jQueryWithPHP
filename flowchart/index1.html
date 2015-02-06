@@ -317,6 +317,15 @@
             connectorOverlays: [["Arrow", { width: 10, length: 10, location: 1 }]]
         };
 
+        //设置线条展现方式为Straight
+        function setLineStraight(){hollowCircle['connector'][0]='Straight';}
+        
+        //设置线条展现方式为Bezier
+        function setLineBezier(){hollowCircle['connector'][0]='Bezier';}
+
+        //设置线条展现方式为Flowchart
+        function setLineFlowchart(){hollowCircle['connector'][0]='Flowchart';}
+
     //*********************************jsPlumb基础信息配置区域*********************************
 
     //*********************************流程图数据操作区域*********************************
@@ -605,6 +614,30 @@
           //DELETE 进行删除部件操作
           
         }
+      });
+
+      //上方工具栏按钮点击事件
+      $('#btnShow').click(function(event){
+        //取消事件冒泡
+        event.stopPropagation();
+        //设置弹出层的位置
+        var offset=$(event.target).offset();
+        $('#divTop').css({
+          top:offset.top+$(event.target).height()+"px",
+          left:offset.left
+        });
+
+        //按钮的toggle,如果div是可见的,点击按钮切换为隐藏的;如果是隐藏的,切换为可见的。  
+        $('#divTop').toggle('slow');
+      });
+      
+      //点击空白处或者自身隐藏弹出层，下面分别为滑动和淡出效果。  
+      $(document).click(function(event){
+        $('#divTop').slideUp('slow')
+      });
+
+      $('#divTop').click(function(event){
+        $(this).fadeOut(1000)
       });
 
       //***********************************元素拖动控制部分************************************

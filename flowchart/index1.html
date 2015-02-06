@@ -36,14 +36,16 @@
                 <div class="draggable rhombus" id="rhombus">文本</div>
               </div>
           </div>
+
           <h4>Location</h4>
           <div class="list-content">
             <div class="lo-xy-display">
-              <label>Top:</label><input id="lo-x-display" type="number" class="chart-location-form" value="0" width="40">
+              <label>Top:</label><input id="lo-x-display" type="text" class="chart-location-form" value="0" width="40">
               <p></p>
-              <label>Left:</label><input id="lo-y-display" type="number" class="chart-location-form" value="0" width="40">
+              <label>Left:</label><input id="lo-y-display" type="text" class="chart-location-form" value="0" width="40">
             </div>
           </div>
+
           <h4>Size</h4>
           <div class="list-content">
             <div class="lo-xy-display">
@@ -52,6 +54,7 @@
               <label>height:</label><input id="chart-height-display" type="number" class="chart-location-form" value="0" width="40">
             </div>
           </div>
+
           <h4>Fill</h4>
           <div class="list-content">
             <div class="lo-xy-display chart-fill-display">
@@ -62,6 +65,18 @@
               <label>线颜色:</label><input id="chart-line-color-display" type="text" class="chart-location-form" value="0" width="40">
             </div>
           </div>
+
+          <h4>Stroke</h4>
+          <div class="list-content">
+            <div class="lo-xy-display chart-fill-display">
+              <label>填充颜色:</label><input id="chart-color-display" type="text" class="chart-location-form" value="0" width="40">
+              <p></p>
+              <label>线粗:</label><input id="chart-stroke-width-display" type="number" class="chart-location-form" value="0" width="40">
+              <p></p>
+              <label>线颜色:</label><input id="chart-line-color-display" type="text" class="chart-location-form" value="0" width="40">
+            </div>
+          </div>
+
           <h4>Shadow</h4>
           <div class="list-content">
             <div class="lo-xy-display chart-shadow-display">
@@ -201,6 +216,37 @@
           }
         }
     }
+
+    //****************负责属性面板的内容设置*****************
+      
+      //设置当前部件top,left
+      function setChartLocation(top,left){
+        $('#lo-x-display').val(top);
+        $('#lo-y-display').val(left);
+      }
+
+      //获得当前部件top,left,返回一个数组,第一个元素是'top',第二个元素是'left'
+      function getChartLocation(){
+        var location=new Array();
+        location['top']=$('#lo-x-display').val();
+        location['left']=$('#lo-y-display').val();
+        return location;
+      }
+
+      //设置当前部件的width和height
+      function setChartSize(width,height){
+        $('#chart-width-display').val(width);
+        $('#chart-height-display').val(height);
+      }
+
+      //获得当前部件的width和height,返回一个数组,第一个元素是'width',第二个元素是'height'
+      function getChartSize(){
+        var size=new Array();
+        size['width']=$('#chart-width-display').val();
+        size['height']=$('#chart-height-display').val();
+      }
+
+    //****************负责属性面板的内容设置*****************
 
     //*********************************jsPlumb基础信息配置区域*********************************
 
@@ -424,6 +470,8 @@
             var left=parseInt(ui.offset.left-$(this).offset().left);
             var top=parseInt(ui.offset.top-$(this).offset().top)+4;
 
+            setChartLocation(top,left);//设置坐标
+
             var name=ui.draggable[0].id;//返回被拖动元素的ID
             var trueId=name+"-"+sessionStorage['idIndex'];
 
@@ -478,16 +526,28 @@
         }
       });
 
+      //设计区域元素被点击事件,同步右侧属性面板
+      $('.droppable').on('click','.draggable',function(){
+        setChartLocation($(this).offset().top,$(this).offset().left);
+        setChartSize($(this).width(),$(this).height());
+      });
+
+      //设计区域元素被拖动时,触发同步坐标
+      $(".droppable").droppable({
+        activate:function(event,ui){
+          console.log('sdsd');
+          //console.log(this);
+          setChartLocation($(this).offset().top,$(this).offset().left);
+        }
+      });
+
+      //右侧属性面板内容改变同步到设计区域
+
       //删除连接线
       jsPlumb.bind("click",function(conn,originalEvent){
         if(confirm("确定删除吗?")){
           jsPlumb.detach(conn);
         }
-      });
-
-      //设计区域元素被点击事件,同步右侧属性面板
-      $('.draggable').on('click',function(){
-
       });
 
       //DOCUMENT快捷键操作

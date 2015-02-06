@@ -179,6 +179,9 @@
     chartOperationStack['paste']=[];
     chartOperationStack['copy']=[];
 
+    //记录用户具体操作,有copy,add,delete,paste
+    var chartRareOperationStack=new Array;
+
     //指定流程图设计区域宽度高度
     function adjustDesignWidth(){
       var designWidth=0;
@@ -489,6 +492,7 @@
       changeValue("#"+chartID);
 
       chartOperationStack['add'].push(getSingleChartJson(chartID));
+      chartRareOperationStack.push('add');
     }
 
     //*********************************流程图数据操作区域*********************************
@@ -664,6 +668,7 @@
 
             //将新拖进来的流程图框JSON数据push进栈
             chartOperationStack['add'].push(getSingleChartJson(trueId));
+            chartRareOperationStack.push('add');
           }
       });
 
@@ -693,8 +698,10 @@
         var parentDOM=$(this).parent();
         var parentID=parentDOM.attr('id');
         if(confirm("确定要删除吗?")) {
+          chartOperationStack['delete'].push(getSingleChartJson(parentID));
           jsPlumb.removeAllEndpoints(parentID);
           parentDOM.remove();
+          chartRareOperationStack.push('delete');
         }
       });
 
@@ -758,15 +765,30 @@
       $(document).on("keydown", function(event){
         if(event.ctrlKey && event.which==90){
           //按下 CTRL+Z 进行撤销操作
-          console.log(chartOperationStack['add'].pop());
-          console.log(chartOperationStack['delete'].pop());
-          console.log(chartOperationStack['paste'].pop());
+          var rareOperation=chartRareOperationStack.pop();//取出用户最近一次的操作
+          var operationJSON=chartOperationStack[rareOperation].pop();//根据用户最后一次进行的操作弹出最近一次的流程框图数据
+          console.log('sss'+operationJSON);
+          operationJSON=JSON.parse(operationJSON);
+          var chartDeletedData=operationJSON['block'][0];
+          switch(rareOperation){
+            case 'delete':
+              //用户操作为删除,撤销操作为添加
+              addNewChart('.chart-design',chartDeletedData['BlockId']+sessionStorage['idIndex'],chartDeletedData['BlockX'],chartDeletedData['BlockY'],chartDeletedData['BlockContent']);
+              break;
+            case 'add':
+              //用户操作为添加,撤销操作为删除
+              break;
+            case 'paste':
+              //用户操作为粘贴,撤销操作为删除
+              break;
+          }
         }
         if(event.ctrlKey && event.which==67){
           //CTRL+C 进行复制部件操作
           if(sessionStorage['currentChartSelected']!='none'){
             chartOperationStack['copy'].push(getSingleChartJson(sessionStorage['currentChartSelected']));
             console.log(sessionStorage['currentChartSelected']);
+            chartRareOperationStack.push('copy');
           }
         }
         if(event.ctrlKey && event.which==86){
@@ -774,16 +796,18 @@
           var chartCopiedJson=chartOperationStack['copy'][chartOperationStack['copy'].length-1];
           var unpackChart=JSON.parse(chartCopiedJson);
           if(unpackChart['connects'].length==0){
-            console.log(unpackChart['block'][0]);
+            var chartBlockObj=unpackChart['block'][0];
+            addNewChart('.chart-design',chartBlockObj['BlockId']+sessionStorage['idIndex'],chartBlockObj['BlockX'],chartBlockObj['BlockY'],chartBlockObj['BlockContent']);
           }else{
-
           }
           chartOperationStack['paste'].push(chartCopiedJson);
+          chartRareOperationStack.push('paste');
         }
         if(event.which==46){
           //DELETE 进行删除部件操作
           if(sessionStorage['currentChartSelected']!='none'){
             if(confirm("确定要删除吗?")){
+              chartRareOperationStack.push('delete');
               chartOperationStack['delete'].push(getSingleChartJson(sessionStorage['currentChartSelected']));
               jsPlumb.removeAllEndpoints(sessionStorage['currentChartSelected']);
               $("#"+sessionStorage['currentChartSelected']).remove();

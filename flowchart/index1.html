@@ -449,6 +449,27 @@
       });
 
       //页面上方按钮事件
+      
+      //标识线条选择器有没有被展开,默认不展开
+      sessionStorage['topLineSelectIsDisplayed']=false;
+      //标识排列选择器有没有被展开,默认不展开
+      sessionStorage['topAlignSelectIsDisplayed']=false;
+
+      //对页面上方的工具菜单进行折叠
+      function selectorToggle(event,element){
+        //取消事件冒泡
+        event.stopPropagation();
+        //设置弹出层的位置
+        var offset=$(event.target).offset();
+        $(element).css({
+          top:offset.top+$(event.target).height()+"px",
+          left:offset.left
+        });
+
+        //按钮的toggle,如果div是可见的,点击按钮切换为隐藏的;如果是隐藏的,切换为可见的。  
+        $(element).toggle('fast');
+      }
+
       $('.fl-btn').click(function(event){
         //取被点击按钮的ID
         var flBtnID=$(this).attr('id');
@@ -472,31 +493,26 @@
             break;
           case 'line-mode':
             //设置线条样式
-            //取消事件冒泡
-            event.stopPropagation();
-            //设置弹出层的位置
-            var offset=$(event.target).offset();
-            $('#line-select-div').css({
-              top:offset.top+$(event.target).height()+"px",
-              left:offset.left
-            });
 
-            //按钮的toggle,如果div是可见的,点击按钮切换为隐藏的;如果是隐藏的,切换为可见的。  
-            $('#line-select-div').toggle('fast');
+            if(sessionStorage['topAlignSelectIsDisplayed']=='true'){
+                $('#align-select-div').toggle('fast');
+                sessionStorage['topAlignSelectIsDisplayed']=false;
+                console.log('dssd');
+            }
+            
+            selectorToggle(event,'#line-select-div');
+            sessionStorage['topLineSelectIsDisplayed']=true;
             break;
           case 'text-chart-align':
             //流程图框对齐或文本对齐
-            //取消事件冒泡
-            event.stopPropagation();
-            //设置弹出层的位置
-            var offset=$(event.target).offset();
-            $('#align-select-div').css({
-              top:offset.top+$(event.target).height()+"px",
-              left:offset.left
-            });
 
-            //按钮的toggle,如果div是可见的,点击按钮切换为隐藏的;如果是隐藏的,切换为可见的。  
-            $('#align-select-div').toggle('fast');
+            if(sessionStorage['topLineSelectIsDisplayed']=='true'){
+                $('#line-select-div').toggle('fast');
+                sessionStorage['topLineSelectIsDisplayed']=false;
+            }
+            
+            selectorToggle(event,'#align-select-div');
+            sessionStorage['topAlignSelectIsDisplayed']=true;
             break;
           case 'chart-save':
             //分享或保存(生成JSON)

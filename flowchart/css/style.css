@@ -50,8 +50,10 @@ body{
 	width: 64px;
 	border: 2px solid rgb(210,209,210);
 	border-radius: 2px;
-	margin-top: -2px;
+	margin-top: 12px;
 	height: 73px;
+	position: absolute;
+	margin-left: -12px;
 }
 
 .line-select ul{

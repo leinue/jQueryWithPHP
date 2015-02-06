@@ -141,21 +141,21 @@
       </div>
       <div class="chart-ratio-cover"></div>
     </div>
-  </div>
 
-  <div class="line-select" id="line-select-div" style="display:none">
+    <div class="line-select" id="line-select-div" style="display:none">
     <div class="chart-list chart-style">
-      <h4>直线</h4>
-      <h4>曲线</h4>
-      <h4>流程线</h4>
+      <h4 class="top-menu-selector" id="line-Straight">直线</h4>
+      <h4 class="top-menu-selector" id="line-Bezier">曲线</h4>
+      <h4 class="top-menu-selector" id="line-Flowchart">流程线</h4>
     </div>
-  </div>
+    </div>
 
-  <div class="line-select" id="align-select-div" style="display:none">
+    <div class="line-select" id="align-select-div" style="display:none">
     <div class="chart-list chart-style">
-      <h4>居左</h4>
-      <h4>居中</h4>
-      <h4>居右</h4>
+      <h4 class="top-menu-selector" id="align-left">居左</h4>
+      <h4 class="top-menu-selector" id="align-center">居中</h4>
+      <h4 class="top-menu-selector" id="align-right">居右</h4>
+    </div>
     </div>
   </div>
 
@@ -604,6 +604,11 @@
         setChartSize($(this).width(),$(this).height());
       });
 
+      //页面顶部工具栏选择事件
+      $('.line-select').on('click','.top-menu-selector',function(){
+        console.log('dssdsa');
+      });
+
       //设计区域元素被拖动时,触发同步坐标
       /*$(".droppable").droppable({
         activate:function(event,ui){
@@ -653,15 +658,10 @@
           
         }
       });
-
-      //上方工具栏按钮点击事件
-      $('#btnShow').click(function(event){
-        
-      });
       
       //点击空白处或者自身隐藏弹出层，下面分别为滑动和淡出效果。  
       $(document).click(function(event){
-        $('.line-select').slideUp('fast')
+        $('.line-select').slideUp('fast');
       });
 
       //***********************************元素拖动控制部分************************************

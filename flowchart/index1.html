@@ -22,7 +22,7 @@
     </div>
   </div>
   <div class="chart-content">
-    <div class="chart-design droppable" style="border:1px solid rgb(0,0,0)"></div>
+    <div class="chart-design droppable"></div>
     <div class="chart-right-panel">
       <div class="chart-right-list">
         <div class="chart-right-list-flag" style="display:none;visibility:hidden;">object</div>
@@ -133,7 +133,7 @@
   <script src="js/jquery.jsPlumb-1.4.0-all.js"></script>
 
   <script type="text/javascript">
-
+       
     //标识右侧工具栏是否已显示,默认显示
     sessionStorage['rightToolsIsDisplay']=true;
 
@@ -190,12 +190,13 @@
           sessionStorage['rightToolsIsDisplay']=false;
           //递归调用切换属性面板函数
           attrToggle(will,current);
-          $('.chart-design').css("right","0px");
-          //如果当前点击的和将要切换的属性面板一直则隐藏整个右侧
+          $('.chart-design').css("right","0px");//扩充设计区域宽度
           if(will==current){
+            //如果当前点击的和将要切换的属性面板相同则隐藏整个右侧
             $('.chart-right-panel').hide();
             sessionStorage['rightToolsIsDisplay']=false;
           }else{
+            //如果当前点击和将要切换的属性面板不同则缩小设计区域宽度
             $('.chart-design').css("right","230px");
           }
         }
@@ -486,7 +487,27 @@
 
       //设计区域元素被点击事件,同步右侧属性面板
       $('.draggable').on('click',function(){
-        console.log('dssd');
+
+      });
+
+      //DOCUMENT快捷键操作
+      $(document).on("keydown", function(event){
+        if(event.ctrlKey && event.which==90){
+          //按下 CTRL+Z 进行撤销操作
+          console.log('dssd');
+        }
+        if(event.ctrlKey && event.which==67){
+          //CTRL+C 进行复制部件操作
+          
+        }
+        if(event.ctrlKey && event.which==86){
+          //CTRL+V 进行粘贴部件操作
+          
+        }
+        if(event.which==46){
+          //DELETE 进行删除部件操作
+          
+        }
       });
 
       //***********************************元素拖动控制部分************************************

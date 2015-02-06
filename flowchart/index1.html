@@ -597,7 +597,12 @@
             changeValue("#"+trueId);
 
             list=jsPlumb.getAllConnections();//获取所有的连接
+
+            //元素ID网上加,防止重复
             sessionStorage['idIndex']=sessionStorage['idIndex']+1;
+
+            //设置当前选择的流程框图
+            sessionStorage['currentChartSelected']=trueId;
           }
       });
 
@@ -637,6 +642,10 @@
         setChartLocation($(this).offset().top,$(this).offset().left);
         setChartSize($(this).width(),$(this).height());
         sessionStorage['currentChartSelected']=$(this).attr('id');
+      });
+
+      $('.droppable').on('dblclick',function(){
+        sessionStorage['currentChartSelected']='none';//置当前选择的流程图框为空
       });
 
       //页面顶部工具栏选择事件
@@ -700,7 +709,12 @@
         }
         if(event.which==46){
           //DELETE 进行删除部件操作
-          
+          if(sessionStorage['currentChartSelected']!='none'){
+            if(confirm("确定要删除吗?")){
+              jsPlumb.removeAllEndpoints(sessionStorage['currentChartSelected']);
+              $("#"+sessionStorage['currentChartSelected']).remove();
+            }
+          }
         }
       });
       

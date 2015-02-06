@@ -22,7 +22,7 @@
     </div>
   </div>
   <div class="chart-content">
-    <div class="chart-design droppable"></div>
+    <div id="chart-container" class="chart-design droppable"></div>
     <div class="chart-right-panel">
       <div class="chart-right-list">
         <div class="chart-right-list-flag" style="display:none;visibility:hidden;">object</div>
@@ -252,6 +252,7 @@
 
         //流程图ID唯一标识,用来防止重复,每次新建一个部件时此值必须加1,否则会出现异常
         sessionStorage['idIndex']=0;
+
         //检测设计区域中间区域是否被占据,页面刚加载时默认没有被占据
         sessionStorage['midIsOccupied']='not';
 
@@ -291,6 +292,22 @@
             maxConnections: -1,    // 设置连接点最多可以连接几条线
             connectorOverlays: [["Arrow", { width: 10, length: 10, location: 1 }]]
         };
+
+        function setZoom(instance,scale,container){
+          //jsPlumb.setContainer("chart-container");
+          $("#"+container).css({
+            "-webkit-transform":"scale("+scale+")",
+            "-moz-transform":"scale("+scale+")",
+            "-ms-transform":"scale("+scale+")",
+            "-o-transform":"scale("+scale+")",
+            "transform":"scale("+scale+")",
+            "TransformOrigin":"50% 50%"
+          });
+          instance.setZoom(scale);
+        }
+
+        setZoom(jsPlumb,0.5,'chart-container');
+        $('#chart-container').css('right','0');
 
     //*********************************jsPlumb基础信息配置区域*********************************
 
@@ -533,11 +550,23 @@
       });
 
       //设计区域元素被拖动时,触发同步坐标
-      $(".droppable").droppable({
+      /*$(".droppable").droppable({
         activate:function(event,ui){
           console.log('sdsd');
           //console.log(this);
           setChartLocation($(this).offset().top,$(this).offset().left);
+        }
+      });*/
+
+      $(".draggable").draggable({
+        start:function(){
+          console.log('start');
+        },
+        drag:function(){
+          console.log('drag');
+        },
+        stop:function(){
+          console.log('stop');
         }
       });
 

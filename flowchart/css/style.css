@@ -20,9 +20,7 @@ body{
 	outline:0 none !important;
 	border:none;
 }
-.fl-btn::-moz-focus-inner{
-	border-color:transparent!important;
-}
+.fl-btn::-moz-focus-inner{border-color:transparent!important;}
 
 
 /*全局按钮CSS*/
@@ -212,4 +210,14 @@ body{
 	width: 208px;
 	bottom: 20px;
 	height: auto;
+}
+
+/*jsPlumb拖动事件*/
+._jsPlumb_drag_select * {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;    
 }

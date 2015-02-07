@@ -683,6 +683,24 @@
       }
     }
 
+    //设置流程图框的线宽度
+    function setChartDesignBorderWidthStyle(style){
+      if(sessionStorage['currentChartSelected']=='none'){
+        $('.new-circle,.new-rhombus,.new-roundedRect,.new-rect').css('border-width',style);
+      }else{
+        $('#'+sessionStorage['currentChartSelected']).css('border-width',style);
+      }
+    }
+
+    //设置流程图框的线颜色
+    function setChartDesignBorderColorStyle(style){
+      if(sessionStorage['currentChartSelected']=='none'){
+        $('.new-circle,.new-rhombus,.new-roundedRect,.new-rect').css('border-color',style);
+      }else{
+        $('#'+sessionStorage['currentChartSelected']).css('border-color',style);
+      }
+    }
+
     //*********************************流程图数据操作区域*********************************
 
     $(document).ready(function(){
@@ -1008,6 +1026,10 @@
               case 'chart-border-display':
                 setChartDesignBorderRadius(currentValue);
                 break;
+              case 'chart-fill-border-width-display':
+                setChartDesignBorderWidthStyle(currentValue);
+              case 'chart-fill-border-color-display':
+                setChartDesignBorderColorStyle(currentValue);
               default:
                 break;
             }

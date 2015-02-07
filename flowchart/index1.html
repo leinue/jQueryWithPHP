@@ -16,9 +16,9 @@
       <input type="button" class="fl-btn" id="chart-save" value="保存">
     </div>
     <div class="top-right-panel">
-      <input type="button" class="fl-btn" id="btn-object" value="Object">
-      <input type="button" class="fl-btn" id="btn-text" value="Text">
-      <input type="button" class="fl-btn" id="btn-style" value="Style">
+      <input type="button" class="fl-btn" id="btn-object" value="部件">
+      <input type="button" class="fl-btn" id="btn-text" value="文本">
+      <input type="button" class="fl-btn" id="btn-style" value="样式">
     </div>
   </div>
   <div class="chart-content">
@@ -64,7 +64,7 @@
               <p></p>
               <label>线粗:</label><input id="chart-stroke-width-display" type="number" class="chart-location-form" value="0" width="40">
               <p></p>
-              <label>线颜色:</label><input id="chart-line-color-display" type="text" class="chart-location-form" value="0" width="40">
+              <label class="label-flag-color">线颜色:</label><input id="chart-line-color-display" type="text" class="chart-location-form" value="0" width="40">
             </div>
           </div>
 
@@ -82,7 +82,7 @@
               <p></p>
               <label>线粗:</label><input id="chart-fill-border-width-display" type="number" class="chart-location-form" value="0" width="40">
               <p></p>
-              <label>线颜色:</label><input id="chart-fill-border-color-display" type="text" class="chart-location-form" value="0" width="40">
+              <label>线颜色:</label><input id="chart-fill-border-color-display" type="color" class="chart-location-form" value="0" width="40">
             </div>
           </div>
 
@@ -120,7 +120,7 @@
           <h4>颜色</h4>
           <div class="list-content">
             <div class="chart-font-display">
-              <label>字体颜色:</label><input id="chart-font-color-display" type="text" class="chart-location-form" value="rgb(0,0,0)" width="40">
+              <label>字体颜色:</label><input id="chart-font-color-display" type="color" class="chart-location-form" value="rgb(0,0,0)" width="40">
               <p></p>
             </div>
           </div>
@@ -384,7 +384,6 @@
 
       //设置当前部件的border-width
       function setChartBorderWidthStyle(style){
-        console.log('dssdsdsd');
         $('#chart-fill-border-width-display').val(style);
       }
 
@@ -1031,8 +1030,8 @@
               case 'chart-align-display'://字体对齐样式
                 setChartDesignFontAlign(currentValue);
                 break;
-              case 'chart-text-color-display'://字体颜色
-                setChartDesignColor(currentValue);
+              case 'chart-font-color-display'://字体颜色
+                setChartDesignFontColor(currentValue);
                 break;
               case 'lo-x-display'://top
                 setChartDesignTop(currentValue*10);
@@ -1061,11 +1060,22 @@
           }
         });
       });
-  
+      
+      //选择框的选择项被改变时触发
       $('.chart-fill-border-selector').change(function(){
         var valSelected=$(this).children('option:selected').val();//selected的值
         setChartDeignBorderLineStyle(valSelected);
       })
+
+      //线条颜色选择器值被改变时触发
+      $('#chart-fill-border-color-display').change(function(){
+        setChartDesignBorderColorStyle($(this).val());
+      });
+
+      //字体颜色选择器值被改变时触发
+      $('#chart-font-color-display').change(function(){
+        setChartDesignFontColor($(this).val());
+      });
 
       //////  目标选择框文本发生更改时触发的事件,根据ID不同
       

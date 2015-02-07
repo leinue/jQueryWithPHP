@@ -280,6 +280,11 @@ body{
 	width: 208px;
 }
 
+/*颜色选择器的位置*/
+.label-flag-color{
+	
+}
+
 /*jsPlumb拖动事件*/
 ._jsPlumb_drag_select * {
     -webkit-touch-callout: none;

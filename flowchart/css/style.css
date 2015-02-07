@@ -257,7 +257,7 @@ body{
 
 .chart-location-form{border:none;}
 
-.chart-fill-display{margin-top: 30px;}
+.chart-fill-display{margin-top: 16px;}
 
 .chart-shadow-display{margin-top: 10px;}
 
@@ -282,7 +282,7 @@ body{
 
 /*颜色选择器的位置*/
 .label-flag-color{
-	
+
 }
 
 /*jsPlumb拖动事件*/

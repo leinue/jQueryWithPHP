@@ -60,11 +60,11 @@
           <h4>填充</h4>
           <div class="list-content">
             <div class="lo-xy-display chart-fill-display">
-              <label>填充颜色:</label><input id="chart-background-color-display" type="color" class="chart-location-form" value="0" width="40">
+              <label>填充色:</label><input id="chart-background-color-display" type="color" class="chart-location-form" value="0" width="40">
               <p></p>
-              <label>线粗:</label><input id="chart-stroke-width-display" type="number" class="chart-location-form" value="0" width="40">
+              <label>渐近:</label><input id="chart-blur-range-display" type="range" class="chart-location-form" value="0" max="50" min="0" width="40">
               <p></p>
-              <label class="label-flag-color">线颜色:</label><input id="chart-line-color-display" type="text" class="chart-location-form" value="0" width="40">
+              <label class="label-flag-color">渐近色:</label><input id="chart-fill-blur-color-display" type="color" class="chart-location-form" value="0" width="40">
             </div>
           </div>
 
@@ -414,6 +414,34 @@
         return (bg=='') ? 'rgb(255,255,255)':bg;
       }
 
+      //设置当前部件的渐近度
+      function setChartBlurRange(range){
+        $('#chart-blur-range-display').val(range);
+      }
+
+      //取当前部件的渐近度
+      function getChartBlurRange(){
+        var range=$('#'+sessionStorage['currentChartSelected']).css('box-shadow');
+        return (range=='none') ? '0':range;
+      }
+
+      //设置当前部件的渐近色
+      function setChartBlurColor(color){
+        $('#chart-fill-blur-color-display').val(color);
+      }
+
+      //通过颜色选择器选择渐近色
+      function getChartBlurColorByColorSelector(){
+        console.log($('#chart-fill-blur-color-display').val());
+        return $('#chart-fill-blur-color-display').val();
+      }
+
+      //取当前部件的渐近色
+      function getChartBlurColor(){
+        var color=$('#'+sessionStorage['currentChartSelected']).css('box-shadow');
+        return (color=='none') ? 'rgb(255,255,255)':color;
+      }
+
     //****************负责属性面板的内容设置*****************
 
     //*********************************jsPlumb基础信息配置区域*********************************
@@ -741,6 +769,17 @@
       }      
     }
 
+    //设置流程图框渐近色,参数rate表示渐近度,blurColor表示渐近色
+    function setChartDesignBoxShadow(rate,blurColor){
+      var style='10px 10px '+rate+"px 20px "+blurColor+' inset';
+      console.log(style);
+      if(sessionStorage['currentChartSelected']=='none'){
+        $('.new-circle,.new-rhombus,.new-roundedRect,.new-rect').css('box-shadow',style);
+      }else{
+        $('#'+sessionStorage['currentChartSelected']).css('box-shadow',style);
+      }      
+    }
+
     //*********************************流程图数据操作区域*********************************
 
     $(document).ready(function(){
@@ -913,6 +952,7 @@
             //将新拖进来的流程图框JSON数据push进栈
             chartOperationStack['add'].push(getSingleChartJson(trueId));
             chartRareOperationStack.push('add');
+
           }
       });
 
@@ -987,6 +1027,10 @@
 
         //设置背景色
         setChartBackgroundColor(getChartBackgroundColor());
+
+        //设置渐近度和渐近色
+        setChartBlurRange(getChartBlurRange());
+        setChartBlurColor(getChartBlurColor());
       });
 
       $('.droppable').on('dblclick',function(){
@@ -1101,9 +1145,16 @@
         setChartDesignBackground($(this).val());
       });
 
+      //渐近度被改变时触发
+      $('#chart-blur-range-display').change(function(){
+        var chartblurDom=document.getElementById('chart-blur-range-display');
+        setChartDesignBoxShadow(chartblurDom.value,getChartBlurColorByColorSelector());
+      });
+
       //////  目标选择框文本发生更改时触发的事件,根据ID不同
       
       //$(".chart-fill-border-selector option:selected").attr('value')
+
 
       //*****************右侧属性面板内容改变同步到设计区域******************
 

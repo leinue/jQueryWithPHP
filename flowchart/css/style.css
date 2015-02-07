@@ -261,8 +261,14 @@ body{
 
 .chart-shadow-display{margin-top: 10px;}
 
-.chart-size-border-display{
-	margin-top: 14px;
+.chart-size-border-display{margin-top: 14px;}
+
+.chart-fill-border-display{
+	margin-top: 16px;
+}
+
+.chart-fill-border-selector{
+	width: 144px;
 }
 
 /*font*/

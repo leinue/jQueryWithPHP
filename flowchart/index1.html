@@ -27,7 +27,7 @@
       <div class="chart-right-list">
         <div class="chart-right-list-flag" style="display:none;visibility:hidden;">object</div>
         <div class="chart-list chart-object">
-          <h4>Shape</h4>
+          <h4>图形</h4>
           <div class="list-content">
               <div class="area">
                 <div class="draggable" id="rect">文本</div>
@@ -60,7 +60,7 @@
           <h4>填充</h4>
           <div class="list-content">
             <div class="lo-xy-display chart-fill-display">
-              <label>填充颜色:</label><input id="chart-color-display" type="text" class="chart-location-form" value="0" width="40">
+              <label>填充颜色:</label><input id="chart-color-display" type="color" class="chart-location-form" value="0" width="40">
               <p></p>
               <label>线粗:</label><input id="chart-stroke-width-display" type="number" class="chart-location-form" value="0" width="40">
               <p></p>
@@ -70,12 +70,19 @@
 
           <h4>线框</h4>
           <div class="list-content">
-            <div class="lo-xy-display chart-fill-display">
-              <label>填充颜色:</label><input id="chart-color-display" type="text" class="chart-location-form" value="0" width="40">
+            <div class="lo-xy-display chart-fill-border-display">
+              <label>样式:</label>
+              <select class="chart-fill-border-selector">
+                <option value="none">无线框</option>
+                <option value="solid">实线框</option>
+                <option value="dashed">虚线框</option>
+                <option value="dotted">点线框</option>
+                <option value="double">双线框</option>
+              </select>
               <p></p>
-              <label>线粗:</label><input id="chart-stroke-width-display" type="number" class="chart-location-form" value="0" width="40">
+              <label>线粗:</label><input id="chart-fill-border-width-display" type="number" class="chart-location-form" value="0" width="40">
               <p></p>
-              <label>线颜色:</label><input id="chart-line-color-display" type="text" class="chart-location-form" value="0" width="40">
+              <label>线颜色:</label><input id="chart-fill-border-color-display" type="text" class="chart-location-form" value="0" width="40">
             </div>
           </div>
 
@@ -650,7 +657,6 @@
       if(sessionStorage['currentChartSelected']=='none'){
         $('.new-circle,.new-rhombus,.new-roundedRect,.new-rect').css('border-radius',radius);
       }else{
-        console.log('dssdsd');
         $('#'+sessionStorage['currentChartSelected']).css('border-radius',radius);
       }
     }
@@ -662,7 +668,7 @@
       //**************************************UI控制部分***************************************
 
       //初始化动画效果
-      $('.chart-ratio-form').css("opacity",'0.6');
+      $('.chart-ratio-form,.chart-fill-border-selector').css("opacity",'0.6');
 
       //隐藏右侧属性面板
       //$('.chart-right-panel').hide();
@@ -674,7 +680,7 @@
       );
 
       //为左下角大小调节添加动画效果
-      $('.chart-ratio-form').hover(
+      $('.chart-ratio-form,.chart-fill-border-selector').hover(
         function(){$(this).stop().animate({opacity:1},'fast');},
         function(){$(this).stop().animate({opacity:0.6},'fast');}
       );
@@ -895,6 +901,9 @@
 
         //设置圆角
         setChartBorderRadius(getChartBorderRadius());
+
+        //设置border属性
+        
       });
 
       $('.droppable').on('dblclick',function(){

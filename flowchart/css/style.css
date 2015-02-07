@@ -261,9 +261,11 @@ body{
 
 /*font*/
 #json-display-area{
-	width: 208px;
+	min-width: 208px;
+	max-width: 208px;
 	bottom: 20px;
 	height: auto;
+	width: 208px;
 }
 
 /*jsPlumb拖动事件*/

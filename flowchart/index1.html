@@ -345,6 +345,11 @@
         return (color=='') ? 'rgb(0,0,0)':color;
       }
 
+      //设置json展示框的数据
+      function setChartJson2Box(json){
+        $('#json-display-area').val(json);
+      }
+
     //****************负责属性面板的内容设置*****************
 
     //*********************************jsPlumb基础信息配置区域*********************************
@@ -620,7 +625,7 @@
               //如果中间位置没有被占据则在中间位置新建一个部件
               var left=$('.chart-design').width()/2;
               var top=$('.chart-design').height()/2;
-              addNewChart('.chart-design',"roundedRect-"+sessionStorage['idIndex'],left-30,top,'新部件');
+              addNewChart('.chart-design',"roundedRect-"+sessionStorage['idIndex'],left,top-20,'新部件');
               sessionStorage['midIsOccupied']='yes';
               console.log(sessionStorage['midIsOccupied']);
             }else{
@@ -788,6 +793,9 @@
 
         //设置当前选择部件的字体颜色
         setChartFontColor(getChartFontColor());
+
+        //设置JSON数据放置区域的值
+        setChartJson2Box(getSingleChartJson(sessionStorage['currentChartSelected']));
       });
 
       $('.droppable').on('dblclick',function(){

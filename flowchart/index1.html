@@ -457,9 +457,9 @@
       $(id).dblclick(function(){
         var text=$(this).text();
         $(this).html("");
-        $(this).append("<input type=\"text\" value=\"" + text + "\" />");
+        $(this).append("<input class=\"chart-text-edit\" type=\"text\" value=\"" + text + "\" />");
         $(this).mouseleave(function(){
-          $(this).html($("input[type=\"text\"]").val());
+          $(this).html($(".chart-text-edit").val());
         });
       });
     }
@@ -685,6 +685,10 @@
             chartOperationStack['add'].push(getSingleChartJson(trueId));
             chartRareOperationStack.push('add');
           }
+      });
+
+      $('.droppable .draggable').resizable({
+        ghost: true
       });
 
       //删除元素按钮

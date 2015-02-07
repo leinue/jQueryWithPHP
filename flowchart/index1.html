@@ -111,7 +111,7 @@
           <h4>Color</h4>
           <div class="list-content">
             <div class="chart-font-display">
-              <label>Color:</label><input id="chart-text-color-display" type="text" class="chart-location-form" value="rgb(0,0,0)" width="40">
+              <label>Color:</label><input id="chart-font-color-display" type="text" class="chart-location-form" value="rgb(0,0,0)" width="40">
               <p></p>
             </div>
           </div>
@@ -336,7 +336,8 @@
 
       //设置当前部件的字体颜色,参数color只能为rgb或16进制颜色值
       function setChartFontColor(color){
-        $('#chart-text-color-display').val(color);
+        console.log("ssasa"+color);
+        $('#chart-font-color-display').val(color);
       }
 
       //取当前部件的字体颜色
@@ -571,7 +572,7 @@
     //设置流程框图高度
     function setChartDesignHeight(height){
       if(sessionStorage['currentChartSelected']=='none'){
-        $('.draggable').css('width',width);
+        $('.draggable').css('height',height);
       }else{
         $('#'+sessionStorage['currentChartSelected']).css('height',height);
       }
@@ -580,7 +581,7 @@
     //设置流程框图top
     function setChartDesignTop(top){
       if(sessionStorage['currentChartSelected']=='none'){
-        $('.draggable').css('width',width);
+        $('.draggable').css('top',top);
       }else{
         $('#'+sessionStorage['currentChartSelected']).css('top',top);
       }
@@ -589,7 +590,7 @@
     //设置流程框图left
     function setChartDesignLeft(left){
       if(sessionStorage['currentChartSelected']=='none'){
-        $('.draggable').css('width',width);
+        $('.draggable').css('left',left);
       }else{
         $('#'+sessionStorage['currentChartSelected']).css('left',left);
       }
@@ -598,7 +599,7 @@
     //设置流程框图字体
     function setChartDesignFont(font){
       if(sessionStorage['currentChartSelected']=='none'){
-        $('.draggable').css('width',width);
+        $('.draggable').css('font',font);
       }else{
         $('#'+sessionStorage['currentChartSelected']).css('font',font);
       }
@@ -607,19 +608,29 @@
     //设置流程框图字体大小
     function setChartDesignFontSize(size){
       if(sessionStorage['currentChartSelected']=='none'){
-        $('.draggable').css('width',width);
+        $('.draggable').css('font-size',size);
       }else{
         $('#'+sessionStorage['currentChartSelected']).css('font-size',size);
       }
     }
 
     //设置流程框图字体颜色
-    function setChartFontColor(color){
+    function setChartDesignFontColor(color){
       if(sessionStorage['currentChartSelected']=='none'){
-        $('.draggable').css('width',width);
+        $('.draggable').css('color',color);
       }else{
         $('#'+sessionStorage['currentChartSelected']).css('color',color);
       }
+    }
+
+    //设置流程图框的对齐方式
+    function setChartDesignFontAlign(align){
+      var lign={'居左':'left','居右':'right','居中':'center'};
+      if(sessionStorage['currentChartSelected']=='none'){
+        $('.draggable').css('text-align',lign[align]);
+      }else{
+        $('#'+sessionStorage['currentChartSelected']).css('text-align',lign[align]);
+      }      
     }
 
 
@@ -914,20 +925,28 @@
           if(currentValue!=txtValue){
             switch(currentID){
               case 'chart-font-display'://字体
+                setChartDesignFont(currentValue);
                 break;
               case 'chart-font-size-display'://字体大小
+                setChartDesignFontSize(currentValue*10);
                 break;
               case 'chart-align-display'://字体对齐样式
+                setChartDesignFontAlign(currentValue);
                 break;
               case 'chart-text-color-display'://字体颜色
+                setChartDesignColor(currentValue);
                 break;
               case 'lo-x-display'://top
+                setChartDesignTop(currentValue*10);
                 break;
               case 'lo-y-display'://left
+                setChartDesignLeft(currentValue*10);
                 break;
               case 'chart-width-display'://宽度
+                setChartDesignWidth(currentValue*10);
                 break;
               case 'chart-height-display'://高度
+                setChartDesignHeight(currentValue*10);
                 break;
               default:
                 break;

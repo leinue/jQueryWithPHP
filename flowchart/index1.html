@@ -563,7 +563,7 @@
     //设置流程框图宽度,如果当前选择的部件为none则默认改变全局,下同
     function setChartDesignWidth(width){
       if(sessionStorage['currentChartSelected']=='none'){
-        $('.draggable').css('width',width);
+        $('.new-circle,.new-rhombus,.new-roundedRect,.new-rect').css('width',width);
       }else{
         $('#'+sessionStorage['currentChartSelected']).css('width',width);
       }
@@ -572,7 +572,7 @@
     //设置流程框图高度
     function setChartDesignHeight(height){
       if(sessionStorage['currentChartSelected']=='none'){
-        $('.draggable').css('height',height);
+        $('.new-circle,.new-rhombus,.new-roundedRect,.new-rect').css('height',height);
       }else{
         $('#'+sessionStorage['currentChartSelected']).css('height',height);
       }
@@ -581,7 +581,7 @@
     //设置流程框图top
     function setChartDesignTop(top){
       if(sessionStorage['currentChartSelected']=='none'){
-        $('.draggable').css('top',top);
+        $('.new-circle,.new-rhombus,.new-roundedRect,.new-rect').css('top',top);
       }else{
         $('#'+sessionStorage['currentChartSelected']).css('top',top);
       }
@@ -590,7 +590,7 @@
     //设置流程框图left
     function setChartDesignLeft(left){
       if(sessionStorage['currentChartSelected']=='none'){
-        $('.draggable').css('left',left);
+        $('.new-circle,.new-rhombus,.new-roundedRect,.new-rect').css('left',left);
       }else{
         $('#'+sessionStorage['currentChartSelected']).css('left',left);
       }
@@ -599,7 +599,7 @@
     //设置流程框图字体
     function setChartDesignFont(font){
       if(sessionStorage['currentChartSelected']=='none'){
-        $('.draggable').css('font',font);
+        $('.new-circle,.new-rhombus,.new-roundedRect,.new-rect').css('font',font);
       }else{
         $('#'+sessionStorage['currentChartSelected']).css('font',font);
       }
@@ -608,7 +608,7 @@
     //设置流程框图字体大小
     function setChartDesignFontSize(size){
       if(sessionStorage['currentChartSelected']=='none'){
-        $('.draggable').css('font-size',size);
+        $('.new-circle,.new-rhombus,.new-roundedRect,.new-rect').css('font-size',size);
       }else{
         $('#'+sessionStorage['currentChartSelected']).css('font-size',size);
       }
@@ -617,7 +617,7 @@
     //设置流程框图字体颜色
     function setChartDesignFontColor(color){
       if(sessionStorage['currentChartSelected']=='none'){
-        $('.draggable').css('color',color);
+        $('.new-circle,.new-rhombus,.new-roundedRect,.new-rect').css('color',color);
       }else{
         $('#'+sessionStorage['currentChartSelected']).css('color',color);
       }
@@ -627,7 +627,7 @@
     function setChartDesignFontAlign(align){
       var lign={'居左':'left','居右':'right','居中':'center'};
       if(sessionStorage['currentChartSelected']=='none'){
-        $('.draggable').css('text-align',lign[align]);
+        $('.new-circle,.new-rhombus,.new-roundedRect,.new-rect').css('text-align',lign[align]);
       }else{
         $('#'+sessionStorage['currentChartSelected']).css('text-align',lign[align]);
       }      

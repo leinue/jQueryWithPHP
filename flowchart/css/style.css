@@ -169,16 +169,19 @@ body{
 /************拖动/画流程图部分CSS************/
 
 .draggable{
-  	width: 130px;
+	float: left;
+  	width: 40px;
   	height: 20px;
   	margin-top: 3px;
-  	margin-bottom: 10px;
+  	margin-bottom:10px;
   	background: rgb(255,255,255);
   	text-align: center;
     border:2px solid rgb(136,242,75);
     font-size: 14px;
     padding-top: 5px;
     padding-bottom: 5px;
+    margin-right: 10px;
+    font-size: 12px;
  }
 
 .draggable:hover{
@@ -201,20 +204,21 @@ body{
 
 /*圆*/
 .circle{
-	height: 60px;
-	width: 60px;
-	border-radius: 30px;
+	height: 30px;
+	width: 30px;
+	border-radius: 15px;
 	padding: 0px;
-	margin-bottom: 10px;
+	
 }
 
 /*菱形*/
 .rhombus{
 	padding: 0px;
-	width: 40px;
-	height: 40px;
-	margin-top: -50px;
-	margin-left: 100px;
+	width: 24px;
+	height: 24px;
+	margin-top: 12px;
+	margin-left: 18px;
+	font-size: 12px;
 	-webkit-transform-origin: 0 100%;
 	-moz-transform-origin: 0 100%;
 	-o-transform-origin: 0 100%;
@@ -226,6 +230,23 @@ body{
 	-ms-transform:rotate(-45deg);
 	transform:rotate(-45deg);
 }
+
+/*以下是创建新部件的时候改变的属性(和右侧工具栏的大小不同)*/
+
+.new-circle{
+	width: 60px;
+	height: 60px;
+	border-radius: 30px;
+}
+
+.new-rhombus{
+	width: 60px;
+	height: 60px;
+}
+
+.new-roundedRect,.new-rect{width: 120px;}
+
+/*以下是创建新部件的时候改变的属性(和右侧工具栏的大小不同)*/
 
 /******************右侧属性栏******************/
 

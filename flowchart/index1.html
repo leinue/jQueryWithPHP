@@ -475,7 +475,7 @@
       var name=chartID.split('-')[0];
 
       //在div内append元素
-      $(newChartArea).append("<div class=\"draggable "+name+"\" id=\""+chartID+"\">"+blockName+"</div>");
+      $(newChartArea).append("<div class=\"draggable "+name+" new-"+name+"\" id=\""+chartID+"\">"+blockName+"</div>");
       $("#"+chartID).css("left",left).css("top",top).css("position","absolute").css("margin","0px");
 
       //用jsPlumb添加锚点
@@ -659,7 +659,7 @@
             var trueId=name+"-"+sessionStorage['idIndex'];
 
             //在div内append元素
-            $(this).append("<div class=\"draggable "+name+"\" id=\""+trueId+"\">"+$(ui.helper).html()+"</div>");
+            $(this).append("<div class=\"draggable "+name+" new-"+name+"\" id=\""+trueId+"\">"+$(ui.helper).html()+"</div>");
             $("#"+trueId).css("left",left).css("top",top).css("position","absolute").css("margin","0px");
 
             //用jsPlumb添加锚点

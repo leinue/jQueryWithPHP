@@ -379,7 +379,30 @@
       function getChartBorderLineStyle(){
         //console.log(document.getElementById(sessionStorage['currentChartSelected']).style.border);
         var style=$('#'+sessionStorage['currentChartSelected']).css('borderStyle');
-        return style;
+        return (style=='') ? 'solid':style;
+      }
+
+      //设置当前部件的border-width
+      function setChartBorderWidthStyle(style){
+        console.log('dssdsdsd');
+        $('#chart-fill-border-width-display').val(style);
+      }
+
+      //获得当前部件的border-width
+      function getChartBorderWidthStyle(){
+        var style=$('#'+sessionStorage['currentChartSelected']).css('borderWidth');
+        return (style=='') ? '2':style;
+      }
+
+      //设置当前部件的border-color
+      function setChartBorderColorStyle(style){
+        $('#chart-fill-border-color-display').val(style);
+      }
+
+      //取得当前部件的border-color
+      function getChartBorderColorStyle(){
+        var style=$('#'+sessionStorage['currentChartSelected']).css('borderColor');
+        return (style=='') ? 'rgb(0,0,0)':style;
       }
 
     //****************负责属性面板的内容设置*****************
@@ -942,10 +965,10 @@
         //设置圆角
         setChartBorderRadius(getChartBorderRadius());
 
-        //设置border属性
-        //console.log('a='+$(".chart-fill-border-selector option:selected").attr('value'));
-        //$(".chart-fill-border-selector").val('solid');
+        //设置border属性width style color
         setChartBorderLineStyle(getChartBorderLineStyle());
+        setChartBorderWidthStyle(getChartBorderWidthStyle());
+        setChartBorderColorStyle(getChartBorderColorStyle());
       });
 
       $('.droppable').on('dblclick',function(){
@@ -1023,13 +1046,15 @@
               case 'chart-height-display'://高度
                 setChartDesignHeight(currentValue*10);
                 break;
-              case 'chart-border-display':
+              case 'chart-border-display'://框线style
                 setChartDesignBorderRadius(currentValue);
                 break;
-              case 'chart-fill-border-width-display':
+              case 'chart-fill-border-width-display'://框线粗细
                 setChartDesignBorderWidthStyle(currentValue);
-              case 'chart-fill-border-color-display':
+                break;
+              case 'chart-fill-border-color-display'://框线颜色
                 setChartDesignBorderColorStyle(currentValue);
+                break;
               default:
                 break;
             }

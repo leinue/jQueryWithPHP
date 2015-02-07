@@ -246,18 +246,24 @@ body{
 
 .new-roundedRect,.new-rect{width: 120px;}
 
-/*以下是创建新部件的时候改变的属性(和右侧工具栏的大小不同)*/
+/*以上是创建新部件的时候改变的属性(和右侧工具栏的大小不同)*/
 
 /******************右侧属性栏******************/
 
 /*location|size|fill|shadow*/
-.lo-xy-display{margin-top: 50px; }
+.lo-xy-display{
+	margin-top: 28px;
+}
 
 .chart-location-form{border:none;}
 
 .chart-fill-display{margin-top: 30px;}
 
 .chart-shadow-display{margin-top: 10px;}
+
+.chart-size-border-display{
+	margin-top: 14px;
+}
 
 /*font*/
 #json-display-area{

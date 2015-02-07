@@ -37,25 +37,27 @@
               </div>
           </div>
 
-          <h4>Location</h4>
+          <h4>位置</h4>
           <div class="list-content">
             <div class="lo-xy-display">
-              <label>Top:</label><input id="lo-x-display" type="text" class="chart-location-form" value="0" width="40">
+              <label>顶边:</label><input id="lo-x-display" type="text" class="chart-location-form" value="0" width="40">
               <p></p>
-              <label>Left:</label><input id="lo-y-display" type="text" class="chart-location-form" value="0" width="40">
+              <label>左边:</label><input id="lo-y-display" type="text" class="chart-location-form" value="0" width="40">
             </div>
           </div>
 
-          <h4>Size</h4>
+          <h4>尺寸</h4>
           <div class="list-content">
-            <div class="lo-xy-display">
-              <label>width:</label><input id="chart-width-display" type="number" class="chart-location-form" value="0" width="40">
+            <div class="lo-xy-display chart-size-border-display">
+              <label>宽度:</label><input id="chart-width-display" type="number" class="chart-location-form" value="0" width="40">
               <p></p>
-              <label>height:</label><input id="chart-height-display" type="number" class="chart-location-form" value="0" width="40">
+              <label>高度:</label><input id="chart-height-display" type="number" class="chart-location-form" value="0" width="40">
+              <p></p>
+              <label>圆角:</label><input id="chart-border-display" type="number" class="chart-location-form" value="0" width="40">
             </div>
           </div>
 
-          <h4>Fill</h4>
+          <h4>填充</h4>
           <div class="list-content">
             <div class="lo-xy-display chart-fill-display">
               <label>填充颜色:</label><input id="chart-color-display" type="text" class="chart-location-form" value="0" width="40">
@@ -66,7 +68,7 @@
             </div>
           </div>
 
-          <h4>Stroke</h4>
+          <h4>线框</h4>
           <div class="list-content">
             <div class="lo-xy-display chart-fill-display">
               <label>填充颜色:</label><input id="chart-color-display" type="text" class="chart-location-form" value="0" width="40">
@@ -77,7 +79,7 @@
             </div>
           </div>
 
-          <h4>Shadow</h4>
+          <h4>阴影</h4>
           <div class="list-content">
             <div class="lo-xy-display chart-shadow-display">
               <label>Shadow:</label><input id="chart-width-display" type="number" class="chart-location-form" value="0" width="40">
@@ -87,38 +89,38 @@
         </div>
 
         <div class="chart-list chart-text" style="display:none;">
-          <h4>Font</h4>
+          <h4>字体</h4>
           <div class="list-content">
             <div class="chart-font-display">
-              <label>Font:</label><input id="chart-font-display" type="text" class="chart-location-form" value="微软雅黑" width="40">
+              <label>字体:</label><input id="chart-font-display" type="text" class="chart-location-form" value="微软雅黑" width="40">
               <p></p>
             </div>
           </div>
-          <h4>Size</h4>
+          <h4>尺寸</h4>
           <div class="list-content">
             <div class="chart-font-display">
-              <label>Font:</label><input id="chart-font-size-display" type="number" class="chart-location-form" value="14" width="40">
+              <label>字体大小:</label><input id="chart-font-size-display" type="number" class="chart-location-form" value="14" width="40">
               <p></p>
             </div>
           </div>
-          <h4>Lign</h4>
+          <h4>对齐</h4>
           <div class="list-content">
             <div class="chart-font-display">
-              <label>Align:</label><input id="chart-align-display" type="text" class="chart-location-form" value="居中" width="40">
+              <label>对齐方式:</label><input id="chart-align-display" type="text" class="chart-location-form" value="居中" width="40">
               <p></p>
             </div>
           </div>
-          <h4>Color</h4>
+          <h4>颜色</h4>
           <div class="list-content">
             <div class="chart-font-display">
-              <label>Color:</label><input id="chart-font-color-display" type="text" class="chart-location-form" value="rgb(0,0,0)" width="40">
+              <label>字体颜色:</label><input id="chart-font-color-display" type="text" class="chart-location-form" value="rgb(0,0,0)" width="40">
               <p></p>
             </div>
           </div>
           <h4>JSON</h4>
           <div class="list-content">
             <div class="chart-font-display">
-              <label>JSON:</label><textarea id="json-display-area"></textarea>
+              <label>JSON数据:</label><textarea id="json-display-area"></textarea>
               <p></p>
             </div>
           </div>
@@ -336,7 +338,6 @@
 
       //设置当前部件的字体颜色,参数color只能为rgb或16进制颜色值
       function setChartFontColor(color){
-        console.log("ssasa"+color);
         $('#chart-font-color-display').val(color);
       }
 
@@ -349,6 +350,17 @@
       //设置json展示框的数据
       function setChartJson2Box(json){
         $('#json-display-area').val(json);
+      }
+
+      //设置当前部件的border
+      function setChartBorderRadius(radius){
+        $('#chart-border-display').val(radius);
+      }
+
+      //取当前部件的border
+      function getChartBorderRadius(){
+        var radius=$('#'+sessionStorage['currentChartSelected']).css('borderRadius');
+        return (radius=='') ? '0':radius;
       }
 
     //****************负责属性面板的内容设置*****************
@@ -633,6 +645,15 @@
       }      
     }
 
+    //设置流程图框的圆角大小
+    function setChartDesignBorderRadius(radius){
+      if(sessionStorage['currentChartSelected']=='none'){
+        $('.new-circle,.new-rhombus,.new-roundedRect,.new-rect').css('border-radius',radius);
+      }else{
+        console.log('dssdsd');
+        $('#'+sessionStorage['currentChartSelected']).css('border-radius',radius);
+      }
+    }
 
     //*********************************流程图数据操作区域*********************************
 
@@ -871,6 +892,9 @@
 
         //设置JSON数据放置区域的值
         setChartJson2Box(getSingleChartJson(sessionStorage['currentChartSelected']));
+
+        //设置圆角
+        setChartBorderRadius(getChartBorderRadius());
       });
 
       $('.droppable').on('dblclick',function(){
@@ -947,6 +971,9 @@
                 break;
               case 'chart-height-display'://高度
                 setChartDesignHeight(currentValue*10);
+                break;
+              case 'chart-border-display':
+                setChartDesignBorderRadius(currentValue);
                 break;
               default:
                 break;

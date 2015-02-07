@@ -359,7 +359,7 @@
         $('#json-display-area').val(json);
       }
 
-      //设置当前部件的border
+      //设置当前部件的border-radius
       function setChartBorderRadius(radius){
         $('#chart-border-display').val(radius);
       }
@@ -368,6 +368,18 @@
       function getChartBorderRadius(){
         var radius=$('#'+sessionStorage['currentChartSelected']).css('borderRadius');
         return (radius=='') ? '0':radius;
+      }
+
+      //设置当前部件的border
+      function setChartBorderLineStyle(style){
+        $(".chart-fill-border-selector").val(style);
+      }
+
+      //取当前部件的border
+      function getChartBorderLineStyle(){
+        //console.log(document.getElementById(sessionStorage['currentChartSelected']).style.border);
+        var style=$('#'+sessionStorage['currentChartSelected']).css('borderStyle');
+        return style;
       }
 
     //****************负责属性面板的内容设置*****************
@@ -661,6 +673,16 @@
       }
     }
 
+    //设置流程图框的线样式
+    //参数style只能为solid|dotted|double|dashed
+    function setChartDeignBorderLineStyle(style){
+      if(sessionStorage['currentChartSelected']=='none'){
+        $('.new-circle,.new-rhombus,.new-roundedRect,.new-rect').css('border-style',style);
+      }else{
+        $('#'+sessionStorage['currentChartSelected']).css('border-style',style);
+      }
+    }
+
     //*********************************流程图数据操作区域*********************************
 
     $(document).ready(function(){
@@ -903,7 +925,9 @@
         setChartBorderRadius(getChartBorderRadius());
 
         //设置border属性
-        
+        //console.log('a='+$(".chart-fill-border-selector option:selected").attr('value'));
+        //$(".chart-fill-border-selector").val('solid');
+        setChartBorderLineStyle(getChartBorderLineStyle());
       });
 
       $('.droppable').on('dblclick',function(){
@@ -990,12 +1014,15 @@
           }
         });
       });
+  
+      $('.chart-fill-border-selector').change(function(){
+        var valSelected=$(this).children('option:selected').val();//selected的值
+        setChartDeignBorderLineStyle(valSelected);
+      })
 
       //////  目标选择框文本发生更改时触发的事件,根据ID不同
-      function TxtChange() {
-        alert('');  
-      }
-
+      
+      //$(".chart-fill-border-selector option:selected").attr('value')
       //********右侧属性面板内容改变同步到设计区域*********
 
       //删除连接线

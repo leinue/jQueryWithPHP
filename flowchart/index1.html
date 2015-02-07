@@ -90,28 +90,28 @@
           <h4>Font</h4>
           <div class="list-content">
             <div class="chart-font-display">
-              <label>Font:</label><input id="chart-width-display" type="text" class="chart-location-form" value="微软雅黑" width="40">
+              <label>Font:</label><input id="chart-font-display" type="text" class="chart-location-form" value="微软雅黑" width="40">
               <p></p>
             </div>
           </div>
           <h4>Size</h4>
           <div class="list-content">
             <div class="chart-font-display">
-              <label>Font:</label><input id="chart-width-display" type="number" class="chart-location-form" value="14" width="40">
+              <label>Font:</label><input id="chart-font-size-display" type="number" class="chart-location-form" value="14" width="40">
               <p></p>
             </div>
           </div>
           <h4>Lign</h4>
           <div class="list-content">
             <div class="chart-font-display">
-              <label>Align:</label><input id="chart-width-display" type="text" class="chart-location-form" value="居中" width="40">
+              <label>Align:</label><input id="chart-align-display" type="text" class="chart-location-form" value="居中" width="40">
               <p></p>
             </div>
           </div>
           <h4>Color</h4>
           <div class="list-content">
             <div class="chart-font-display">
-              <label>Font:</label><input id="chart-width-display" type="text" class="chart-location-form" value="rgb(0,0,0)" width="40">
+              <label>Color:</label><input id="chart-text-color-display" type="text" class="chart-location-form" value="rgb(0,0,0)" width="40">
               <p></p>
             </div>
           </div>
@@ -298,6 +298,51 @@
         var size=new Array();
         size['width']=$('#chart-width-display').val();
         size['height']=$('#chart-height-display').val();
+        return size;
+      }
+
+      //设置当前部件的字体
+      function setChartFont(font){
+        $('#chart-font-display').val(font);
+      }
+
+      function getChartFont(){
+        var font=$('#'+sessionStorage['currentChartSelected']).css('font');
+        return (font=='') ? '微软雅黑':font;
+      }
+
+      //设置当前部件的字体大小
+      function setChartFontSize(size){
+        $('#chart-font-size-display').val(size);
+      }
+
+      //取当前部件的字体大小
+      function getChartFontSize(){
+        var fontSize=$('#'+sessionStorage['currentChartSelected']).css('font-size');
+        return (fontSize=='') ? 12:fontSize.substring(0,fontSize.length-2);
+      }
+
+      //设置当前部件的对齐方式
+      function setChartAlign(lign){
+        $('#chart-align-display').val(lign);
+      }
+
+      //取当前部件的对齐方式
+      function getChartAlign(){
+        var align=$('#'+sessionStorage['currentChartSelected']).css('text-align');
+        var lignArray={'center':'居中','left':'居左','right':'居右'};
+        return (align=='') ? '居中':lignArray[align];
+      }
+
+      //设置当前部件的字体颜色,参数color只能为rgb或16进制颜色值
+      function setChartFontColor(color){
+        $('#chart-text-color-display').val(color);
+      }
+
+      //取当前部件的字体颜色
+      function getChartFontColor(){
+        var color=$('#'+sessionStorage['currentChartSelected']).css('color');
+        return (color=='') ? 'rgb(0,0,0)':color;
       }
 
     //****************负责属性面板的内容设置*****************
@@ -363,7 +408,6 @@
         //参数type只能为left,right或者center
         //参数ele若留空则默认全局设置,默认为空
         function setChartTextAlign(ele='',type){
-          console.log(sessionStorage['currentChartSelected']);
           if(ele==''){
             $('.draggable').css('text-align',type);
           }else{
@@ -726,9 +770,24 @@
 
       //设计区域元素被点击事件,同步右侧属性面板
       $('.droppable').on('click','.draggable',function(){
+        //获得当前选择部件的ID
+        sessionStorage['currentChartSelected']=$(this).attr('id');
+
+        //设置当前部件的坐标和大小
         setChartLocation($(this).offset().top,$(this).offset().left);
         setChartSize($(this).width(),$(this).height());
-        sessionStorage['currentChartSelected']=$(this).attr('id');
+
+        //设置当前选择部件的字体
+        setChartFont(getChartFont());
+
+        //设置当前选择部件的字体大小
+        setChartFontSize(getChartFontSize());
+
+        //设置当前选择部件的对齐方式
+        setChartAlign(getChartAlign());
+
+        //设置当前选择部件的字体颜色
+        setChartFontColor(getChartFontColor());
       });
 
       $('.droppable').on('dblclick',function(){

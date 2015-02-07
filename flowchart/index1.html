@@ -559,6 +559,70 @@
         }
     }
 
+    //设置流程框图宽度,如果当前选择的部件为none则默认改变全局,下同
+    function setChartDesignWidth(width){
+      if(sessionStorage['currentChartSelected']=='none'){
+        $('.draggable').css('width',width);
+      }else{
+        $('#'+sessionStorage['currentChartSelected']).css('width',width);
+      }
+    }
+
+    //设置流程框图高度
+    function setChartDesignHeight(height){
+      if(sessionStorage['currentChartSelected']=='none'){
+        $('.draggable').css('width',width);
+      }else{
+        $('#'+sessionStorage['currentChartSelected']).css('height',height);
+      }
+    }
+
+    //设置流程框图top
+    function setChartDesignTop(top){
+      if(sessionStorage['currentChartSelected']=='none'){
+        $('.draggable').css('width',width);
+      }else{
+        $('#'+sessionStorage['currentChartSelected']).css('top',top);
+      }
+    }
+
+    //设置流程框图left
+    function setChartDesignLeft(left){
+      if(sessionStorage['currentChartSelected']=='none'){
+        $('.draggable').css('width',width);
+      }else{
+        $('#'+sessionStorage['currentChartSelected']).css('left',left);
+      }
+    }
+
+    //设置流程框图字体
+    function setChartDesignFont(font){
+      if(sessionStorage['currentChartSelected']=='none'){
+        $('.draggable').css('width',width);
+      }else{
+        $('#'+sessionStorage['currentChartSelected']).css('font',font);
+      }
+    }
+
+    //设置流程框图字体大小
+    function setChartDesignFontSize(size){
+      if(sessionStorage['currentChartSelected']=='none'){
+        $('.draggable').css('width',width);
+      }else{
+        $('#'+sessionStorage['currentChartSelected']).css('font-size',size);
+      }
+    }
+
+    //设置流程框图字体颜色
+    function setChartFontColor(color){
+      if(sessionStorage['currentChartSelected']=='none'){
+        $('.draggable').css('width',width);
+      }else{
+        $('#'+sessionStorage['currentChartSelected']).css('color',color);
+      }
+    }
+
+
     //*********************************流程图数据操作区域*********************************
 
     $(document).ready(function(){
@@ -838,7 +902,46 @@
         }
       });
 
-      //右侧属性面板内容改变同步到设计区域
+      //********右侧属性面板内容改变同步到设计区域*********
+
+      ////////预加载
+      jQuery(function($){
+        txtValue=$(".chart-location-form").val();
+        ////////    给txtbox绑定键盘事件
+        $(".chart-location-form").bind("keydown",function(){
+          var currentValue=$(this).val();
+          var currentID=$(this).attr('id');
+          if(currentValue!=txtValue){
+            switch(currentID){
+              case 'chart-font-display'://字体
+                break;
+              case 'chart-font-size-display'://字体大小
+                break;
+              case 'chart-align-display'://字体对齐样式
+                break;
+              case 'chart-text-color-display'://字体颜色
+                break;
+              case 'lo-x-display'://top
+                break;
+              case 'lo-y-display'://left
+                break;
+              case 'chart-width-display'://宽度
+                break;
+              case 'chart-height-display'://高度
+                break;
+              default:
+                break;
+            }
+          }
+        });
+      });
+
+      //////  目标选择框文本发生更改时触发的事件,根据ID不同
+      function TxtChange() {
+        alert('');  
+      }
+
+      //********右侧属性面板内容改变同步到设计区域*********
 
       //删除连接线
       jsPlumb.bind("click",function(conn,originalEvent){

@@ -60,7 +60,7 @@
           <h4>填充</h4>
           <div class="list-content">
             <div class="lo-xy-display chart-fill-display">
-              <label>填充颜色:</label><input id="chart-color-display" type="color" class="chart-location-form" value="0" width="40">
+              <label>填充颜色:</label><input id="chart-background-color-display" type="color" class="chart-location-form" value="0" width="40">
               <p></p>
               <label>线粗:</label><input id="chart-stroke-width-display" type="number" class="chart-location-form" value="0" width="40">
               <p></p>
@@ -257,7 +257,6 @@
           sessionStorage['rightToolsIsDisplay']=true;
           if(current!=will){
             $('.chart-design').css("right","230px");
-            console.log('sasaas');
             $(".chart-"+current).hide();
             $('.chart-'+will).fadeIn();
             setChartRightListFlag(will);
@@ -404,6 +403,17 @@
         return (style=='') ? 'rgb(0,0,0)':style;
       }
 
+      //设置当前部件的填充背景色
+      function setChartBackgroundColor(color){
+        $('#chart-background-color-display').val(color);
+      }
+
+      //取当前部件的填充背景色
+      function getChartBackgroundColor(){
+        var bg=$('#'+sessionStorage['currentChartSelected']).css('background');
+        return (bg=='') ? 'rgb(255,255,255)':bg;
+      }
+
     //****************负责属性面板的内容设置*****************
 
     //*********************************jsPlumb基础信息配置区域*********************************
@@ -534,7 +544,6 @@
       var blocks=[];
       var elem=$("#"+id);
       var rareHTML=elem.html();
-      console.log('sss'+rareHTML);
       var resultHTML=rareHTML;
       //去掉在进行复制操作时误复制的img部件
       if(rareHTML.indexOf('<img src=\"img/delete.png\"')!=-1){
@@ -723,6 +732,15 @@
       }
     }
 
+    //设置流程图框背景色
+    function setChartDesignBackground(style){
+      if(sessionStorage['currentChartSelected']=='none'){
+        $('.new-circle,.new-rhombus,.new-roundedRect,.new-rect').css('background',style);
+      }else{
+        $('#'+sessionStorage['currentChartSelected']).css('background',style);
+      }      
+    }
+
     //*********************************流程图数据操作区域*********************************
 
     $(document).ready(function(){
@@ -791,7 +809,6 @@
               var top=$('.chart-design').height()/2;
               addNewChart('.chart-design',"roundedRect-"+sessionStorage['idIndex'],left,top-20,'新部件');
               sessionStorage['midIsOccupied']='yes';
-              console.log(sessionStorage['midIsOccupied']);
             }else{
               //如果中间位置被占据则根据随机数新建一个部件
               var randomLeft=Math.ceil(Math.random()*$('.chart-design').width());
@@ -805,7 +822,6 @@
             if(sessionStorage['topAlignSelectIsDisplayed']=='true'){
                 $('#align-select-div').toggle('fast');
                 sessionStorage['topAlignSelectIsDisplayed']=false;
-                console.log('dssd');
             }
             
             selectorToggle(event,'#line-select-div');
@@ -968,6 +984,9 @@
         setChartBorderLineStyle(getChartBorderLineStyle());
         setChartBorderWidthStyle(getChartBorderWidthStyle());
         setChartBorderColorStyle(getChartBorderColorStyle());
+
+        //设置背景色
+        setChartBackgroundColor(getChartBackgroundColor());
       });
 
       $('.droppable').on('dblclick',function(){
@@ -1010,7 +1029,7 @@
         }
       });
 
-      //********右侧属性面板内容改变同步到设计区域*********
+      //*****************右侧属性面板内容改变同步到设计区域******************
 
       ////////预加载
       jQuery(function($){
@@ -1077,10 +1096,16 @@
         setChartDesignFontColor($(this).val());
       });
 
+      //背景颜色选择器值被改变时触发
+      $('#chart-background-color-display').change(function(){
+        setChartDesignBackground($(this).val());
+      });
+
       //////  目标选择框文本发生更改时触发的事件,根据ID不同
       
       //$(".chart-fill-border-selector option:selected").attr('value')
-      //********右侧属性面板内容改变同步到设计区域*********
+
+      //*****************右侧属性面板内容改变同步到设计区域******************
 
       //删除连接线
       jsPlumb.bind("click",function(conn,originalEvent){
@@ -1108,7 +1133,6 @@
               break;
             case 'paste':
               //用户操作为粘贴,撤销操作为删除
-              console.log(chartOperationData['BlockId']);
               deleteChart(chartOperationData['BlockId'],true);
               break;
           }

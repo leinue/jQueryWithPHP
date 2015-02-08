@@ -367,12 +367,12 @@
 
       //设置当前部件的border-radius
       function setChartBorderRadius(radius){
-        $('#chart-border-display').val(radius);
+        $('#chart-border-display').attr('value',radius);
       }
 
       //取当前部件的border
       function getChartBorderRadius(){
-        var radius=$('#'+sessionStorage['currentChartSelected']).css('borderRadius');
+        var radius=$('#'+sessionStorage['currentChartSelected']).css('border-top-left-radius');
         return (radius=='') ? '0':radius;
       }
 
@@ -423,7 +423,7 @@
 
       //设置当前部件的渐近度
       function setChartBlurRange(range){
-        $('#chart-blur-range-display').val(range);
+        $('#chart-blur-range-display').attr('value',range);
       }
 
       //取当前部件的渐近度
@@ -434,7 +434,7 @@
 
       //设置当前部件的渐近色
       function setChartBlurColor(color){
-        $('#chart-fill-blur-color-display').val(color);
+        $('#chart-fill-blur-color-display').attr('value',color);
       }
 
       //通过颜色选择器选择渐近色
@@ -708,6 +708,9 @@
       var borderColor=elem.css('border-left-color');
       (borderColor=='') ? borderColor='rgb(136,242,75)':borderColor;
 
+      //阴影数据
+      var shadow=elem.css('box-shadow');
+
       blocks.push({
         BlockId:elem.attr('id'),
         BlockContent:resultHTML,
@@ -725,7 +728,8 @@
         BlockFillBlurColor:fillBlurColor,
         BlockBorderStyle:borderStyle,
         BlockBorderWidth:borderWidth,
-        BlockborderColor:borderColor
+        BlockborderColor:borderColor,
+        BlockShadow:shadow
       });
 
       var serliza="{"+'"connects":'+JSON.stringify(connects)+',"block":'+JSON.stringify(blocks)+"}";
@@ -867,9 +871,9 @@
     //设置流程图框的圆角大小
     function setChartDesignBorderRadius(radius){
       if(sessionStorage['currentChartSelected']=='none'){
-        $('.new-circle,.new-rhombus,.new-roundedRect,.new-rect').css('border-radius',radius);
+        $('.new-circle,.new-rhombus,.new-roundedRect,.new-rect').css('border-top-left-radius',radius);
       }else{
-        $('#'+sessionStorage['currentChartSelected']).css('border-radius',radius);
+        $('#'+sessionStorage['currentChartSelected']).css('border-top-left-radius',radius);
       }
     }
 
@@ -1272,6 +1276,7 @@
                 setChartDesignHeight(currentValue*10);
                 break;
               case 'chart-border-display'://框线style
+                console.log('currentVal='+currentValue);
                 setChartDesignBorderRadius(currentValue);
                 break;
               case 'chart-fill-border-width-display'://框线粗细

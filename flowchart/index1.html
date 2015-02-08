@@ -198,6 +198,9 @@
     //记录用户具体操作,有copy,add,delete,paste
     var chartRareOperationStack=new Array;
 
+    //记录当前流程框的数量
+    sessionStorage['currentChartAmount']=0;
+
     //指定流程图设计区域宽度高度
     function adjustDesignWidth(){
       var designWidth=0;
@@ -629,6 +632,10 @@
             resultHTML=rareHTML[0];
           }
 
+          if(resultHTML.indexOf('<div style="z-index: 90;" ')!=-1){
+            resultHTML=resultHTML.split('<div style="z-index: 90;" ')[0];
+          }
+
           /**********************字体**********************/
           //字体
           var Bfont=elem.css("font");
@@ -722,10 +729,15 @@
       var elem=$("#"+id);
       var rareHTML=elem.html();
       var resultHTML=rareHTML;
+      //console.log(rareHTML);
       //去掉在进行复制操作时误复制的img部件
       if(rareHTML.indexOf('<img src=\"img/delete.png\"')!=-1){
         rareHTML=rareHTML.split('<img src=\"img/delete.png\"');
         resultHTML=rareHTML[0];
+      }
+
+      if(resultHTML.indexOf('<div style="z-index: 90;" ')!=-1){
+        resultHTML=resultHTML.split('<div style="z-index: 90;" ')[0];
       }
 
       /**********************字体**********************/
@@ -843,6 +855,95 @@
         chartRareOperationStack.push('add');
       }
     }
+
+    //通过json加载流程图
+    function loadChartByJSON(data){
+      var unpack=JSON.parse(data);
+
+      if(!unpack){
+        return false;
+      }
+
+      /*flowConnector={
+        anchors:["BottomCenter","TopCenter"],
+        endpoints:["dot","blank"]
+      };*/
+
+      for(var i=0;i<unpack['block'].length;i++){
+        var BlockId=unpack['block'][i]['BlockId'];
+        var BlockContent=unpack['block'][i]['BlockContent'];
+        var BlockX=unpack['block'][i]['BlockX'];
+        var BlockY=unpack['block'][i]['BlockY'];
+        var width=unpack['block'][i]['BlockWidth'];
+        var height=unpack['block'][i]['BlockHeight'];
+        var font=unpack['block'][i]['BlockFont'];
+        var fontSize=unpack['block'][i]['BlockFontSize'];
+        var fontAlign=unpack['block'][i]['BlockFontAlign'];
+        var fontColor=unpack['block'][i]['BlockFontColor'];
+        var borderRadius=unpack['block'][i]['BlockBorderRadius'];
+        var backgroundColor=unpack['block'][i]['BlockBackground'];
+        var fillBlurRange=unpack['block'][i]['BlockFillBlurRange'];
+        var fillBlurColor=unpack['block'][i]['BlockFillBlurColor'];
+        var borderStyle=unpack['block'][i]['BlockBorderStyle'];
+        var borderColor=unpack['block'][i]['BlockborderColor'];
+        var shadow=unpack['block'][i]['BlockShadow'];
+
+        var blockAttr=BlockId.split('-')[0];
+
+        var boxInsetShadowStyle='10px 10px '+fillBlurRange+"px 20px "+fillBlurColor+' inset';
+
+        $('.chart-design').append("<div class=\"draggable "+blockAttr+" new-"+blockAttr+"\" id=\""+BlockId+"\">"+BlockContent+"</div>");
+        $("#"+BlockId)
+          .css("left",BlockX)
+          .css("top",BlockY)
+          .css("position","absolute")
+          .css("margin","0px")
+          .css("width",width)
+          .css("height",height)
+          .css('font',font)
+          .css('font-size',fontSize)
+          .css('text-align',fontAlign)
+          .css('color',fontColor)
+          .css('border-radius',borderRadius)
+          .css('background',backgroundColor)
+          .css('box-shadow',boxInsetShadowStyle)
+          .css('border-style',borderStyle)
+          .css('border-color',borderColor)
+          .css('box-shadow',shadow);
+      }
+
+      /*for(i=0;i<unpack['connects'].length;i++){
+        var ConnectionId=unpack['connects'][i]['ConnectionId'];
+        var PageSourceId=unpack['connects'][i]['PageSourceId'];
+        var PageTargetId=unpack['connects'][i]['PageTargetId'];
+
+        //用jsPlumb添加锚点
+        jsPlumb.addEndpoint(PageSourceId,{anchors: "TopCenter"},hollowCircle);
+        jsPlumb.addEndpoint(PageSourceId,{anchors: "RightMiddle"},hollowCircle);
+        jsPlumb.addEndpoint(PageSourceId,{anchors: "BottomCenter"},hollowCircle);
+        jsPlumb.addEndpoint(PageSourceId,{anchors: "LeftMiddle"},hollowCircle);
+
+        jsPlumb.addEndpoint(PageTargetId,{anchors: "TopCenter"},hollowCircle);
+        jsPlumb.addEndpoint(PageTargetId,{anchors: "RightMiddle"},hollowCircle);
+        jsPlumb.addEndpoint(PageTargetId,{anchors: "BottomCenter"},hollowCircle);
+        jsPlumb.addEndpoint(PageTargetId,{anchors: "LeftMiddle"},hollowCircle);
+
+        jsPlumb.draggable(PageSourceId);
+        jsPlumb.draggable(PageTargetId);
+
+        $("#"+PageSourceId).draggable({containment: "parent"});//保证拖动不跨界
+        $("#"+PageTargetId).draggable({containment: "parent"});//保证拖动不跨界
+
+        jsPlumb.connect({
+          source:PageSourceId,target:PageTargetId},
+          flowConnector);
+      }*/
+
+      return true;
+    }
+
+    //loadChartByJSON('{"connects":[],"block":[{"BlockId":"rect-01","BlockContent":"文本","BlockX":648,"BlockY":40,"BlockWidth":120,"BlockHeight":120,"BlockFont":"微软雅黑","BlockFontSize":"60px","BlockFontAlign":"center","BlockFontColor":"rgb(255, 255, 255)","BlockBorderRadius":"0","BlockBackground":"rgb(128, 0, 255)","BlockFillBlurRange":"85px","BlockFillBlurColor":"rgb(0,0,0)","BlockBorderStyle":"dashed","BlockBorderWidth":"2px","BlockborderColor":"rgb(136, 242, 75)","BlockShadow":"rgb(0, 0, 0) 30px 51px 85px 0px"},{"BlockId":"roundedRect-0111","BlockContent":"文本","BlockX":464,"BlockY":94,"BlockWidth":120,"BlockHeight":20,"BlockFont":"微软雅黑","BlockFontSize":"12px","BlockFontAlign":"center","BlockFontColor":"rgb(0, 0, 0)","BlockBorderRadius":"4","BlockBackground":"rgb(128, 0, 255)","BlockFillBlurColor":"noneundefinedundefined","BlockBorderStyle":"solid","BlockBorderWidth":"2px","BlockborderColor":"rgb(136, 242, 75)","BlockShadow":"none"}]}');
+    //sessionStorage['currentChartAmount']=sessionStorage['currentChartAmount']+2;
 
     //删除一个流程框图,若参数undo为true则在进行操作时不进行入栈操作,默认为false
     function deleteChart(id,undo=false){
@@ -1067,13 +1168,15 @@
               //如果中间位置没有被占据则在中间位置新建一个部件
               var left=$('.chart-design').width()/2;
               var top=$('.chart-design').height()/2;
-              addNewChart('.chart-design',"roundedRect-"+sessionStorage['idIndex'],left,top-20,'新部件');
+              addNewChart('.chart-design',"roundedRect-"+sessionStorage['idIndex']+sessionStorage['currentChartAmount'],left,top-20,'新部件');
               sessionStorage['midIsOccupied']='yes';
+              sessionStorage['currentChartAmount']=sessionStorage['currentChartAmount']+2;
             }else{
               //如果中间位置被占据则根据随机数新建一个部件
               var randomLeft=Math.ceil(Math.random()*$('.chart-design').width());
               var randomTop=Math.ceil(Math.random()*($('.chart-design').height()-25));
-              addNewChart('.chart-design',"roundedRect-"+sessionStorage['idIndex'],randomLeft,randomTop,'新部件');
+              addNewChart('.chart-design',"roundedRect-"+sessionStorage['idIndex']+sessionStorage['currentChartAmount'],randomLeft,randomTop,'新部件');
+              sessionStorage['currentChartAmount']=sessionStorage['currentChartAmount']+2;
             }
             break;
           case 'line-mode':
@@ -1145,7 +1248,7 @@
             setChartLocation(top,left);//设置坐标
 
             var name=ui.draggable[0].id;//返回被拖动元素的ID
-            var trueId=name+"-"+sessionStorage['idIndex'];
+            var trueId=name+"-"+sessionStorage['idIndex']+sessionStorage['currentChartAmount'];
 
             //在div内append元素
             $(this).append("<div class=\"draggable "+name+" new-"+name+"\" id=\""+trueId+"\">"+$(ui.helper).html()+"</div>");
@@ -1174,6 +1277,7 @@
             chartOperationStack['add'].push(getSingleChartJson(trueId));
             chartRareOperationStack.push('add');
 
+            sessionStorage['currentChartAmount']=parseInt(sessionStorage['currentChartAmount'],10)+2;
           }
       });
 
@@ -1439,7 +1543,7 @@
           switch(rareOperation){
             case 'delete':
               //用户操作为删除,撤销操作为添加
-              addNewChart('.chart-design',chartOperationData['BlockId']+sessionStorage['idIndex'],chartOperationData['BlockX'],chartOperationData['BlockY'],chartOperationData['BlockContent'],true);
+              addNewChart('.chart-design',chartOperationData['BlockId']+sessionStorage['idIndex']+sessionStorage['currentChartAmount'],chartOperationData['BlockX'],chartOperationData['BlockY'],chartOperationData['BlockContent'],true);
               break;
             case 'add':
               //用户操作为添加,撤销操作为删除

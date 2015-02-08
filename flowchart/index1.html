@@ -89,8 +89,15 @@
           <h4>阴影</h4>
           <div class="list-content">
             <div class="lo-xy-display chart-shadow-display">
-              <label>Shadow:</label><input id="chart-width-display" type="number" class="chart-location-form" value="0" width="40">
+              <label>水平阴影:</label><input id="chart-h-shadow-display" type="range" class="chart-location-form" value="0" width="40" min="-100" max="100">
               <p></p>
+              <label>垂直阴影:</label><input id="chart-v-shadow-display" type="range" class="chart-location-form" value="0" width="40" min="-100" max="100">
+              <p></p>
+              <label>模糊距离:</label><input id="chart-shadow-blur-display" type="range" class="chart-location-form" value="0" width="40" min="-100" max="100">
+              <p></p>
+              <label>阴影尺寸:</label><input id="chart-shadow-spread-display" type="range" class="chart-location-form" value="0" width="40" min="-100" max="100">
+              <p></p>
+              <label>阴影颜色:</label><input id="chart-shadow-color-display" type="color" class="chart-location-form" value="0" width="40" min="-100" max="100">
             </div>
           </div>
         </div>
@@ -180,7 +187,7 @@
     //标识当前点击的流程图框,默认为none
     sessionStorage['currentChartSelected']='none';
 
-    //栈,记录用户操作的先后顺序,用来进行撤销操作,数据结构为JSON,期中的copy用来复制部件
+    //栈,记录用户操作的先后顺序,用来进行撤销操作,数据结构为JSON,其中的copy用来复制部件
     //是个二维栈,包括新增/删除/粘贴操作
     var chartOperationStack=new Array;
     chartOperationStack['add']=[];
@@ -438,6 +445,66 @@
 
       //取当前部件的渐近色
       function getChartBlurColor(){
+        var color=$('#'+sessionStorage['currentChartSelected']).css('boxShadow');
+        return (color=='none') ? 'rgb(255,255,255)':color;
+      }
+
+      //设置当前部件的水平阴影
+      function setChartHShadow(h){
+        $('#chart-h-shadow-display').val(h);
+      }
+
+      //取得当前部件的水平阴影
+      function getChartHShadow(){
+        var h=$('#'+sessionStorage['currentChartSelected']).css('boxShadow');
+        return (h=='none') ? '0':h;
+      }
+
+      //设置当前部件的垂直阴影
+      function setChartVShadow(v){
+        $('#chart-v-shadow-display').val(v);
+      }
+
+      //取得当前部件的垂直阴影
+      function getChartVshadow(){
+        var v=$('#'+sessionStorage['currentChartSelected']).css('boxShadow');
+        return (v=='none') ? '0':v;
+      }
+
+      //设置当前部件的模糊距离
+      function setChartShadowBlur(blur){
+        $('#chart-shadow-blur-display').val(blur);
+      }
+
+      //取得当前部件的模糊距离
+      function getChartShadowBlur(){
+        var blur=$('#'+sessionStorage['currentChartSelected']).css('boxShadow');
+        return (blur=='blur') ? '0':blur;
+      }
+
+      //设置当前部件的阴影尺寸
+      function setChartShadowSpread(spread){
+        $('#chart-shadow-spread-display').val(spread);
+      }
+
+      //取得当前部件的阴影尺寸
+      function getChartShadowSpread(){
+        var spread=$('#'+sessionStorage['currentChartSelected']).css('boxShadow');
+        return (spread=='blur') ? '0':spread;
+      }
+
+      //设置当前部件的阴影颜色
+      function setChartShadowColor(color){
+        $('#chart-shadow-color-display').val(color);
+      }
+
+      //通过颜色选择器获取当前部件的阴影颜色
+      function getChartShadowColorBySelector(){
+        return $('#chart-shadow-color-display').val();
+      }
+
+      //取得当前部件的阴影颜色
+      function getChartShadowColor(){
         var color=$('#'+sessionStorage['currentChartSelected']).css('box-shadow');
         return (color=='none') ? 'rgb(255,255,255)':color;
       }
@@ -787,7 +854,7 @@
       //**************************************UI控制部分***************************************
 
       //初始化动画效果
-      $('.chart-ratio-form,.chart-fill-border-selector').css("opacity",'0.6');
+      $('.chart-ratio-form,.chart-fill-border-selector,#chart-v-shadow-display,#chart-h-shadow-display,#chart-blur-range-display,#chart-shadow-blur-display,#chart-shadow-color-display,#chart-shadow-spread-display').css("opacity",'0.6');
 
       //隐藏右侧属性面板
       //$('.chart-right-panel').hide();
@@ -799,7 +866,7 @@
       );
 
       //为左下角大小调节添加动画效果
-      $('.chart-ratio-form,.chart-fill-border-selector').hover(
+      $('.chart-ratio-form,.chart-fill-border-selector,#chart-v-shadow-display,#chart-h-shadow-display,#chart-blur-range-display,#chart-shadow-blur-display,#chart-shadow-color-display,#chart-shadow-spread-display').hover(
         function(){$(this).stop().animate({opacity:1},'fast');},
         function(){$(this).stop().animate({opacity:0.6},'fast');}
       );
@@ -1031,6 +1098,13 @@
         //设置渐近度和渐近色
         setChartBlurRange(getChartBlurRange());
         setChartBlurColor(getChartBlurColor());
+
+        //设置当前部件的阴影
+        setChartHShadow(getChartHShadow());
+        setChartVShadow(getChartVshadow());
+        setChartShadowSpread(getChartShadowSpread());
+        setChartShadowColor(getChartShadowColor());
+        setChartShadowBlur(getChartShadowBlur());
       });
 
       $('.droppable').on('dblclick',function(){

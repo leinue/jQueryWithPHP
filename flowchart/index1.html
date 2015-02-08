@@ -30,7 +30,7 @@
           <h4>图形</h4>
           <div class="list-content">
               <div class="area">
-                <div class="draggable" id="rect" style="box-shadow:20px 20px 50px 20px pink;">文本</div>
+                <div class="draggable" id="rect">文本</div>
                 <div class="draggable roundedRect" id="roundedRect">文本</div>
                 <div class="draggable circle" id="circle">文本</div>
                 <div class="draggable rhombus" id="rhombus">文本</div>
@@ -665,13 +665,32 @@
         rareHTML=rareHTML.split('<img src=\"img/delete.png\"');
         resultHTML=rareHTML[0];
       }
+
+      //字体
+      var Bfont=elem.css("font");
+      //字体颜色
+      var fontSize=elem.css('font-size');
+      //字体对齐方式
+      var fontAlign=elem.css('text-align');
+      //字体颜色
+      var fontColor=elem.css('color');
+
+      (Bfont=='') ? Bfont="微软雅黑":Bfont;
+      (fontSize=='') ? fontSize='12':fontSize;
+      (fontAlign=='') ? fontAlign='center':fontAlign;
+      (fontColor=='') ? fontColor='rgb(0,0,0)':fontColor;
+
       blocks.push({
         BlockId:elem.attr('id'),
         BlockContent:resultHTML,
         BlockX:parseInt(elem.css("left"), 10),
         BlockY:parseInt(elem.css("top"), 10),
         BlockWidth:parseInt(elem.css("width"),10),
-        BlockHeight:parseInt(elem.css("height"),10)
+        BlockHeight:parseInt(elem.css("height"),10),
+        BlockFont:Bfont,
+        BlockFontSize:fontSize,
+        BlockFontAlign:fontAlign,
+        BlockFontColor:fontColor
       });
 
       var serliza="{"+'"connects":'+JSON.stringify(connects)+',"block":'+JSON.stringify(blocks)+"}";

@@ -384,7 +384,7 @@
       //取当前部件的border
       function getChartBorderLineStyle(){
         //console.log(document.getElementById(sessionStorage['currentChartSelected']).style.border);
-        var style=$('#'+sessionStorage['currentChartSelected']).css('borderStyle');
+        var style=$('#'+sessionStorage['currentChartSelected']).css('border-left-style');
         return (style=='') ? 'solid':style;
       }
 
@@ -395,24 +395,24 @@
 
       //获得当前部件的border-width
       function getChartBorderWidthStyle(){
-        var style=$('#'+sessionStorage['currentChartSelected']).css('borderWidth');
-        return (style=='') ? '2':style;
+        var style=$('#'+sessionStorage['currentChartSelected']).css('border-left-width');
+        return (style=='') ? '2':style.split('px')[0];
       }
 
       //设置当前部件的border-color
       function setChartBorderColorStyle(style){
-        $('#chart-fill-border-color-display').val(style);
+        $('#chart-fill-border-color-display').attr('value',style);
       }
 
       //取得当前部件的border-color
       function getChartBorderColorStyle(){
-        var style=$('#'+sessionStorage['currentChartSelected']).css('borderColor');
+        var style=$('#'+sessionStorage['currentChartSelected']).css('border-left-color');
         return (style=='') ? 'rgb(0,0,0)':style;
       }
 
       //设置当前部件的填充背景色
       function setChartBackgroundColor(color){
-        $('#chart-background-color-display').val(color);
+        $('#chart-background-color-display').attr('value',color);
       }
 
       //取当前部件的填充背景色
@@ -439,7 +439,6 @@
 
       //通过颜色选择器选择渐近色
       function getChartBlurColorByColorSelector(){
-        console.log($('#chart-fill-blur-color-display').val());
         return $('#chart-fill-blur-color-display').val();
       }
 
@@ -699,13 +698,14 @@
       //渐近色
       var fillBlurColor=fillBlurSplit[0]+fillBlurSplit[1]+fillBlurSplit[2];
       //线框样式
-      var borderStyle=elem.css('borderStyle');
+      var borderStyle=elem.css('border-left-style');
+      console.log('borderStyle='+borderStyle);
       (borderStyle=='') ? borderStyle='solid':borderStyle;
       //线框宽度
-      var borderWidth=elem.css('borderWidth');
-      (borderWidth=='') ? borderWidth='2':borderWidth;
+      var borderWidth=elem.css('border-left-width');
+      (borderWidth=='') ? borderWidth='2':borderWidth.split('px')[0];
       //线框颜色
-      var borderColor=elem.css('borderColor');
+      var borderColor=elem.css('border-left-color');
       (borderColor=='') ? borderColor='rgb(136,242,75)':borderColor;
 
       blocks.push({

@@ -30,7 +30,7 @@
           <h4>图形</h4>
           <div class="list-content">
               <div class="area">
-                <div class="draggable" id="rect">文本</div>
+                <div class="draggable" id="rect" style="box-shadow:20px 20px 50px 20px pink;">文本</div>
                 <div class="draggable roundedRect" id="roundedRect">文本</div>
                 <div class="draggable circle" id="circle">文本</div>
                 <div class="draggable rhombus" id="rhombus">文本</div>
@@ -460,6 +460,11 @@
         return (h=='none') ? '0':h;
       }
 
+      //通过选择器获得水平阴影
+      function getChartHShadowBySelector(){
+        return $('#chart-h-shadow-display').val();
+      }
+
       //设置当前部件的垂直阴影
       function setChartVShadow(v){
         $('#chart-v-shadow-display').val(v);
@@ -469,6 +474,11 @@
       function getChartVshadow(){
         var v=$('#'+sessionStorage['currentChartSelected']).css('boxShadow');
         return (v=='none') ? '0':v;
+      }
+
+      //通过选择器获得垂直阴影
+      function getChartVShadowBySelector(){
+        return $('#chart-v-shadow-display').val();
       }
 
       //设置当前部件的模糊距离
@@ -482,6 +492,11 @@
         return (blur=='blur') ? '0':blur;
       }
 
+      //通过选择器获得模糊距离
+      function getChartShadowBlurBySelector(){
+        return $('#chart-shadow-blur-display').val();
+      }
+
       //设置当前部件的阴影尺寸
       function setChartShadowSpread(spread){
         $('#chart-shadow-spread-display').val(spread);
@@ -491,6 +506,11 @@
       function getChartShadowSpread(){
         var spread=$('#'+sessionStorage['currentChartSelected']).css('boxShadow');
         return (spread=='blur') ? '0':spread;
+      }
+
+      //通过选择器获得阴影尺寸
+      function getChartShadowSpreadBySelector(){
+        return $('#chart-shadow-spread-display').val();
       }
 
       //设置当前部件的阴影颜色
@@ -839,12 +859,27 @@
     //设置流程图框渐近色,参数rate表示渐近度,blurColor表示渐近色
     function setChartDesignBoxShadow(rate,blurColor){
       var style='10px 10px '+rate+"px 20px "+blurColor+' inset';
+      if(sessionStorage['currentChartSelected']=='none'){
+        $('.new-circle,.new-rhombus,.new-roundedRect,.new-rect').css('box-shadow',style);
+      }else{
+        $('#'+sessionStorage['currentChartSelected']).css('box-shadow',style);
+      }
+    }
+
+    //设置流程图框阴影
+    //参数h表示水平阴影
+    //参数v表示垂直阴影
+    //参数blur表示模糊距离
+    //参数spread表示阴影尺寸
+    //参数color表示阴影颜色
+    function setChartDesignBoxShadowA(h,v,blur,spread,color){
+      var style=h+'px '+v+'px '+blur+'px '+spread+'px '+color;
       console.log(style);
       if(sessionStorage['currentChartSelected']=='none'){
         $('.new-circle,.new-rhombus,.new-roundedRect,.new-rect').css('box-shadow',style);
       }else{
         $('#'+sessionStorage['currentChartSelected']).css('box-shadow',style);
-      }      
+      }
     }
 
     //*********************************流程图数据操作区域*********************************
@@ -1223,6 +1258,41 @@
       $('#chart-blur-range-display').change(function(){
         var chartblurDom=document.getElementById('chart-blur-range-display');
         setChartDesignBoxShadow(chartblurDom.value,getChartBlurColorByColorSelector());
+      });
+
+      //同步设计区域的流程图框阴影
+      function synChartShadowInDesign(){
+        h=getChartHShadowBySelector();
+        v=getChartVShadowBySelector();
+        blur=getChartShadowBlurBySelector();
+        spread=getChartShadowSpreadBySelector();
+        color=getChartShadowColorBySelector();
+        setChartDesignBoxShadowA(h,v,blur,spread,color);
+      }
+
+      //垂直阴影改变时触发
+      $('#chart-h-shadow-display').change(function(){
+        synChartShadowInDesign();
+      });
+
+      //水平阴影改变时触发
+      $('#chart-v-shadow-display').change(function(){
+        synChartShadowInDesign();
+      });
+
+      //模糊距离改变时触发
+      $('#chart-shadow-blur-display').change(function(){
+        synChartShadowInDesign();
+      });
+
+      //阴影尺寸改变时触发
+      $('#chart-shadow-spread-display').change(function(){
+        synChartShadowInDesign();
+      });
+
+      //阴影颜色选择器改变时触发
+      $('#chart-shadow-color-display').change(function(){
+        synChartShadowInDesign();
       });
 
       //////  目标选择框文本发生更改时触发的事件,根据ID不同

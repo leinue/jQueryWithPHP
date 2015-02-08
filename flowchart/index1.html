@@ -417,7 +417,7 @@
 
       //取当前部件的填充背景色
       function getChartBackgroundColor(){
-        var bg=$('#'+sessionStorage['currentChartSelected']).css('background');
+        var bg=$('#'+sessionStorage['currentChartSelected']).css('backgroundColor');
         return (bg=='') ? 'rgb(255,255,255)':bg;
       }
 
@@ -666,6 +666,7 @@
         resultHTML=rareHTML[0];
       }
 
+      /**********************字体**********************/
       //字体
       var Bfont=elem.css("font");
       //字体颜色
@@ -680,6 +681,33 @@
       (fontAlign=='') ? fontAlign='center':fontAlign;
       (fontColor=='') ? fontColor='rgb(0,0,0)':fontColor;
 
+      /**********************物件**********************/
+      //圆角
+      var borderRadius=elem.css('borderRadius');
+      var elemType=id.split('-')[0];
+      (borderRadius=='') ? borderRadius='0':borderRadius;
+      //如果当前部件是圆角矩形,且borderRadius为空或者为0就把默认borderradius设置为4,下同
+      (elemType=='roundedRect' && (borderRadius=='' || borderRadius=='0')) ? borderRadius='4':borderRadius;
+      (elemType=='circle' && (borderRadius=='' || borderRadius=='0')) ? borderRadius='15':borderRadius;
+      //填充
+      var fillColor=elem.css('backgroundColor');
+      (fillColor=='') ? fillColor='rgb(255,255,255)':fillColor;
+      //渐近度
+      var fillBlurRange=elem.css('boxShadow');//rgb(0, 0, 0) 10px 10px 17px 20px inset
+      var fillBlurSplit=fillBlurRange.split(' ');
+      (fillBlurRange=='') ? fillBlurRange='0':fillBlurRange=fillBlurSplit[5];
+      //渐近色
+      var fillBlurColor=fillBlurSplit[0]+fillBlurSplit[1]+fillBlurSplit[2];
+      //线框样式
+      var borderStyle=elem.css('borderStyle');
+      (borderStyle=='') ? borderStyle='solid':borderStyle;
+      //线框宽度
+      var borderWidth=elem.css('borderWidth');
+      (borderWidth=='') ? borderWidth='2':borderWidth;
+      //线框颜色
+      var borderColor=elem.css('borderColor');
+      (borderColor=='') ? borderColor='rgb(136,242,75)':borderColor;
+
       blocks.push({
         BlockId:elem.attr('id'),
         BlockContent:resultHTML,
@@ -690,7 +718,14 @@
         BlockFont:Bfont,
         BlockFontSize:fontSize,
         BlockFontAlign:fontAlign,
-        BlockFontColor:fontColor
+        BlockFontColor:fontColor,
+        BlockBorderRadius:borderRadius,
+        BlockBackground:fillColor,
+        BlockFillBlurRange:fillBlurRange,
+        BlockFillBlurColor:fillBlurColor,
+        BlockBorderStyle:borderStyle,
+        BlockBorderWidth:borderWidth,
+        BlockborderColor:borderColor
       });
 
       var serliza="{"+'"connects":'+JSON.stringify(connects)+',"block":'+JSON.stringify(blocks)+"}";
@@ -869,9 +904,9 @@
     //设置流程图框背景色
     function setChartDesignBackground(style){
       if(sessionStorage['currentChartSelected']=='none'){
-        $('.new-circle,.new-rhombus,.new-roundedRect,.new-rect').css('background',style);
+        $('.new-circle,.new-rhombus,.new-roundedRect,.new-rect').css('backgroundColor',style);
       }else{
-        $('#'+sessionStorage['currentChartSelected']).css('background',style);
+        $('#'+sessionStorage['currentChartSelected']).css('backgroundColor',style);
       }      
     }
 

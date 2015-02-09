@@ -1210,6 +1210,16 @@
       }
     }
 
+    //设置文字高度
+    function setChartDesignLineHeight(height){
+      $('#'+sessionStorage['currentChartSelected']).css('line-height',height);
+    }
+
+    //设置文字间距
+    function setChartDesignLetterSpacing(space){
+      $('#'+sessionStorage['currentChartSelected']).css('letter-spacing',space);
+    }
+
     //*********************************流程图数据操作区域*********************************
 
     $(document).ready(function(){
@@ -1616,6 +1626,12 @@
                 break;
               case 'chart-fill-border-color-display'://框线颜色
                 setChartDesignBorderColorStyle(currentValue);
+                break;
+              case 'chart-font-height-display'://文字高度
+                setChartDesignLineHeight(currentValue);
+                break;
+              case 'chart-font-height-display'://文字间距
+                setChartDesignLetterSpacing(currentValue);
                 break;
               default:
                 break;

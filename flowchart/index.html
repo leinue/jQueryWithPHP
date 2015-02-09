@@ -1215,6 +1215,32 @@
             break;
         }
       });
+      
+      //切换字体样式按钮状态
+      function fontStyleBtnToggle(will){
+        $('#'+will).toggleClass('fl-font-style-active');
+      }
+
+      //字体样式按钮控制区域
+      $('.fl-font-style').click(function(){
+        var id=$(this).attr('id');
+        switch(id){
+          case 'B'://bold
+            fontStyleBtnToggle('B');
+            $('#'+sessionStorage['currentChartSelected']).toggleClass("fl-font-style-bold");
+            break;
+          case 'I'://italic
+            fontStyleBtnToggle('I');
+            $('#'+sessionStorage['currentChartSelected']).toggleClass("fl-font-style-italic");
+            break;
+          case 'U'://underline
+            fontStyleBtnToggle('U');
+            $('#'+sessionStorage['currentChartSelected']).toggleClass("fl-font-style-underline");
+            break;
+          default:
+            break;
+        }
+      });
 
       //**************************************UI控制部分***************************************
 

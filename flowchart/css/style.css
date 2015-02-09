@@ -22,6 +22,8 @@ body{
 }
 .fl-btn::-moz-focus-inner{border-color:transparent!important;}
 
+/*******************字体样式按钮******************/
+
 .fl-font-style{
 	border: 1px solid rgb(210,209,210);
 	border-top-right-radius: 0px;
@@ -47,6 +49,26 @@ body{
 	border-bottom-left-radius: 0px;
 	border-top-left-radius: 0px;
 }
+
+.fl-font-style-active{
+	color: rgb(255,255,255);
+	background: rgb(93,164,249);
+	border: 1px solid rgb(210,209,210);
+}
+
+.fl-font-style-bold{
+	font-weight: bold;
+}
+
+.fl-font-style-italic{
+	font-style: italic;
+}
+
+.fl-font-style-underline{
+	text-decoration: underline;
+}
+
+/*******************字体样式按钮******************/
 
 /*全局按钮CSS*/
 

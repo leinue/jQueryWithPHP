@@ -123,10 +123,10 @@
             <div class="chart-font-display">
               <label>对齐方式:</label>
                 <input id="chart-align-display" type="text" style="display:none;" class="chart-location-form" value="居中" width="40">
-                <input type="button" class="fl-btn fl-align-style" id="align-left" value="左">
-                <input type="button" class="fl-btn fl-align-style fl-align-style-both" id="algin-center" value="中">
-                <input type="button" class="fl-btn fl-align-style fl-align-style-both" id="align-right" value="右">
-                <input type="button" class="fl-btn fl-align-style fl-align-style-right" id="align-none" value="无">
+                <input type="button" class="fl-btn fl-align-style" id="btn-align-left" value="左">
+                <input type="button" class="fl-btn fl-align-style fl-align-style-both" id="btn-align-center" value="中">
+                <input type="button" class="fl-btn fl-align-style fl-align-style-both" id="btn-align-right" value="右">
+                <input type="button" class="fl-btn fl-align-style fl-align-style-right" id="btn-align-none" value="无">
               <p></p>
               <label>文字高度:</label><input id="chart-font-height-display" type="Number" class="chart-location-form" value="0" width="40">
               <p></p>
@@ -345,14 +345,37 @@
 
       //设置当前部件的对齐方式
       function setChartAlign(lign){
-        $('#chart-align-display').val(lign);
+        $('#btn-align-'+lign).addClass('fl-align-style-active');
+        if(lign=='left'){
+          $('#btn-align-right').removeClass('fl-align-style-active');
+          $('#btn-align-center').removeClass('fl-align-style-active');
+          $('#btn-align-none').removeClass('fl-align-style-active');
+        }
+
+        if(lign=='right'){
+          $('#btn-align-left').removeClass('fl-align-style-active');
+          $('#btn-align-center').removeClass('fl-align-style-active');
+          $('#btn-align-none').removeClass('fl-align-style-active');
+        }
+
+        if(lign=='center'){
+          $('#btn-align-left').removeClass('fl-align-style-active');
+          $('#btn-align-right').removeClass('fl-align-style-active');
+          $('#btn-align-none').removeClass('fl-align-style-active');
+        }
+
+        if(lign=='none'){
+          $('#btn-align-left').removeClass('fl-align-style-active');
+          $('#btn-align-center').removeClass('fl-align-style-active');
+          $('#btn-align-right').removeClass('fl-align-style-active');
+        }    
+        
       }
 
       //取当前部件的对齐方式
       function getChartAlign(){
         var align=$('#'+sessionStorage['currentChartSelected']).css('text-align');
-        var lignArray={'center':'居中','left':'居左','right':'居右'};
-        return (align=='') ? '居中':lignArray[align];
+        return (align=='') ? 'center':align;
       }
 
       //设置当前部件的字体颜色,参数color只能为rgb或16进制颜色值
@@ -1278,21 +1301,29 @@
             //显示style面板`
             attrToggle('style',currentListFlag);
             break;
-          case 'align-left':
+          case 'btn-align-left':
             //居左显示
             setChartTextAlign(sessionStorage['currentChartSelected'],'left');
+            $('#btn-align-left').addClass('fl-align-style-active');
+            $('#btn-align-right,#btn-align-center,#btn-align-none').removeClass('fl-align-style-active');
             break;
-          case 'align-right':
+          case 'btn-align-right':
             //居右显示
             setChartTextAlign(sessionStorage['currentChartSelected'],'right');
+            $('#btn-align-right').addClass('fl-align-style-active');
+            $('#btn-align-left,#btn-align-center,#btn-align-none').removeClass('fl-align-style-active');
             break;
-          case 'algin-center':
+          case 'btn-align-center':
             //居中显示
             setChartTextAlign(sessionStorage['currentChartSelected'],'center');
+            $('#btn-align-center').addClass('fl-align-style-active');
+            $('#btn-align-right,#btn-align-left,#btn-align-none').removeClass('fl-align-style-active');
             break;
-          case 'align-none':
+          case 'btn-align-none':
             //居无显示
             setChartTextAlign(sessionStorage['currentChartSelected'],'left');
+            $('#btn-align-none').addClass('fl-align-style-active');
+            $('#btn-align-right,#btn-align-center,#btn-align-left').removeClass('fl-align-style-active');
             break;
           default:
             break;

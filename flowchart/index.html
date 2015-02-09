@@ -525,6 +525,42 @@
         return (color=='none') ? 'rgb(255,255,255)':color;
       }
 
+      //设置属性栏的按钮样式
+      function setChartFontStyleBtn(style){
+        console.log(style);
+        if(style!='normal'){
+          var singleStyle=style.split('|');
+          for(var i=0;i<singleStyle.length-1;i++){
+            console.log(singleStyle[i]);
+            $('#'+singleStyle[i]).addClass('fl-font-style-active');
+          };
+        }else{
+          $('#B,#I,#U').removeClass('fl-font-style-active');
+        }
+      }
+
+      //取当前部件的font-style
+      function getChartFontStyle(id){
+        console.log(id);
+        if(id!=''){
+          var style='';
+          if($('#'+id).hasClass('fl-font-style-bold')){
+            style+='B|';
+          }
+          if($('#'+id).hasClass('fl-font-style-italic')){
+            style+='I|';
+          }
+          if($('#'+id).hasClass('fl-font-style-underline')){
+            style+='U|';
+          }
+          if(style!=''){
+            return style;
+          }else{
+            return 'normal';
+          }
+        }
+      }
+
     //****************负责属性面板的内容设置*****************
 
     //*********************************jsPlumb基础信息配置区域*********************************
@@ -1383,10 +1419,14 @@
         setChartShadowSpread(getChartShadowSpread());
         setChartShadowColor(getChartShadowColor());
         setChartShadowBlur(getChartShadowBlur());
+
+        //设置字体样式
+        setChartFontStyleBtn(getChartFontStyle(sessionStorage['currentChartSelected']));
       });
 
       $('.droppable').on('dblclick',function(){
         sessionStorage['currentChartSelected']='none';//置当前选择的流程图框为空
+        $('#B,#I,#U').removeClass('fl-font-style-active');//置当前字体样式选择器为空
       });
 
       //页面顶部工具栏选择事件

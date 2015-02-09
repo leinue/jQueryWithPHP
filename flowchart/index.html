@@ -113,7 +113,7 @@
               <label>字体颜色:</label><input id="chart-font-color-display" type="color" class="chart-location-form" value="rgb(0,0,0)" width="40">
               <p></p>
               <label>字体样式:</label>
-                <input type="button" class="fl-btn fl-font-style" id="B" value="B">
+                <input type="button" class="fl-btn fl-font-style" id="B" style="font-weight:bold" value="B">
                 <input type="button" class="fl-btn fl-font-style fl-font-style-both" id="I" style="font-style:italic" value="I">
                 <input type="button" class="fl-btn fl-font-style fl-font-style-right" id="U" style="text-decoration:underline" value="U">
             </div>
@@ -121,7 +121,16 @@
           <h4>对齐</h4>
           <div class="list-content">
             <div class="chart-font-display">
-              <label>对齐方式:</label><input id="chart-align-display" type="text" class="chart-location-form" value="居中" width="40">
+              <label>对齐方式:</label>
+                <input id="chart-align-display" type="text" style="display:none;" class="chart-location-form" value="居中" width="40">
+                <input type="button" class="fl-btn fl-align-style" id="align-left" value="左">
+                <input type="button" class="fl-btn fl-align-style fl-align-style-both" id="algin-center" value="中">
+                <input type="button" class="fl-btn fl-align-style fl-align-style-both" id="align-right" value="右">
+                <input type="button" class="fl-btn fl-align-style fl-align-style-right" id="align-none" value="无">
+              <p></p>
+              <label>文字高度:</label><input id="chart-font-height-display" type="Number" class="chart-location-form" value="0" width="40">
+              <p></p>
+              <label>文字间距:</label><input id="chart-font-spacing-display" type="Number" class="chart-location-form" value="0" width="40">
               <p></p>
             </div>
           </div>
@@ -711,6 +720,11 @@
           //阴影数据
           var shadow=elem.css('box-shadow');
 
+          //字体样式数据
+          var fontStyle=elem.css('fontStyle');
+          var fontWeight=elem.css('fontWeight');
+          var fontUnderline=elem.css('textDecoration');
+
           blocks.push({
             BlockId:elem.attr('id'),
             BlockContent:resultHTML,
@@ -729,7 +743,10 @@
             BlockBorderStyle:borderStyle,
             BlockBorderWidth:borderWidth,
             BlockborderColor:borderColor,
-            BlockShadow:shadow
+            BlockShadow:shadow,
+            BlockFontStyle:fontStyle,
+            BlockFontWeight:fontWeight,
+            BlockFontUnderline:fontUnderline
           });
 
         });
@@ -815,6 +832,11 @@
       //阴影数据
       var shadow=elem.css('box-shadow');
 
+      //字体样式数据
+      var fontStyle=elem.css('fontStyle');
+      var fontWeight=elem.css('fontWeight');
+      var fontUnderline=elem.css('textDecoration');
+
       blocks.push({
         BlockId:elem.attr('id'),
         BlockContent:resultHTML,
@@ -833,7 +855,10 @@
         BlockBorderStyle:borderStyle,
         BlockBorderWidth:borderWidth,
         BlockborderColor:borderColor,
-        BlockShadow:shadow
+        BlockShadow:shadow,
+        BlockFontStyle:fontStyle,
+        BlockFontWeight:fontWeight,
+        BlockFontUnderline:fontUnderline
       });
 
       var serliza="{"+'"connects":'+JSON.stringify(connects)+',"block":'+JSON.stringify(blocks)+"}";
@@ -917,6 +942,9 @@
         var borderStyle=unpack['block'][i]['BlockBorderStyle'];
         var borderColor=unpack['block'][i]['BlockborderColor'];
         var shadow=unpack['block'][i]['BlockShadow'];
+        var fontStyle=unpack['block'][i]['BlockFontStyle'];
+        var fontWeight=unpack['block'][i]['BlockFontWeight'];
+        var fontUnderline=unpack['block'][i]['BlockFontUnderline'];
 
         var blockAttr=BlockId.split('-')[0];
 
@@ -939,7 +967,10 @@
           .css('box-shadow',boxInsetShadowStyle)
           .css('border-style',borderStyle)
           .css('border-color',borderColor)
-          .css('box-shadow',shadow);
+          .css('box-shadow',shadow)
+          .css('font-style',fontStyle)
+          .css('font-weight',fontWeight)
+          .css('font-underline',fontUnderline);
       }
 
       /*for(i=0;i<unpack['connects'].length;i++){
@@ -1246,6 +1277,22 @@
           case 'btn-style':
             //显示style面板`
             attrToggle('style',currentListFlag);
+            break;
+          case 'align-left':
+            //居左显示
+            setChartTextAlign(sessionStorage['currentChartSelected'],'left');
+            break;
+          case 'align-right':
+            //居右显示
+            setChartTextAlign(sessionStorage['currentChartSelected'],'right');
+            break;
+          case 'algin-center':
+            //居中显示
+            setChartTextAlign(sessionStorage['currentChartSelected'],'center');
+            break;
+          case 'align-none':
+            //居无显示
+            setChartTextAlign(sessionStorage['currentChartSelected'],'left');
             break;
           default:
             break;
@@ -1626,15 +1673,62 @@
         if(event.ctrlKey && event.which==86){
           //CTRL+V 进行粘贴部件操作
           var chartCopiedJson=chartOperationStack['copy'][chartOperationStack['copy'].length-1];
-          var unpackChart=JSON.parse(chartCopiedJson);
-          var chartBlockObj=unpackChart['block'][0];
+
+          var unpack=JSON.parse(chartCopiedJson);
+          var chartBlockObj=unpack['block'][0];
           var chartPastedID=chartBlockObj['BlockId']+sessionStorage['idIndex'];//设置被粘贴部件的新ID
-          if(unpackChart['connects'].length==0){
+
+          var BlockContent=chartBlockObj['BlockContent'];
+          var BlockX=chartBlockObj['BlockX'];
+          var BlockY=chartBlockObj['BlockY'];
+          var width=chartBlockObj['BlockWidth'];
+          var height=chartBlockObj['BlockHeight'];
+          var font=chartBlockObj['BlockFont'];
+          var fontSize=chartBlockObj['BlockFontSize'];
+          var fontAlign=chartBlockObj['BlockFontAlign'];
+          var fontColor=chartBlockObj['BlockFontColor'];
+          var borderRadius=chartBlockObj['BlockBorderRadius'];
+          var backgroundColor=chartBlockObj['BlockBackground'];
+          var fillBlurRange=chartBlockObj['BlockFillBlurRange'];
+          var fillBlurColor=chartBlockObj['BlockFillBlurColor'];
+          var borderStyle=chartBlockObj['BlockBorderStyle'];
+          var borderColor=chartBlockObj['BlockborderColor'];
+          var shadow=chartBlockObj['BlockShadow'];
+          var fontStyle=chartBlockObj['BlockFontStyle'];
+          var fontWeight=chartBlockObj['BlockFontWeight'];
+          var fontUnderline=chartBlockObj['BlockFontUnderline'];
+
+          var blockAttr=chartPastedID.split('-')[0];
+
+          var boxInsetShadowStyle='10px 10px '+fillBlurRange+"px 20px "+fillBlurColor+' inset';
+        
+          if(unpack['connects'].length==0){
             addNewChart('.chart-design',chartPastedID,chartBlockObj['BlockX'],chartBlockObj['BlockY']-20,chartBlockObj['BlockContent']);
-          }else{
-          }
-          unpackChart['block'][0]['BlockId']=chartPastedID;
-          chartOperationStack['paste'].push(JSON.stringify(unpackChart));
+            $("#"+chartPastedID)
+              .css("left",BlockX)
+              .css("top",BlockY)
+              .css("position","absolute")
+              .css("margin","0px")
+              .css("width",width)
+              .css("height",height)
+              .css('font',font)
+              .css('font-size',fontSize)
+              .css('text-align',fontAlign)
+              .css('color',fontColor)
+              .css('border-radius',borderRadius)
+              .css('background',backgroundColor)
+              .css('box-shadow',boxInsetShadowStyle)
+              .css('border-style',borderStyle)
+              .css('border-color',borderColor)
+              .css('box-shadow',shadow)
+              .css('font-style',fontStyle)
+              .css('font-weight',fontWeight)
+              .css('font-underline',fontUnderline);
+            }else{
+
+            }
+          unpack['block'][0]['BlockId']=chartPastedID;
+          chartOperationStack['paste'].push(JSON.stringify(unpack));
           chartRareOperationStack.push('paste');
         }
         if(event.which==46){

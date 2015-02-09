@@ -24,7 +24,7 @@ body{
 
 /*******************字体样式按钮******************/
 
-.fl-font-style{
+.fl-font-style,.fl-align-style{
 	border: 1px solid rgb(210,209,210);
 	border-top-right-radius: 0px;
 	border-bottom-right-radius: 0px;
@@ -32,25 +32,25 @@ body{
 	margin-left: -5px;
 }
 
-.fl-font-style:hover{
+.fl-font-style:hover,.fl-align-style:hover{
 	color: rgb(255,255,255);
 	background: rgb(93,164,249);
 	border: 1px solid rgb(210,209,210);
 }
 
-.fl-font-style-both{
+.fl-font-style-both,.fl-align-style-both{
 	border-bottom-left-radius: 0px;
 	border-top-left-radius: 0px;
 }
 
-.fl-font-style-right{
+.fl-font-style-right,.fl-align-style-right{
 	border-bottom-right-radius: 8px;
 	border-top-right-radius: 8px;
 	border-bottom-left-radius: 0px;
 	border-top-left-radius: 0px;
 }
 
-.fl-font-style-active{
+.fl-font-style-active,.fl-align-style-active{
 	color: rgb(255,255,255);
 	background: rgb(93,164,249);
 	border: 1px solid rgb(210,209,210);

@@ -144,8 +144,8 @@
         </div>
         
         <div class="chart-list chart-style" style="display:none;">
-          <h4>default</h4>
-          <h4>dark</h4>
+          <h4>娱乐型</h4>
+          <h4>商务型</h4>
           <h4>blue</h4>
           <h4>green</h4>
           <h4>pink</h4>
@@ -559,11 +559,9 @@
 
       //设置属性栏的按钮样式
       function setChartFontStyleBtn(style){
-        console.log(style);
         if(style!='normal'){
           var singleStyle=style.split('|');
           for(var i=0;i<singleStyle.length-1;i++){
-            console.log(singleStyle[i]);
             $('#'+singleStyle[i]).addClass('fl-font-style-active');
           };
         }else{
@@ -573,7 +571,6 @@
 
       //取当前部件的font-style
       function getChartFontStyle(id){
-        console.log(id);
         if(id!=''){
           var style='';
           if($('#'+id).hasClass('fl-font-style-bold')){
@@ -595,7 +592,6 @@
 
       //设置文字高度
       function setChartLineHeight(height){
-        console.log("height="+height);
         $('#chart-font-height-display').val(height);
       }
 
@@ -607,7 +603,6 @@
 
       //设置文字间距
       function setChartLetterSpacing(space){
-        console.log("space="+space);
         $('#chart-font-spacing-display').val(space);
       }
 
@@ -772,6 +767,9 @@
           var fontWeight=elem.css('fontWeight');
           var fontUnderline=elem.css('textDecoration');
 
+          //文字高度
+          var lineHeight=elem.css('line-height');
+
           blocks.push({
             BlockId:elem.attr('id'),
             BlockContent:resultHTML,
@@ -793,7 +791,8 @@
             BlockShadow:shadow,
             BlockFontStyle:fontStyle,
             BlockFontWeight:fontWeight,
-            BlockFontUnderline:fontUnderline
+            BlockFontUnderline:fontUnderline,
+            BlockLineHeight:lineHeight
           });
 
         });
@@ -884,6 +883,9 @@
       var fontWeight=elem.css('fontWeight');
       var fontUnderline=elem.css('textDecoration');
 
+      //文字高度
+      var lineHeight=elem.css('line-height');
+
       blocks.push({
         BlockId:elem.attr('id'),
         BlockContent:resultHTML,
@@ -905,7 +907,8 @@
         BlockShadow:shadow,
         BlockFontStyle:fontStyle,
         BlockFontWeight:fontWeight,
-        BlockFontUnderline:fontUnderline
+        BlockFontUnderline:fontUnderline,
+        BlockLineHeight:lineHeight
       });
 
       var serliza="{"+'"connects":'+JSON.stringify(connects)+',"block":'+JSON.stringify(blocks)+"}";
@@ -992,6 +995,7 @@
         var fontStyle=unpack['block'][i]['BlockFontStyle'];
         var fontWeight=unpack['block'][i]['BlockFontWeight'];
         var fontUnderline=unpack['block'][i]['BlockFontUnderline'];
+        var lineHeight=unpack['block'][i]['BlockLineHeight'];
 
         var blockAttr=BlockId.split('-')[0];
 
@@ -1017,7 +1021,8 @@
           .css('box-shadow',shadow)
           .css('font-style',fontStyle)
           .css('font-weight',fontWeight)
-          .css('font-underline',fontUnderline);
+          .css('font-underline',fontUnderline)
+          .css('line-height',lineHeight);
       }
 
       /*for(i=0;i<unpack['connects'].length;i++){
@@ -1774,6 +1779,7 @@
           var fontStyle=chartBlockObj['BlockFontStyle'];
           var fontWeight=chartBlockObj['BlockFontWeight'];
           var fontUnderline=chartBlockObj['BlockFontUnderline'];
+          var lineHeight=chartBlockObj['BlockLineHeight'];
 
           var blockAttr=chartPastedID.split('-')[0];
 
@@ -1800,7 +1806,8 @@
               .css('box-shadow',shadow)
               .css('font-style',fontStyle)
               .css('font-weight',fontWeight)
-              .css('font-underline',fontUnderline);
+              .css('font-underline',fontUnderline)
+              .css('line-height',lineHeight);
             }else{
 
             }

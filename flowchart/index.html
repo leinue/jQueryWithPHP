@@ -593,6 +593,30 @@
         }
       }
 
+      //设置文字高度
+      function setChartLineHeight(height){
+        console.log("height="+height);
+        $('#chart-font-height-display').val(height);
+      }
+
+      //取得文字高度
+      function getChartLineHeight(){
+        var height=$('#'+sessionStorage['currentChartSelected']).css('line-height');
+        return (height=='') ? '0':height.split('px')[0];
+      }
+
+      //设置文字间距
+      function setChartLetterSpacing(space){
+        console.log("space="+space);
+        $('#chart-font-spacing-display').val(space);
+      }
+
+      //取得文字间距
+      function getChartLetterSpacing(){
+        var space=$('#'+sessionStorage['currentChartSelected']).css('letterSpacing');
+        return (space=='') ? '0':space;
+      }
+
     //****************负责属性面板的内容设置*****************
 
     //*********************************jsPlumb基础信息配置区域*********************************
@@ -1500,6 +1524,12 @@
 
         //设置字体样式
         setChartFontStyleBtn(getChartFontStyle(sessionStorage['currentChartSelected']));
+
+        //设置文字高度
+        setChartLineHeight(getChartLineHeight());
+
+        //设置文字间距
+        setChartLetterSpacing(getChartLetterSpacing());
       });
 
       $('.droppable').on('dblclick',function(){

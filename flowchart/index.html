@@ -144,11 +144,11 @@
         </div>
         
         <div class="chart-list chart-style" style="display:none;">
-          <h4 id="entertainment">娱乐型</h4>
-          <h4 id="enterprises">商务型</h4>
-          <h4 id="style-blue">blue</h4>
-          <h4 id="style-dark">dark</h4>
-          <h4 id="style-pink">pink</h4>
+          <h4 class="right-style-selector" id="style-entertainment">娱乐型</h4>
+          <h4 class="right-style-selector" id="style-enterprises">商务型</h4>
+          <h4 class="right-style-selector" id="style-blue">blue</h4>
+          <h4 class="right-style-selector" id="style-dark">dark</h4>
+          <h4 class="right-style-selector" id="style-pink">pink</h4>
         </div>
        
       </div>
@@ -1832,6 +1832,23 @@
         $('.line-select').slideUp('fast');
         sessionStorage['topLineSelectIsDisplayed']=false;
         sessionStorage['topAlignSelectIsDisplayed']=false;
+      });
+
+      //选择相应的style
+      $('.right-style-selector').click(function(){
+        var styleName=$(this).attr('id').split('-')[0];
+        switch(styleName){
+          case 'entertainment':
+            break;
+          case 'enterprises':
+            break;
+          case 'blue':
+            break;
+          case 'dark':
+            break;
+          case 'pink':
+            break;
+        }
       });
 
       //***********************************元素拖动控制部分************************************

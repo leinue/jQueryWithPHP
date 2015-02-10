@@ -1838,21 +1838,27 @@
       function setEnvironmentStyle(styleName){
         switch(styleName){
           case 'entertainment':
+            console.log(styleName);
+            $('.droppable').css('background','rgb(173,219,225)');
             break;
           case 'enterprises':
+            $('.droppable').css('background','rgb(255,255,255)');
             break;
           case 'blue':
+            $('.droppable').css('background','rgb(255,235,190)');
             break;
           case 'dark':
+            $('.droppable').css('background','rgb(6,1,0)');
             break;
           case 'pink':
+            $('.droppable').css('background','rgb(127,0,185)');
             break;
         }
       }
 
       //选择相应的style
       $('.right-style-selector').click(function(){
-        var styleName=$(this).attr('id').split('-')[0];
+        var styleName=$(this).attr('id').split('-')[1];
         setEnvironmentStyle(styleName);
       });
 

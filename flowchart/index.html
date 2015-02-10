@@ -1834,9 +1834,8 @@
         sessionStorage['topAlignSelectIsDisplayed']=false;
       });
 
-      //选择相应的style
-      $('.right-style-selector').click(function(){
-        var styleName=$(this).attr('id').split('-')[0];
+      //设置style
+      function setEnvironmentStyle(styleName){
         switch(styleName){
           case 'entertainment':
             break;
@@ -1849,6 +1848,12 @@
           case 'pink':
             break;
         }
+      }
+
+      //选择相应的style
+      $('.right-style-selector').click(function(){
+        var styleName=$(this).attr('id').split('-')[0];
+        setEnvironmentStyle(styleName);
       });
 
       //***********************************元素拖动控制部分************************************

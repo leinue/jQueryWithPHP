@@ -1550,10 +1550,12 @@
         //设置文字间距
         setChartLetterSpacing(getChartLetterSpacing());
       });
-
+  
+      //设计区域被双击时
       $('.droppable').on('dblclick',function(){
         sessionStorage['currentChartSelected']='none';//置当前选择的流程图框为空
         $('#B,#I,#U').removeClass('fl-font-style-active');//置当前字体样式选择器为空
+        $('#btn-align-center,#btn-align-left,#btn-align-right,#btn-align-none').removeClass('fl-align-style-active');//置当前对齐方式为空
       });
 
       //页面顶部工具栏选择事件

@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="zh">
 <head>
 	<title>工作流程图</title>
 	<meta charset="utf-8">
@@ -675,6 +675,7 @@
         //参数type只能为left,right或者center
         //参数ele若留空则默认全局设置,默认为空
         function setChartTextAlign(ele,type){
+          ele=(arguments[0]=='') ? '':arguments[0];
           if(ele==''){
             $('.draggable').css('text-align',type);
           }else{
@@ -934,7 +935,9 @@
     //参数left,top代表新部件的插入位置
     //参数blockName代表新部件的文本
     //参数undo表示是否进行撤销操作,如果进行撤销操作则不进行入栈,默认为false
-    function addNewChart(newChartArea,chartID,left,top,blockName,undo=false){
+    function addNewChart(newChartArea,chartID,left,top,blockName,undo){
+
+      undo=(undo=='') ? false:arguments[5];
 
       var name=chartID.split('-')[0];
 
@@ -1059,7 +1062,8 @@
     //sessionStorage['currentChartAmount']=sessionStorage['currentChartAmount']+2;
 
     //删除一个流程框图,若参数undo为true则在进行操作时不进行入栈操作,默认为false
-    function deleteChart(id,undo=false){
+    function deleteChart(id,undo){
+        undo=(undo=='') ? false:'';
         var DOM=$('#'+id);
         if(undo==false){
           chartOperationStack['delete'].push(getSingleChartJson(id));

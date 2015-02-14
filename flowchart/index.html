@@ -178,7 +178,7 @@
     </div>
   </div>
 
-  <div class="save-form">
+  <div class="save-form" style="display:none">
     <div class="save-heading">保存</div>
     <div class="save-json">
       <h5>保存为json:</h5>
@@ -1344,6 +1344,8 @@
           case 'chart-save':
             //分享或保存(生成JSON)
             var jsondata=save();
+            $('.save-form').slideToggle('slow');
+            $('#save-json-form-display').html(jsondata);
             html2canvas($('.droppable'), {
               onrendered: function(canvas) {
                 //document.body.appendChild(canvas);

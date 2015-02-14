@@ -181,6 +181,7 @@
   <script src="external/jquery/jquery.js"></script>
   <script src="js/jquery-ui.js"></script>
   <script src="js/jquery.jsPlumb-1.4.0-all.js"></script>
+  <script src="js/html2canvas.js"></script>
 
   <script type="text/javascript">
        
@@ -1331,6 +1332,11 @@
           case 'chart-save':
             //分享或保存(生成JSON)
             var jsondata=save();
+            html2canvas($('.droppable'), {
+              onrendered: function(canvas) {
+                document.body.appendChild(canvas);
+              }
+            });
             break;
           case 'btn-object':
             //显示object面板

@@ -345,11 +345,11 @@ body{
 
 /*保存为图片矿口*/
 .save-form{
-	z-index: 10000;
+	position: absolute;
 	border:1px solid rgb(160,160,160);
-	width: 800px;
-	margin: 0 auto;
+	width: 60%;
 	margin-top: 20px;
+	left: 20%;
 	border-bottom: 2px solid rgb(160,160,160);
 }
 
@@ -371,6 +371,7 @@ body{
 }
 
 #save-json-form-display{
-	width: 775px;
+	width: 98.975%;
+	max-width: 98.75%;
 	height: 120px;
 }

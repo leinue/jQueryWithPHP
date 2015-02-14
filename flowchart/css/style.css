@@ -342,3 +342,35 @@ body{
     -ms-user-select: none;
     user-select: none;    
 }
+
+/*保存为图片矿口*/
+.save-form{
+	border:1px solid rgb(160,160,160);
+	width: 800px;
+	height: 500px;
+	margin: 0 auto;
+	margin-top: 20px;
+	border-bottom: 2px solid rgb(160,160,160);
+}
+
+.save-heading{
+	background: rgb(228,226,227);
+	height: 25px;
+	border-bottom: 2px solid rgb(210,209,210);
+	padding:10px;
+	font-size: 20px;
+}
+
+.save-json{
+	padding: 10px;
+}
+
+.save-json h5{
+	margin-top:5px;
+	margin-bottom: 5px;
+}
+
+#save-json-form-display{
+	width: 775px;
+	height: 120px;
+}

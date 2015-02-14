@@ -178,6 +178,17 @@
     </div>
   </div>
 
+  <div class="save-form">
+    <div class="save-heading">保存</div>
+    <div class="save-json">
+      <h5>保存为json:</h5>
+      <textarea id="save-json-form-display"></textarea>
+    </div>
+    <div class="save-img">
+      
+    </div>
+  </div>
+
   <script src="external/jquery/jquery.js"></script>
   <script src="js/jquery-ui.js"></script>
   <script src="js/jquery.jsPlumb-1.4.0-all.js"></script>
@@ -1332,11 +1343,11 @@
           case 'chart-save':
             //分享或保存(生成JSON)
             var jsondata=save();
-            html2canvas($('.droppable'), {
+            /*html2canvas($('.droppable'), {
               onrendered: function(canvas) {
                 document.body.appendChild(canvas);
               }
-            });
+            });*/
             break;
           case 'btn-object':
             //显示object面板

@@ -185,7 +185,8 @@
       <textarea id="save-json-form-display"></textarea>
     </div>
     <div class="save-img">
-      
+      <h5>保存为图片:</h5>
+      <div class="save-img-href">dd</div>
     </div>
   </div>
 
@@ -1343,11 +1344,14 @@
           case 'chart-save':
             //分享或保存(生成JSON)
             var jsondata=save();
-            /*html2canvas($('.droppable'), {
+            html2canvas($('.droppable'), {
               onrendered: function(canvas) {
-                document.body.appendChild(canvas);
+                //document.body.appendChild(canvas);
+                var data=canvas.toDataURL("image/png");
+                console.log('<a href="'+data+'">Download</a>');
+                $('.save-img-href').html('<a href="'+data+'">Download</a>');
               }
-            });*/
+            });
             break;
           case 'btn-object':
             //显示object面板

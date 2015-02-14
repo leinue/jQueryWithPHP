@@ -345,9 +345,9 @@ body{
 
 /*保存为图片矿口*/
 .save-form{
+	z-index: 10000;
 	border:1px solid rgb(160,160,160);
 	width: 800px;
-	height: 500px;
 	margin: 0 auto;
 	margin-top: 20px;
 	border-bottom: 2px solid rgb(160,160,160);
@@ -361,11 +361,11 @@ body{
 	font-size: 20px;
 }
 
-.save-json{
+.save-json,.save-img{
 	padding: 10px;
 }
 
-.save-json h5{
+.save-json h5,.save-img h5{
 	margin-top:5px;
 	margin-bottom: 5px;
 }

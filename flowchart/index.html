@@ -1348,7 +1348,7 @@
             $('#save-json-form-display').html(jsondata);
             html2canvas($('.droppable'), {
               onrendered: function(canvas) {
-                //document.body.appendChild(canvas);
+                
                 var data=canvas.toDataURL("image/png");
                 console.log('<a href="'+data+'">Download</a>');
                 $('.save-img-href').html('<a href="'+data+'">Download</a>');

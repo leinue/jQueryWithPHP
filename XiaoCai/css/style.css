@@ -1,0 +1,39 @@
+body{
+	margin: 0px;
+	background: rgb(226,224,227);
+}
+
+nav{
+	width: 100%;
+	background: rgb(230,0,39);
+	padding-bottom: 16px;
+	padding-top: 16px;
+}
+
+.nav-content{
+	display: table;
+	margin-left: 24px;
+	color: rgb(255,255,255);
+}
+
+.nav-content ul{
+	list-style: none;
+	margin: 0px;
+	display: table-row;
+}
+
+.nav-content ul li{
+	display: table-cell;
+}
+
+.nav-menu{
+	
+}
+
+footer{
+	position: absolute;
+	bottom: 0px;
+	height: 90px;
+	width: 100%;
+	background: rgb(241,241,241);
+}

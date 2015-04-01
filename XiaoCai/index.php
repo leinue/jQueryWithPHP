@@ -12,9 +12,38 @@
 	</nav>
 </header>
 
-<content>
+<section>
+	<div class="banner">
+		<ul>
+			<li style="background-image: url('images/first.jpg');"></li>
 
-</content>
+			<li style="background-image: url('images/second.jpg');"></li>
+
+			<li style="background-image: url('images/third.jpg');"></li>
+
+			<li style="background-image: url('images/forth.jpg');"></li>
+		</ul>
+	</div>
+
+	<div class="vip-enjoy">
+		<div class="vip-video">
+			<video src="movie.ogg" controls="controls">
+				您的浏览器不支持 video 标签。
+			</video>
+		</div>
+		<div class="vip-content">
+			<div class="vip-title">会员专享标题</div>
+			<div class="vip-post">内容标题内容标题内容标题内容标题内容标题内容标题内容标题内容标题</div>
+			<div class="vip-menu">
+				<ul>
+					<li><span class="glyphicon glyphicon-eye-open"></span> 268</li>
+					<li><span class="glyphicon glyphicon-heart-empty"></span></li>
+					<li><span class="glyphicon glyphicon-link"></span></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
 
 <footer>
 	

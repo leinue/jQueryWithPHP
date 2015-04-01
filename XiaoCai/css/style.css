@@ -57,12 +57,6 @@ section{
 }
 
 /*幻灯片开始*/
-.img-slides{
-	width: 100%;
-	margin-top: 4px;
-	height: 150px;
-	border-bottom:4px solid rgb(199,199,199);
-}
 
 .banner{
 	position: relative;
@@ -134,6 +128,19 @@ section{
 
 .vip-menu ul li:hover{
 	color: rgb(179,179,179);
+}
+
+.teacher-brand{
+	position: absolute;
+	width: 60px;
+	padding: 10px;
+	background: rgb(230,0,39);
+	margin-top: -140px;
+	margin-right: 20px;
+	color: rgb(255,255,255);
+	text-align: center;
+	font-size: 14px;
+	right: 20px;
 }
 
 footer{

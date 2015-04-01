@@ -41,6 +41,9 @@
 					<li><span class="glyphicon glyphicon-link"></span></li>
 				</ul>
 			</div>
+			<div class="teacher-brand">
+				ALVIN LEE
+			</div>
 		</div>
 	</div>
 </section>

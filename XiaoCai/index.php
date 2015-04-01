@@ -1,5 +1,7 @@
 <?php require('header.php'); ?>
 
+<div class="main-page">
+
 <header>
 	<nav>
 		<div class="nav-content">
@@ -30,6 +32,7 @@
 			<video src="movie.ogg" controls="controls">
 				您的浏览器不支持 video 标签。
 			</video>
+			<!--<img src="">-->
 		</div>
 		<div class="vip-content">
 			<div class="vip-title">会员专享标题</div>
@@ -51,5 +54,14 @@
 <footer>
 	
 </footer>
+
+</div>
+
+<div class="login-page">
+	<div class="logo-area">
+		<img width="200" height="100" src="images/logo.png" />
+		吃大餐·做晓菜
+	</div>
+</div>
 
 <?php require('footer.php') ?>

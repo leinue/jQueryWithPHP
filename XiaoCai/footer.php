@@ -4,7 +4,20 @@
 	<script type="text/javascript" src="extension/unslider.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<script type="text/javascript">
-		
+	$(document).ready(function(){
+		function handleHeaderEvent(){
+
+		}
+
+		$(document).click(function(){
+			//$('header').slideToggle();
+			$('footer').slideToggle();
+		});
+
+		$(window).scroll(handleHeaderEvent);
+
+		/*幻灯片开始*/
+
 		$(function() {
     		$('.banner').unslider();
 		});
@@ -18,6 +31,25 @@
 			fluid: true,
 			dots: true
 		});
+
+		/*幻灯片结束*/
+
+		/*菜单按钮被点击*/
+		var isSlided=false;
+		$('.nav-menu').click(function(){
+			var docWidth=$(document).width()-100;
+			if(!isSlided){
+				$('.main-page').animate({left:docWidth+'px'},400,function(){
+					$('.login-page').css('display','block');
+				});
+				isSlided=true;
+			}else{
+				$('.main-page').animate({left:'0px'});
+				$('.login-page').css('display','none');
+				isSlided=false;
+			}
+		});
+	});
 	</script>
 </body>
 </html>

@@ -59,8 +59,13 @@
 
 <div class="login-page">
 	<div class="logo-area">
-		<img width="200" height="100" src="images/logo.png" />
+		<img width="180" height="100" src="images/logo.png" />
 		吃大餐·做晓菜
+	</div>
+
+	<div class="lo-re-area">
+		<a href="" class="button button-caution button-pill">登录</a>
+		<div class="fast-register"><a href="">快速注册</a></div>
 	</div>
 </div>
 

@@ -1,18 +1,19 @@
 body{
 	margin: 0px;
 	background: rgb(226,224,227);
+	font-family: "微软雅黑";
 }
 
 nav{
 	width: 100%;
 	background: rgb(230,0,39);
-	padding-bottom: 16px;
+	padding-bottom: 12px;
 	padding-top: 16px;
 }
 
 .nav-content{
 	display: table;
-	margin-left: 24px;
+	margin-left: 20px;
 	color: rgb(255,255,255);
 }
 
@@ -24,10 +25,26 @@ nav{
 
 .nav-content ul li{
 	display: table-cell;
+	font-size: 26px;
 }
 
-.nav-menu{
-	
+.nav-content ul li:first-child{
+	font-size: 23px;
+	cursor: pointer;
+	width: 44px;
+}
+
+.nav-content ul .main-title{
+	width: 76px;
+}
+
+.nav-content ul .search-form input{
+	width: 156px;
+	height: 34px;
+	border: none;
+	border-radius: 4px;
+	font-size: 14px;
+	color: rgb(0,0,0);
 }
 
 footer{

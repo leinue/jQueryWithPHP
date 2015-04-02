@@ -6,16 +6,30 @@
 	<link rel="stylesheet" type="text/css" href="extension/buttons.css">
 	<script type="text/javascript">
 	$(document).ready(function(){
-		function handleHeaderEvent(){
+		function isUserAtBottom(){
+			return (($(document).height()-$(window).height())-$(window).scrollTop())<=60 ? true:false;
+		}
 
+		//处理底部菜单滑动事件,若用户滑动到底部则自动隐藏
+		var footerIsDisplayed=false;
+		function handleFooterEvent(){
+			if(isUserAtBottom){
+				if(footerIsDisplayed){
+					$('footer').slideUp();
+					footerIsDisplayed=false;
+				}else{
+					$('footer').slideDown();
+					footerIsDisplayed=true;
+				}
+			}
 		}
 
 		$(document).click(function(){
 			//$('header').slideToggle();
-			$('footer').slideToggle();
+			//$('footer').slideToggle();
 		});
 
-		$(window).scroll(handleHeaderEvent);
+		$(window).scroll(handleFooterEvent);
 
 		/*幻灯片开始*/
 
@@ -38,7 +52,14 @@
 		/*菜单按钮被点击*/
 		var isSlided=false;
 		$('.nav-menu').click(function(){
-			var docWidth=$(document).width()-100;
+			var rate=0.2545;
+			if($(document).width()>400){
+				rate=0.2745;
+			}else{
+				rate=0.2945;
+			}
+			console.log(rate);
+			var docWidth=$(document).width()-($(document).width()*rate);
 			if(!isSlided){
 				$('.main-page').animate({left:docWidth+'px'},400,function(){
 					$('.login-page').css('display','block');

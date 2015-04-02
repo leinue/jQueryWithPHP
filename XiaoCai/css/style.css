@@ -28,7 +28,7 @@ nav{
 .logo-area{
 	margin: 0 auto;
 	width: 180px;
-	margin-top: 60px;
+	margin-top: 50px;
 	color: rgb(116,114,117);
 	font-size: 18px;
 	text-align: center;
@@ -37,7 +37,7 @@ nav{
 }
 
 .lo-re-area{
-	width: 200px;
+	width: 83.682008%;
 	margin: 0 auto;
 	margin-top: 30px;
 	letter-spacing: 4px;
@@ -63,7 +63,7 @@ nav{
 }
 
 .button-caution{
-	width: 200px;
+	width: 100%;
 	margin-bottom: 20px;
 }
 
@@ -181,6 +181,7 @@ section{
 	font-size: 18px;
 	display: table;
 	margin-top: 10px;
+	width: 100%;
 }
 
 .vip-menu ul{
@@ -190,7 +191,7 @@ section{
 
 .vip-menu ul li{
 	display: table-cell;
-	width: 93px;
+	width: 33.4558275%;
 	text-align: center;
 	cursor: pointer;
 }
@@ -212,11 +213,55 @@ section{
 	right: 20px;
 }
 
+/*侧边栏工具菜单开始*/
+
+.column-menu{
+	margin-top: 30px;
+	color: rgb(97,95,98);
+	font-size: 16px;
+	width: 99.9%;
+}
+
+.column-menu ul{
+	list-style: none;
+	margin-left: -40px;
+}
+
+.column-menu ul li{
+	border-top: 1px solid rgb(250,250,250);
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-left: 30px;
+	margin-bottom: 1px;
+	cursor: pointer;
+}
+
+.column-menu ul li:last-child{
+	border-bottom: 1px solid rgb(250,250,250);
+}
+
+.column-menu ul li:hover{
+	background: rgb(204,202,205);
+}
+
+.column-menu ul li span{
+	color: rgb(164,58,78);
+	margin-right: 20px;
+}
+
+#response-flag{
+	font-size: 50px;
+	color: rgb(255,0,0);
+	height: 12px;
+	position: absolute;
+	top: 334px;
+}
+
 footer{
 	z-index: 1000;
 	position: fixed;
 	bottom: 0px;
-	height: 90px;
+	height: 60px;
 	width: 100%;
 	background: rgb(241,241,241);
 }

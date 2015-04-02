@@ -136,6 +136,7 @@ section{
 
 .vip-enjoy{
 	margin-top: 14px;
+	margin-bottom: 14px;
 	margin-left: 14px;
 	margin-right: 14px;
 	border-radius: 4px;
@@ -261,6 +262,7 @@ footer{
 	z-index: 1000;
 	position: fixed;
 	bottom: 0px;
+	left: 0px;
 	height: 60px;
 	width: 100%;
 	background: rgb(241,241,241);

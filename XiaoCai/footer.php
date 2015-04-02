@@ -13,13 +13,18 @@
 		//处理底部菜单滑动事件,若用户滑动到底部则自动隐藏
 		var footerIsDisplayed=false;
 		function handleFooterEvent(){
-			if(isUserAtBottom){
+			console.log($(window).scrollTop());
+			if(($(window).height()+$(window).scrollTop())>=$(document).height()){
 				if(footerIsDisplayed){
-					$('footer').slideUp();
-					footerIsDisplayed=false;
+					
 				}else{
-					$('footer').slideDown();
+					$('footer').slideUp();
 					footerIsDisplayed=true;
+				}
+			}else{
+				if($(window).scrollTop()==0){
+					$('footer').slideDown();
+					footerIsDisplayed=false;
 				}
 			}
 		}

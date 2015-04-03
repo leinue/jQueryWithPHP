@@ -18,25 +18,39 @@
 </header>
 
 <section>
-	<div class="reading-list-a">
-		<div class="reading-list-img">
-			<img src="http://pic4.zhimg.com/f46a68dc6e7b29c2df376dbd2bd27aeb_r.jpg">
-		</div>
-		<div class="reading-list-all-content">
-			<div class="reading-list-all-title">
-				<p>香酥炸鸡配酸奶酱</p>
-			</div>
-			<div class="reading-list-all-summary">
-				<p>标题内容标题内容标题内容标题内容标题</p>
-			</div>
-		</div>
-		<div class="reading-list-all-footer">
-			<ul>
-				<li><span class="glyphicon glyphicon-bookmark"></span> 食谱</li>
-				<li><span class="glyphicon glyphicon-time"></span> 今天</li>
-			</ul>
-		</div>
-	</div>
+	
 </section>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+
+		$('section').load('pages/reading/reading_all.php',function(){
+			$('.loading').fadeOut();
+		});
+
+		//
+		function toggleMenu(obj){
+			//获得当前活跃菜单项的index
+			var liIndex=$('.header-reading-menu-active').index();
+			//取消当前活跃菜单项的活跃
+			$('.header-reading-menu-active').removeClass('header-reading-menu-active');	
+		}
+
+		//头部菜单点击事件
+		$('.header-reading-menu ul li span').click(function(){
+			var typeClicked=$(this).parent().attr('id').split('-');
+			var _this=$(this);
+			//显示正在加载
+			$('.loading').fadeIn();
+			$('section').load('pages/reading/reading_'+typeClicked[2]+'.php',function(){
+				//去掉正在加载
+				$('.loading').fadeOut();
+				//修改现行活动菜单
+				toggleMenu(this);
+				_this.addClass('header-reading-menu-active');
+			});
+		});
+	});
+</script>
 
 <?php require('footer.php'); ?>

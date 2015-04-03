@@ -1,6 +1,18 @@
 	<script type="text/javascript">
 	$(document).ready(function(){
+		
+		/************全局变量区域************/
+		
+		var isSlided=false;//侧边栏是否被滑出
+		var footerIsDisplayed=false;//底部是否被显示
 
+		//使用localSorage存储当前页面
+		localStorage.currentPage="index.php";
+		localStorage.previousPage="";//栈
+		
+		/***********全局变量区域************/
+		
+		//添加动画效果
 		$('ul li,a,h1,h2,h3,h4,h5,h6,p,span').hover(
 			function(){
 				$(this).stop().animate({opacity:0.6},'fast');
@@ -15,7 +27,6 @@
 		}
 
 		//处理底部菜单滑动事件,若用户滑动到底部则自动隐藏
-		var footerIsDisplayed=false;
 		function handleFooterEvent(){
 			console.log($(window).scrollTop());
 			if(($(window).height()+$(window).scrollTop())>=$(document).height()){
@@ -38,17 +49,14 @@
 			//$('footer').slideToggle();
 		});
 
+		//用户滑动页面时处理
 		$(window).scroll(handleFooterEvent);
 
 		/*幻灯片开始*/
 
-		$(function() {
-    		$('.banner').unslider();
-		});
+		$(function() {$('.banner').unslider();});
 
-		if(window.chrome) {
-			$('.banner li').css('background-size', '100% 100%');
-		}
+		if(window.chrome) {$('.banner li').css('background-size', '100% 100%');}
 
 		$('.banner').unslider({
 			arrows: true,	
@@ -59,9 +67,7 @@
 		/*幻灯片结束*/
 
 		/*菜单按钮被点击*/
-		var isSlided=false;
-		//var oWidth=$('.main-page').width();//主界面的原宽度
-		$('.nav-menu').click(function(){
+		function toggleLeftMenu(){
 			var rate=0.2545;
 			if($(document).width()>400){
 				rate=0.2745;
@@ -83,8 +89,28 @@
 				$('footer').show();
 				//$('.main-page').css('width',oWidth+'px');
 				isSlided=false;
-			}
+			}	
+		}
+		//var oWidth=$('.main-page').width();//主界面的原宽度
+		$('.nav-menu').click(function(){
+			toggleLeftMenu();
 		});
+
+		//加载阅读列表界面
+		$('.menu-reading-list').click(function(){
+			var docw=$(document).width();
+			toggleLeftMenu();
+			$('.loading').fadeIn();
+			$('body').load('reading.php',function(){
+				$('.loading').fadeOut();
+			});
+			localStorage.previousPage=localStorage.currentPage;
+			localStorage.currentPage="reading.php";
+			//$('.main-page').css('width',oWidth+'px');
+		});
+
+		//加载收到的回复界面
+
 	});
 	</script>
 </body>

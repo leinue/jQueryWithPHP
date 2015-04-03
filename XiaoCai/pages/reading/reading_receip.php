@@ -1,7 +1,7 @@
 
 	<div class="reading-list-a">
 		<div class="reading-list-img">
-			<img src="http://pic4.zhimg.com/f46a68dc6e7b29c2df376dbd2bd27aeb_r.jpg">
+			<img src="http://www.webmaster5u.com/upfiles/file/201107/20110723234012108.jpg">
 		</div>
 		<div class="reading-list-all-content">
 			<div class="reading-list-all-title">
@@ -21,7 +21,7 @@
 
 	<div class="reading-list-a">
 		<div class="reading-list-img">
-			<img src="http://pic4.zhimg.com/f46a68dc6e7b29c2df376dbd2bd27aeb_r.jpg">
+			<img src="http://www.webmaster5u.com/upfiles/file/201107/20110723234012108.jpg">
 		</div>
 		<div class="reading-list-all-content">
 			<div class="reading-list-all-title">
@@ -41,7 +41,7 @@
 
 	<div class="reading-list-a">
 		<div class="reading-list-img">
-			<img src="http://pic4.zhimg.com/f46a68dc6e7b29c2df376dbd2bd27aeb_r.jpg">
+			<img src="http://www.webmaster5u.com/upfiles/file/201107/20110723234012108.jpg">
 		</div>
 		<div class="reading-list-all-content">
 			<div class="reading-list-all-title">
@@ -61,7 +61,7 @@
 
 	<div class="reading-list-a">
 		<div class="reading-list-img">
-			<img src="http://pic4.zhimg.com/f46a68dc6e7b29c2df376dbd2bd27aeb_r.jpg">
+			<img src="http://www.webmaster5u.com/upfiles/file/201107/20110723234012108.jpg">
 		</div>
 		<div class="reading-list-all-content">
 			<div class="reading-list-all-title">
@@ -80,7 +80,4 @@
 	</div>
 	
 	<div class="padding-div-row"></div>
-	<div class="loading">
-		<div class="loading-main"><span class="glyphicon glyphicon-option-horizontal"></span><span class="glyphicon glyphicon-option-horizontal"></span></div>
-	</div>
 

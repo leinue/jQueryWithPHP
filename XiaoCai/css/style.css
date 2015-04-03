@@ -326,6 +326,10 @@ section{
 
 /*阅读列表正列表开始*/
 
+.reading-page{
+	
+}
+
 .reading-list-a{
 	margin-left: 14px;
 	margin-top: 14px;
@@ -399,7 +403,6 @@ section{
 .reading-list-all-footer ul li:last-child{
 	float: right;
 }
-
 
 .padding-div-row{
 	height: 14px;

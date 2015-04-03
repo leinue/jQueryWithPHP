@@ -1,5 +1,5 @@
-<?php require('header.php'); ?>
-
+<div class="reading-page">
+	
 <header>
 	<nav>
 		<div class="header-title">
@@ -19,7 +19,12 @@
 
 <section>
 	
+	<div class="loading">
+		<div class="loading-main"><span class="glyphicon glyphicon-option-horizontal"></span><span class="glyphicon glyphicon-option-horizontal"></span></div>
+	</div>
 </section>
+
+</div>
 
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -50,7 +55,13 @@
 				_this.addClass('header-reading-menu-active');
 			});
 		});
+
+		//退回按钮事件
+		$('.header-back').click(function(){
+			//var docW=$(document).width();
+			//$('body').animate({left:docW+'px'});
+			$('body').load(localStorage.previousPage);
+		});
 	});
 </script>
 
-<?php require('footer.php'); ?>

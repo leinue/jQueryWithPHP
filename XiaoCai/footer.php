@@ -7,7 +7,7 @@
 	<script type="text/javascript">
 	$(document).ready(function(){
 
-		$('ul li,a,h1,h2,h3,h4,h5,h6,p').hover(
+		$('ul li,a,h1,h2,h3,h4,h5,h6,p,span').hover(
 			function(){
 				$(this).stop().animate({opacity:0.6},'fast');
 			},

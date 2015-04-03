@@ -13,7 +13,7 @@
 
 	<div class="column-menu">
 		<ul>
-			<li><a href=""><span class="glyphicon glyphicon-list-alt"></span>阅读列表</a></li>
+			<li><a href="reading.php"><span class="glyphicon glyphicon-list-alt"></span>阅读列表</a></li>
 			<li><a href=""><span class="glyphicon glyphicon-align-justify"></span>食材采购清单</a></li>
 			<li class="menu-response"><a href=""><span class="glyphicon glyphicon-envelope"></span>收到的回复<span id="response-flag">·</span></a></li>
 			<li><a href=""><span class="glyphicon glyphicon-cog"></span>设置</a></li>

@@ -246,7 +246,7 @@ section{
 }
 
 .column-menu ul li span{
-	color: rgb(164,58,78);
+	color: rgb(181,25,49);
 	margin-right: 20px;
 }
 
@@ -256,6 +256,11 @@ section{
 	height: 12px;
 	position: absolute;
 	top: 334px;
+}
+
+.column-menu li a{
+	text-decoration: none;
+	color: rgb(97,95,98);
 }
 
 /*底部开始*/

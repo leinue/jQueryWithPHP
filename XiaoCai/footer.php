@@ -74,7 +74,6 @@
 			}else{
 				rate=0.2945;
 			}
-			console.log(rate);
 			var docWidth=$(document).width()-($(document).width()*rate);
 			var mainPageWidth=$(document).width()*rate;
 			if(!isSlided){

@@ -327,7 +327,7 @@ section{
 /*阅读列表正列表开始*/
 
 .reading-page{
-	
+
 }
 
 .reading-list-a{
@@ -407,6 +407,81 @@ section{
 .padding-div-row{
 	height: 14px;
 	width: 100%;
+}
+
+/*收到的回复页面开始*/
+
+.reversion-list-a{
+	height: 100px;
+}
+
+.reversion-list-img{
+	width: 100px;
+}
+
+.reversion-looked{
+	color: rgb(168,168,168);
+	height: 80px;
+}
+
+.reversion-new .reading-list-all-footer ul li:last-child{
+	margin-right: 24px;
+}
+
+/*.reversion-new .reading-list-all-content{
+	border-right: 1px solid rgb(199,199,199);
+}*/
+
+.reversion-new .reading-list-all-title{
+
+}
+
+.reversion-new-flag{
+	width: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-left: 1px solid rgb(199,199,199);
+}
+
+/*设置界面开始*/
+
+.setting-list{
+	color: rgb(79,79,79);
+	font-size: 16px;
+	margin-top: 14px;
+	width: 100%;
+}
+
+.setting-list ul{
+	list-style: none;
+	margin-left: -40px;
+}
+
+.setting-list ul li{
+	background: rgb(255,255,255);
+	padding-top: 8px;
+	padding-bottom: 8px;
+	padding-left: 14px;
+}
+
+.setting-list ul li span{
+	color: rgb(203,203,203);
+	float: right;
+	margin-right: 14px;
+	margin-top: 4px;
+	cursor: pointer;
+}
+
+.setting-list-second{
+	margin-top: 1px;
+}
+
+.setting-list-third{
+	margin-top: 14px;
+}
+
+.setting-list ul li:last-child{
+	margin-top: 14px;
 }
 
 /*底部开始*/

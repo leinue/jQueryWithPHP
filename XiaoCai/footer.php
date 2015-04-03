@@ -14,8 +14,6 @@
 		
 		/***********全局变量区域************/
 
-		/**/
-
 		//添加动画效果
 		$('ul li,a,h1,h2,h3,h4,h5,h6,p,span').hover(
 			function(){
@@ -119,6 +117,11 @@
 		//加载收到的回复界面
 		$('.menu-response').click(function(){
 			loadPagesInMenu('reversion.php');
+		});
+
+		//加载设置界面
+		$('.menu-setting').click(function(){
+			loadPagesInMenu('setting.php');
 		});
 
 	});

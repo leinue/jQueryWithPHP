@@ -10,6 +10,21 @@
 	<script type="text/javascript" src="extension/unslider.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="extension/buttons.css">
+	<script type="text/javascript">
+		/**********************************函数库**********************************/
+		
+		//返回上一个页面
+		function backPreviosPage(currentPage){
+			var pageLoaded=localStorage.previousPage;
+			$('body').load(pageLoaded,function(){
+				localStorage.pageVistiedCount-=1;
+				localStorage.previousPage=currentPage;
+				localStorage.currentPage=pageLoaded;
+			});	
+		}
+		
+		/**********************************函数库**********************************/
+	</script>
 </head>
 
 <body>

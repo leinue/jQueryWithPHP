@@ -7,11 +7,15 @@
 		var footerIsDisplayed=false;//底部是否被显示
 
 		//使用localSorage存储当前页面
-		localStorage.currentPage="index.php";
-		localStorage.previousPage="";//栈
+		localStorage.pageVistiedCount=0;//记录用户浏览了多少页面
+		localStorage.previousPage="index.php";
+
+		localStorage.currentPage="";//栈
 		
 		/***********全局变量区域************/
-		
+
+		/**/
+
 		//添加动画效果
 		$('ul li,a,h1,h2,h3,h4,h5,h6,p,span').hover(
 			function(){
@@ -96,20 +100,26 @@
 			toggleLeftMenu();
 		});
 
-		//加载阅读列表界面
-		$('.menu-reading-list').click(function(){
-			var docw=$(document).width();
+		function loadPagesInMenu(pageName){
 			toggleLeftMenu();
 			$('.loading').fadeIn();
-			$('body').load('reading.php',function(){
+			$('body').load(pageName,function(){
 				$('.loading').fadeOut();
+				localStorage.pageVistiedCount+=1;
+				localStorage.previousPage=localStorage.currentPage;
+				localStorage.currentPage=pageName;
 			});
-			localStorage.previousPage=localStorage.currentPage;
-			localStorage.currentPage="reading.php";
-			//$('.main-page').css('width',oWidth+'px');
+		}
+
+		//加载阅读列表界面
+		$('.menu-reading-list').click(function(){
+			loadPagesInMenu('reading.php');
 		});
 
 		//加载收到的回复界面
+		$('.menu-response').click(function(){
+			loadPagesInMenu('reversion.php');
+		});
 
 	});
 	</script>

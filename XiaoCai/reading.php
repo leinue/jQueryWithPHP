@@ -60,7 +60,7 @@
 		$('.header-back').click(function(){
 			//var docW=$(document).width();
 			//$('body').animate({left:docW+'px'});
-			$('body').load(localStorage.previousPage);
+			backPreviosPage('reading.php');
 		});
 	});
 </script>

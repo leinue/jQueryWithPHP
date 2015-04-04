@@ -560,6 +560,39 @@ section{
 	cursor: pointer;
 }
 
+/*修改资料页面开始*/
+
+.setting-list #wechat-nickname{
+	border-top: 1px solid rgb(204,204,204);
+	border-bottom: 1px solid rgb(204,204,204);
+}
+
+.setting-list #wechat-nickname input{
+	width: 100%;
+	color: rgb(102,102,102);
+	text-align: center;
+}
+
+.profile-upload-photo{
+	font-style: normal;
+}
+
+.profile-phtot-uploaded{
+	cursor: pointer;
+	padding-top: 8px;
+	height: 111px;
+	width: 111px;
+	border-radius: 58px;
+	border: 1px solid rgb(208,206,208);
+	margin: 0 auto;
+	box-shadow: 0px 0px 16px 8px rgb(208,207,209) inset;
+}
+
+.profile-phtot-uploaded img{
+	border-radius: 47.5px;
+	box-shadow: 0px 0px 4px 1px rgb(208,207,209);
+}
+
 /*底部开始*/
 
 footer{

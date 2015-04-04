@@ -14,6 +14,7 @@
 		<ul>
 			<li id="setting-list-password">修改密码<span class="glyphicon glyphicon-menu-right"></span></li>
 			<li id="setting-list-fpassword" class="setting-list-second">找回密码<span class="glyphicon glyphicon-menu-right"></span></li>
+			<li id="setting-list-profile" class="setting-list-second">填写资料<span class="glyphicon glyphicon-menu-right"></span></li>
 			<li id="setting-list-logout" class="setting-list-third">注销</li>
 			<li id="setting-list-setting">关于<span class="glyphicon glyphicon-menu-right"></span></li>
 		</ul>
@@ -40,6 +41,9 @@
 				break;
 			case 'fpassword':
 				loadPagesA('pages/setting/password_find.php','body');
+				break;
+			case 'profile':
+				loadPagesA('profile.php','body');
 				break;
 			case 'logout':
 				break;

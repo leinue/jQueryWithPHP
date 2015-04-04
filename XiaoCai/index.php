@@ -7,7 +7,7 @@
 	</div>
 
 	<div class="lo-re-area">
-		<a href="" class="button button-caution button-pill">登录</a>
+		<a class="button button-caution button-pill">登录</a>
 		<div class="fast-register">快速注册</div>
 	</div>
 

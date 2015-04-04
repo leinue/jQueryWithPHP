@@ -525,13 +525,10 @@ section{
 }
 
 .change-password-input ul .send-ver-code{
-	float: right;
 	width: auto;
 	position: absolute;
 	font-size: 12px;
-	margin-right: 14px;
-	margin-left: 14px;
-	margin-bottom: 4px;
+	right: 14px;
 }
 
 /*底部开始*/

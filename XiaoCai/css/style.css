@@ -531,6 +531,23 @@ section{
 	right: 14px;
 }
 
+/*用户注册页面开始*/
+
+.register-area{
+	margin-top: 13.920502%;
+}
+
+.wechat-logo{
+	text-align: center;
+	margin-top: 22px;
+}
+
+.wechat-logo img{
+	width: 100px;
+	height: 100px;
+	cursor: pointer;
+}
+
 /*底部开始*/
 
 footer{

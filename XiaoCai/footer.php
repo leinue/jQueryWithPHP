@@ -15,7 +15,7 @@
 		/***********全局变量区域************/
 
 		//添加动画效果
-		$('ul li,a,h1,h2,h3,h4,h5,h6,p,span').hover(
+		$('ul li,a,h1,h2,h3,h4,h5,h6,p,span,.fast-register').hover(
 			function(){
 				$(this).stop().animate({opacity:0.6},'fast');
 			},
@@ -122,6 +122,16 @@
 		//加载设置界面
 		$('.menu-setting').click(function(){
 			loadPagesInMenu('setting.php');
+		});
+
+		//加载登录页面
+		$('.lo-re-area .button').click(function(){
+			loadPagesInMenu('login.php');
+		});
+
+		//加载快速注册页面
+		$('.lo-re-area .fast-register').click(function(){
+			loadPagesInMenu('register.php');
 		});
 
 	});

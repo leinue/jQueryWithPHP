@@ -15,14 +15,27 @@
 		
 		//返回上一个页面
 		function backPreviosPage(currentPage){
+			$('.loading').fadeIn();
 			var pageLoaded=localStorage.previousPage;
 			$('body').load(pageLoaded,function(){
+				$('.loading').fadeOut();
 				localStorage.pageVistiedCount-=1;
 				localStorage.previousPage=currentPage;
 				localStorage.currentPage=pageLoaded;
 			});	
 		}
-		
+
+		//加载新页面,pageName为要加载的页面名,elem为存放元素
+		function loadPagesA(pageName,elem){
+			$('.loading').fadeIn();
+			$(elem).load(pageName,function(){
+				$('.loading').fadeOut();
+				localStorage.pageVistiedCount+=1;
+				localStorage.previousPage=localStorage.currentPage;
+				localStorage.currentPage=pageName;
+			});
+		}
+
 		/**********************************函数库**********************************/
 	</script>
 </head>

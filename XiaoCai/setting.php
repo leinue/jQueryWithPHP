@@ -1,4 +1,4 @@
-<div class="reversion-page">
+<div class="setting-page">
 	
 <header>
 	<nav>
@@ -18,6 +18,10 @@
 			<li id="setting-list-setting">关于<span class="glyphicon glyphicon-menu-right"></span></li>
 		</ul>
 	</div>
+
+	<div class="loading">
+		<div class="loading-main"><span class="glyphicon glyphicon-option-horizontal"></span><span class="glyphicon glyphicon-option-horizontal"></span></div>
+	</div>
 </section>
 
 </div>
@@ -26,5 +30,23 @@
 	//退回按钮事件
 	$('.header-back').click(function(){
 		backPreviosPage('setting.php');
+	});
+
+	$('.setting-list ul li').click(function(){
+		var elemID=$(this).attr('id').split('-');
+		switch(elemID[2]){
+			case 'password':
+				loadPagesA('pages/setting/password_change.php','body');
+				break;
+			case 'fpassword':
+				loadPagesA('pages/setting/password_find.php','body');
+				break;
+			case 'logout':
+				break;
+			case 'setting':
+				break;
+			default:
+				break;
+		}
 	});
 </script>

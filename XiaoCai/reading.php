@@ -19,10 +19,12 @@
 
 <section>
 	
-	<div class="loading">
+	
+</section>
+
+<div class="loading">
 		<div class="loading-main"><span class="glyphicon glyphicon-option-horizontal"></span><span class="glyphicon glyphicon-option-horizontal"></span></div>
 	</div>
-</section>
 
 </div>
 

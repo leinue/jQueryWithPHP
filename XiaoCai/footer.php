@@ -72,9 +72,9 @@
 		function toggleLeftMenu(){
 			var rate=0.2545;
 			if($(document).width()>400){
-				rate=0.2745;
+				rate=0.2645;
 			}else{
-				rate=0.2945;
+				rate=0.2845;
 			}
 			var docWidth=$(document).width()-($(document).width()*rate);
 			var mainPageWidth=$(document).width()*rate;

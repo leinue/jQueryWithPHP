@@ -1,7 +1,7 @@
 <footer>
 	<div class="main-footer">
 		<ul>
-			<li id="footer-menu-index"><img src="images/xiaocai_active.png">晓菜</li>
+			<li id="footer-menu-index"><img src="images/index.png">晓菜</li>
 			<li id="footer-menu-recipes"><img src="images/recipe.png">食谱</li>
 			<li id="footer-menu-skills"><img src="images/skills.png">技巧</li>
 			<li id="footer-menu-review"><img src="images/review.png">测评</li>			
@@ -140,8 +140,10 @@
 		});
 
 		//设置活跃菜单
-		console.log(localStorage.currentPage);
-		$('.main-footer ul #footer-menu-'+localStorage.currentPage.split('.')[0]).addClass('main-footer-menu-active');
+		var currentItem=localStorage.currentPage.split('.')[0];
+		var activeElem='.main-footer ul #footer-menu-'+currentItem;
+		$(activeElem).addClass('main-footer-menu-active');
+		$(activeElem+' img').attr('src','images/'+currentItem+'_active.png');
 
 	});
 

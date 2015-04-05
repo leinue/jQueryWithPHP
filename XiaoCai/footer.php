@@ -38,6 +38,21 @@
 			//$('footer').slideToggle();
 		});
 
+		/*幻灯片开始*/
+
+		if(window.chrome) {$('.banner li').css('background-size', '100% 100%');}
+
+		$(function() {$('.banner').unslider();});
+
+		$('.banner').unslider({
+			arrows: true,	
+			fluid: true,
+			dots: true,
+			keys:true
+		});
+
+		/*幻灯片结束*/
+
 		//用户滑动页面时处理
 		$(window).scroll(handleFooterEvent);
 

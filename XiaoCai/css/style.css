@@ -636,6 +636,7 @@ section{
 	top: 100px;
 	font-size: 15px;
 	display: none;
+	z-index: 65535;
 }
 
 .recipe-menu-slidedown ul{
@@ -665,7 +666,36 @@ footer{
 	position: fixed;
 	bottom: 0px;
 	left: 0px;
-	height: 60px;
 	width: 100%;
 	background: rgb(241,241,241);
+}
+
+.main-footer{
+	display: table;
+	width: 100%;
+}
+
+.main-footer ul{
+	display: table-row;
+	list-style: none;
+	text-align: center;
+}
+
+.main-footer ul li{
+	padding-top: 6px;
+	padding-bottom: 10px;
+	display: table-cell;
+	text-align: center;
+	cursor: pointer;
+}
+
+.main-footer ul li img{
+	display: block;
+	width: 30px;
+	height: 30px;
+	margin: 0 auto;
+}
+
+.main-footer-menu-active{
+	color: rgb(149,38,55);
 }

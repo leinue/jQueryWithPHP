@@ -1,3 +1,14 @@
+<footer>
+	<div class="main-footer">
+		<ul>
+			<li id="footer-menu-index" class="main-footer-menu-active"><img src="images/xiaocai_active.png">晓菜</li>
+			<li id="footer-menu-recipes"><img src="images/recipe.png">食谱</li>
+			<li id="footer-menu-skills"><img src="images/skills.png">技巧</li>
+			<li id="footer-menu-review"><img src="images/review.png">测评</li>			
+		</ul>
+	</div>
+</footer>
+
 	<script type="text/javascript">
 	$(document).ready(function(){
 
@@ -120,6 +131,11 @@
 		//加载快速注册页面
 		$('.lo-re-area .fast-register').click(function(){
 			loadPagesInMenu('register.php');
+		});
+
+		$('.main-footer ul li').click(function(){
+			var pageName=$(this).attr('id').split('-');
+			loadPagesA(pageName[2]+'.php','body');
 		});
 
 	});

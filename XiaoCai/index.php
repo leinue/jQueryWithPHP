@@ -119,17 +119,6 @@
 
 </section>
 
-<footer>
-	<div class="main-footer">
-		<ul>
-			<li class="main-footer-menu-active"><img src="images/xiaocai_active.png">晓菜</li>
-			<li><img src="images/recipe.png">食谱</li>
-			<li><img src="images/skills.png">技巧</li>
-			<li><img src="images/review.png">测评</li>			
-		</ul>
-	</div>
-</footer>
-
 </div>
 
 <script type="text/javascript">

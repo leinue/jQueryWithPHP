@@ -11,6 +11,7 @@
 				<li class="search-form"><input type="search" placeholder="食谱 食材 工具 话题" /></li>
 			</ul>
 		</div>
+
 		<div class="nav-recipe-menu">
 			<ul>
 				<li id="recipe-material-index">食材检索 <span class="glyphicon glyphicon-triangle-right"></span></li>
@@ -31,6 +32,20 @@
 				<li><img src="">面包和甜品</li>
 			</ul>
 		</div>
+
+		<div id="recipe-menu-style" class="recipe-menu-slidedown">
+			<ul>
+				<li>一锅菜</li>
+				<li>早餐</li>
+				<li>美素馆</li>
+			</ul>
+			<ul>
+				<li>简单炖</li>
+				<li>热锅快炒</li>
+				<li>低脂轻食</li>
+			</ul>
+		</div>
+
 	</nav>
 </header>
 
@@ -99,17 +114,28 @@
 	$(document).ready(function(){
 		
 		//食谱上方按钮被单击
+		var recipeMenuIsSlided=false;
 		$('.nav-recipe-menu ul li').click(function(){
 			var typeClicked=$(this).attr('id').split('-');
-			switch(typeClicked[2]){
-				case 'index'://食材检索被单击
-
-					break;
-				case 'style'://料理风格被单击
-					break;
-				default:
-					break;
+			var nextElem=$(this).parent().parent().next();
+			if(!recipeMenuIsSlided){
+				$(this).find('span').removeClass('glyphicon glyphicon-triangle-right');
+				$(this).find('span').addClass('glyphicon glyphicon-triangle-bottom');
+				if(nextElem.css('display')=='block'){
+					$('#recipe-menu-style').slideUp();
+					nextElem.removeClass('glyphicon glyphicon-triangle-bottom');
+					nextElem.removeClass('glyphicon glyphicon-triangle-right');
+				}
+				$('#recipe-menu-'+typeClicked[2]).slideDown();
+				recipeMenuIsSlided=true;
+			}else{
+				$(this).find('span').removeClass('glyphicon glyphicon-triangle-bottom');
+				$(this).find('span').addClass('glyphicon glyphicon-triangle-right');
+				$('#recipe-menu-'+typeClicked[2]).slideUp();
+				recipeMenuIsSlided=false;
 			}
+
+			//$('#recipe-menu-'+typeClicked[2]).slideToggle();
 		});
 	
 	});

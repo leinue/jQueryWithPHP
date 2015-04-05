@@ -640,6 +640,7 @@ section{
 
 .recipe-menu-slidedown ul{
 	display: table-row;
+	width: 100%;
 }
 
 .recipe-menu-slidedown ul li{

@@ -39,6 +39,20 @@
 		}
 
 		/**********************************函数库**********************************/
+
+		/*******************************全局变量区域*******************************/
+		
+		var isSlided=false;//侧边栏是否被滑出
+		var footerIsDisplayed=false;//底部是否被显示
+
+		//使用localSorage存储当前页面
+		localStorage.pageVistiedCount=0;//记录用户浏览了多少页面
+		localStorage.previousPage="index.php";
+
+		localStorage.currentPage="";//栈
+		
+		/*******************************全局变量区域*******************************/
+
 	</script>
 </head>
 

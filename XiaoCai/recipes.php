@@ -114,28 +114,61 @@
 	$(document).ready(function(){
 		
 		//食谱上方按钮被单击
+		//method可以为up|down
+		function toggleBtnArrow(elem,method){
+			switch(method){
+				case 'up':
+					$(elem).removeClass('glyphicon glyphicon-triangle-bottom');
+					$(elem).addClass('glyphicon glyphicon-triangle-right');
+					break;
+				case 'down':
+					$(elem).removeClass('glyphicon glyphicon-triangle-right');
+					$(elem).addClass('glyphicon glyphicon-triangle-bottom');
+					break;
+			}
+		}
+
 		var recipeMenuIsSlided=false;
+		var recipeLeftMenuIsSlided=false;
+		var recipeRightMenuIsSlided=false;
+
 		$('.nav-recipe-menu ul li').click(function(){
 			var typeClicked=$(this).attr('id').split('-');
-			var nextElem=$(this).parent().parent().next();
 			if(!recipeMenuIsSlided){
+				if(recipeLeftMenuIsSlided){
+					toggleBtnArrow('.nav-recipe-menu ul #recipe-material-index span','up');
+					$('#recipe-menu-index').slideUp();
+					recipeLeftMenuIsSlided=false;
+					recipeMenuIsSlided=false;
+					if(typeClicked[2]=='index'){
+						$(this).find('span').removeClass('glyphicon glyphicon-triangle-bottom');
+						$(this).find('span').addClass('glyphicon glyphicon-triangle-right');
+						return;
+					}
+				}
+
+				if(recipeRightMenuIsSlided){
+					toggleBtnArrow('.nav-recipe-menu ul #recipe-material-style span','up');
+					$('#recipe-menu-style').slideUp();
+					recipeRightMenuIsSlided=false;
+					recipeMenuIsSlided=false;
+					if(typeClicked[2]=='style'){
+						$(this).find('span').removeClass('glyphicon glyphicon-triangle-bottom');
+						$(this).find('span').addClass('glyphicon glyphicon-triangle-right');
+						return;
+					}
+				}
+
 				$(this).find('span').removeClass('glyphicon glyphicon-triangle-right');
 				$(this).find('span').addClass('glyphicon glyphicon-triangle-bottom');
-				if(nextElem.css('display')=='block'){
-					$('#recipe-menu-style').slideUp();
-					nextElem.removeClass('glyphicon glyphicon-triangle-bottom');
-					nextElem.removeClass('glyphicon glyphicon-triangle-right');
-				}
+				
 				$('#recipe-menu-'+typeClicked[2]).slideDown();
-				recipeMenuIsSlided=true;
-			}else{
-				$(this).find('span').removeClass('glyphicon glyphicon-triangle-bottom');
-				$(this).find('span').addClass('glyphicon glyphicon-triangle-right');
-				$('#recipe-menu-'+typeClicked[2]).slideUp();
-				recipeMenuIsSlided=false;
+				if(typeClicked[2]=='index'){
+					recipeLeftMenuIsSlided=true;
+				}else if(typeClicked[2]=='style'){
+					recipeRightMenuIsSlided=true;
+				}
 			}
-
-			//$('#recipe-menu-'+typeClicked[2]).slideToggle();
 		});
 	
 	});

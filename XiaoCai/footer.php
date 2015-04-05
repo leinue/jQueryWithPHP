@@ -54,20 +54,6 @@
 		//用户滑动页面时处理
 		$(window).scroll(handleFooterEvent);
 
-		/*幻灯片开始*/
-
-		$(function() {$('.banner').unslider();});
-
-		if(window.chrome) {$('.banner li').css('background-size', '100% 100%');}
-
-		$('.banner').unslider({
-			arrows: true,	
-			fluid: true,
-			dots: true
-		});
-
-		/*幻灯片结束*/
-
 		/*菜单按钮被点击*/
 		function toggleLeftMenu(){
 			var rate=0.2545;
@@ -135,6 +121,7 @@
 		});
 
 	});
+
 	</script>
 </body>
 </html>

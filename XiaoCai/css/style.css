@@ -153,6 +153,7 @@ section{
 .banner ul li{
 	float: left;
 	height: 150px;
+	box-shadow: inset 0 -3px 6px rgba(0,0,0,.1);
 	background-size: 100% 150px;
 }
 
@@ -591,6 +592,69 @@ section{
 .profile-phtot-uploaded img{
 	border-radius: 47.5px;
 	box-shadow: 0px 0px 4px 1px rgb(208,207,209);
+}
+
+/*食谱页面开始*/
+
+.nav-recipe-menu{
+	display: table;
+	width: 100%;
+	margin-top: 10px;
+}
+
+.nav-recipe-menu ul{
+	list-style: none;
+	display: table-row;
+}
+
+.nav-recipe-menu li{
+	display: table-cell;
+	text-align: center;
+	font-size: 16px;
+}
+
+.nav-recipe-menu li span{
+	font-size: 11px;
+}
+
+.nav-recipe-menu li:first-child{
+	cursor: pointer;
+}
+
+.nav-recipe-menu li:last-child{
+	cursor: pointer;
+}
+
+.recipe-menu-slidedown{
+	position: absolute;
+	width: 100%;
+	display: table;
+	background: rgb(255,255,255);
+	opacity: 0.6;
+	color: rgb(10,0,0);
+	text-align: center;
+	top: 100px;
+	font-size: 15px;
+	display: none;
+}
+
+.recipe-menu-slidedown ul{
+	display: table-row;
+}
+
+.recipe-menu-slidedown ul li{
+	padding-top: 20px;
+	padding-bottom: 20px;
+	display: table-cell;
+	border-right: 1px solid rgb(200,198,199);
+	border-bottom: 1px solid rgb(200,198,199);
+}
+
+.recipe-menu-slidedown ul li img{
+	width: 50px;
+	height: 50px;
+	margin: 0 auto;
+	display: block;
 }
 
 /*底部开始*/

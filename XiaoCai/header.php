@@ -49,7 +49,7 @@
 		localStorage.pageVistiedCount=0;//记录用户浏览了多少页面
 		localStorage.previousPage="index.php";
 
-		localStorage.currentPage="";//栈
+		localStorage.currentPage="index.php";//栈
 		
 		/*******************************全局变量区域*******************************/
 

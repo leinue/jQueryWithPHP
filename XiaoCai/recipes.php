@@ -19,31 +19,37 @@
 				<li id="recipe-material-style">料理风格 <span class="glyphicon glyphicon-triangle-right"></span></li>
 			</ul>
 		</div>
-
-		<div id="recipe-menu-index" class="recipe-menu-slidedown">
-			<ul>
-				<li><img src="">美素</li>
-				<li><img src="">汤和饮品</li>
-				<li><img src="">肉和家禽</li>
-			</ul>
-			<ul>
-				<li><img src="">鱼和海鲜</li>
-				<li><img src="">米和面</li>
-				<li><img src="">面包和甜品</li>
-			</ul>
+		
+		<div id="recipe-menu-index" class="recipe-menu-container">
+			<div class="recipe-menu-slidedown">
+				<ul>
+					<li><img src="">美素</li>
+					<li><img src="">汤和饮品</li>
+					<li><img src="">肉和家禽</li>
+				</ul>
+				<ul>
+					<li><img src="">鱼和海鲜</li>
+					<li><img src="">米和面</li>
+					<li><img src="">面包和甜品</li>
+				</ul>
+			</div>
 		</div>
+		
+		<div id="recipe-menu-style" class="recipe-menu-container">
 
-		<div id="recipe-menu-style" class="recipe-menu-slidedown">
-			<ul>
-				<li>一锅菜</li>
-				<li>早餐</li>
-				<li>美素馆</li>
-			</ul>
-			<ul>
-				<li>简单炖</li>
-				<li>热锅快炒</li>
-				<li>低脂轻食</li>
-			</ul>
+			<div class="recipe-menu-slidedown">
+				<ul>
+					<li>一锅菜</li>
+					<li>早餐</li>
+					<li>美素馆</li>
+				</ul>
+				<ul>
+					<li>简单炖</li>
+					<li>热锅快炒</li>
+					<li>低脂轻食</li>
+				</ul>
+			</div>
+
 		</div>
 
 	</nav>

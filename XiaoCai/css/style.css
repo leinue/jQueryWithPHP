@@ -626,27 +626,32 @@ section{
 	cursor: pointer;
 }
 
-.recipe-menu-slidedown{
+.recipe-menu-container{
 	position: absolute;
+	top: 100px;
+	z-index: 65535;
+	width: 100%;
+	display: none;
+}
+
+.recipe-menu-slidedown{
 	width: 100%;
 	display: table;
 	background: rgb(255,255,255);
 	opacity: 0.6;
 	color: rgb(10,0,0);
-	text-align: center;
-	top: 100px;
 	font-size: 15px;
-	display: none;
-	z-index: 65535;
 }
 
 .recipe-menu-slidedown ul{
 	display: table-row;
-	width: 100%;
+	width: 200%;
+	list-style: none;
+	text-align: center;
 }
 
 .recipe-menu-slidedown ul li{
-	width: 39.375%;
+	text-align: center;
 	cursor: pointer;
 	padding-top: 20px;
 	padding-bottom: 20px;

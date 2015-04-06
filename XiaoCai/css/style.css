@@ -13,6 +13,7 @@ nav{
 }
 
 .main-page,.login-page{
+	width: 100%;
 	position: absolute;
 }
 
@@ -645,6 +646,8 @@ section{
 }
 
 .recipe-menu-slidedown ul li{
+	width: 39.375%;
+	cursor: pointer;
 	padding-top: 20px;
 	padding-bottom: 20px;
 	display: table-cell;

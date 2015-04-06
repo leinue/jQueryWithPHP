@@ -48,7 +48,6 @@
 		//使用localSorage存储当前页面
 		localStorage.pageVistiedCount=0;//记录用户浏览了多少页面
 		localStorage.previousPage="index.php";
-
 		localStorage.currentPage="index.php";//栈
 		
 		/*******************************全局变量区域*******************************/

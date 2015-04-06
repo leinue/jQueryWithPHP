@@ -28,7 +28,7 @@
 
 		//处理底部菜单滑动事件,若用户滑动到底部则自动隐藏
 		function handleFooterEvent(){
-			console.log($(window).scrollTop());
+			//console.log($(window).scrollTop());
 			if(($(window).height()+$(window).scrollTop())>=$(document).height()){
 				if(footerIsDisplayed){
 					
@@ -99,13 +99,7 @@
 
 		function loadPagesInMenu(pageName){
 			toggleLeftMenu();
-			$('.loading').fadeIn();
-			$('body').load(pageName,function(){
-				$('.loading').fadeOut();
-				localStorage.pageVistiedCount+=1;
-				localStorage.previousPage=localStorage.currentPage;
-				localStorage.currentPage=pageName;
-			});
+			loadPagesA(pageName,'body');
 		}
 
 		//加载阅读列表界面
@@ -133,17 +127,22 @@
 			loadPagesInMenu('register.php');
 		});
 
+		//设置活跃菜单
+		function setActiveA(){
+			var currentItem=JSON2Stack(localStorage.pageStack).currentPage.split('.')[0];
+			var activeElem='.main-footer ul #footer-menu-'+currentItem;
+			$(activeElem).addClass('main-footer-menu-active');
+			$(activeElem+' img').attr('src','images/'+currentItem+'_active.png');		
+		}
+		
+		setActiveA();
+
 		//底部菜单加载事件
 		$('.main-footer ul li').click(function(){
+			setActiveA();
 			var pageName=$(this).attr('id').split('-');
 			loadPagesA(pageName[2]+'.php','body');
 		});
-
-		//设置活跃菜单
-		var currentItem=localStorage.currentPage.split('.')[0];
-		var activeElem='.main-footer ul #footer-menu-'+currentItem;
-		$(activeElem).addClass('main-footer-menu-active');
-		$(activeElem+' img').attr('src','images/'+currentItem+'_active.png');
 
 	});
 

@@ -193,6 +193,7 @@ section{
 
 .vip-content{
 	padding: 10px;
+	cursor: pointer;
 }
 
 .vip-title{
@@ -578,7 +579,7 @@ section{
 .profile-upload-photo{
 	font-style: normal;
 }
-
+		
 .profile-phtot-uploaded{
 	cursor: pointer;
 	padding-top: 8px;

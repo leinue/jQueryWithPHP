@@ -176,6 +176,10 @@
 				}
 			}
 		});
+
+		$('.vip-title,.vip-post').click(function(){
+			loadPagesA('introduction.php','body');
+		});
 	
 	});
 

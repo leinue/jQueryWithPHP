@@ -10,7 +10,7 @@
 	<script type="text/javascript" src="extension/unslider.min.js"></script>
 	<!--<script type="text/javascript" src="js/recipes.js"></script>-->
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<!--<link rel="stylesheet" type="text/css" href="css/recipes.style.css">-->
+	<link rel="stylesheet" type="text/css" href="css/recipes-introduction.css">
 	<link rel="stylesheet" type="text/css" href="extension/buttons.css">
 	<script type="text/javascript">
 		/******************************页面访问记录栈******************************/
@@ -44,7 +44,7 @@
 				return this.pageVisitedCount==0 ? true:false;
 			}
 			//更改当前页面
-			StorageStack.changeCurrentPage=function(current){
+			StorageStack.prototype.changeCurrentPage=function(current){
 				this.currentPage=current;
 			}
 
@@ -107,9 +107,6 @@
 
 		//使用localSorage存储当前页面
 		var pages=new StorageStack('index.php','index.php');
-		//localStorage.pageVistiedCount=0;//记录用户浏览了多少页面
-		//localStorage.previousPage="index.php";
-		//localStorage.currentPage="index.php";//栈
 		localStorage.pageStack=pages;
 		
 		/*******************************全局变量区域*******************************/

@@ -60,6 +60,11 @@ nav{
 	font-style: italic;
 }
 
+.logo-area img{
+	display: block;
+	margin: 0 auto;
+}
+
 .lo-re-area{
 	width: 83.682008%;
 	margin: 0 auto;

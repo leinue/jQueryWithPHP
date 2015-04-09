@@ -1,0 +1,70 @@
+.step-page{
+	   width: 100%;
+}
+.tomato-sauce{
+	  width: 100%;
+	  display: table;
+}
+.tomato-sauce ul #red1{
+	      color: rgb(199,29,66);
+}
+.tomato-sauce ul #red2{
+	      color: rgb(199,29,66);
+}
+.tomato-sauce ul #red3{
+	      color: rgb(199,29,66);
+}
+.tomato-sauce ul{
+	  width: 100%;
+	  display: table-row;
+	  text-align: center;
+}
+.tomato-sauce ul li{
+	   display: table-cell;
+	   padding-top: 10px;
+	   padding-bottom: 10px;
+}
+.tomato-sauce ul li:first-child{
+	    width: 20%;
+	    text-align: right;
+	    padding-right:50px;
+	    padding-left: 15px;
+}
+.tomato-sauce ul li:last-child{
+	     width: 80%;
+	     text-align: left;
+	     padding-right: 25px;
+}
+.tomato-sauce-img{
+	  width: 100%;
+	  display: table;
+}
+.tomato-sauce-img ul{
+	   width: 100%;
+	   display: table-row;
+}
+.tomato-sauce-img ul li{
+	   display: table-cell;
+	   width: 50%;
+}
+.tomato-sauce-img ul li:last-child{
+	  padding-right: 25px;
+}
+.tomato-sauce-img ul li:first-child{
+	  padding-left: 25px;
+}
+.tomato-sauce-img ul li img{
+	    width: 100%;
+	    margin: 0 auto;
+	    text-align: center;
+}
+.step-tips{
+	  width: 100%;
+}
+.step-tips h3{
+	   color: rgb(199,29,66);
+	   margin-left: 35px;
+}
+.step-tips ul li{
+	   padding-right: 25px;
+}

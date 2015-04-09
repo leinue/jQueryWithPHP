@@ -212,4 +212,8 @@
     $('#recipes-introduction-footer ul #introductionFooterLi2').click(function(){
       loadPagesA('pages/introduction/formula.php','.introduction-page');
     });
+
+    $('#recipes-introduction-footer ul #introductionFooterLi3').click(function(){
+      loadPagesA('pages/introduction/step.php','.introduction-page');
+    });
   </script>

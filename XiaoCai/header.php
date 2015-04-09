@@ -12,6 +12,7 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/recipes-introduction.css">
 	<link rel="stylesheet" type="text/css" href="css/formula.css">
+	<link rel="stylesheet" type="text/css" href="css/step.css">
 	<link rel="stylesheet" type="text/css" href="extension/buttons.css">
 	<script type="text/javascript">
 		/******************************页面访问记录栈******************************/

@@ -12,6 +12,7 @@
       </div>
     </nav>
   </header>
+<div class="introduction-page">
   <section>
     <div class="vip-enjoy vip-enjoy-padding">
       <div class="vip-video">
@@ -152,6 +153,7 @@
       </ul>
     </div>
   </section>
+</div>
   <script type="text/javascript">
     $(document).ready(function() {
       var tag = true;
@@ -205,5 +207,9 @@
 
     $('.header-back').click(function() {
       backPreviosPage('introduction.php');
+    });
+
+    $('#recipes-introduction-footer ul #introductionFooterLi2').click(function(){
+      loadPagesA('pages/introduction/formula.php','.introduction-page');
     });
   </script>

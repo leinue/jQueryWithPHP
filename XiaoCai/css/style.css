@@ -127,6 +127,29 @@ nav{
 	width: 23.75%;
 }
 
+.nav-content ul .recipe-title{
+	font-size: 1.125em;
+}
+
+@media screen and (max-width: 800px){
+	.nav-content ul .recipe-title{
+		font-size: 22px;
+	}
+}
+
+@media screen and (max-width: 400px){
+	.nav-content ul .recipe-title{
+		font-size: 1.125em;
+	}
+}
+
+@media screen and (max-width: 300px){
+	.nav-content ul .recipe-title{
+		font-size: 1em;
+	}
+}
+
+
 .nav-content ul .search-form input{
 	width: 82.75%;
 	height: 34px;
@@ -701,6 +724,7 @@ footer{
 	display: table-cell;
 	text-align: center;
 	cursor: pointer;
+	width: 33.333%;
 }
 
 .main-footer ul li img{

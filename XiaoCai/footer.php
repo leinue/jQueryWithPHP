@@ -2,9 +2,9 @@
 	<div class="main-footer">
 		<ul>
 			<li id="footer-menu-index"><img src="images/index.png">晓菜</li>
-			<li id="footer-menu-recipes"><img src="images/recipe.png">食谱</li>
-			<li id="footer-menu-skills"><img src="images/skills.png">技巧</li>
-			<li id="footer-menu-review"><img src="images/review.png">测评</li>			
+			<li id="footer-menu-recipes"><img src="images/recipe.png">一手好菜</li>
+			<li id="footer-menu-skills"><img src="images/skills.png">玩转厨房</li>
+			<!--<li id="footer-menu-review"><img src="images/review.png">测评</li>-->		
 		</ul>
 	</div>
 </footer>

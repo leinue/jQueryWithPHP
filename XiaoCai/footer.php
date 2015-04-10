@@ -83,11 +83,13 @@
 					//$('.main-page').css('width',mainPageWidth+'px');
 				});
 				$('footer').hide();
+				setNoTouchMove();
 				isSlided=true;
 			}else{
 				$('.main-page').animate({left:'0px'});
 				$('.login-page').css('display','none');
 				$('footer').show();
+				setTouchMove();
 				//$('.main-page').css('width',oWidth+'px');
 				isSlided=false;
 			}	
@@ -145,6 +147,14 @@
 		});
 
 	});
+	
+	
+	document.addEventListener("touchmove",function(e){
+		if(docIsMoved==0){
+			e.preventDefault();
+			e.stopPropagation();
+		}
+	},false);
 
 	</script>
 </body>

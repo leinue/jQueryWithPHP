@@ -74,13 +74,21 @@
 
 		/**********************************函数库**********************************/
 		
+		//当前页面可否滚动,在加载页面和弹出右侧工具栏的时候禁止滚动,默认可滚动
+		var docIsMoved=0;
+		//控制页面是否可滚动
+		function setNoTouchMove(){docIsMoved=0;}
+		function setTocuhMove(){docIsMoved=1;}
+
 		//返回上一个页面
 		function backPreviosPage(currentPage){
 			$('.loading').fadeIn();
+			setNoTouchMove();
 			var stackifyJSONStack=JSON2Stack(localStorage.pageStack);
 			var pageLoaded=stackifyJSONStack.pop();
 			$('body').load(pageLoaded,function(){
 				$('.loading').fadeOut();
+				setTocuhMove();
 				stackifyJSONStack.pageVisitedCount-=1;
 				stackifyJSONStack.currentPage=pageLoaded;
 				localStorage.pageStack=stackifyJSONStack;//更新localStorage
@@ -90,8 +98,10 @@
 		//加载新页面,pageName为要加载的页面名,elem为存放元素
 		function loadPagesA(pageName,elem){
 			$('.loading').fadeIn();
+			setNoTouchMove();
 			$(elem).load(pageName,function(){
 				$('.loading').fadeOut();
+				setTocuhMove();
 				var stackifyJSONStack=JSON2Stack(localStorage.pageStack);
 				stackifyJSONStack.pageVisitedCount+=1;
 				stackifyJSONStack.push(stackifyJSONStack.currentPage);

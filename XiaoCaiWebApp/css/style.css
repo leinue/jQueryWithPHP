@@ -1,0 +1,739 @@
+body{
+	margin: 0px;
+	background: rgb(226,224,227);
+	font-family: "微软雅黑";
+}
+
+nav{
+	width: 100%;
+	background: rgb(230,0,39);
+	padding-bottom: 12px;
+	padding-top: 16px;
+	color: rgb(255,255,255);
+}
+
+.main-page,.login-page{
+	width: 100%;
+	position: absolute;
+}
+
+.loading{
+	display: none;
+	position: absolute;
+	z-index: 1000;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: rgb(200,200,200);
+	opacity: 0.6;
+}
+
+.loading-main{
+	text-align: center;
+	width: 200px;
+	height: 100px;
+	margin: 0 auto;
+	padding-top: 61.666666%;
+	color: rgb(20,20,20);
+	font-size: 30px;
+}
+
+/*侧边栏开始*/
+
+.login-page{
+	height: 100%;
+	background: rgb(230,228,231);
+	width: 74.55%;
+	box-shadow: -4px 0px 12px 2px rgb(190,190,192) inset;
+	display: none;
+}
+
+.logo-area{
+	margin: 0 auto;
+	width: 180px;
+	margin-top: 20.920502%;
+	color: rgb(116,114,117);
+	font-size: 18px;
+	text-align: center;
+	letter-spacing: 8px;
+	font-style: italic;
+}
+
+.logo-area img{
+	display: block;
+	margin: 0 auto;
+}
+
+.lo-re-area{
+	width: 83.682008%;
+	margin: 0 auto;
+	margin-top: 10.273972%;
+	letter-spacing: 4px;
+	text-align: center;
+	color: rgb(192,11,41);
+	font-size: 18px;
+}
+
+.lo-re-area .fast-register{
+	font-style: italic;
+	padding-top: 20px;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+.fast-register a{
+	text-decoration: none;
+	color: rgb(192,11,41);
+}
+
+.fast-register a:hover{
+	color: rgb(173,79,97);
+}
+
+.button-caution{
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+/*侧边栏结束*/
+
+.nav-content{
+	display: table;
+	margin-left: 14px;
+	color: rgb(255,255,255);
+	width: 100%;
+}
+
+.nav-content ul{
+	list-style: none;
+	margin: 0px;
+	display: table-row;
+	width: 100%;
+}
+
+.nav-content ul li{
+	display: table-cell;
+	font-size: 26px;
+}
+
+.nav-content ul li:first-child{
+	font-size: 23px;
+	cursor: pointer;
+	width: 13.75%;
+}
+
+.nav-content ul .main-title{
+	width: 23.75%;
+}
+
+.nav-content ul .recipe-title{
+	font-size: 1.125em;
+}
+
+@media screen and (max-width: 800px){
+	.nav-content ul .recipe-title{
+		font-size: 22px;
+	}
+}
+
+@media screen and (max-width: 400px){
+	.nav-content ul .recipe-title{
+		font-size: 1.125em;
+	}
+}
+
+@media screen and (max-width: 300px){
+	.nav-content ul .recipe-title{
+		font-size: 1em;
+	}
+}
+
+
+.nav-content ul .search-form input{
+	width: 82.75%;
+	height: 34px;
+	border: none;
+	border-radius: 4px;
+	font-size: 14px;
+	color: rgb(0,0,0);
+}
+
+/*头部结束*/
+
+section{
+	margin-top: 1px;
+	padding: 0px;
+}
+
+/*幻灯片开始*/
+
+.banner{
+	position: relative;
+	width: 100%;
+}
+
+.banner ul{
+	list-style: none;
+	margin-left: -40px;
+	width: 100%;
+}
+
+.banner ul li{
+	float: left;
+	height: 150px;
+	box-shadow: inset 0 -3px 6px rgba(0,0,0,.1);
+	background-size: 100% 150px;
+}
+
+/*会员专享开始*/
+
+.vip-enjoy{
+	margin-top: 14px;
+	margin-bottom: 14px;
+	margin-left: 14px;
+	margin-right: 14px;
+	border-radius: 4px;
+	background: rgb(255,255,255);
+	box-shadow: 1px 1px 1px rgb(199,199,199);
+}
+
+.vip-video{
+	height: 200px;
+	border-bottom: 1px solid rgb(0,0,0);
+}
+
+.vip-video video{
+	width: 100%;
+	height: 200px;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px; 
+}
+
+.vip-video img{
+	width: 100%;
+	height: 200px;
+	position: absolute;
+	left: 10px;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;		
+}
+
+.vip-content{
+	padding: 10px;
+	cursor: pointer;
+}
+
+.vip-title{
+	font-size: 18px;
+}
+
+.vip-post{
+	color: rgb(139,139,139);
+}
+
+.vip-menu{
+	color: rgb(139,139,139);
+	font-size: 18px;
+	display: table;
+	margin-top: 10px;
+	width: 100%;
+}
+
+.vip-menu ul{
+	list-style: none;
+	display: table-row;
+}
+
+.vip-menu ul li{
+	display: table-cell;
+	width: 33.4558275%;
+	text-align: center;
+	cursor: pointer;
+}
+
+.vip-menu ul li:hover{
+	color: rgb(179,179,179);
+}
+
+.teacher-brand{
+	position: absolute;
+	width: 60px;
+	padding: 10px;
+	background: rgb(230,0,39);
+	margin-top: -140px;
+	margin-right: 20px;
+	color: rgb(255,255,255);
+	text-align: center;
+	font-size: 14px;
+	right: 20px;
+}
+
+/*侧边栏工具菜单开始*/
+
+.column-menu{
+	margin-top: 12.552301%;
+	color: rgb(97,95,98);
+	font-size: 16px;
+	width: 99.9%;
+}
+
+.column-menu ul{
+	list-style: none;
+	margin-left: -40px;
+}
+
+.column-menu ul li{
+	border-top: 1px solid rgb(250,250,250);
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-left: 12.552301%;
+	margin-bottom: 1px;
+	cursor: pointer;
+}
+
+.column-menu ul li:last-child{
+	border-bottom: 1px solid rgb(250,250,250);
+}
+
+.column-menu ul li:hover{
+	background: rgb(204,202,205);
+}
+
+.column-menu ul li span{
+	color: rgb(181,25,49);
+	margin-right: 20px;
+}
+
+#response-flag{
+	font-size: 50px;
+	color: rgb(255,0,0);
+	height: 12px;
+	position: absolute;
+	top: 69.5833333%;
+}
+
+.column-menu li a{
+	text-decoration: none;
+	color: rgb(97,95,98);
+}
+
+/*阅读列表页面开始*/
+
+.header-title{
+	width: 100%;
+	text-align: center;
+	font-size: 20px;
+}
+
+.header-back{
+	float: left;
+	margin-left: 14px;
+	cursor: pointer;
+}
+
+.header-reading-menu{
+	font-size: 16px;
+	display: table;
+	width: 100%;
+	text-align: center;
+	margin-top: 6px;
+	cursor: pointer;
+}
+
+.header-reading-menu-active{
+	padding-bottom: 2px;
+	border-bottom: 1px solid rgb(255,255,255);
+}
+
+.header-reading-menu ul{
+	list-style: none;
+	display: table-row;
+	width: 100%;
+}
+
+.header-reading-menu ul li{
+	display: table-cell;
+}
+
+/*阅读列表正列表开始*/
+
+.reading-page{
+
+}
+
+.reading-list-a{
+	margin-left: 14px;
+	margin-top: 14px;
+	margin-right:14px;
+	border-radius: 4px;
+	height: 140px;
+	background: rgb(255,255,255);
+	box-shadow: 1px 1px 1px rgb(199,199,199);
+}
+
+.reading-list-img{
+	float: left;
+	height: 100%;
+	width: 41.09589%;
+}
+
+.reading-list-img img{
+	width: 100%;
+	height:100%;
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+
+.reading-list-all-content{
+	padding: 10px;
+	float: left;
+	margin-left: 0px;
+	width: 58.904109%;
+	height: 82.857142%;
+}
+
+.reading-list-all-title{
+	font-size: 16px;
+	cursor: pointer;
+}
+
+.reading-list-all-title p a{
+	text-decoration: none;
+	color: rgb(74,74,74);
+}
+
+.reading-list-all-title p a:hover{
+	color: rgb(74,74,74);
+}
+
+.reading-list-all-summary{
+	font-size: 14px;
+	color: rgb(139,139,139);
+}
+
+.reading-list-all-footer{
+	color: rgb(200,200,200);
+}
+
+.reading-list-all-footer ul{
+	list-style: none;
+	font-size: 12px;
+	margin: 0px;
+	width: 100%;
+}
+
+.reading-list-all-footer ul li{
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+.reading-list-all-footer ul li:first-child{
+	float: left;
+}
+
+.reading-list-all-footer ul li:last-child{
+	float: right;
+}
+
+.padding-div-row{
+	height: 14px;
+	width: 100%;
+}
+
+/*收到的回复页面开始*/
+
+.reversion-list-a{
+	height: 100px;
+}
+
+.reversion-list-img{
+	width: 100px;
+}
+
+.reversion-looked{
+	color: rgb(168,168,168);
+	height: 80px;
+}
+
+.reversion-new .reading-list-all-footer ul li:last-child{
+	margin-right: 24px;
+}
+
+/*.reversion-new .reading-list-all-content{
+	border-right: 1px solid rgb(199,199,199);
+}*/
+
+.reversion-new .reading-list-all-title{
+
+}
+
+.reversion-new-flag{
+	width: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-left: 1px solid rgb(199,199,199);
+}
+
+/*设置界面开始*/
+
+.setting-list{
+	color: rgb(79,79,79);
+	font-size: 16px;
+	margin-top: 14px;
+	width: 100%;
+}
+
+.setting-list ul{
+	list-style: none;
+	margin-left: -40px;
+}
+
+.setting-list ul li{
+	background: rgb(255,255,255);
+	padding-top: 8px;
+	padding-bottom: 8px;
+	padding-left: 14px;
+	cursor: pointer;
+}
+
+.setting-list ul li span{
+	color: rgb(203,203,203);
+	float: right;
+	margin-right: 14px;
+	margin-top: 4px;
+}
+
+.setting-list-second{
+	margin-top: 1px;
+}
+
+.setting-list-third{
+	margin-top: 14px;
+}
+
+.setting-list ul li:last-child{
+	margin-top: 14px;
+}
+
+/*修改/找回密码页面开始*/
+
+.change-password-input{
+	margin-top: 18.75%;
+}
+
+.change-password-input ul li:last-child{
+	margin-top: 1px;
+}
+
+.change-password-input ul li:hover{
+	cursor: default;
+}
+
+.change-password-input ul li input{
+	border: none;
+}
+
+.change-password-submit-button{
+	padding: 36px;
+	font-size: 18px;
+}
+
+.change-password-submit-button .fast-register{
+	padding-top: 20px;
+	color: rgb(178,176,179);
+	font-style: italic;
+	font-size: 16px;
+	text-align: center;
+}
+
+.change-password-submit-button .true-register{
+	color: rgb(192,11,41);
+}
+
+.change-password-submit-button .true-register #login-faster-register{
+	padding-right: 12.5%;
+}
+
+.change-password-submit-button .true-register #login-find-pw{
+	padding-left: 12.5%;
+}
+
+.change-password-input ul #setting-list-phone-num-input{
+	border-bottom: 1px solid rgb(226,224,227);
+}
+
+.change-password-input ul #setting-list-phone-num-input input{
+	width: 150px;
+}
+
+.change-password-input ul .send-ver-code{
+	width: auto;
+	position: absolute;
+	font-size: 12px;
+	right: 14px;
+}
+
+/*用户注册页面开始*/
+
+.register-area{
+	margin-top: 13.920502%;
+}
+
+.wechat-logo{
+	text-align: center;
+	margin-top: 22px;
+}
+
+.wechat-logo img{
+	width: 100px;
+	height: 100px;
+	cursor: pointer;
+}
+
+/*修改资料页面开始*/
+
+.setting-list #wechat-nickname{
+	border-top: 1px solid rgb(204,204,204);
+	border-bottom: 1px solid rgb(204,204,204);
+}
+
+.setting-list #wechat-nickname input{
+	width: 100%;
+	color: rgb(102,102,102);
+	text-align: center;
+}
+
+.profile-upload-photo{
+	font-style: normal;
+}
+		
+.profile-phtot-uploaded{
+	cursor: pointer;
+	padding-top: 8px;
+	height: 111px;
+	width: 111px;
+	border-radius: 58px;
+	border: 1px solid rgb(208,206,208);
+	margin: 0 auto;
+	box-shadow: 0px 0px 16px 8px rgb(208,207,209) inset;
+}
+
+.profile-phtot-uploaded img{
+	border-radius: 47.5px;
+	box-shadow: 0px 0px 4px 1px rgb(208,207,209);
+}
+
+/*食谱页面开始*/
+
+.nav-recipe-menu{
+	display: table;
+	width: 100%;
+	margin-top: 10px;
+}
+
+.nav-recipe-menu ul{
+	list-style: none;
+	display: table-row;
+}
+
+.nav-recipe-menu li{
+	display: table-cell;
+	text-align: center;
+	font-size: 16px;
+}
+
+.nav-recipe-menu li span{
+	font-size: 11px;
+}
+
+.nav-recipe-menu li:first-child{
+	cursor: pointer;
+}
+
+.nav-recipe-menu li:last-child{
+	cursor: pointer;
+}
+
+.recipe-menu-container{
+	position: absolute;
+	top: 100px;
+	z-index: 65535;
+	width: 100%;
+	display: none;
+}
+
+.recipe-menu-slidedown{
+	width: 100%;
+	display: table;
+	background: rgb(255,255,255);
+	opacity: 0.6;
+	color: rgb(10,0,0);
+	font-size: 15px;
+}
+
+.recipe-menu-slidedown ul{
+	display: table-row;
+	width: 200%;
+	list-style: none;
+	text-align: center;
+}
+
+.recipe-menu-slidedown ul li{
+	text-align: center;
+	cursor: pointer;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	display: table-cell;
+	border-right: 1px solid rgb(200,198,199);
+	border-bottom: 1px solid rgb(200,198,199);
+}
+
+.recipe-menu-slidedown ul li img{
+	width: 50px;
+	height: 50px;
+	margin: 0 auto;
+	display: block;
+}
+
+/*底部开始*/
+
+footer{
+	z-index: 1000;
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	width: 100%;
+	background: rgb(241,241,241);
+}
+
+.main-footer{
+	display: table;
+	width: 100%;
+}
+
+.main-footer ul{
+	display: table-row;
+	list-style: none;
+	text-align: center;
+}
+
+.main-footer ul li{
+	padding-top: 6px;
+	padding-bottom: 10px;
+	display: table-cell;
+	text-align: center;
+	cursor: pointer;
+	width: 33.333%;
+}
+
+.main-footer ul li img{
+	display: block;
+	width: 30px;
+	height: 30px;
+	margin: 0 auto;
+}
+
+.main-footer-menu-active{
+	color: rgb(149,38,55);
+}

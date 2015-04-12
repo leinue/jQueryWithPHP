@@ -1,0 +1,130 @@
+
+ .formula-buy{ 
+     width: 100%;
+     display: table;
+     text-align: center;
+     background:rgb(215,215,215);
+     margin-top: 2px;
+        /*position: fixed;*/
+
+}
+@media screen and (max-width:800px){
+    .formula-buy ul li{
+    	   font-size: 1em;
+    }
+}
+@media screen and (max-width:400px){
+    .formula-buy ul li{
+    	   font-size: 0.85em;
+    }
+}
+@media screen and (max-width:300px){
+    .formula-buy ul li{
+    	   font-size: 0.7em;
+    }
+}
+@media screen and (max-width:1900px){
+    .formula-buy ul li a{
+    	   font-size: 1em;
+    }
+}
+@media screen and (max-width:800px){
+    .formula-buy ul li a{
+    	   font-size: 0.85em;
+    }
+}
+@media screen and (max-width:400px){
+    .formula-buy ul li a{
+    	   font-size: 0.7em;
+    }
+}
+@media screen and (max-width:300px){
+    .formula-buy ul li a{
+    	   font-size: 0.5em;
+    }
+}
+ .formula-buy ul{ 
+    display: table-row;
+    width: 100%;
+}
+.formula-buy ul li{ 
+     display: table-cell; 
+     text-align: center;
+}
+.formula-buy ul li:last-child{
+	   text-align: center;
+	   width: 20%;
+}
+.formula-buy ul li img{
+   width: 100px;
+   cursor: pointer;
+}
+.formula-li1{
+	  width: 20%;
+}
+.formula-li2{
+	    width: 60%;
+}
+.button-add{
+	    width: 60%;
+}
+.formula-juice{
+	   width: 100%;
+}
+.formula-juice-title{
+      width: 100%;
+       text-align: left;
+       border-bottom: 1px solid rgb(184,186,187);
+       padding-bottom: 15px;
+       padding-top: 15px;
+       padding-left: 20px;
+
+}
+.formula-juice-title{
+	   font-size: 24px;
+}
+.formula-juice-list{
+	width: 100%;
+	display: table;
+}
+.formula-juice-list ul{
+    width: 100%;
+	display: table-row;
+}
+.formula-juice-list ul li{
+	     display: table-cell;
+	     font-size: 18px;
+       padding-top: 15px;
+	     padding-bottom: 15px;
+	     color: rgb(93,91,94);
+}
+.formula-juice-list ul .juice-list-li1{
+	   text-align: center;
+	   width: 20%;
+	 }
+   .juice-list-li1 span{
+       color: rgb(239,51,50);
+   }
+.formula-juice-list ul .juice-list-li2{
+      width: 5%;
+      text-align: right;
+}
+.formula-juice-list ul .juice-list-li3 {
+      width: 25%;
+      text-align:left;
+}
+#formula-add{
+	  width: 20%;
+	  padding-bottom: 15px;
+	  padding-top: 15px;
+	  position: absolute;
+	  top: 100px;
+	  left: 40%;
+	  font-size: 24px;
+	  display: none;
+	  background:rgb(102,102,51);
+	  border:1px solid rgb(204,153,204);
+	  text-align: center;
+	  opacity: 0.7;
+
+}

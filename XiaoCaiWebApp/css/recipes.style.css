@@ -1,0 +1,164 @@
+.header-recipes{
+	    width: 100%;
+	    margin-top: 15px;
+
+}
+.header-recipes ul li span {
+	   font-size: 28px;
+	   text-align: center;
+
+}
+.header-recipes ul li{
+	   display: inline;
+	   margin-left: 350px;
+
+}
+.nav-content ul .main-recipes{
+	  font-size: 32px;
+}
+
+#slidedown{
+	  width: 100%;
+	   background:rgb(237,235,236);
+	  opacity: 0.6;
+	  display: none;
+	  position: absolute;
+	  top: 140px;
+	  left: 0px;
+	
+}
+.header-recipes ul li{
+	  width: 100%;
+	  font-size: 28px;
+	  color:rgb(255,255,255);
+
+	}
+	#ingredientSearch1 ul{
+		  width: 100%;
+		  margin:0px;
+		  padding: 0; 
+	}
+
+#slidedown #ingredientSearch1 ul li{
+	  float: left;
+	  list-style-type: none;
+	  text-align: center;
+	    border-bottom: 1px solid rgb(200,198,199);
+	    border-right: 1px solid rgb(200,198,199);
+	    display: block;
+	    width: 33.333%;
+	    height: 180px;
+	   line-height: 100px;
+	    font-size: 20px;
+	    color: rgb(95,93,94);
+	   
+}
+#ingredientSearch2 ul{
+		  width: 100%;
+		  margin:0px;
+		  padding: 0; 
+	}
+
+#slidedown #ingredientSearch2 ul li{
+	  float: left;
+	  list-style-type: none;
+	  text-align: center;
+	   border-bottom: 1px solid rgb(200,198,199);
+	    border-right: 1px solid rgb(200,198,199);
+	  display: block;
+	   line-height: 100px;
+	   height: 180px;
+	   width: 33.333%;
+	   color: rgb(95,93,94);
+	   font-size: 20px;
+}
+
+#slidedown ul li img{
+	  display: block;
+	  width: 100px;
+	  height: 100px;
+	  margin:0 auto;
+}
+#slidedownStyle{
+	  width: 100%;
+	   background:rgb(237,235,236);
+	  opacity: 0.7;
+	  display: none;
+	  position: absolute;
+	  top: 140px;
+	  left: 0px;
+}
+#slidedownStyle #foodStyle1 ul{
+	      width: 100%;
+		  margin:0px;
+		  padding: 0;             
+}
+#slidedownStyle #foodStyle2 ul{
+	       width: 100%;
+		   margin:0px;
+		   padding: 0; 
+}
+#slidedownStyle #foodStyle1 ul li{
+	   float: left;
+	  list-style-type: none;
+	   border-bottom: 1px solid rgb(200,198,199);
+	    border-right: 1px solid rgb(200,198,199);
+	  text-align: center;
+	  display: block;
+	   height: 100px;
+	   line-height: 100px;
+	   width: 33.333%;
+	   color: rgb(95,93,94);
+	   font-size: 20px;
+}
+#slidedownStyle #foodStyle2 ul li{
+	   float: left;
+	  list-style-type: none;
+	  text-align: center;
+	   border-bottom: 1px solid rgb(200,198,199);
+	    border-right: 1px solid rgb(200,198,199);
+	  display: block;
+	   height: 100px;
+	   line-height: 100px;
+	   width: 33.333%;
+	   color: rgb(95,93,94);
+	   font-size: 20px;
+}
+.recipes-list-a{
+	   width: 100%;
+
+}
+.recipes-list-a .recipes-list-img img{
+	  width: 1349px;
+	  height: 300px;
+	  margin-left: 10px;
+}
+.recipes-reading-list-all-content h1{
+	  text-align: center;
+}
+.recipes-reading-list-all-content p{
+	  text-align: center;
+}
+.recipes-list-a .recipes-list-all-icon ul{
+	    margin-left: 450px;
+}
+.recipes-list-a .recipes-list-all-icon ul li{
+	  list-style-type: none;
+	  float: left;
+	  margin:0 auto;
+	  margin-left: 50px;
+}
+.recipes-footer-li{
+      width: 100%;
+      margin-top: 40px;
+}
+.recipes-footer-li ul{
+	   margin-left: 290px;
+}
+.recipes-footer-li ul li{
+	  width: 20%;
+	  float: left;
+	  font-size: 28px;
+	  list-style-type: none;
+	  margin-left: 0px;
+}

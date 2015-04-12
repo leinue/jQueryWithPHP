@@ -1,0 +1,144 @@
+.vip-enjoy-padding {
+  margin: 0px;
+  margin-top: -1px;
+}
+.vip-enjoy-padding .vip-video {
+  border-radius: 0px;
+}
+.vip-enjoy-padding .vip-video video {
+  border-radius: 0px;
+}
+.vip-content-time {
+  width: 100%;
+  display: table;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top: 1px solid rgb(212,212,212);
+  margin-top: 20px;
+}
+.vip-content-time ul {
+  width: 100%;
+  margin: 0 auto;
+  display: table-row;
+}
+.vip-content-time ul li {
+  list-style-type: none;
+  width: 33.3%;
+  text-align: center;
+  font-size:0.9375em;
+  color: rgb(167,167,167);
+  display: table-cell;
+}
+.vip-content-time #introduction-time-list2 li {
+  font-size:1.5em;
+  color: rgb(167,34,29);
+}
+.introduction-teacher-brand {
+  top: 365px;
+}
+.introduction-comment {
+  width: 100%;
+  display: table;
+  padding-right: 14px;
+}
+.introduction-comment .introduction-comment-ul {
+  display: table-row;
+  width: 100%;
+}
+.introduction-comment .introduction-comment-ul li {
+  display: table-cell;
+}
+.offical-comments {
+  width: 150%;
+  padding-right: 25px;
+}
+.logo-area {
+  width: 100%;
+  margin-top:14px;
+}
+.introduction-comment .introduction-comment-ul .introduction-comment-photo {
+  }
+.introduction-comment .introduction-comment-ul .introduction-comment-input {
+  width: 70%;
+}
+.introduction-comment .introduction-comment-ul .introduction-comment-input input {
+  height: 67px;
+  width: 95%;
+}
+.introduction-comment-ul .introduction-comment-show {
+  width:100%;
+}
+.introduction-photo-uploaded {
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+}
+.introduction-comment-ul .introduction-comment-show .introduction-comment-showComment {
+  width: 100%;
+  display: table;
+}
+.introduction-comment-ul .introduction-comment-show .introduction-comment-showComment ul {
+  display: table-row;
+}
+.introduction-comment-ul .introduction-comment-show .introduction-comment-showComment ul li {
+  display: table-cell;
+  width: 10px;
+}
+.introduction-comment-ul .introduction-comment-show .introduction-comment-showComment ul li:last-child {
+  text-align: right;
+  color: rgb(117,115,118);
+}
+.introduction-comment-show ul li h3 {
+  font-size: 18px;
+}
+.introduction-comment-showXiaocai {
+  width: 100%;
+  display: table;
+  border-left: 4px solid rgb(167,34,29);
+  padding-left: 10px;
+}
+.introduction-comment-showXiaocai ul {
+  display: table-row;
+}
+.introduction-comment-ul .introduction-comment-show .introduction-comment-showXiaocai ul li:last-child {
+  text-align: right;
+  color: rgb(117,115,118);
+}
+.introduction-comment-showXiaocai ul li {
+  display: table-cell;
+}
+.introduction-comment-showXiaocai p {
+  color: rgb(117,115,118);
+}
+.introduction-comment-showComment-p{
+    width: 213%;
+    color: rgb(117,115,118);
+}
+#recipes-introduction-footer {
+  width: 100%;
+  display: table;
+  color: rgb(117,115,118);
+  position: fixed;
+  bottom: 0px;
+  margin-top: 20px;
+  background: rgb(241,241,241);
+}
+#recipes-introduction-footer ul {
+  display: table-row;
+  margin-left: 50px;
+}
+#recipes-introduction-footer ul li{
+  display: table-cell;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+#recipes-introduction-footer #recipes-introduction-footer-ul li span {
+  padding-bottom: 2px;
+}
+.borderActive {
+  border-bottom: 1px solid rgb(132,46,57);
+  color: rgb(163,25,51);
+}

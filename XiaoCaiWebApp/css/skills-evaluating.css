@@ -1,0 +1,82 @@
+
+.header-skills-evaluating{
+	   width: 100%;
+	   display: table;
+}
+.header-skills-evaluating ul{
+	  display: table-row;
+	  width: 100%;
+}
+.header-skills-evaluating ul li{
+	   display: table-cell;
+}
+.header-skills-evaluating ul li:first-child{
+	    width: 40%;
+	    text-align:left;
+	    padding-left: 25px;
+}
+.header-skillsEvaluating-li{
+	  width: 20%;
+	  text-align: center;
+}
+.skills-evaluating-img1{
+	   width: 100%;
+}
+.skills-evaluating-img1 img{
+	   width: 100%;
+	   height: 200px;
+}
+.skills-evaluating-title{
+	  width: 100%;
+	  padding-top: 15px
+}
+.skills-evaluating-title h3,p {
+      padding-left: 20px;
+      padding-right: 20px;
+      color: rgb(93,91,94);
+}
+.content-summary{
+	  width: 100%;
+	  padding-left: 20px;
+	  padding-right: 20px;
+	  margin-top: 20px;
+}
+.content-summaryIn{
+	     width: 100%;
+	     background: rgb(255,255,255);
+	     padding: 10px;
+	     color: rgb(93,91,94);
+}
+.skeva-content{
+	  width: 100%;
+	  padding-left: 25px;
+	  padding-right: 25px;
+	  margin-top: 20px;
+	  color: rgb(93,91,94);
+}
+.skeva-img{
+	  width: 100%;
+	  padding-left: 25px;
+	  padding-right: 25px;
+	  margin-bottom: 20px;
+	  margin-top: 20px;
+}
+.skeva-img img{
+	  width: 100%;
+	  height: 200px;
+}
+.skeva-xiaocai{
+	   width: 100%;
+}
+.skeva-xiaocai h3{
+	   margin: 0 auto;
+}
+.skeva-xiaocai-content{
+	   width: 40%;
+	   margin: 0 auto;
+	   text-align: center;
+	   padding-bottom: 35px;
+	   padding-top: 25px;
+	   font-size: 1.5em;
+	   color: rgb(225,7,49);
+}

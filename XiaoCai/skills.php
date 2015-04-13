@@ -1,4 +1,4 @@
-<?php require('header.php'); ?>
+<?php include('header.php'); ?>
 
 <div class="main-page">
 
@@ -109,12 +109,5 @@
 </footer>
 
 </div>
-
-<script type="text/javascript">
-	$(document).ready(function(){
-
-	});
-
-</script>
 
 <?php require('footer.php'); ?>

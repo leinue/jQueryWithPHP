@@ -1,7 +1,7 @@
 <?php require('header.php'); ?>
 
 <div class="main-page">
-
+	
 <header>
 	<nav>
 		<div class="nav-content">
@@ -110,10 +110,6 @@
 
 </section>
 
-<footer>
-	
-</footer>
-
 </div>
 
 <script type="text/javascript">
@@ -185,4 +181,4 @@
 
 </script>
 
-<?php require('footer.php'); ?>
+<?php include('footer.php'); ?>

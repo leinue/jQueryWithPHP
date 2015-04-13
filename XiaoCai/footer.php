@@ -2,9 +2,9 @@
 <footer>
 	<div class="main-footer">
 		<ul>
-			<li id="footer-menu-index"><a href="index.php"><img src="images/index.png">晓菜</a></li>
-			<li id="footer-menu-recipes"><a href="recipes.php"><img src="images/recipe.png">一手好菜</a></li>
-			<li id="footer-menu-skills"><a href="skills.php"><img src="images/skills.png">玩转厨房</a></li>
+			<li id="footer-menu-index"><a href="index.php"><img src="images/index.png"><span>晓菜</span></a></li>
+			<li id="footer-menu-recipes"><a href="recipes.php"><img src="images/recipe.png"><span>一手好菜</span></a></li>
+			<li id="footer-menu-skills"><a href="skills.php"><img src="images/skills.png"><span>玩转厨房</span></a></li>
 			<!--<li id="footer-menu-review"><img src="images/review.png">测评</li>-->		
 		</ul>
 	</div>
@@ -133,10 +133,19 @@
 
 		//设置活跃菜单
 		function setActiveA(){
-			var currentItem=JSON2Stack(localStorage.pageStack).currentPage.split('.')[0];
-			var activeElem='.main-footer ul #footer-menu-'+currentItem;
-			$(activeElem).addClass('main-footer-menu-active');
-			$(activeElem+' img').attr('src','images/'+currentItem+'_active.png');		
+			//var currentItem=JSON2Stack(localStorage.pageStack).currentPage.split('.')[0];
+			var currentHref=document.location.href;
+			if(currentHref.indexOf('.')!=-1){
+				currentHref=currentHref.split('.');
+				currentHref=currentHref[0].split('/');
+				currentHref=currentHref[currentHref.length-1];
+			}else{
+				currentHref='index';
+			}
+			
+			var activeElem='.main-footer ul #footer-menu-'+currentHref;
+			$(activeElem+' a span').addClass('main-footer-menu-active');
+			$(activeElem+' a img').attr('src','images/'+currentHref+'_active.png');		
 		}
 		
 		setActiveA();

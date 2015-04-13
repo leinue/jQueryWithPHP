@@ -228,7 +228,17 @@ section{
 	font-size: 18px;
 }
 
+.vip-title a{
+	text-decoration: none;
+	color: #333;
+}
+
 .vip-post{
+	color: rgb(139,139,139);
+}
+
+.vip-post a{
+	text-decoration: none;
 	color: rgb(139,139,139);
 }
 
@@ -741,4 +751,531 @@ footer{
 
 .main-footer-menu-active{
 	color: rgb(149,38,55);
+}
+
+/*recipes introduction*/
+.vip-enjoy-padding {
+  margin: 0px;
+  margin-top: -1px;
+}
+.vip-enjoy-padding .vip-video {
+  border-radius: 0px;
+}
+.vip-enjoy-padding .vip-video video {
+  border-radius: 0px;
+}
+.vip-content-time {
+  width: 100%;
+  display: table;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top: 1px solid rgb(212,212,212);
+  margin-top: 20px;
+}
+.vip-content-time ul {
+  width: 100%;
+  margin: 0 auto;
+  display: table-row;
+}
+.vip-content-time ul li {
+  list-style-type: none;
+  width: 33.3%;
+  text-align: center;
+  font-size:0.9375em;
+  color: rgb(167,167,167);
+  display: table-cell;
+}
+.vip-content-time #introduction-time-list2 li {
+  font-size:1.5em;
+  color: rgb(167,34,29);
+}
+.introduction-teacher-brand {
+  top: 365px;
+}
+.introduction-comment {
+  width: 100%;
+  display: table;
+  padding-right: 14px;
+}
+.introduction-comment .introduction-comment-ul {
+  display: table-row;
+  width: 100%;
+}
+.introduction-comment .introduction-comment-ul li {
+  display: table-cell;
+}
+.offical-comments {
+  width: 150%;
+  padding-right: 25px;
+}
+.logo-area {
+  width: 100%;
+  margin-top:14px;
+}
+.introduction-comment .introduction-comment-ul .introduction-comment-photo {
+  }
+.introduction-comment .introduction-comment-ul .introduction-comment-input {
+  width: 70%;
+}
+.introduction-comment .introduction-comment-ul .introduction-comment-input input {
+  height: 67px;
+  width: 95%;
+}
+.introduction-comment-ul .introduction-comment-show {
+  width:100%;
+}
+.introduction-photo-uploaded {
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+}
+.introduction-comment-ul .introduction-comment-show .introduction-comment-showComment {
+  width: 100%;
+  display: table;
+}
+.introduction-comment-ul .introduction-comment-show .introduction-comment-showComment ul {
+  display: table-row;
+}
+.introduction-comment-ul .introduction-comment-show .introduction-comment-showComment ul li {
+  display: table-cell;
+  width: 10px;
+}
+.introduction-comment-ul .introduction-comment-show .introduction-comment-showComment ul li:last-child {
+  text-align: right;
+  color: rgb(117,115,118);
+}
+.introduction-comment-show ul li h3 {
+  font-size: 18px;
+}
+.introduction-comment-showXiaocai {
+  width: 100%;
+  display: table;
+  border-left: 4px solid rgb(167,34,29);
+  padding-left: 10px;
+}
+.introduction-comment-showXiaocai ul {
+  display: table-row;
+}
+.introduction-comment-ul .introduction-comment-show .introduction-comment-showXiaocai ul li:last-child {
+  text-align: right;
+  color: rgb(117,115,118);
+}
+.introduction-comment-showXiaocai ul li {
+  display: table-cell;
+}
+.introduction-comment-showXiaocai p {
+  color: rgb(117,115,118);
+}
+.introduction-comment-showComment-p{
+    width: 213%;
+    color: rgb(117,115,118);
+}
+#recipes-introduction-footer {
+  width: 100%;
+  display: table;
+  color: rgb(117,115,118);
+  position: fixed;
+  bottom: 0px;
+  margin-top: 20px;
+  background: rgb(241,241,241);
+}
+#recipes-introduction-footer ul {
+  display: table-row;
+  margin-left: 50px;
+}
+#recipes-introduction-footer ul li{
+  display: table-cell;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+#recipes-introduction-footer #recipes-introduction-footer-ul li span {
+  padding-bottom: 2px;
+}
+.borderActive {
+  border-bottom: 1px solid rgb(132,46,57);
+  color: rgb(163,25,51);
+}
+
+/*skills evaluating*/
+
+.header-skills-evaluating{
+	   width: 100%;
+	   display: table;
+}
+.header-skills-evaluating ul{
+	  display: table-row;
+	  width: 100%;
+}
+.header-skills-evaluating ul li{
+	   display: table-cell;
+}
+.header-skills-evaluating ul li:first-child{
+	    width: 40%;
+	    text-align:left;
+	    padding-left: 25px;
+}
+.header-skillsEvaluating-li{
+	  width: 20%;
+	  text-align: center;
+}
+.skills-evaluating-img1{
+	   width: 100%;
+}
+.skills-evaluating-img1 img{
+	   width: 100%;
+	   height: 200px;
+}
+.skills-evaluating-title{
+	  width: 100%;
+	  padding-top: 15px
+}
+.skills-evaluating-title h3,.skills-evaluating-title p {
+      padding-left: 20px;
+      padding-right: 20px;
+      color: rgb(93,91,94);
+}
+.skeva-content-summary{
+	  width: 100%;
+	  padding-left: 20px;
+	  padding-right: 20px;
+	  margin-top: 20px;
+}
+.skeva-content-summaryIn{
+	     width: 100%;
+	     background: rgb(255,255,255);
+	     padding: 10px;
+	     color: rgb(93,91,94);
+}
+.skeva-content{
+	  width: 100%;
+	  padding-left: 25px;
+	  padding-right: 25px;
+	  margin-top: 20px;
+	  color: rgb(93,91,94);
+}
+.skeva-img{
+	  width: 100%;
+	  padding-left: 25px;
+	  padding-right: 25px;
+	  margin-bottom: 20px;
+	  margin-top: 20px;
+}
+.skeva-img img{
+	  width: 100%;
+	  height: 200px;
+}
+.skeva-xiaocai{
+	   width: 100%;
+}
+.skeva-xiaocai h3{
+	   margin: 0 auto;
+}
+.skeva-xiaocai-content{
+	   width: 40%;
+	   margin: 0 auto;
+	   text-align: center;
+	   padding-bottom: 35px;
+	   padding-top: 25px;
+	   font-size: 1.5em;
+	   color: rgb(225,7,49);
+}
+
+/*step*/
+
+.step-page{
+	   width: 100%;
+}
+.tomato-sauce{
+	  width: 100%;
+	  display: table;
+}
+.tomato-sauce ul #red1{
+	      color: rgb(199,29,66);
+}
+.tomato-sauce ul #red2{
+	      color: rgb(199,29,66);
+}
+.tomato-sauce ul #red3{
+	      color: rgb(199,29,66);
+}
+.tomato-sauce ul{
+	  width: 100%;
+	  display: table-row;
+	  text-align: center;
+}
+.tomato-sauce ul li{
+	   display: table-cell;
+	   padding-top: 10px;
+	   padding-bottom: 10px;
+	   color: rgb(93,94,91);
+}
+.tomato-sauce ul li:first-child{
+	    width: 20%;
+	    text-align: right;
+	    padding-right:50px;
+	    padding-left: 15px;
+}
+.tomato-sauce ul li:last-child{
+	     width: 80%;
+	     text-align: left;
+	     padding-right: 25px;
+}
+.tomato-sauce-img{
+	  width: 100%;
+	  display: table;
+}
+.tomato-sauce-img ul{
+	   width: 100%;
+	   display: table-row;
+}
+.tomato-sauce-img ul li{
+	   display: table-cell;
+	   width: 50%;
+}
+.tomato-sauce-img ul li:last-child{
+	  padding-right: 25px;
+}
+.tomato-sauce-img ul li:first-child{
+	  padding-left: 25px;
+}
+.tomato-sauce-img ul li img{
+	    width: 100%;
+	    margin: 0 auto;
+	    text-align: center;
+}
+.step-main-tips{
+	   width: 100%;
+	   padding-left: 25px;
+	   padding-right: 25px;
+	   margin-bottom: 25px;
+}
+.step-tips{
+	  width: 100%;
+	  background:rgb(255,255,255);
+	  box-shadow: 1px 1px 1px #c7c7c7;
+}
+.step-tips h3{
+	   color: rgb(199,29,66);
+	   margin-left: 35px;
+	   padding-top: 10px;
+}
+.step-tips ul li{
+	   padding-right: 25px;
+	   padding-bottom: 10px;
+	   color: rgb(93,94,91);
+}
+
+/*formula*/
+
+ .formula-buy{ 
+     width: 100%;
+     display: table;
+     text-align: center;
+     background:rgb(215,215,215);
+     margin-top: 2px;
+        /*position: fixed;*/
+
+}
+@media screen and (max-width:800px){
+    .formula-buy ul li button,.formula-buy ul li span{
+    	   font-size: 1em;
+    }
+}
+@media screen and (max-width:600px){
+    .formula-buy ul li button,.formula-buy ul li span{
+    	   font-size: 0.8em;
+    }
+}
+@media screen and (max-width:400px){
+    .formula-buy ul li button,.formula-buy ul li span{
+    	   font-size: 0.7em;
+    }
+}
+@media screen and (max-width:1900px){
+    .formula-buy ul li{
+    	   font-size: 1.3em;
+    }
+}
+ .formula-buy ul{ 
+    display: table-row;
+    width: 100%;
+}
+.formula-buy ul li{ 
+     display: table-cell; 
+     text-align: center;
+}
+.formula-buy ul li:last-child{
+	   text-align: center;
+	   width: 20%;
+}
+.formula-buy ul li img{
+   width: 100px;
+   cursor: pointer;
+}
+.formula-li1{
+	  width: 20%;
+}
+.formula-li2{
+	    width: 60%;
+}
+.button-add{
+	    width: 60%;
+      border-radius: 30px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      text-align: center;
+      background: rgb(212,0,43);
+      color: rgb(255,255,255);
+      border:none;
+}
+.formula-juice{
+	   width: 100%;
+}
+.formula-juice-title{
+      width: 100%;
+       text-align: left;
+       border-bottom: 1px solid rgb(184,186,187);
+       padding-bottom: 15px;
+       padding-top: 15px;
+       padding-left: 20px;
+       font-size: 1.1em;
+
+}
+.formula-juice-list{
+	width: 100%;
+	display: table;
+}
+.formula-juice-list ul{
+    width: 100%;
+	display: table-row;
+}
+.formula-juice-list ul li{
+	     display: table-cell;
+	     font-size: 14px;
+       padding-top: 15px;
+	     padding-bottom: 15px;
+	     color: rgb(93,91,94);
+}
+.formula-juice-list ul .juice-list-li1{
+	   text-align: center;
+	   width: 20%;
+	 }
+   .juice-list-li1 span{
+       color: rgb(239,51,50);
+   }
+.formula-juice-list ul .juice-list-li2{
+      width: 5%;
+      text-align: right;
+}
+.formula-juice-list ul .juice-list-li3 {
+      width: 25%;
+      text-align:left;
+}
+#formula-add{
+	  width: 20%;
+	  padding-bottom: 15px;
+	  padding-top: 15px;
+	  position: absolute;
+	  top: 100px;
+	  left: 40%;
+	  font-size: 24px;
+	  display: none;
+	  background:rgb(102,102,51);
+	  border:1px solid rgb(204,153,204);
+	  text-align: center;
+	  opacity: 0.7;
+
+}
+
+/*monograph*/
+
+#skills-evaluating-back{
+	    cursor: pointer;
+}
+.monograph-img1{
+	  width: 100%;
+}
+.monograph-img1 img{
+	  width: 100%;
+	  height: 200px;
+}
+#monograph-brand{
+	    position: absolute;
+	    margin-top: -50px;
+	    margin-right: 20px;
+}
+#mono-share{
+	  cursor: pointer;
+}
+#monograph-member{
+	  width: 80px;
+	  margin-top: 50px;
+	  margin-left: 100px;
+	  box-shadow: 1px 1px 1px rgb(119,119,119);
+}
+.monograph-title{
+	  padding-left: 18px;
+}
+.monoshare{
+	  width: 100%;
+	  height: 100%;
+	  background: rgb(163,163,163);
+	  opacity: 0.8;
+	  top: 0px;
+	  left: 0px;
+	  position: absolute;
+	  display: none;
+}
+.monoshareDiv{
+	    width: 50%;
+	    margin-top: 300px;
+	    display: table;
+	    background: rgb(241,241,241);
+	    padding: 6%;
+        border-radius: 8px;
+        top: -10%;
+        left: 25%;
+        position: absolute;
+}
+.monoshareDiv ul{
+	   display: table-row;
+}
+.monoshareDiv ul li{
+	   display: table-cell;
+	   width: 50%;
+	   text-align: center;
+	   cursor: pointer;
+}
+@media screen and (max-width:1900px){
+    .monoshareDiv ul li img,.monoshareDiv ul li{
+    	   width: 100px;
+    	   font-size: 1.8em;
+    }
+}
+@media screen and (max-width:800px){
+    .monoshareDiv ul li img,.monoshareDiv ul li{
+    	   width: 80px;
+    	   font-size: 1.2em;
+    }
+}
+@media screen and (max-width:600px){
+    .monoshareDiv ul li img,.monoshareDiv ul li{
+    	   width: 70px;
+    	   font-size: 1em;
+    }
+}
+@media screen and (max-width:400px){
+    .monoshareDiv ul li img,.monoshareDiv ul li{
+    	   width: 50px;
+    	   font-size: 0.7em;
+    }
+}
+.monoshareDiv #line li:first-child{
+	border-right: 1px solid rgb(212,212,212);
+}
+.monoshareDiv #monoshare-content li{
+	  padding-top: 10px;
 }

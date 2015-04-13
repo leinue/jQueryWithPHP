@@ -4,7 +4,7 @@
       <div class="header-skills-evaluating">
           <ul>
             <li><span class="glyphicon glyphicon-menu-left" id="skills-evaluating-back"></span></li>
-            <li class="header-skillsEvaluating-li"><span class="glyphicon glyphicon-eye-open"></span>268</li>
+            <li class="header-skillsEvaluating-li"><span class="glyphicon glyphicon-eye-open"></span> 268</li>
             <li class="header-skillsEvaluating-li"><span class="glyphicon glyphicon-inbox"></span></li>
             <li class="header-skillsEvaluating-li"><span class="glyphicon glyphicon-link"></span></li>
           </ul>

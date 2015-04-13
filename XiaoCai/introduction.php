@@ -30,35 +30,19 @@
         </div>
         <div class="vip-content-time">
           <ul id="introduction-time-list1" class="introduction-time">
-            <li>
-              备料和预处理
-            </li>
-            <li>
-              料理时长
-            </li>
-            <li>
-              享用份量
-            </li>
+            <li>备料和预处理</li>
+            <li>料理时长</li>
+            <li>享用份量</li>
           </ul>
           <ul id="introduction-time-list2" class="introduction-time">
-            <li>
-              30分钟
-            </li>
-            <li>
-              60分钟
-            </li>
-            <li>
-              6人份
-            </li>
+            <li>30分钟</li>
+            <li>60分钟</li>
+            <li>6人份</li>
           </ul>
         </div>
         <div class="vip-menu">
           <ul>
-            <li>
-              <span class="glyphicon glyphicon-eye-open">
-              </span>
-              268
-            </li>
+            <li><span class="glyphicon glyphicon-eye-open"></span> 268</li>
             <li>
               <span class="glyphicon glyphicon-heart-empty">
               </span>
@@ -138,21 +122,9 @@
     <footer>
     <div id="recipes-introduction-footer">
       <ul id="recipes-introduction-footer-ul">
-        <li>
-          <span id="introductionFooterLi1">
-            介绍
-          </span>
-        </li>
-        <li>
-          <span id="introductionFooterLi2">
-            配方
-          </span>
-        </li>
-        <li>
-          <span id="introductionFooterLi3">
-            步骤
-          </span>
-        </li>
+        <li><span id="introductionFooterLi1">介绍</span></li>
+        <li><span id="introductionFooterLi2">配方</span></li>
+        <li><span id="introductionFooterLi3">步骤</span></li>
       </ul>
     </div>
     </footer>>
@@ -208,7 +180,8 @@
     });
 
     $('.header-back').click(function() {
-      backPreviosPage('introduction.php');
+      //backPreviosPage('introduction.php');
+      history.go(-1);
     });
 
       $('#recipes-introduction-footer ul #introductionFooterLi1').click(function(){

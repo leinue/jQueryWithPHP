@@ -66,8 +66,8 @@
 			<!--<img src="">-->
 		</div>
 		<div class="vip-content">
-			<div class="vip-title">会员专享标题</div>
-			<div class="vip-post">内容标题内容标题内容标题内容标题内容标题内容标题内容标题内容标题</div>
+			<div class="vip-title"><a href="introduction.php">会员专享标题</a></div>
+			<div class="vip-post"><a href="introduction.php">内容标题内容标题内容标题内容标题内容标题内容标题内容标题内容标题</a></div>
 			<div class="vip-menu">
 				<ul>
 					<li><span class="glyphicon glyphicon-eye-open"></span> 268</li>
@@ -173,9 +173,9 @@
 			}
 		});
 
-		$('.vip-title,.vip-post').click(function(){
+		/*$('.vip-title,.vip-post').click(function(){
 			loadPagesA('introduction.php','body');
-		});
+		});*/
 	
 	});
 

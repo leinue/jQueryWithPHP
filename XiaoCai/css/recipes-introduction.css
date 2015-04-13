@@ -50,6 +50,7 @@
 }
 .offical-comments {
   width: 150%;
+  padding-right: 25px;
 }
 .logo-area {
   width: 100%;
@@ -109,24 +110,24 @@
 .introduction-comment-showXiaocai p {
   color: rgb(117,115,118);
 }
-.introduction-comment-showComment-p {
-  width: 250%;
-  padding-right: 35px;
-  color: rgb(117,115,118);
+.introduction-comment-showComment-p{
+    width: 213%;
+    color: rgb(117,115,118);
 }
 #recipes-introduction-footer {
   width: 100%;
   display: table;
   color: rgb(117,115,118);
-  position: absolute;
+  position: fixed;
+  bottom: 0px;
   margin-top: 20px;
   background: rgb(241,241,241);
 }
-#recipes-introduction-footer #recipes-introduction-footer-ul {
+#recipes-introduction-footer ul {
   display: table-row;
   margin-left: 50px;
 }
-#recipes-introduction-footer #recipes-introduction-footer-ul li {
+#recipes-introduction-footer ul li{
   display: table-cell;
   font-size: 14px;
   text-align: center;

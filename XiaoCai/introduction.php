@@ -114,7 +114,7 @@
             </div>
           </div>
           <div class="introduction-comment-showXiaocai">
-            <ul introduction-comment-showxiaocai-ul>
+            <ul>
               <li>
                 <h3>
                   晓菜
@@ -133,6 +133,9 @@
         </div>
       </ul>
     </div>
+    </section>
+    </div>
+    <footer>
     <div id="recipes-introduction-footer">
       <ul id="recipes-introduction-footer-ul">
         <li>
@@ -152,8 +155,7 @@
         </li>
       </ul>
     </div>
-  </section>
-</div>
+    </footer>>
   <script type="text/javascript">
     $(document).ready(function() {
       var tag = true;
@@ -207,6 +209,10 @@
 
     $('.header-back').click(function() {
       backPreviosPage('introduction.php');
+    });
+
+      $('#recipes-introduction-footer ul #introductionFooterLi1').click(function(){
+      loadPagesA('introduction.php','body');
     });
 
     $('#recipes-introduction-footer ul #introductionFooterLi2').click(function(){

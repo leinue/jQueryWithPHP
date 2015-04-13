@@ -23,6 +23,7 @@
 	   display: table-cell;
 	   padding-top: 10px;
 	   padding-bottom: 10px;
+	   color: rgb(93,94,91);
 }
 .tomato-sauce ul li:first-child{
 	    width: 20%;
@@ -58,13 +59,24 @@
 	    margin: 0 auto;
 	    text-align: center;
 }
+.step-main-tips{
+	   width: 100%;
+	   padding-left: 25px;
+	   padding-right: 25px;
+	   margin-bottom: 25px;
+}
 .step-tips{
 	  width: 100%;
+	  background:rgb(255,255,255);
+	  box-shadow: 1px 1px 1px #c7c7c7;
 }
 .step-tips h3{
 	   color: rgb(199,29,66);
 	   margin-left: 35px;
+	   padding-top: 10px;
 }
 .step-tips ul li{
 	   padding-right: 25px;
+	   padding-bottom: 10px;
+	   color: rgb(93,94,91);
 }

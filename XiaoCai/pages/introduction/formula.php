@@ -1,8 +1,8 @@
   <header>
 	<div class="formula-buy">
 		<ul>
-			<li>食材和用量</li>
-			<li><a id="formula-buy-img"><img src="images/index.png"/></a></li>
+			<li class="formula-li1"><span>食材和用量</span></li>
+			<li class="formula-li2"><button class= "button-add">加入采购清单</button></li>
 			<li><span class="glyphicon glyphicon-menu-up"></span></li>
 	</div>	
 	    <div id="formula-add">

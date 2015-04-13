@@ -77,7 +77,7 @@
 	    	   </ul>
 	       </div>
 
-
+          <div class="step-main-tips">
             <div class="step-tips">
               
                 <h3>Tips</h3>
@@ -86,5 +86,6 @@
             		<li>内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要</li>
             		<li>内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要</li>
             	</ul>
+            </div>
             </div>
 </div>

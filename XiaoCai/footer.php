@@ -133,6 +133,7 @@
 		function setActiveA(){
 			var currentItem=JSON2Stack(localStorage.pageStack).currentPage.split('.')[0];
 			var activeElem='.main-footer ul #footer-menu-'+currentItem;
+			console.log(activeElem);
 			$(activeElem).addClass('main-footer-menu-active');
 			$(activeElem+' img').attr('src','images/'+currentItem+'_active.png');		
 		}

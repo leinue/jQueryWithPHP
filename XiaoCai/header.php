@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html manifest="xiaocaiap.appcache">
 <head>
 	<title>晓菜</title>
 	<meta charset="utf8">
@@ -8,11 +8,12 @@
 	<script type="text/javascript" src="extension/jquery-2.1.3.min.js"></script>
 	<script type="text/javascript" src="extension/bootstrap.min.js"></script>
 	<script type="text/javascript" src="extension/unslider.min.js"></script>
-	<!--<script type="text/javascript" src="js/recipes.js"></script>-->
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/recipes-introduction.css">
 	<link rel="stylesheet" type="text/css" href="css/formula.css">
 	<link rel="stylesheet" type="text/css" href="css/step.css">
+	<link rel="stylesheet" type="text/css" href="css/monograph.css">
+	<link rel="stylesheet" type="text/css" href="css/skills-evaluating.css">
 	<link rel="stylesheet" type="text/css" href="extension/buttons.css">
 	<script type="text/javascript">
 		/******************************页面访问记录栈******************************/
@@ -75,10 +76,10 @@
 		/**********************************函数库**********************************/
 		
 		//当前页面可否滚动,在加载页面和弹出右侧工具栏的时候禁止滚动,默认可滚动
-		var docIsMoved=0;
+		var docIsMoved=1;
 		//控制页面是否可滚动
 		function setNoTouchMove(){docIsMoved=0;}
-		function setTocuhMove(){docIsMoved=1;}
+		function setTouchMove(){docIsMoved=1;}
 
 		//返回上一个页面
 		function backPreviosPage(currentPage){
@@ -88,7 +89,7 @@
 			var pageLoaded=stackifyJSONStack.pop();
 			$('body').load(pageLoaded,function(){
 				$('.loading').fadeOut();
-				setTocuhMove();
+				setTouchMove();
 				stackifyJSONStack.pageVisitedCount-=1;
 				stackifyJSONStack.currentPage=pageLoaded;
 				localStorage.pageStack=stackifyJSONStack;//更新localStorage
@@ -101,7 +102,7 @@
 			setNoTouchMove();
 			$(elem).load(pageName,function(){
 				$('.loading').fadeOut();
-				setTocuhMove();
+				setTouchMove();
 				var stackifyJSONStack=JSON2Stack(localStorage.pageStack);
 				stackifyJSONStack.pageVisitedCount+=1;
 				stackifyJSONStack.push(stackifyJSONStack.currentPage);

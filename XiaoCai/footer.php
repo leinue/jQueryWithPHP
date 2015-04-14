@@ -136,14 +136,14 @@
 			//var currentItem=JSON2Stack(localStorage.pageStack).currentPage.split('.')[0];
 			var currentHref=document.location.href;
 			console.log(currentHref);
-			if(currentHref.indexOf('.')!=-1){
+			if(currentHref.charAt(currentHref.length-1)!='/'){
 				currentHref=currentHref.split('.');
-				currentHref=currentHref[0].split('/');
+				currentHref=currentHref[currentHref.length-2].split('/');
 				currentHref=currentHref[currentHref.length-1];
 			}else{
 				currentHref='index';
 			}
-			
+			console.log(currentHref);
 			var activeElem='.main-footer ul #footer-menu-'+currentHref;
 			$(activeElem+' a span').addClass('main-footer-menu-active');
 			$(activeElem+' a img').attr('src','images/'+currentHref+'_active.png');		

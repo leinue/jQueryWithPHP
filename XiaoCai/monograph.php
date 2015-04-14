@@ -1,16 +1,18 @@
 <?php require( 'header.php'); ?>
-  <header>
-    <nav>
-      <div class="header-skills-evaluating">
+<header>
+  <nav>
+    <div class="header-title">
+      <div class="header-back monograph-back"><span class="glyphicon glyphicon-menu-left"></span></div>
+      <div class="header-main-title monograph-header">
           <ul>
-            <li><span class="glyphicon glyphicon-menu-left" id="monograph-back"></span></li>
-            <li class="header-skillsEvaluating-li skill1"><span class="glyphicon glyphicon-eye-open"></span>268</li>
-            <li class="header-skillsEvaluating-li skill2"><span class="glyphicon glyphicon-inbox"></span></li>
-            <li class="header-skillsEvaluating-li skill3"><span class="glyphicon glyphicon-link" id="mono-share"></span></li>
+            <li class="header-skillsEvaluating-li"><span class="glyphicon glyphicon-eye-open"></span> 268</li>
+            <li class="header-skillsEvaluating-li"><span class="glyphicon glyphicon-inbox"></span></li>
+            <li class="header-skillsEvaluating-li"><span class="glyphicon glyphicon-link" id="mono-share"></span></li>
           </ul>
       </div>
-    </nav>
-  </header>
+    </div>
+  </nav>
+</header>
 
   <section>
      

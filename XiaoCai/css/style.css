@@ -1153,11 +1153,11 @@ footer{
 	display: table-row;
 }
 .formula-juice-list ul li{
-	     display: table-cell;
-	     font-size: 14px;
-       padding-top: 15px;
-	     padding-bottom: 15px;
-	     color: rgb(93,91,94);
+	display: table-cell;
+	font-size: 14px;
+    padding-top: 15px;
+	padding-bottom: 15px;
+	color: rgb(93,91,94);
 }
 .formula-juice-list ul .juice-list-li1{
 	   text-align: center;
@@ -1192,23 +1192,90 @@ footer{
 
 /*monograph*/
 
+.monograph-back{
+	padding-top: 14px;
+	padding-bottom: 14px;
+}
+
+.monograph-header{
+	display: table;
+	margin-top: -16px;
+	margin-bottom: -10px;
+}
+
+.monograph-header ul{
+	display: table-row;
+}
+
+.monograph-header ul li{
+	display: table-cell;
+	cursor: pointer;
+	padding-top: 16px;
+	padding-bottom: 10px;
+	font-size: 18px;
+}
+
+.monograph-header ul li:first-child{
+	padding-left: 4px;
+	padding-right: 4px;
+}
+
+.monograph-header ul li:hover{
+	background: rgb(187,0,37);
+}
+
+
 #skills-evaluating-back{
-	    cursor: pointer;
+	cursor: pointer;
 }
 .monograph-img1{
-	  width: 100%;
+	width: 100%;
 }
 .monograph-img1 img{
-	  width: 100%;
-	  height: 200px;
+	width: 100%;
+	height: 200px;
+	margin-top: -2px;
 }
+
+@media screen and (max-width: 900px){
+	.monograph-header{
+		padding-left: 63.4586466%;
+	}
+}
+
+@media screen and (max-width: 500px){
+	.monograph-header{
+		padding-left: 30.830848%;
+	}
+}
+
+@media screen and (max-width: 320px){
+	.monograph-header{
+		padding-left: 2.628318%;
+	}
+
+	.monograph-header ul li{
+		font-size: 14px;
+	}
+
+	.monograph-img1 img{
+		margin-top: -8px;
+	}
+}
+
+@media screen and (min-width: 900px){
+	.monograph-header{
+		
+	}
+}
+
 #monograph-brand{
-	    position: absolute;
-	    margin-top: -50px;
-	    margin-right: 20px;
+	position: absolute;
+	margin-top: -50px;
+	margin-right: 20px;
 }
 #mono-share{
-	  cursor: pointer;
+	cursor: pointer;
 }
 #monograph-member{
 	  width: 80px;

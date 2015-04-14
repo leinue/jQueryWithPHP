@@ -35,19 +35,16 @@
               内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
           </div>
 
-         <div class="teacher-brand" id="monograph-member">
-        会员专享
-      </div>
-        <div class="skeva-img">
-              <img src="">
-          </div>
-             <div class="teacher-brand" id="monograph-brand">
-        ALVIN LEE
-      </div>
-
-      <div class="vip-content">
-      <div class="vip-title monograph-title">会员专享标题</div>
-      <div class="vip-post monograph-title">内容标题内容标题内容标题内容标题内容标题内容标题内容标题内容标题</div>
+  <div class="vip-enjoy">
+    <div class="vip-video">
+      <video src="movie.ogg" controls="controls">
+        您的浏览器不支持 video 标签。
+      </video>
+      <!--<img src="">-->
+    </div>
+    <div class="vip-content">
+      <div class="vip-title"><a href="introduction.php">会员专享标题</a></div>
+      <div class="vip-post"><a href="introduction.php">内容标题内容标题内容标题内容标题内容标题内容标题内容标题内容标题</a></div>
       <div class="vip-menu">
         <ul>
           <li><span class="glyphicon glyphicon-eye-open"></span> 268</li>
@@ -55,7 +52,14 @@
           <li><span class="glyphicon glyphicon-link"></span></li>
         </ul>
       </div>
+      <div class="teacher-brand">
+        ALVIN LEE
+      </div>
     </div>
+    <div class="teacher-brand" id="monograph-member">
+        会员专享
+    </div>
+  </div>
           <div class="skeva-xiaocai">
                    <div class="skeva-xiaocai-content">
                      晓菜
@@ -83,7 +87,7 @@
  
        $('#monograph-back').click(function(){
                 backPreviosPage('monograph.php');
-    });
+        });
        $('#mono-share').click(function(){
                 $('.monoshare').css('display','block');
                 $('body').css('overflow','hidden');
@@ -96,5 +100,9 @@
                  $('.monoshare').css('display','none');
                  $('body').css('overflow','visible');
        });
+
+        $('.header-back').click(function(){
+          history.go(-1);
+        });
   });
   </script>

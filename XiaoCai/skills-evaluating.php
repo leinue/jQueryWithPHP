@@ -1,16 +1,18 @@
 <?php require( 'header.php'); ?>
-  <header>
-    <nav>
-      <div class="header-skills-evaluating">
+<header>
+  <nav>
+    <div class="header-title">
+      <div class="header-back monograph-back"><span class="glyphicon glyphicon-menu-left"></span></div>
+      <div class="header-main-title monograph-header">
           <ul>
-            <li><span class="glyphicon glyphicon-menu-left" id="skills-evaluating-back"></span></li>
             <li class="header-skillsEvaluating-li"><span class="glyphicon glyphicon-eye-open"></span> 268</li>
             <li class="header-skillsEvaluating-li"><span class="glyphicon glyphicon-inbox"></span></li>
-            <li class="header-skillsEvaluating-li"><span class="glyphicon glyphicon-link"></span></li>
+            <li class="header-skillsEvaluating-li"><span class="glyphicon glyphicon-link" id="mono-share"></span></li>
           </ul>
       </div>
-    </nav>
-  </header>
+    </div>
+  </nav>
+</header>
   <section>
       
        <div class="skills-evaluating-img1">
@@ -45,11 +47,11 @@
   </section>
 
   <script type="text/javascript">
-  $(document).ready(function(){
-     $('#skills-evaluating-back').click(function() {
-      backPreviosPage('skills-evaluating.php');
-    });
 
+  $(document).ready(function(){
+     $('.header-back').click(function() {
+      history.go(-1);
+    });
   });
     
   </script>

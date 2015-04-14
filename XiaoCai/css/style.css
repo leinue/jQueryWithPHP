@@ -927,6 +927,7 @@ footer{
 .skills-evaluating-img1 img{
 	   width: 100%;
 	   height: 200px;
+	   margin-top: -4px;
 }
 .skills-evaluating-title{
 	  width: 100%;
@@ -1301,10 +1302,12 @@ footer{
 	cursor: pointer;
 }
 #monograph-member{
-	  width: 80px;
-	  margin-top: 50px;
-	  margin-left: 100px;
-	  box-shadow: 1px 1px 1px rgb(119,119,119);
+	background: rgb(230,0,39);
+	font-style: italic;
+	width: 80px;
+	margin-top: -250px;
+	margin-right: 215px;
+	box-shadow: 1px 1px 1px rgb(119,119,119);
 }
 .monograph-title{
 	  padding-left: 18px;

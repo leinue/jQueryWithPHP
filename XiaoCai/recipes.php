@@ -79,6 +79,9 @@
 				ALVIN LEE
 			</div>
 		</div>
+		<div class="teacher-brand" id="monograph-member">
+        	会员专享
+    	</div>
 	</div>
 
 	<div class="vip-enjoy">

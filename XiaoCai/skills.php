@@ -22,7 +22,7 @@
 		</div>
 		<div class="reading-list-all-content">
 			<div class="reading-list-all-title">
-				<p><a href="">香酥炸鸡配酸奶酱,香酥炸鸡配酸奶酱</a></p>
+				<p><a href="monograph.php">香酥炸鸡配酸奶酱,香酥炸鸡配酸奶酱</a></p>
 			</div>
 			<div class="reading-list-all-summary">
 				<p>标题内容标题内容标题内容标题内容标题</p>
@@ -42,7 +42,7 @@
 		</div>
 		<div class="reading-list-all-content">
 			<div class="reading-list-all-title">
-				<p><a href="">香酥炸鸡配酸奶酱,香酥炸鸡配酸奶酱</a></p>
+				<p><a href="skills-evaluating.php">香酥炸鸡配酸奶酱,香酥炸鸡配酸奶酱</a></p>
 			</div>
 			<div class="reading-list-all-summary">
 				<p>标题内容标题内容标题内容标题内容标题</p>
@@ -62,7 +62,7 @@
 		</div>
 		<div class="reading-list-all-content">
 			<div class="reading-list-all-title">
-				<p><a href="">香酥炸鸡配酸奶酱,香酥炸鸡配酸奶酱</a></p>
+				<p><a href="monograph.php">香酥炸鸡配酸奶酱,香酥炸鸡配酸奶酱</a></p>
 			</div>
 			<div class="reading-list-all-summary">
 				<p>标题内容标题内容标题内容标题内容标题</p>

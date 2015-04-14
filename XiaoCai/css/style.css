@@ -932,11 +932,18 @@ footer{
 	  width: 100%;
 	  padding-top: 15px
 }
-.skills-evaluating-title h3,.skills-evaluating-title p {
+.skills-evaluating-title h3,.skills-evaluating-title p{
       padding-left: 20px;
       padding-right: 20px;
       color: rgb(93,91,94);
 }
+
+.skills-evaluating-title p{
+	color: rgb(180,180,180);
+	font-weight: bold;
+	padding-top: 4px;
+}
+
 .skeva-content-summary{
 	  width: 100%;
 	  padding-left: 20px;
@@ -1249,7 +1256,7 @@ footer{
 	}
 }
 
-@media screen and (max-width: 320px){
+@media screen and (max-width: 319px){
 	.monograph-header{
 		padding-left: 2.628318%;
 	}
@@ -1263,10 +1270,26 @@ footer{
 	}
 }
 
+@media screen and (min-width: 501px){
+	.monograph-header{
+		padding-left: 64.759358%;
+	}
+}
+
 @media screen and (min-width: 900px){
 	.monograph-header{
-		
+		padding-left: 73.43848%;
 	}
+}
+
+.content-summary{
+	border: 2px solid rgb(220,220,220);
+	background:rgb(255,255,255);
+	margin: 20px;
+}
+
+.content-summaryIn{
+	padding: 14px;
 }
 
 #monograph-brand{

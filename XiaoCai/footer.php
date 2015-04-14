@@ -135,6 +135,7 @@
 		function setActiveA(){
 			//var currentItem=JSON2Stack(localStorage.pageStack).currentPage.split('.')[0];
 			var currentHref=document.location.href;
+			console.log(currentHref);
 			if(currentHref.indexOf('.')!=-1){
 				currentHref=currentHref.split('.');
 				currentHref=currentHref[0].split('/');

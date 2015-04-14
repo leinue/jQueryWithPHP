@@ -1305,8 +1305,8 @@ footer{
 	background: rgb(230,0,39);
 	font-style: italic;
 	width: 80px;
-	margin-top: -250px;
-	margin-right: 215px;
+	margin-top: -280px;
+	left: 6px;
 	box-shadow: 1px 1px 1px rgb(119,119,119);
 }
 .monograph-title{

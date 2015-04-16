@@ -20,8 +20,9 @@
 	<div class="setting-list change-password-input">
 		<ul>
 			<li id="setting-list-phone-num-input">
-				<input placeholder="手机号" />
-				<a class="button button-caution button-pill button-small send-ver-code">发送验证码</a></li>
+				<input id="reg-mobile" type="tel" max="11" placeholder="手机号" />
+				<a class="button button-caution button-pill button-small send-ver-code">发送验证码</a>
+			</li>
 			<li id="setting-list-password-o-input"><input placeholder="手机验证码" /></li>
 			<li id="setting-list-password-new-input" class="setting-list-second"><input type="password" placeholder="登录密码" /></li>
 			<li id="setting-list-password-confrom-input"><input type="password" placeholder="确认密码" /></li>
@@ -50,6 +51,46 @@
 
 		$('.header-back').click(function(){
 			backPreviosPage('register.php');
+		});
+
+		function checkMobile(sMobile){
+    		if(!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(sMobile))){
+        		return false;
+    		}else{
+    			return true;
+    		}
+		} 
+
+		function regInfoIsNull(){
+			var flag=0;
+			$('.change-password-input ul li').each(function(){
+				if($(this).find('input').val()==null){
+					flag+=1;
+				}
+			});
+			return flag===0;
+		}
+
+		$('.send-ver-code').click(function(){
+			var sMobile=$('.change-password-input ul li #reg-mobile').val();
+			if(checkMobile(sMobile)){
+				sendSms(sMobile,1);
+			}else{
+				alert('手机号非法');
+			}
+		});
+
+		$('#btn-confirm-register').click(function(){
+			if(regInfoIsNull()){
+				var smobile=$('.change-password-input ul li #reg-mobile').val();
+				var password=$('.change-password-input ul #setting-list-password-o-input input').val();
+				var repassword=$('.change-password-input ul #setting-list-password-new-input input').val();
+				var code=$('.change-password-input ul #setting-list-password-confrom-input input').val();
+				//console.log(smobile,password,repassword,code);
+				regByMobile(smobile,password,repassword,code);
+			}else{
+				alert('资料不完整');
+			}
 		});
 
 	});

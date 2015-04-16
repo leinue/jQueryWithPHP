@@ -128,7 +128,9 @@
 					repassword:p_repassword,
 					code:p_code
 				},
-				callback(data,status));
+				function(){
+					console.log('ssds');
+				});
 		}
 
 		/**
@@ -193,7 +195,9 @@
 					mobile:p_mobile,
 					type:p_type
 				},
-				callback(data,status));
+				function(data){
+					console.log(data);
+				});
 		}
 
 		/**

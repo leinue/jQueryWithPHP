@@ -106,6 +106,393 @@
 			});
 		}
 
+		/*********************************AJAX请求*********************************/
+
+		var rootURL="http://114.215.189.210/";
+
+		/**
+		* 通过手机号注册用户
+		* @param mobile 手机号
+		* @param password 密码
+		* @param repassword 确认密码
+		* @param code 手机验证码
+		* @return JSONObject [uid|mobile|token_id]
+		**/
+
+		function regByMobile(p_mobile,p_password,p_repassword,p_code,callback){
+			$.post(
+				rootURL+"api.php/Api/Public/reg",
+				{
+					mobile:p_mobile,
+					password:p_password,
+					repassword:p_repassword,
+					code:p_code
+				},
+				callback(data,status));
+		}
+
+		/**
+		* 通过手机号登录
+		* @param mobile 手机号
+		* @param password 密码
+		* @return JSONObject [uid|nickname|is_reply(是否有回复留言 1有 0无)|headimgurl|token_id]
+		*/
+
+		function signInByMobile(p_mobile,p_password){
+			$.post(
+				rootURL+"api.php/Api/Public/login",
+				{
+					mobile:p_mobile,
+					password:p_password
+				},
+				callback(data,status));
+		}
+
+		/**
+		* 注销登出
+		* @param token_id 登录返回的token_id
+		* @return Nothing
+		*/
+
+		function logOut(p_token_id){
+			$.post(
+				rootURL+"api.php/Api/Public/logout",
+				{token_id:p_token_id},
+				callback(data,status));
+		}
+
+		/**
+		* 修改昵称和头像
+		* @param token_id 登录返回的token_id
+		* @param nickname 新昵称
+		* @param headimgurl 二进制文件头像
+		* @return JSONObject [uid|nickname|headimgurl|token_id]
+		*/
+
+		function changeUserData(p_token_id,p_nickname,p_headimgurl){
+			$.post(
+				rootURL+"api.php/Api/Public/changeData",
+				{
+					token_id:p_token_id,
+					nickname:p_nickname,
+					headimgurl:p_headimgurl
+				},
+				callback(data,status));
+		}
+
+		/**
+		* @param mobile 手机号
+		* @param type 发送类型 1 注册 2 忘记密码
+		* @return Nothing
+		*/
+
+		function sendSms(p_mobile,p_type){
+			$.post(
+				rootURL+"api.php/Api/Public/sendSms",
+				{
+					mobile:p_mobile,
+					type:p_type
+				},
+				callback(data,status));
+		}
+
+		/**
+		* 找回密码
+		* @param mobile 手机号
+		* @param password 密码
+		* @param repassword 确认密码
+		* @param code 手机验证码
+		* @return JSONObject
+		*/
+
+		function fogotPassword(p_mobile,p_password,p_repassword,p_code){
+			$.post(
+				rootURL+"api.php/Api/Public/ForgotPassword",
+				{
+					mobile:p_mobile,
+					password:p_password,
+					repassword:p_repassword,
+					code:p_code
+				},
+				callback(data,status));
+		}
+
+		/**
+		* 修改密码
+		* @param mobile 手机号
+		* @param password 密码
+		* @param repassword 确认密码
+		* @param oldpassword 旧密码
+		* @return JSONObject
+		*/
+
+		function fogotPassword(p_mobile,p_password,p_repassword,p_oldpassword){
+			$.post(
+				rootURL+"api.php/Api/Public/ForgotPassword",
+				{
+					mobile:p_mobile,
+					password:p_repassword,
+					repassword:p_repassword,
+					oldpassword:p_oldpassword
+				},
+				callback(data,status));
+		}
+
+		/**
+		* 关于页面
+		* @return About
+		*/
+
+		function getAbout(){
+			$.post(rootURL+"api.php/Api/Public/About",{},callback(data,status));
+		}
+
+		/**
+		* 留言列表
+		* @param token_id
+		* @return JSONObject
+		* @return article_image 留言的文章的图片地址
+		* @return article_title 留言的文章的标题
+		* @return content 留言内容
+		* @return type 模块类型 1一手好菜 2玩转厨房 3首页文章 4专题
+		* @return status 状态0正常 1后台回复未读 2用户已读
+		* @return created_time 留言时间
+		*/
+
+		function getReply(p_token_id){
+			$.post(
+				rootURL+"api.php/Api/Public/reply",
+				{token_id:p_token_id},
+				callback(data,status));
+		}
+
+     	/**
+	  	* @param nil
+     	* @return id
+     	* @return image
+     	* @return title
+     	* @return type
+     	* @return id
+     	* @return title
+     	* @return papaer
+     	* @return browse_num
+     	* @return title
+     	* @return created_time
+     	* @return video_id
+     	* @return video_url_360
+     	* @return video_url_480video_url_720
+     	* @return video_url_1080
+     	* @return arrange_image_url
+     	* @return is_vip
+     	* @return image
+     	* @return big
+     	* @return image
+     	* @return small_image
+     	*/
+
+      	function getHome(){
+          	$.post(
+                rootURL+'api.php/Api/Public/home',
+            	{},
+         		callback(data,status));
+     	}
+     
+     	/**
+     	* @param nil
+     	* @return id
+     	* @return title
+     	* @return icon
+     	* @return childern
+     	*/
+
+      	function getRecipeClassify(){
+          	$.post(
+                rootURL+'api.php/Api/Public/recipeClassify',
+              	{},
+         		callback(data,status));
+     	}
+     
+     	/**
+     	* @param id
+     	* @return id
+     	* @return title
+     	* @return paper
+     	* @return browse_num
+     	* @return title
+     	* @return created_time
+     	* @return video_id
+     	* @return video_url_360
+     	* @return video_url_480video_url_720
+     	* @return video_url_1080
+     	* @return arrange_image_url
+     	* @return is_vip
+     	* @return image
+     	*/
+
+	    function getRecipeList(p_id){
+	        $.post(
+	            rootURL+'api.php/Api/Public/recipeList',
+	            {
+	                id:p_id
+	            },
+	        callback(data,status));
+	    }
+     
+	    /**
+	    * @param id
+	    * @param comments_id
+	    * @return id
+	   	* @return title
+	    * @return paper
+	    * @return browse_num
+     	* @return title
+	    * @return created_time
+	    * @return video_id
+	    * @return video_url_360
+	    * @return video_url_480video_url_720
+	    * @return video_url_1080
+	    * @return arrange_image_url
+	    * @return prepare_time
+	    * @return image
+	    * @return cooking_time
+	    * @return enjoy_num
+	    * @return id
+	    * @return user_id
+	    * @return username
+	    * @return content
+	    * @return headimgurl
+	    * @return created_time
+	    * @return reply_username
+	    * @return reply_content
+	    * @return reply_time
+	    */
+
+	    function getRecipeInfo(p_id,p_comments_id){
+	        $.post(
+	            rootURL+'api.php/Api/Public/recipeInfo',
+	            {
+	                id:p_id,
+	                comments_id:p_comments_id
+	            },
+	        callback(data,status));
+	    }
+
+	    /**
+	    * @param id
+	  	* @return id
+	    * @return content
+	    * @return children
+	    * @return id
+	    * @return type
+		* @return content
+	    * @return tips
+	    * @return recommened
+	    */
+
+	    function getRecipeInfoFormula2(p_id){
+	        $.post(
+	            rootURL+'api.php/Api/Public/recipeInfoFormula',
+	            {
+	                id:p_id
+	            },
+	        callback(data,status));
+	    }
+
+	    /**
+	    * @param id
+	  	* @return id
+	    * @return content
+	    * @return children
+	    * @return id
+	    * @return type
+		* @return content
+	    * @return messsage
+	    * @return node
+	    */
+
+	    function getRecipeInfoFormula(p_id){
+	        $.post(
+	            rootURL+'api.php/Api/Public/recipeInfoFormula',
+	            {
+	                id:p_id
+	            },
+	        callback(data,status));
+	    }
+
+	    /**
+	    * @param nil
+	    * @return id
+	    * @return title
+	    * @return paper
+	    * @return browse
+	    * @return num
+	    * @return small_image
+	    * @return big_image
+	    * @return created_time
+	    */
+
+	    function getSkillsList(){
+	        $.post(
+	            rootURL+'api.php/Api/Public/skillsList',
+	            {},
+	        	callback(data,status));
+	    }
+
+	    /**
+	    * @param id
+	    * @param comment_id
+	    * @return id
+	    * @return title
+	  	* @return papaer
+	    * @return content
+	    * @return browse_num
+	    * @return small_image
+	    * @return big_image
+	    * @return created_time
+	    * @return id
+	    * @return user_id
+	    * @return username
+	    * @return content
+	    * @return headimgurl
+	    * @return created_time
+	    * @return reply_username
+	    * @return reply_content
+	    * @return reply_time
+	    */
+
+	    function getSkillsInfo(p_id,p_comment_id){
+	        $.post(
+	            rootURL+'api.php/Api/Public/skillsInfo',
+	            {
+	                id:p_id,
+	                comment_id:p_comment_id
+	            },
+	        callback(data,status));
+	    }
+
+	    /**
+	    * @param type
+	    * @param token_id
+	    * @param article_id
+	    * @param content
+	    * @return Nothing
+	    */
+
+	    function getComments(p_type,p_token_id,p_article_id,p_content){
+	        $.post(
+	       	    rootURL+'api.php/Api/Public/comments',
+	            {
+	                type:p_type,
+	                token_id:p_token_id,
+	                article_id:p_article_id,
+	                content:p_content
+	            },
+	        callback(data,status));
+	    }
+
+
+		/*********************************AJAX请求*********************************/
+
 		/**********************************函数库**********************************/
 
 		/*******************************全局变量区域*******************************/

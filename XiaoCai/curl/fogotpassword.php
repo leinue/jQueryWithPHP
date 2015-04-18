@@ -7,7 +7,7 @@ $password=$_POST['password'];
 $repassword=$_POST['repassword'];
 $code=$_POST["code"];
 
-$url="http://114.215.189.210/api.php/Api/Public/reg";
+$url="http://114.215.189.210/api.php/Api/Public/ForgotPassword";
 $post_data=array(
 	"mobile"=>$mobile,
 	"password"=>$password,

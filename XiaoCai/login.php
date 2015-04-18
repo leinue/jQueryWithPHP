@@ -20,8 +20,8 @@
 	<div class="setting-list change-password-input">
 		<ul>
 			<li id="login-phone-num-input">
-				<input placeholder="手机号" />
-			<li id="login-password-o-input"><input placeholder="密码" /></li>
+				<input type="tel" max="11" placeholder="手机号" />
+			<li id="login-password-o-input"><input type="password" placeholder="密码" /></li>
 		</ul>
 	</div>
 
@@ -51,6 +51,24 @@
 
 		$('.header-back').click(function(){
 			backPreviosPage('register.php');
+		});
+
+		function signInfoIsNull(){
+			var flag=0;
+			$('.change-password-input ul li').each(function(){
+				if($(this).find('input').val()==null){
+					flag+=1;
+				}
+			});
+			return flag===0;
+		}
+
+		$('#btn-confirm-login').click(function(){
+			if(signInfoIsNull()){
+				var smobile=$('.change-password-input ul #login-phone-num-input input').val();
+				var password=$('.change-password-input ul #login-password-o-input input').val();
+				signInByMobile(smobile,password);
+			}
 		});
 
 	});

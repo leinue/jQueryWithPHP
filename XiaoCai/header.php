@@ -147,7 +147,9 @@
 					mobile:p_mobile,
 					password:p_password
 				},
-				callback(data,status));
+				function(data){
+					alert(data);
+				},"json");
 		}
 
 		/**

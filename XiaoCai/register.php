@@ -87,7 +87,31 @@
 				var repassword=$('.change-password-input ul #setting-list-password-new-input input').val();
 				var code=$('.change-password-input ul #setting-list-password-confrom-input input').val();
 				//console.log(smobile,password,repassword,code);
-				regByMobile(smobile,password,repassword,code);
+				//regByMobile(smobile,password,repassword,code);
+				$.post(
+				rootURL+"api.php/Api/Public/reg",
+				{
+					mobile:smobile,
+					password:password,
+					repassword:repassword,
+					code:code
+				},
+				function(){
+					console.log('ssds');
+				});
+				$.ajax({
+					type:"POST",
+					url:rootURL+"api.php/Api/Public/reg",
+					data:{
+						mobile:smobile,
+						password:password,
+						repassword:repassword,
+						code:code
+					},
+					success:function(data){
+						console.log(data);
+					}
+				});
 			}else{
 				alert('资料不完整');
 			}

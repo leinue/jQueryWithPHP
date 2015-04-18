@@ -108,7 +108,7 @@
 
 		/*********************************AJAX请求*********************************/
 
-		var rootURL="http://114.215.189.210/";
+		var rootURL="curl/";
 
 		/**
 		* 通过手机号注册用户
@@ -121,7 +121,7 @@
 
 		function regByMobile(p_mobile,p_password,p_repassword,p_code,callback){
 			$.post(
-				rootURL+"api.php/Api/Public/reg",
+				rootURL+"regbymobile.php",
 				{
 					mobile:p_mobile,
 					password:p_password,
@@ -142,7 +142,7 @@
 
 		function signInByMobile(p_mobile,p_password){
 			$.post(
-				rootURL+"api.php/Api/Public/login",
+				rootURL+"login.php",
 				{
 					mobile:p_mobile,
 					password:p_password
@@ -160,7 +160,7 @@
 
 		function logOut(p_token_id){
 			$.post(
-				rootURL+"api.php/Api/Public/logout",
+				rootURL+"logout.php",
 				{token_id:p_token_id},
 				callback(data,status));
 		}
@@ -175,7 +175,7 @@
 
 		function changeUserData(p_token_id,p_nickname,p_headimgurl){
 			$.post(
-				rootURL+"api.php/Api/Public/changeData",
+				rootURL+"changedata.php",
 				{
 					token_id:p_token_id,
 					nickname:p_nickname,
@@ -192,7 +192,7 @@
 
 		function sendSms(p_mobile,p_type){
 			$.post(
-				rootURL+"api.php/Api/Public/sendSms",
+				rootURL+"sendsms.php",
 				{
 					mobile:p_mobile,
 					type:p_type
@@ -213,7 +213,7 @@
 
 		function fogotPassword(p_mobile,p_password,p_repassword,p_code){
 			$.post(
-				rootURL+"api.php/Api/Public/ForgotPassword",
+				rootURL+"forgotpassword.php",
 				{
 					mobile:p_mobile,
 					password:p_password,
@@ -234,7 +234,7 @@
 
 		function fogotPassword(p_mobile,p_password,p_repassword,p_oldpassword){
 			$.post(
-				rootURL+"api.php/Api/Public/ForgotPassword",
+				rootURL+"changepassword.php",
 				{
 					mobile:p_mobile,
 					password:p_repassword,
@@ -250,7 +250,7 @@
 		*/
 
 		function getAbout(){
-			$.post(rootURL+"api.php/Api/Public/About",{},callback(data,status));
+			$.post(rootURL+"api.php/Api/Public/about.php",{},callback(data,status));
 		}
 
 		/**
@@ -267,7 +267,7 @@
 
 		function getReply(p_token_id){
 			$.post(
-				rootURL+"api.php/Api/Public/reply",
+				rootURL+"reply.php",
 				{token_id:p_token_id},
 				callback(data,status));
 		}
@@ -298,7 +298,7 @@
 
       	function getHome(){
           	$.post(
-                rootURL+'api.php/Api/Public/home',
+                rootURL+'home.php',
             	{},
          		callback(data,status));
      	}
@@ -313,7 +313,7 @@
 
       	function getRecipeClassify(){
           	$.post(
-                rootURL+'api.php/Api/Public/recipeClassify',
+                rootURL+'recipeclassify.php',
               	{},
          		callback(data,status));
      	}
@@ -337,7 +337,7 @@
 
 	    function getRecipeList(p_id){
 	        $.post(
-	            rootURL+'api.php/Api/Public/recipeList',
+	            rootURL+'recipelist.php',
 	            {
 	                id:p_id
 	            },
@@ -375,7 +375,7 @@
 
 	    function getRecipeInfo(p_id,p_comments_id){
 	        $.post(
-	            rootURL+'api.php/Api/Public/recipeInfo',
+	            rootURL+'recipeinfo.php',
 	            {
 	                id:p_id,
 	                comments_id:p_comments_id
@@ -397,7 +397,7 @@
 
 	    function getRecipeInfoFormula2(p_id){
 	        $.post(
-	            rootURL+'api.php/Api/Public/recipeInfoFormula',
+	            rootURL+'recipeinfoformula16.php',
 	            {
 	                id:p_id
 	            },
@@ -418,7 +418,7 @@
 
 	    function getRecipeInfoFormula(p_id){
 	        $.post(
-	            rootURL+'api.php/Api/Public/recipeInfoFormula',
+	            rootURL+'recipeinfoformula.php',
 	            {
 	                id:p_id
 	            },
@@ -439,7 +439,7 @@
 
 	    function getSkillsList(){
 	        $.post(
-	            rootURL+'api.php/Api/Public/skillsList',
+	            rootURL+'skillslist.php',
 	            {},
 	        	callback(data,status));
 	    }
@@ -468,7 +468,7 @@
 
 	    function getSkillsInfo(p_id,p_comment_id){
 	        $.post(
-	            rootURL+'api.php/Api/Public/skillsInfo',
+	            rootURL+'skillsinfo.php',
 	            {
 	                id:p_id,
 	                comment_id:p_comment_id
@@ -486,7 +486,7 @@
 
 	    function getComments(p_type,p_token_id,p_article_id,p_content){
 	        $.post(
-	       	    rootURL+'api.php/Api/Public/comments',
+	       	    rootURL+'comments.php',
 	            {
 	                type:p_type,
 	                token_id:p_token_id,

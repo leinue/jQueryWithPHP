@@ -32,7 +32,8 @@
 	<div class="loading">
 		<div class="loading-main"><span class="glyphicon glyphicon-option-horizontal"></span><span class="glyphicon glyphicon-option-horizontal"></span></div>
 	</div>
-
+	
+	<input type="file" style="display: none" id="fileInput" />
 </section>
 
 </div>
@@ -41,15 +42,17 @@
 
 	$(document).ready(function(){
 
+		var fileInput=document.getElementById("fileInput");
+
 		$('.header-back').click(function(){
 			backPreviosPage('register.php');
 		});
 
 		$('#profile-confirm').click(function(){
-			if(inputInfoIsNull('change-password-input ul li')){
+			if(inputInfoIsNull('.change-password-input ul li') && fileInput.value!=''){
 				var tokenID=localStorage.tokenID;
-				var headimgURL="";
-				var nickname=$('change-password-input ul #wechat-nickname input').val();
+				var headimgURL=fileInput.value;
+				var nickname=$('.change-password-input ul #wechat-nickname input').val();
 				changeUserData(tokenID,nickname,headimgURL,function(data){
 					var jsonData=JSON.parse(data);
 					displayALertForm(jsonData['msg']);
@@ -58,6 +61,11 @@
 				displayALertForm('请完整填写信息');
 			}
 		});
+
+		$('.profile-upload-photo').click(function(){
+			fileInput.click();
+		});
+
 	});
 
 </script>

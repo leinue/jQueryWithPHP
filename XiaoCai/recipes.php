@@ -14,42 +14,18 @@
 
 		<div class="nav-recipe-menu">
 			<ul>
-				<li id="recipe-material-index">食材检索 <span class="glyphicon glyphicon-triangle-right"></span></li>
+				<li id="recipe-material-index"><a id="recipe-menu-name-first">食材检索</a> <span class="glyphicon glyphicon-triangle-right"></span></li>
 				<li>|</li>
-				<li id="recipe-material-style">料理风格 <span class="glyphicon glyphicon-triangle-right"></span></li>
+				<li id="recipe-material-style"><a id="recipe-menu-name-second">料理风格</a> <span class="glyphicon glyphicon-triangle-right"></span></li>
 			</ul>
 		</div>
 		
 		<div id="recipe-menu-index" class="recipe-menu-container">
-			<div class="recipe-menu-slidedown">
-				<ul>
-					<li><img src="">美素</li>
-					<li><img src="">汤和饮品</li>
-					<li><img src="">肉和家禽</li>
-				</ul>
-				<ul>
-					<li><img src="">鱼和海鲜</li>
-					<li><img src="">米和面</li>
-					<li><img src="">面包和甜品</li>
-				</ul>
-			</div>
+			<div class="recipe-menu-slidedown"></div>
 		</div>
 		
 		<div id="recipe-menu-style" class="recipe-menu-container">
-
-			<div class="recipe-menu-slidedown">
-				<ul>
-					<li>一锅菜</li>
-					<li>早餐</li>
-					<li>美素馆</li>
-				</ul>
-				<ul>
-					<li>简单炖</li>
-					<li>热锅快炒</li>
-					<li>低脂轻食</li>
-				</ul>
-			</div>
-
+			<div class="recipe-menu-slidedown"></div>
 		</div>
 
 	</nav>
@@ -179,6 +155,39 @@
 		/*$('.vip-title,.vip-post').click(function(){
 			loadPagesA('introduction.php','body');
 		});*/
+
+		getRecipeClassify(function(data){
+			var jsonData=JSON.parse(data);
+			$('.nav-recipe-menu ul li #recipe-menu-name-first').html(jsonData['data'][0]['title']);
+			$('.nav-recipe-menu ul li #recipe-menu-name-second').html(jsonData['data'][1]['title']);
+			var menuChild=jsonData['data'][0]['children'];
+			var leftRow1='';
+			var leftRow2='';
+			var rightRow1='';
+			var rightRow2='';
+			var count=Math.ceil(parseInt(menuChild.length)/2);
+			for (var j = 0; j < count; j++) {
+				leftRow1+="<li><img src=\""+menuChild[j]['icon']+"\">"+menuChild[j]['title']+"</li>";
+			};
+			leftRow1="<ul>"+leftRow1+"</ul>";
+			for (var j = 3; j < menuChild.length; j++) {
+				leftRow2+="<li><img src=\""+menuChild[j]['icon']+"\">"+menuChild[j]['title']+"</li>";
+			};
+			leftRow2="<ul>"+leftRow2+"</ul>";
+
+			var menuChild=jsonData['data'][1]['children'];
+			var count=Math.ceil(parseInt(menuChild.length)/2);
+			for (var j = 0; j < count; j++) {
+				rightRow1+="<li>"+menuChild[j]['title']+"</li>";
+			};
+			rightRow1="<ul>"+rightRow1+"</ul>";
+			for (var j = 3; j < menuChild.length; j++) {
+				rightRow2+="<li>"+menuChild[j]['title']+"</li>";
+			};
+			rightRow2="<ul>"+rightRow2+"</ul>";
+			$('#recipe-menu-index .recipe-menu-slidedown').append(leftRow1+leftRow2);
+			$('#recipe-menu-style .recipe-menu-slidedown').append(rightRow1+rightRow2);
+		});
 	
 	});
 

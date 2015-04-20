@@ -668,16 +668,23 @@ section{
 	font-size: 16px;
 }
 
+.nav-recipe-menu li a{
+	text-decoration: none;
+	color: rgb(255,255,255);
+}
+
 .nav-recipe-menu li span{
 	font-size: 11px;
 }
 
 .nav-recipe-menu li:first-child{
 	cursor: pointer;
+	font-size: 16px;
 }
 
 .nav-recipe-menu li:last-child{
 	cursor: pointer;
+	font-size: 16px;
 }
 
 .recipe-menu-container{

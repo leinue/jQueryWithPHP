@@ -15,88 +15,6 @@
 
 
 <section>
-
-	<div class="reading-list-a">
-		<div class="reading-list-img">
-			<img src="http://pic4.zhimg.com/f46a68dc6e7b29c2df376dbd2bd27aeb_r.jpg">
-		</div>
-		<div class="reading-list-all-content">
-			<div class="reading-list-all-title">
-				<p><a href="monograph.php">香酥炸鸡配酸奶酱,香酥炸鸡配酸奶酱</a></p>
-			</div>
-			<div class="reading-list-all-summary">
-				<p>标题内容标题内容标题内容标题内容标题</p>
-			</div>
-		</div>
-		<div class="reading-list-all-footer">
-			<ul>
-				<li><span class="glyphicon glyphicon-bookmark"></span> 食谱</li>
-				<li><span class="glyphicon glyphicon-time"></span> 今天</li>
-			</ul>
-		</div>
-	</div>
-
-	<div class="reading-list-a">
-		<div class="reading-list-img">
-			<img src="http://pic4.zhimg.com/f46a68dc6e7b29c2df376dbd2bd27aeb_r.jpg">
-		</div>
-		<div class="reading-list-all-content">
-			<div class="reading-list-all-title">
-				<p><a href="skills-evaluating.php">香酥炸鸡配酸奶酱,香酥炸鸡配酸奶酱</a></p>
-			</div>
-			<div class="reading-list-all-summary">
-				<p>标题内容标题内容标题内容标题内容标题</p>
-			</div>
-		</div>
-		<div class="reading-list-all-footer">
-			<ul>
-				<li><span class="glyphicon glyphicon-bookmark"></span> 食谱</li>
-				<li><span class="glyphicon glyphicon-time"></span> 今天</li>
-			</ul>
-		</div>
-	</div>
-
-	<div class="reading-list-a">
-		<div class="reading-list-img">
-			<img src="http://pic4.zhimg.com/f46a68dc6e7b29c2df376dbd2bd27aeb_r.jpg">
-		</div>
-		<div class="reading-list-all-content">
-			<div class="reading-list-all-title">
-				<p><a href="monograph.php">香酥炸鸡配酸奶酱,香酥炸鸡配酸奶酱</a></p>
-			</div>
-			<div class="reading-list-all-summary">
-				<p>标题内容标题内容标题内容标题内容标题</p>
-			</div>
-		</div>
-		<div class="reading-list-all-footer">
-			<ul>
-				<li><span class="glyphicon glyphicon-bookmark"></span> 食谱</li>
-				<li><span class="glyphicon glyphicon-time"></span> 今天</li>
-			</ul>
-		</div>
-	</div>
-
-	<div class="reading-list-a">
-		<div class="reading-list-img">
-			<img src="http://pic4.zhimg.com/f46a68dc6e7b29c2df376dbd2bd27aeb_r.jpg">
-		</div>
-		<div class="reading-list-all-content">
-			<div class="reading-list-all-title">
-				<p><a href="">香酥炸鸡配酸奶酱,香酥炸鸡配酸奶酱</a></p>
-			</div>
-			<div class="reading-list-all-summary">
-				<p>标题内容标题内容标题内容标题内容标题</p>
-			</div>
-		</div>
-		<div class="reading-list-all-footer">
-			<ul>
-				<li><span class="glyphicon glyphicon-bookmark"></span> 食谱</li>
-				<li><span class="glyphicon glyphicon-time"></span> 今天</li>
-			</ul>
-		</div>
-	</div>
-
-	<div class="padding-div-row"></div>
 	
 	<div class="loading">
 		<div class="loading-main"><span class="glyphicon glyphicon-option-horizontal"></span><span class="glyphicon glyphicon-option-horizontal"></span></div>
@@ -109,5 +27,28 @@
 </footer>
 
 </div>
+
+<script type="text/javascript">
+	
+	getSkillsList(function(data){
+		var jsonData=JSON.parse(data);
+		var homeList=jsonData['data'];
+		var homeListHtmlDOM='';
+		for (var i = 0; i < homeList.length; i++) {
+			console.log(homeList[i]);
+			var charCount=homeList[i]['paper'].length;
+				var changeFontSizeCSS='';
+				if(charCount>=20){
+					changeFontSizeCSS="readling-list-title-small";
+				}else{
+					changeFontSizeCSS='';
+			}
+			homeListHtmlDOM+='<div idata="'+homeList[i]['id']+'" class="reading-list-a"><div class="reading-list-img"><img src="'+homeList[i]['image']+'"></div><div class="reading-list-all-content"><div class="reading-list-all-title '+changeFontSizeCSS+'"><p><a href="">'+homeList[i]['title']+'</a></p></div><div class="reading-list-all-summary"><p>'+homeList[i]['paper']+'</p></div></div><div class="reading-list-all-footer"><ul><li><span class="glyphicon glyphicon-bookmark"></span> 玩转厨房</li><li><span class="glyphicon glyphicon-time"></span> '+homeList[i]['created_time'].split(' ')[0]+'</li></ul></div></div>';
+		};
+
+		$('section').append(homeListHtmlDOM+'<div class="padding-div-row"></div>');
+	});
+
+</script>
 
 <?php require('footer.php'); ?>

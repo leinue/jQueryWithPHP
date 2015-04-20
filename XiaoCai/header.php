@@ -518,6 +518,8 @@
 		//使用localSorage存储当前页面
 		var pages=new StorageStack('index.php','index.php');
 		localStorage.pageStack=pages;
+
+		var postType=["一手好菜","一首好菜","首页文章"];
 		
 		/*******************************全局变量区域*******************************/
 

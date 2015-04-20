@@ -34,55 +34,6 @@
 
 <section>
 
-	<div class="vip-enjoy">
-		<div class="vip-video">
-			<video src="movie.ogg" controls="controls">
-				您的浏览器不支持 video 标签。
-			</video>
-			<!--<img src="">-->
-		</div>
-		<div class="vip-content">
-			<div class="vip-title"><a href="introduction.php">会员专享标题</a></div>
-			<div class="vip-post"><a href="introduction.php">内容标题内容标题内容标题内容标题内容标题内容标题内容标题内容标题</a></div>
-			<div class="vip-menu">
-				<ul>
-					<li><span class="glyphicon glyphicon-eye-open"></span> 268</li>
-					<li><span class="glyphicon glyphicon-heart-empty"></span></li>
-					<li><span class="glyphicon glyphicon-link"></span></li>
-				</ul>
-			</div>
-			<div class="teacher-brand">
-				ALVIN LEE
-			</div>
-			<div class="teacher-brand" id="monograph-member">
-        		会员专享
-    		</div>
-		</div>
-	</div>
-
-	<div class="vip-enjoy">
-		<div class="vip-video">
-			<video src="movie.ogg" controls="controls">
-				您的浏览器不支持 video 标签。
-			</video>
-			<!--<img src="">-->
-		</div>
-		<div class="vip-content">
-			<div class="vip-title">会员专享标题</div>
-			<div class="vip-post">内容标题内容标题内容标题内容标题内容标题内容标题内容标题内容标题</div>
-			<div class="vip-menu">
-				<ul>
-					<li><span class="glyphicon glyphicon-eye-open"></span> 268</li>
-					<li><span class="glyphicon glyphicon-heart-empty"></span></li>
-					<li><span class="glyphicon glyphicon-link"></span></li>
-				</ul>
-			</div>
-			<div class="teacher-brand">
-				ALVIN LEE
-			</div>
-		</div>
-	</div>
-
 	<div class="loading">
 		<div class="loading-main"><span class="glyphicon glyphicon-option-horizontal"></span><span class="glyphicon glyphicon-option-horizontal"></span></div>
 	</div>
@@ -167,28 +118,54 @@
 			var rightRow2='';
 			var count=Math.ceil(parseInt(menuChild.length)/2);
 			for (var j = 0; j < count; j++) {
-				leftRow1+="<li><img src=\""+menuChild[j]['icon']+"\">"+menuChild[j]['title']+"</li>";
+				leftRow1+="<li idata=\""+menuChild[j]['id']+"\"><img src=\""+menuChild[j]['icon']+"\">"+menuChild[j]['title']+"</li>";
 			};
 			leftRow1="<ul>"+leftRow1+"</ul>";
 			for (var j = 3; j < menuChild.length; j++) {
-				leftRow2+="<li><img src=\""+menuChild[j]['icon']+"\">"+menuChild[j]['title']+"</li>";
+				leftRow2+="<li idata=\""+menuChild[j]['id']+"\"><img src=\""+menuChild[j]['icon']+"\">"+menuChild[j]['title']+"</li>";
 			};
 			leftRow2="<ul>"+leftRow2+"</ul>";
 
 			var menuChild=jsonData['data'][1]['children'];
 			var count=Math.ceil(parseInt(menuChild.length)/2);
 			for (var j = 0; j < count; j++) {
-				rightRow1+="<li>"+menuChild[j]['title']+"</li>";
+				rightRow1+="<li idata=\""+menuChild[j]['id']+"\">"+menuChild[j]['title']+"</li>";
 			};
 			rightRow1="<ul>"+rightRow1+"</ul>";
 			for (var j = 3; j < menuChild.length; j++) {
-				rightRow2+="<li>"+menuChild[j]['title']+"</li>";
+				rightRow2+="<li idata=\""+menuChild[j]['id']+"\">"+menuChild[j]['title']+"</li>";
 			};
 			rightRow2="<ul>"+rightRow2+"</ul>";
 			$('#recipe-menu-index .recipe-menu-slidedown').append(leftRow1+leftRow2);
 			$('#recipe-menu-style .recipe-menu-slidedown').append(rightRow1+rightRow2);
 		});
+
+		function dsiplayRecipePost(data){
+			var jsonData=JSON.parse(data);
+			var homeList=jsonData['data'];
+			var homeListHtmlDOM='';
+			for (var i = 0; i < homeList.length; i++) {
+				console.log(homeList[i]);
+				var isVipHTML=homeList[i]['is_vip']=='1' ? '<div class="teacher-brand" id="monograph-member">会员专享</div>' : '';
+				homeListHtmlDOM+='<div idata="'+homeList[i]['id']+'" class="vip-enjoy"><div class="vip-video"><video src="movie.ogg" controls="controls">您的浏览器不支持 video 标签。</video></div><div class="vip-content"><div class="vip-title">'+homeList[i]["title"]+'</div><div class="vip-post">'+homeList[i]["paper"]+'</div><div class="vip-menu"><ul><li><span class="glyphicon glyphicon-eye-open"></span> '+homeList[i]["browse_num"]+'</li><li><span class="glyphicon glyphicon-heart-empty"></span></li><li><span class="glyphicon glyphicon-link"></span></li></ul></div><div class="teacher-brand"><img src="'+homeList[i]['arrange_image_url']+'"></div></div>'+isVipHTML+'</div>';
+			};
+			$('section').append(homeListHtmlDOM+'<div class="padding-div-row"></div>');
+		}
+
+		$('.recipe-menu-container .recipe-menu-slidedown ul li').click(function(){
+			$(this).slideToggle();
+			$('.loading').fadeIn();
+			getRecipeList($(this).attr('idata'),function(data){
+				$('section').html('');
+				dsiplayRecipePost(data);
+				$('.loading').fadeOut();
+			});
+		});
 	
+		getRecipeList(10,function(data){
+			dsiplayRecipePost(data);
+		});
+		
 	});
 
 </script>

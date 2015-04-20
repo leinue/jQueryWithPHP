@@ -690,7 +690,7 @@ section{
 .recipe-menu-container{
 	position: absolute;
 	top: 100px;
-	z-index: 65535;
+	z-index: 1000;
 	width: 100%;
 	display: none;
 }
@@ -712,6 +712,7 @@ section{
 }
 
 .recipe-menu-slidedown ul li{
+	z-index: 65565;
 	text-align: center;
 	cursor: pointer;
 	padding-top: 20px;

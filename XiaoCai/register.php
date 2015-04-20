@@ -66,7 +66,7 @@
 		});
 
 		$('#btn-confirm-register').click(function(){
-			if(!inputInfoIsNull('.change-password-input ul li')){
+			if(inputInfoIsNull('.change-password-input ul li')){
 				var smobile=$('.change-password-input ul li #reg-mobile').val();
 				var password=$('.change-password-input ul #setting-list-password-o-input input').val();
 				var repassword=$('.change-password-input ul #setting-list-password-new-input input').val();

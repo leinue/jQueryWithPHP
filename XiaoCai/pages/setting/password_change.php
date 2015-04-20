@@ -36,24 +36,15 @@
 			backPreviosPage('setting.php');
 		});
 
-		function cpwInfoIsNull(){
-			var flag=0;
-			$('.change-password-input ul li').each(function(){
-				if($(this).find('input').val()==null){
-					flag+=1;
-				}
-			});
-			return flag===0;
-		}
 
 		$('#confirm-to-change-pw').click(function(){
-			if(inputInfoIsNull('.change-password-input ul li')){
+			if(!inputInfoIsNull('.change-password-input ul li')){
 				displayALertForm('请完整填写信息');
 			}else{
 				var originPW=$('.change-password-input ul #setting-list-password-o-input input').val();
 				var newPW=$('.change-password-input ul #setting-list-password-new-input input').val();
 				var confirmPW=$('.change-password-input ul #setting-list-password-confrom-input input').val();
-				changePassword(p_mobile,newPW,confirmPW,originPW,function(data){
+				changePassword('',newPW,confirmPW,originPW,function(data){
 					var jsonData=JSON.parse(data);
 					displayALertForm(jsonData['msg']);
 				});

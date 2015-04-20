@@ -128,8 +128,8 @@
 
 		function inputInfoIsNull(elem){
 			var flag=0;
-			$(elem).each(function(){
-				if($(this).find('input').val()==null){
+			$(elem).each(function(index,element){
+				if($(element).find('input').val()==''){
 					flag+=1;
 				}
 			});

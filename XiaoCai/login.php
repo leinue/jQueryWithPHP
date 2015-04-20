@@ -54,7 +54,7 @@
 		});
 
 		$('#btn-confirm-login').click(function(){
-			if(!inputInfoIsNull('.change-password-input ul li')){
+			if(inputInfoIsNull('.change-password-input ul li')){
 				var smobile=$('.change-password-input ul #login-phone-num-input input').val();
 				var password=$('.change-password-input ul #login-password-o-input input').val();
 				signInByMobile(smobile,password,function(data){

@@ -15,13 +15,13 @@
 			<li id="setting-list-phone-num-input">
 				<input id="find-pw-phone" placeholder="手机号" />
 				<a id="findpw-send-vercode" class="button button-caution button-pill button-small send-ver-code">发送验证码</a></li>
-			<li id="setting-list-password-o-input"><input placeholder="原密码" /></li>
-			<li id="setting-list-password-new-input" class="setting-list-second"><input placeholder="新密码" /></li>
-			<li id="setting-list-password-confrom-input"><input placeholder="确认新密码" /></li>
+			<li id="setting-list-password-o-input"><input placeholder="输入密码" /></li>
+			<li id="setting-list-password-new-input" class="setting-list-second"><input placeholder="确认密码" /></li>
+			<li id="setting-list-password-confrom-input"><input placeholder="手机验证码" /></li>
 		</ul>
 	</div>
 	<div class="change-password-submit-button">
-		<a class="button button-caution button-pill">找回密码</a>
+		<a id="btn-find-pw" class="button button-caution button-pill">找回密码</a>
 		<div class="fast-register">微信登录用户无法在此找回密码</div>
 	</div>
 	<div class="loading">
@@ -48,6 +48,20 @@
 				});
 			}else{
 				displayALertForm("手机号非法");
+			}
+		});
+
+		$('#btn-find-pw').click(function(){
+			if(!inputInfoIsNull('.change-password-input ul li')){
+				displayALertForm('请完整填写信息');
+			}else{
+				var originPW=$('.change-password-input ul #setting-list-password-o-input input').val();
+				var confirmPW=$('.change-password-input ul #setting-list-password-new-input input').val();
+				var verCode=$('.change-password-input ul #setting-list-password-confrom-input input').val();
+				changePassword('',originPW,confirmPW,verCode,function(data){
+					var jsonData=JSON.parse(data);
+					displayALertForm(jsonData['msg']);
+				});
 			}
 		});
 	});

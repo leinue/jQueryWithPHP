@@ -482,7 +482,7 @@
 	            rootURL+'skillsinfo.php',
 	            {
 	                id:p_id,
-	                comment_id:p_comment_id
+	                comments_id:p_comment_id
 	            },callback);
 	    }
 

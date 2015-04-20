@@ -35,7 +35,6 @@
 		var homeList=jsonData['data'];
 		var homeListHtmlDOM='';
 		for (var i = 0; i < homeList.length; i++) {
-			console.log(homeList[i]);
 			var charCount=homeList[i]['paper'].length;
 				var changeFontSizeCSS='';
 				if(charCount>=20){
@@ -47,6 +46,11 @@
 		};
 
 		$('section').append(homeListHtmlDOM+'<div class="padding-div-row"></div>');
+	});
+
+	getSkillsInfo(5,0,function(data){
+		var jsonData=JSON.parse(data);
+		console.log(jsonData['data']['info']);
 	});
 
 </script>

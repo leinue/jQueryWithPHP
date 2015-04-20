@@ -956,10 +956,15 @@ footer{
 	  width: 100%;
 	  padding-top: 15px
 }
-.skills-evaluating-title h3,.skills-evaluating-title p{
+.skills-evaluating-title h4,.skills-evaluating-title p{
       padding-left: 20px;
-      padding-right: 20px;
+      padding-right: 16px;
       color: rgb(93,91,94);
+}
+
+}
+.skills-evaluating-title h3{
+	font-size: 20px;
 }
 
 .skills-evaluating-title p{
@@ -983,7 +988,7 @@ footer{
 .skeva-content{
 	  width: 100%;
 	  padding-left: 25px;
-	  padding-right: 25px;
+	  padding-right: 20px;
 	  margin-top: 20px;
 	  color: rgb(93,91,94);
 }
@@ -1314,6 +1319,7 @@ footer{
 
 .content-summaryIn{
 	padding: 14px;
+	background: rgb(249,249,249);
 }
 
 #monograph-brand{

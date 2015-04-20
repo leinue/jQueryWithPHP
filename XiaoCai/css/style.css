@@ -378,6 +378,7 @@ section{
 }
 
 .reading-list-a{
+	cursor: pointer;
 	margin-left: 14px;
 	margin-top: 14px;
 	margin-right:14px;
@@ -991,7 +992,13 @@ footer{
 	  padding-right: 20px;
 	  margin-top: 20px;
 	  color: rgb(93,91,94);
+	  margin-bottom: -60px;
 }
+
+.skeva-content p{
+	background: rgb(226,224,227);
+}
+
 .skeva-img{
 	  width: 100%;
 	  padding-left: 25px;

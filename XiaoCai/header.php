@@ -519,7 +519,9 @@
 		var pages=new StorageStack('index.php','index.php');
 		localStorage.pageStack=pages;
 
-		var postType=["一手好菜","一首好菜","首页文章"];
+		var postType=["一手好菜","玩转厨房","首页文章"];
+		var replyType=["一手好菜","玩转厨房","首页文章"];
+		var replyStatus=["正常","后台回复未读","用户已读"];
 		
 		/*******************************全局变量区域*******************************/
 

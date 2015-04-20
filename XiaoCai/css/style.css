@@ -617,6 +617,11 @@ section{
 .profile-upload-photo{
 	font-style: normal;
 }
+
+.profile-upload-photo span{
+	padding-top: 2px;
+	cursor: pointer;
+}
 		
 .profile-phtot-uploaded{
 	cursor: pointer;

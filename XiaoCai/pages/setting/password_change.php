@@ -50,9 +50,9 @@
 			if(inputInfoIsNull('.change-password-input ul li')){
 				displayALertForm('请完整填写信息');
 			}else{
-				var originPW=$('.change-password-input ul #setting-list-password-o-input input').html();
-				var newPW=$('.change-password-input ul #setting-list-password-new-input input').html();
-				var confirmPW=$('.change-password-input ul #setting-list-password-confrom-input input').html();
+				var originPW=$('.change-password-input ul #setting-list-password-o-input input').val();
+				var newPW=$('.change-password-input ul #setting-list-password-new-input input').val();
+				var confirmPW=$('.change-password-input ul #setting-list-password-confrom-input input').val();
 				changePassword(p_mobile,newPW,confirmPW,originPW,function(data){
 					var jsonData=JSON.parse(data);
 					displayALertForm(jsonData['msg']);

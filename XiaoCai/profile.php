@@ -16,7 +16,7 @@
 		<div class="profile-phtot-uploaded">
 			<img width="95" height="95" src="images/default_photo.png" />		
 		</div>
-		上传头像
+		<span>上传头像</span>
 	</div>
 	
 	<div class="setting-list change-password-input">
@@ -45,6 +45,19 @@
 			backPreviosPage('register.php');
 		});
 
+		$('#profile-confirm').click(function(){
+			if(inputInfoIsNull('change-password-input ul li')){
+				var tokenID=localStorage.tokenID;
+				var headimgURL="";
+				var nickname=$('change-password-input ul #wechat-nickname input').val();
+				changeUserData(tokenID,nickname,headimgURL,function(data){
+					var jsonData=JSON.parse(data);
+					displayALertForm(jsonData['msg']);
+				});
+			}else{
+				displayALertForm('请完整填写信息');
+			}
+		});
 	});
 
 </script>

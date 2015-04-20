@@ -74,7 +74,9 @@
 		$('.send-ver-code').click(function(){
 			var sMobile=$('.change-password-input ul li #reg-mobile').val();
 			if(checkMobile(sMobile)){
-				sendSms(sMobile,1);
+				sendSms(sMobile,1,function(data){
+					console.log(data);
+				});
 			}else{
 				alert('手机号非法');
 			}

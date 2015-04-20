@@ -127,10 +127,7 @@
 					password:p_password,
 					repassword:p_repassword,
 					code:p_code
-				},
-				function(){
-					console.log('ssds');
-				});
+				},callback);
 		}
 
 		/**
@@ -140,16 +137,13 @@
 		* @return JSONObject [uid|nickname|is_reply(是否有回复留言 1有 0无)|headimgurl|token_id]
 		*/
 
-		function signInByMobile(p_mobile,p_password){
+		function signInByMobile(p_mobile,p_password,callback){
 			$.post(
 				rootURL+"login.php",
 				{
 					mobile:p_mobile,
 					password:p_password
-				},
-				function(data){
-					alert(data);
-				},"json");
+				},callback);
 		}
 
 		/**
@@ -158,11 +152,11 @@
 		* @return Nothing
 		*/
 
-		function logOut(p_token_id){
+		function logOut(p_token_id,callback){
 			$.post(
 				rootURL+"logout.php",
 				{token_id:p_token_id},
-				callback(data,status));
+				callback);
 		}
 
 		/**
@@ -173,15 +167,14 @@
 		* @return JSONObject [uid|nickname|headimgurl|token_id]
 		*/
 
-		function changeUserData(p_token_id,p_nickname,p_headimgurl){
+		function changeUserData(p_token_id,p_nickname,p_headimgurl,callback){
 			$.post(
 				rootURL+"changedata.php",
 				{
 					token_id:p_token_id,
 					nickname:p_nickname,
 					headimgurl:p_headimgurl
-				},
-				callback(data,status));
+				},callback);
 		}
 
 		/**
@@ -190,16 +183,13 @@
 		* @return Nothing
 		*/
 
-		function sendSms(p_mobile,p_type){
+		function sendSms(p_mobile,p_type,callback){
 			$.post(
 				rootURL+"sendsms.php",
 				{
 					mobile:p_mobile,
 					type:p_type
-				},
-				function(data){
-					console.log(data);
-				});
+				},callback);
 		}
 
 		/**
@@ -211,7 +201,7 @@
 		* @return JSONObject
 		*/
 
-		function fogotPassword(p_mobile,p_password,p_repassword,p_code){
+		function fogotPassword(p_mobile,p_password,p_repassword,p_code,callback){
 			$.post(
 				rootURL+"forgotpassword.php",
 				{
@@ -219,8 +209,7 @@
 					password:p_password,
 					repassword:p_repassword,
 					code:p_code
-				},
-				callback(data,status));
+				},callback);
 		}
 
 		/**
@@ -232,7 +221,7 @@
 		* @return JSONObject
 		*/
 
-		function fogotPassword(p_mobile,p_password,p_repassword,p_oldpassword){
+		function fogotPassword(p_mobile,p_password,p_repassword,p_oldpassword,callback){
 			$.post(
 				rootURL+"changepassword.php",
 				{
@@ -240,8 +229,7 @@
 					password:p_repassword,
 					repassword:p_repassword,
 					oldpassword:p_oldpassword
-				},
-				callback(data,status));
+				},callback);
 		}
 
 		/**
@@ -249,8 +237,8 @@
 		* @return About
 		*/
 
-		function getAbout(){
-			$.post(rootURL+"api.php/Api/Public/about.php",{},callback(data,status));
+		function getAbout(callback){
+			$.post(rootURL+"api.php/Api/Public/about.php",{},callback);
 		}
 
 		/**
@@ -265,11 +253,11 @@
 		* @return created_time 留言时间
 		*/
 
-		function getReply(p_token_id){
+		function getReply(p_token_id,callback){
 			$.post(
 				rootURL+"reply.php",
 				{token_id:p_token_id},
-				callback(data,status));
+				callback);
 		}
 
      	/**
@@ -296,11 +284,10 @@
      	* @return small_image
      	*/
 
-      	function getHome(){
+      	function getHome(callback){
           	$.post(
                 rootURL+'home.php',
-            	{},
-         		callback(data,status));
+            	{},callback);
      	}
      
      	/**
@@ -311,11 +298,10 @@
      	* @return childern
      	*/
 
-      	function getRecipeClassify(){
+      	function getRecipeClassify(callback){
           	$.post(
                 rootURL+'recipeclassify.php',
-              	{},
-         		callback(data,status));
+              	{},callback);
      	}
      
      	/**
@@ -335,13 +321,12 @@
      	* @return image
      	*/
 
-	    function getRecipeList(p_id){
+	    function getRecipeList(p_id,callback){
 	        $.post(
 	            rootURL+'recipelist.php',
 	            {
 	                id:p_id
-	            },
-	        callback(data,status));
+	            },callback);
 	    }
      
 	    /**
@@ -373,14 +358,13 @@
 	    * @return reply_time
 	    */
 
-	    function getRecipeInfo(p_id,p_comments_id){
+	    function getRecipeInfo(p_id,p_comments_id,callback){
 	        $.post(
 	            rootURL+'recipeinfo.php',
 	            {
 	                id:p_id,
 	                comments_id:p_comments_id
-	            },
-	        callback(data,status));
+	            },callback);
 	    }
 
 	    /**
@@ -395,13 +379,12 @@
 	    * @return recommened
 	    */
 
-	    function getRecipeInfoFormula2(p_id){
+	    function getRecipeInfoFormula2(p_id,callback){
 	        $.post(
 	            rootURL+'recipeinfoformula16.php',
 	            {
 	                id:p_id
-	            },
-	        callback(data,status));
+	            },callback);
 	    }
 
 	    /**
@@ -416,13 +399,12 @@
 	    * @return node
 	    */
 
-	    function getRecipeInfoFormula(p_id){
+	    function getRecipeInfoFormula(p_id,callback){
 	        $.post(
 	            rootURL+'recipeinfoformula.php',
 	            {
 	                id:p_id
-	            },
-	        callback(data,status));
+	            },callback);
 	    }
 
 	    /**
@@ -437,11 +419,10 @@
 	    * @return created_time
 	    */
 
-	    function getSkillsList(){
+	    function getSkillsList(callback){
 	        $.post(
 	            rootURL+'skillslist.php',
-	            {},
-	        	callback(data,status));
+	            {},callback);
 	    }
 
 	    /**
@@ -466,14 +447,13 @@
 	    * @return reply_time
 	    */
 
-	    function getSkillsInfo(p_id,p_comment_id){
+	    function getSkillsInfo(p_id,p_comment_id,callback){
 	        $.post(
 	            rootURL+'skillsinfo.php',
 	            {
 	                id:p_id,
 	                comment_id:p_comment_id
-	            },
-	        callback(data,status));
+	            },callback);
 	    }
 
 	    /**
@@ -484,7 +464,7 @@
 	    * @return Nothing
 	    */
 
-	    function getComments(p_type,p_token_id,p_article_id,p_content){
+	    function getComments(p_type,p_token_id,p_article_id,p_content,callback){
 	        $.post(
 	       	    rootURL+'comments.php',
 	            {
@@ -492,8 +472,7 @@
 	                token_id:p_token_id,
 	                article_id:p_article_id,
 	                content:p_content
-	            },
-	        callback(data,status));
+	            },callback);
 	    }
 
 
@@ -518,3 +497,4 @@
 <body>
 <?php include('login_column.php'); ?>
 
+<div class="alert-form">这里是信息提示框</div>

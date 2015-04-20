@@ -1372,3 +1372,20 @@ footer{
 .monoshareDiv #monoshare-content li{
 	  padding-top: 10px;
 }
+
+/*警告提示框*/
+
+.alert-form{
+	display: none;
+	position: absolute;
+	background: rgb(0,0,0);
+	opacity: 0.6;
+	width: 250px;
+	padding: 6px;
+	bottom: 86px;
+	left: 35px;
+	z-index: 2000;
+	border-radius: 4px;
+	color: rgb(255,255,255);
+	text-align: center;
+}

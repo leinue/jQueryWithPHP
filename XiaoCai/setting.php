@@ -33,6 +33,8 @@
 		backPreviosPage('setting.php');
 	});
 
+
+
 	$('.setting-list ul li').click(function(){
 		var elemID=$(this).attr('id').split('-');
 		switch(elemID[2]){
@@ -46,8 +48,17 @@
 				loadPagesA('profile.php','body');
 				break;
 			case 'logout':
+				var tokenID=localStorage.tokenID;
+				logOut(tokenID,function(){
+					
+				});
 				break;
 			case 'setting':
+				getAbout(function(data){
+					var jsonData=JSON.parse(data);
+					console.log(jsonData);
+					displayALertForm(jsonData['data']);
+				});
 				break;
 			default:
 				break;

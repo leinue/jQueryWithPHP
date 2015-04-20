@@ -13,8 +13,8 @@
 	<div class="setting-list change-password-input">
 		<ul>
 			<li id="setting-list-phone-num-input">
-				<input placeholder="手机号" />
-				<a class="button button-caution button-pill button-small send-ver-code">发送验证码</a></li>
+				<input id="find-pw-phone" placeholder="手机号" />
+				<a id="findpw-send-vercode" class="button button-caution button-pill button-small send-ver-code">发送验证码</a></li>
 			<li id="setting-list-password-o-input"><input placeholder="原密码" /></li>
 			<li id="setting-list-password-new-input" class="setting-list-second"><input placeholder="新密码" /></li>
 			<li id="setting-list-password-confrom-input"><input placeholder="确认新密码" /></li>
@@ -37,6 +37,18 @@
 		//退回按钮事件
 		$('.header-back').click(function(){
 			backPreviosPage('setting.php');
+		});
+
+		$('#findpw-send-vercode').click(function(){
+			var sMobile=$('.change-password-input ul li #find-pw-phone').val();
+			if(checkMobile(sMobile)){
+				sendSms(sMobile,2,function(data){
+					var jsonData=JSON.parse(data);
+					displayALertForm(jsonData['msg']);
+				});
+			}else{
+				displayALertForm("手机号非法");
+			}
 		});
 	});
 </script>

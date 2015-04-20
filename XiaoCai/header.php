@@ -106,6 +106,36 @@
 			});
 		}
 
+		//显示信息提示框
+		function displayALertForm(text,timeInterval){
+			timeInterval=timeInterval==null ? 2000:timeInterval;
+			var alertForm="<div class=\"alert-form\"></div>";
+			$('body').append(alertForm);
+			$('.alert-form').html(text);
+			$('.alert-form').fadeIn();
+			setTimeout(function(){
+				$('.alert-form').fadeOut();
+			},timeInterval);
+		}
+
+		function checkMobile(sMobile){
+    		if(!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(sMobile))){
+        		return false;
+    		}else{
+    			return true;
+    		}
+		}
+
+		function inputInfoIsNull(elem){
+			var flag=0;
+			$(elem).each(function(){
+				if($(this).find('input').val()==null){
+					flag+=1;
+				}
+			});
+			return flag===0;
+		}
+
 		/*********************************AJAX请求*********************************/
 
 		var rootURL="curl/";
@@ -201,7 +231,7 @@
 		* @return JSONObject
 		*/
 
-		function fogotPassword(p_mobile,p_password,p_repassword,p_code,callback){
+		function forgotPassword(p_mobile,p_password,p_repassword,p_code,callback){
 			$.post(
 				rootURL+"forgotpassword.php",
 				{
@@ -221,7 +251,7 @@
 		* @return JSONObject
 		*/
 
-		function fogotPassword(p_mobile,p_password,p_repassword,p_oldpassword,callback){
+		function changePassword(p_mobile,p_password,p_repassword,p_oldpassword,callback){
 			$.post(
 				rootURL+"changepassword.php",
 				{
@@ -238,7 +268,7 @@
 		*/
 
 		function getAbout(callback){
-			$.post(rootURL+"api.php/Api/Public/about.php",{},callback);
+			$.post(rootURL+"about.php",{},callback);
 		}
 
 		/**
@@ -497,4 +527,3 @@
 <body>
 <?php include('login_column.php'); ?>
 
-<div class="alert-form">这里是信息提示框</div>

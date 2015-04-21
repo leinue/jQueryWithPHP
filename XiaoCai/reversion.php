@@ -46,7 +46,8 @@
 		var jsonData=JSON.parse(data);
 		var replyList=jsonData['data'];
 		var replyListHTMLDom='';
-		if(replyList!=null || replyList!=''){
+		console.log(replyList);
+		if(replyList!=null || replyList!='' || replyList!='null'){
 			for (var i = 0; i < replyList.length; i++) {
 				if(replyList[i]['status']==='1'){
 					//新信息

@@ -72,7 +72,7 @@
 						localStorage.mobileNum=smobile;
 						localStorage.loginByWechat=false;
 						localStorage.isLogin=true;
-						displayALertForm('登录成功,3秒后自动跳转...');
+						displayALertForm('登录成功,3秒后将自动跳转...');
 						setTimeout(function(){
 							location.reload();
 						},3000);

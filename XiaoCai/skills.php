@@ -44,13 +44,18 @@
 					}else{
 						changeFontSizeCSS='';
 				}
-				homeListHtmlDOM+='<div idata="'+homeList[i]['id']+'" class="reading-list-a"><div class="reading-list-img"><img src="'+homeList[i]['image']+'"></div><div class="reading-list-all-content"><div class="reading-list-all-title '+changeFontSizeCSS+'"><p><a href="monograph.php?#'+homeList[i]['id']+'">'+homeList[i]['title']+'</a></p></div><div class="reading-list-all-summary"><p>'+homeList[i]['paper']+'</p></div></div><div class="reading-list-all-footer"><ul><li><span class="glyphicon glyphicon-bookmark"></span> 玩转厨房</li><li><span class="glyphicon glyphicon-time"></span> '+homeList[i]['created_time'].split(' ')[0]+'</li></ul></div></div>';
+				homeListHtmlDOM+='<div id="skills-'+homeList[i]['id']+'" class="reading-list-a"><div class="reading-list-img"><img src="'+homeList[i]['image']+'"></div><div class="reading-list-all-content"><div class="reading-list-all-title '+changeFontSizeCSS+'"><p><a href="monograph.php#'+homeList[i]['id']+'">'+homeList[i]['title']+'</a></p></div><div class="reading-list-all-summary"><p><a href="monograph.php?#'+homeList[i]['id']+'">'+homeList[i]['paper']+'</a></p></div></div><div class="reading-list-all-footer"><ul><li><span class="glyphicon glyphicon-bookmark"></span> 玩转厨房</li><li><span class="glyphicon glyphicon-time"></span> '+homeList[i]['created_time'].split(' ')[0]+'</li></ul></div></div>';
 			};
-
 			$('section').append(homeListHtmlDOM+'<div class="padding-div-row"></div>');
 		}else{
 			displayALertForm(jsonData['msg']);
 		}
+	});
+
+	$('.reading-list-a').click(function(){
+		console.log($(this).attr('id'));
+		console.log('dsdsds');
+		window.location.href="monograph.php#"+$(this).attr('id');
 	});
 
 </script>

@@ -64,6 +64,10 @@
 						localStorage.headimgurl='';
 						localStorage.isReply='';
 						localStorage.isLogin=false;
+						displayALertForm('注销成功,3秒后将自动跳转...');
+						setTimeout(function(){
+							location.reload();
+						},3000);
 					}
 				});
 				break;

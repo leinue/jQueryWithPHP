@@ -82,19 +82,27 @@
           history.go(-1);
         });
 
+        displayALertForm('正在加载...');
         var currentHref=document.location.href;
-        currentHref=currentHref.split('#')[1];
-
-        getSkillsInfo(currentHref,0,function(data){
-          var jsonData=JSON.parse(data);
-          $('.monograph-img1 img').attr('src',jsonData['data']['info']['big_image']);
-          $('.monograph-header ul .header-skillsEvaluating-li #viewer-count').html(jsonData['data']['info']['browse_num']);
-          $('.skills-evaluating-title h4').html(jsonData['data']['info']['title']);
-          $('.skills-evaluating-title p').html(jsonData['data']['info']['created_time']);
-          $('.content-summaryIn').html(jsonData['data']['info']['paper']);
-          $('.skeva-content').html(jsonData['data']['info']['content']);
-          $('.skeva-content p').css('background','rgb(226,224,227)');
-        });
+        if(currentHref.indexOf('#')!=-1){
+          currentHref=currentHref.split('#')[1];
+          getSkillsInfo(currentHref,0,function(data){
+            var jsonData=JSON.parse(data);
+            if(jsonData['msg']=='成功'){
+              $('.monograph-img1 img').attr('src',jsonData['data']['info']['big_image']);
+              $('.monograph-header ul .header-skillsEvaluating-li #viewer-count').html(jsonData['data']['info']['browse_num']);
+              $('.skills-evaluating-title h4').html(jsonData['data']['info']['title']);
+              $('.skills-evaluating-title p').html(jsonData['data']['info']['created_time']);
+              $('.content-summaryIn').html(jsonData['data']['info']['paper']);
+              $('.skeva-content').html(jsonData['data']['info']['content']);
+              $('.skeva-content p').css('background','rgb(226,224,227)');  
+            }else{
+              displayALertForm(jsonDatap['msg']);
+            }
+          });
+        }else{
+          window.location.href="skills.php";
+        }
 
     });
   </script>

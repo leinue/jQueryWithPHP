@@ -1,4 +1,22 @@
 <?php require( 'header.php'); ?>
+
+<script type="text/javascript">
+    var currentHref=document.location.href;
+    if(currentHref.indexOf('#')!=-1){
+      currentHref=currentHref.split('#')[1];
+      getRecipeInfo(currentHref,0,function(data){
+        var jsonData=JSON.parse(data);
+        if(jsonData['msg']!='成功'){
+          displayALertForm(jsonData['msg']);
+        }else{
+          
+        }
+      });
+    }else{
+      window.location.href="recipes.php";
+    }
+
+</script>
   <header>
     <nav>
       <div class="header-title">
@@ -195,4 +213,5 @@
     $('#recipes-introduction-footer ul #introductionFooterLi3').click(function(){
       loadPagesA('pages/introduction/step.php','.introduction-page');
     });
+
   </script>

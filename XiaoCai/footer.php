@@ -156,8 +156,25 @@
 			loadPagesA(pageName[2]+'.php','body');
 		});*/
 
+		$('.main-footer ul li').mousedown(function(){
+			var imgsrc=$(this).find('a').find('img').attr('src');
+			var imgsrcArray=imgsrc.split('.');
+			var imgsrcNoExtension=imgsrcArray[0];
+			var imgsrcExtension=imgsrcArray[1];
+			$(this).find('a').find('img').attr('src',imgsrcNoExtension+'_active.'+imgsrcExtension);
+		});
+
+		if(localStorage.isLogin=='true'){
+			$('.lo-re-area').css('display','none');
+			$('.logo-area').css('marginTop','30.273972%');
+			$('.logo-area').css('marginBottom','30.273972%');
+		}else{
+			$('.lo-re-area').css('display','block');
+			$('.logo-area').css('marginTop','20.920502%');
+			$('.logo-area').css('marginBottom','0');
+		}
+
 	});
-	
 	
 	document.addEventListener("touchmove",function(e){
 		if(docIsMoved==0){

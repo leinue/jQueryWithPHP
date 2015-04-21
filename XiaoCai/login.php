@@ -53,14 +53,32 @@
 			backPreviosPage('register.php');
 		});
 
+		$('.change-password-input #login-phone-num-input input').attr('value',localStorage.mobileNum);
+
 		$('#btn-confirm-login').click(function(){
 			if(inputInfoIsNull('.change-password-input ul li')){
 				var smobile=$('.change-password-input ul #login-phone-num-input input').val();
 				var password=$('.change-password-input ul #login-password-o-input input').val();
 				signInByMobile(smobile,password,function(data){
 					var jsonData=JSON.parse(data);
-					localStorage.tokenID=jsonData['data'];
 					displayALertForm(jsonData['msg']);
+					if(jsonData['msg']=='登录成功'){
+						//console.log(jsonData['data']);
+						localStorage.uid=jsonData['data']['uid'];
+						localStorage.nickname=jsonData['data']['nickname'];
+						localStorage.tokenID=jsonData['data']['token_id'];
+						localStorage.headimgurl=jsonData['data']['headimgurl'];
+						localStorage.isReply=jsonData['data']['is_reply'];
+						localStorage.mobileNum=smobile;
+						localStorage.loginByWechat=false;
+						localStorage.isLogin=true;
+						displayALertForm('登录成功,3秒后自动跳转...');
+						setTimeout(function(){
+							location.reload();
+						},3000);
+					}else{
+						localStorage.isLogin=false;
+					}
 				});
 			}else{
 				displayALertForm('请完整填写信息');

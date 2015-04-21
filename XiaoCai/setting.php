@@ -12,10 +12,10 @@
 <section>
 	<div class="setting-list">
 		<ul>
-			<li id="setting-list-password">修改密码<span class="glyphicon glyphicon-menu-right"></span></li>
-			<li id="setting-list-fpassword" class="setting-list-second">找回密码<span class="glyphicon glyphicon-menu-right"></span></li>
-			<li id="setting-list-profile" class="setting-list-second">填写资料<span class="glyphicon glyphicon-menu-right"></span></li>
-			<li id="setting-list-logout" class="setting-list-third">注销</li>
+			<li id="setting-list-password" class="login-show">修改密码<span class="glyphicon glyphicon-menu-right"></span></li>
+			<li id="setting-list-fpassword" class="setting-list-second login-show">找回密码<span class="glyphicon glyphicon-menu-right"></span></li>
+			<li id="setting-list-profile" class="setting-list-second login-show">填写资料<span class="glyphicon glyphicon-menu-right"></span></li>
+			<li id="setting-list-logout" class="setting-list-third login-show">注销</li>
 			<li id="setting-list-setting">关于<span class="glyphicon glyphicon-menu-right"></span></li>
 		</ul>
 	</div>
@@ -33,7 +33,11 @@
 		backPreviosPage('setting.php');
 	});
 
-
+	if(localStorage.isLogin=='true'){
+		$('.setting-list ul .login-show').show();
+	}else{
+		$('.setting-list ul .login-show').hide();
+	}
 
 	$('.setting-list ul li').click(function(){
 		var elemID=$(this).attr('id').split('-');
@@ -49,14 +53,23 @@
 				break;
 			case 'logout':
 				var tokenID=localStorage.tokenID;
-				logOut(tokenID,function(){
-					
+				logOut(tokenID,function(data){
+					var jsonData=JSON.parse(data);
+					console.log(tokenID);
+					displayALertForm(jsonData['msg']);
+					if(jsonData['msg']=='注销成功'){
+						localStorage.uid='';
+						localStorage.nickname='';
+						localStorage.tokenID='';
+						localStorage.headimgurl='';
+						localStorage.isReply='';
+						localStorage.isLogin=false;
+					}
 				});
 				break;
 			case 'setting':
 				getAbout(function(data){
 					var jsonData=JSON.parse(data);
-					console.log(jsonData);
 					displayALertForm(jsonData['data']);
 				});
 				break;

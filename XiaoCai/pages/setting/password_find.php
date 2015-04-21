@@ -15,8 +15,8 @@
 			<li id="setting-list-phone-num-input">
 				<input id="find-pw-phone" placeholder="手机号" />
 				<a id="findpw-send-vercode" class="button button-caution button-pill button-small send-ver-code">发送验证码</a></li>
-			<li id="setting-list-password-o-input"><input placeholder="输入密码" /></li>
-			<li id="setting-list-password-new-input" class="setting-list-second"><input placeholder="确认密码" /></li>
+			<li id="setting-list-password-o-input"><input type="password" placeholder="输入密码" /></li>
+			<li id="setting-list-password-new-input" class="setting-list-second"><input type="password" placeholder="确认密码" /></li>
 			<li id="setting-list-password-confrom-input"><input placeholder="手机验证码" /></li>
 		</ul>
 	</div>
@@ -58,7 +58,7 @@
 				var originPW=$('.change-password-input ul #setting-list-password-o-input input').val();
 				var confirmPW=$('.change-password-input ul #setting-list-password-new-input input').val();
 				var verCode=$('.change-password-input ul #setting-list-password-confrom-input input').val();
-				changePassword('',originPW,confirmPW,verCode,function(data){
+				changePassword(localStorage.mobileNum,originPW,confirmPW,verCode,function(data){
 					var jsonData=JSON.parse(data);
 					displayALertForm(jsonData['msg']);
 				});

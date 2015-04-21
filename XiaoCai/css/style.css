@@ -580,6 +580,10 @@ section{
 	color: rgb(192,11,41);
 }
 
+.change-password-submit-button .true-register span{
+	cursor: pointer;
+}
+
 .change-password-submit-button .true-register #login-faster-register{
 	padding-right: 12.5%;
 }

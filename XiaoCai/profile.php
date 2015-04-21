@@ -48,6 +48,9 @@
 			backPreviosPage('register.php');
 		});
 
+		$('.profile-phtot-uploaded img').attr('src',localStorage.headimgurl);
+		$('.change-password-input #wechat-nickname input').attr('value',localStorage.nickname);
+
 		$('#profile-confirm').click(function(){
 			if(inputInfoIsNull('.change-password-input ul li') && fileInput.value!=''){
 				var tokenID=localStorage.tokenID;

@@ -251,11 +251,11 @@
 		* @return JSONObject
 		*/
 
-		function changePassword(p_mobile,p_password,p_repassword,p_oldpassword,callback){
+		function changePassword(p_token_id,p_password,p_repassword,p_oldpassword,callback){
 			$.post(
 				rootURL+"changepassword.php",
 				{
-					mobile:p_mobile,
+					token_id:p_token_id,
 					password:p_repassword,
 					repassword:p_repassword,
 					oldpassword:p_oldpassword

@@ -129,11 +129,11 @@
         <li><span id="introductionFooterLi3">步骤</span></li>
       </ul>
     </div>
-    </footer>>
+    </footer>
   <script type="text/javascript">
     $(document).ready(function() {
 
-      displayALertForm('正在加载...');
+      displayALertForm('正在加载...',1000);
       var currentHref=document.location.href;
       if(currentHref.indexOf('#')!=-1){
         currentHref=currentHref.split('#')[1];
@@ -231,4 +231,12 @@
       loadPagesA('pages/introduction/step.php','.introduction-page');
     });
 
+
+
   </script>
+
+<?php require('footer.php'); ?>
+
+<script>
+  $('.main-footer').html('');
+</script>

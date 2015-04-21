@@ -4,6 +4,7 @@
 			<li class="formula-li1"><span>食材用量</span></li>
 			<li class="formula-li2"><button class= "button-add">加入采购清单</button></li>
 			<li><span class="glyphicon glyphicon-menu-up"></span></li>
+		</ul>
 	</div>	
 	    <div id="formula-add">
 	    	加入成功
@@ -17,9 +18,18 @@
             $('#formula-add').css('display','block');
             $('#formula-add').css({           
                  }).show(300).delay(2000).hide(300);  
-        }); 
+        });
+
+        $('.formula-buy ul li:last-child').click(function(){
+        	$('.formula-juice').slideToggle();
+        	if($(this).find('span').attr('class').split(' ')[1]=='glyphicon-menu-up'){
+        		$(this).find('span').attr('class','glyphicon glyphicon-menu-down');
+        	}else{
+        		$(this).find('span').attr('class','glyphicon glyphicon-menu-up');
+        	}
+        });
       
-      	displayALertForm('正在加载...');
+      	displayALertForm('正在加载...',500);
       	var currentHref=document.location.href;
       	if(currentHref.indexOf('#')!=-1){
       		currentHref=currentHref.split('#')[1];

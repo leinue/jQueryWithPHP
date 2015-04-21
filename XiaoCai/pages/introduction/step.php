@@ -27,10 +27,10 @@
 	    	    <ul>
 	    		   <li><img src=""></li>
 	    		   <li><img src=""></li>
-	    	   </ul>
-	       </div>
+	    	   	</ul>
+	       	</div>
 
-	       <div class="tomato-sauce">
+	<div class="tomato-sauce">
 		<ul>
 			<li></li>
 			<li id="red2">烹煮意面</li>
@@ -47,12 +47,12 @@
 	    	    <ul>
 	    		   <li><img src=""></li>
 	    		   <li><img src=""></li>
-	    	   </ul>
-	       </div>
+	    	  	</ul>
+	       	</div>
 
 
 
-	       <div class="tomato-sauce">
+	<div class="tomato-sauce">
 		<ul>
 			<li></li>
 			<li id="red3">混合翻炒并完成烹饪</li>
@@ -66,8 +66,6 @@
 			<li>2</li>
 			<li>在海鲜还没全熟的时候加入煮好的意面和剩余的基础茄汁、帕玛森芝士（留少量装盘用），最后加入1/2杯面汤，翻炒收汁，待酱汁能挂住意面，配合芝士碎、意芹装盘即可享用。</li>
 		</ul>
-
-
 	</div>	
 	    
 	        <div class="tomato-sauce-img">
@@ -75,17 +73,37 @@
 	    		   <li><img src=""></li>
 	    		   <li><img src=""></li>
 	    	   </ul>
-	       </div>
+	       	</div>
 
-          <div class="step-main-tips">
-            <div class="step-tips">
+          	<div class="step-main-tips">
+            	<div class="step-tips">
               
-                <h3>Tips</h3>
-            	<ul>
-            		<li>内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要</li>
-            		<li>内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要</li>
-            		<li>内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要</li>
-            	</ul>
-            </div>
-            </div>
+                	<h3>Tips</h3>
+            		<ul>
+            			<li>内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要</li>
+            			<li>内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要</li>
+            			<li>内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要</li>
+            		</ul>
+            	</div>
+          	</div>
 </div>
+
+	<script>
+
+		displayALertForm('正在加载...',500);
+		var currentHref=document.location.href;
+      	if(currentHref.indexOf('#')!=-1){
+      		currentHref=currentHref.split('#')[1];
+      		getRecipeInfoFormula2(currentHref,function(data){
+      			var jsonData=JSON.parse(data);
+      			if(jsonData['msg']!='成功'){
+      				displayALertForm(jsonData['msg']);
+      			}else{
+      				console.log(jsonData['data'][0]);
+      			}
+      		});
+      	}else{
+      		window.location.href="recipes.php";
+      	}
+
+	</script>

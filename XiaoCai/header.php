@@ -108,7 +108,7 @@
 
 		//显示信息提示框
 		function displayALertForm(text,timeInterval){
-			timeInterval=timeInterval==null ? 2000:timeInterval;
+			timeInterval=timeInterval==null ? 1000:timeInterval;
 			var alertForm="<div class=\"alert-form\"></div>";
 			$('body').append(alertForm);
 			$('.alert-form').html(text);

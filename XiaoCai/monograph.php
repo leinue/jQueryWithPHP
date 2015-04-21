@@ -62,9 +62,13 @@
         $('#monograph-back').click(function(){
                 backPreviosPage('monograph.php');
         });
+
+        $('.monoshare').click(function(){
+          $('.monoshare').fadeToggle();
+        });
       
-        $('#mono-share').click(function(){
-                $('.monoshare').css('display','block');
+        $('.monograph-header ul li:last-child').click(function(){
+                $('.monoshare').fadeToggle();
                 $('body').css('overflow','hidden');
         });
       

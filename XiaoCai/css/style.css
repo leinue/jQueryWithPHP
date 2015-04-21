@@ -202,6 +202,10 @@ section{
 	box-shadow: 1px 1px 1px rgb(199,199,199);
 }
 
+.vip-enjoy:active{
+	background: rgb(249,249,249);
+}
+
 .vip-video{
 	height: 200px;
 	border-bottom: 1px solid rgb(0,0,0);
@@ -936,6 +940,11 @@ footer{
   padding-top: 14px;
   padding-bottom: 14px;
 }
+
+#recipes-introduction-footer ul li:active{
+	color: rgb(230,0,39);
+}
+
 #recipes-introduction-footer #recipes-introduction-footer-ul li span {
   padding-bottom: 2px;
 }
@@ -1244,7 +1253,7 @@ footer{
       text-align: right;
 }
 .formula-juice-list ul .juice-list-li3 {
-      width: 25%;
+      width: 30%;
       text-align:left;
 }
 #formula-add{
@@ -1397,7 +1406,7 @@ footer{
 	    background: rgb(241,241,241);
 	    padding: 6%;
         border-radius: 8px;
-        top: -10%;
+        top: -30%;
         left: 25%;
         position: absolute;
 }
@@ -1430,8 +1439,12 @@ footer{
 }
 @media screen and (max-width:400px){
     .monoshareDiv ul li img,.monoshareDiv ul li{
-    	   width: 50px;
-    	   font-size: 0.7em;
+    	   width: 80px;
+    	   font-size: 0.8em;
+    }
+
+    .monoshareDiv{
+    	left: 16.875%;
     }
 }
 .monoshareDiv #line li:first-child{

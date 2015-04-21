@@ -1,20 +1,6 @@
 <?php require( 'header.php'); ?>
 
 <script type="text/javascript">
-    var currentHref=document.location.href;
-    if(currentHref.indexOf('#')!=-1){
-      currentHref=currentHref.split('#')[1];
-      getRecipeInfo(currentHref,0,function(data){
-        var jsonData=JSON.parse(data);
-        if(jsonData['msg']!='成功'){
-          displayALertForm(jsonData['msg']);
-        }else{
-          
-        }
-      });
-    }else{
-      window.location.href="recipes.php";
-    }
 
 </script>
   <header>
@@ -41,7 +27,7 @@
       </div>
       <div class="vip-content">
         <div class="vip-title">
-          海鲜茄汁意面
+          标题标题标题
         </div>
         <div class="vip-post">
           内容标题内容标题内容标题内容标题内容标题内容标题内容标题内容标题
@@ -53,14 +39,14 @@
             <li>享用份量</li>
           </ul>
           <ul id="introduction-time-list2" class="introduction-time">
-            <li>30分钟</li>
-            <li>60分钟</li>
-            <li>6人份</li>
+            <li id="prepare-time">0分钟</li>
+            <li id="cooking-time">0分钟</li>
+            <li id="enjoy-num">0人份</li>
           </ul>
         </div>
         <div class="vip-menu">
           <ul>
-            <li><span class="glyphicon glyphicon-eye-open"></span> 268</li>
+            <li><span class="glyphicon glyphicon-eye-open"></span> <span id="browser-num">0</span></li>
             <li>
               <span class="glyphicon glyphicon-heart-empty">
               </span>
@@ -71,9 +57,7 @@
             </li>
           </ul>
         </div>
-        <div class="teacher-brand introduction-teacher-brand">
-          ALVIN LEE
-        </div>
+        <div class="teacher-brand introduction-teacher-brand"><img src=""></div>
       </div>
     </div>
     <div class="introduction-comment">
@@ -89,7 +73,7 @@
           <input type="text">
         </li>
       </ul>
-      <ul class="introduction-comment-ul">
+      <ul id="comment-show-area" class="introduction-comment-ul">
         <li class="introduction-comment-photo">
           <div class="logo-area register-area  profile-upload-photo">
             <div class="profile-phtot-uploaded introduction-photo-uploaded">
@@ -148,6 +132,39 @@
     </footer>>
   <script type="text/javascript">
     $(document).ready(function() {
+
+      displayALertForm('正在加载...');
+      var currentHref=document.location.href;
+      if(currentHref.indexOf('#')!=-1){
+        currentHref=currentHref.split('#')[1];
+        getRecipeInfo(currentHref,0,function(data){
+          var jsonData=JSON.parse(data);
+          if(jsonData['msg']!='成功'){
+            displayALertForm(jsonData['msg']);
+          }else{
+            var introList=jsonData['data'];
+            if(introList['info']!=''){
+              var introInfo=introList['info'];
+              console.log(introInfo);
+              $('.vip-title').html(introInfo['title']);
+              $('.vip-post').html(introInfo['paper']);
+              $('.introduction-time #prepare-time').html(introInfo['prepare_time']);
+              $('.introduction-time #cooking-time').html(introInfo['cooking_time']);
+              $('.introduction-time #enjoy-num').html(introInfo['enjoy_num']);
+              $('.vip-menu ul li #browser-num').html(introInfo['browse_num']);
+              $('.introduction-teacher-brand img').attr('src',introInfo['arrange_image_url']);
+            }
+            if(introList['comments']!=''){
+
+            }else{
+              $('#comment-show-area').hide();
+            }
+          }
+        });
+      }else{
+        window.location.href="recipes.php";
+      }
+
       var tag = true;
       var flag = false;
       var index = false;

@@ -360,7 +360,7 @@
 	            {
 	                id:p_id,
 	                page:p_page,
-	                limit,p_limit
+	                limit:p_limit
 	            },callback);
 	    }
      
@@ -400,7 +400,7 @@
 	                id:p_id,
 	                comments_id:p_comments_id,
 	                page:p_page,
-	                limit,p_limit
+	                limit:p_limit
 	            },callback);
 	    }
 
@@ -416,9 +416,9 @@
 	    * @return recommened
 	    */
 
-	    function getRecipeInfoFormula2(p_id,callback){
+	    function getRecipeInfoSteps(p_id,callback){
 	        $.post(
-	            rootURL+'recipeinfoformula16.php',
+	            rootURL+'recipeinfosteps.php',
 	            {
 	                id:p_id
 	            },callback);
@@ -461,7 +461,7 @@
 	            rootURL+'skillslist.php',
 	            {
 	            	page:p_page,
-	            	limit,p_limit
+	            	limit:p_limit
 	            },callback);
 	    }
 

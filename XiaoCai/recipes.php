@@ -160,14 +160,14 @@
 		$('.recipe-menu-container .recipe-menu-slidedown ul li').click(function(){
 			$(this).slideToggle();
 			$('.loading').fadeIn();
-			getRecipeList($(this).attr('idata'),function(data){
+			getRecipeList($(this).attr('idata'),1,10,function(data){
 				$('section').html('');
 				dsiplayRecipePost(data);
 				$('.loading').fadeOut();
 			});
 		});
 	
-		getRecipeList(10,function(data){
+		getRecipeList(10,1,10,function(data){
 			dsiplayRecipePost(data);
 		});
 		

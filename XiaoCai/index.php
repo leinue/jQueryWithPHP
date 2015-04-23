@@ -39,7 +39,7 @@
 <script type="text/javascript">
 
 	displayALertForm('正在加载...');
-	getHome(function(data){
+	getHome(1,10,function(data){
 		var jsonData=JSON.parse(data);
 		console.log(jsonData['data']);
 		if(jsonData['msg']=='成功'){

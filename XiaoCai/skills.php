@@ -31,7 +31,7 @@
 <script type="text/javascript">
 	
 	displayALertForm('正在加载..');
-	getSkillsList(function(data){
+	getSkillsList(1,10,function(data){
 		var jsonData=JSON.parse(data);
 		if(jsonData['msg']=='成功'){
 			var homeList=jsonData['data'];

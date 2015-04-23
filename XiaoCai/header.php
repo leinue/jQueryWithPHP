@@ -517,6 +517,75 @@
 	            },callback);
 	    }
 
+	    function getHomeInfo(p_id,p_comments_id,p_page,p_limit,callback){
+	    	$.post(
+	            rootURL+'homeinfo.php',
+	            {
+	                id:p_id,
+	                comments_id:p_comment_id,
+	                page:p_page,
+	                limit:p_limit
+	            },callback);
+	    }
+
+	    function getProjectInfo(p_id,p_comments_id,p_page,p_limit,callback){
+	    	$.post(
+	            rootURL+'projectinfo.php',
+	            {
+	                id:p_id,
+	                comments_id:p_comment_id,
+	                page:p_page,
+	                limit:p_limit
+	            },callback);
+	    }
+
+	    function addReadingList(p_type,p_token_id,p_article_id,callback){
+	    	$.post(
+	            rootURL+'addreadinglist.php',
+	            {
+	                type:p_type,
+	                token_id:p_token_id,
+	                article_id:p_article_id
+	            },callback);
+	    }
+
+	    function getReadingList(p_type,p_token_id,callback){
+	    	$.post(
+	            rootURL+'readinglist.php',
+	            {
+	                type:p_type,
+	                token_id:p_token_id,
+	                article_id:p_article_id
+	            },callback);
+	    }
+
+	    function addFoodList(p_recipe_id,p_formula_id,p_token_id,callback){
+	    	$.post(
+	            rootURL+'addfoodlist.php',
+	            {
+	                recipe_id:p_recipe_id,
+	                formula_id:p_formula_id,
+	                token_id:p_token_id
+	            },callback);
+	    }
+
+	    function deleteFoodList(p_recipe_id,p_formula_id,p_token_id,callback){
+	    	$.post(
+	            rootURL+'deletefoodlist.php',
+	            {
+	                recipe_id:p_recipe_id,
+	                formula_id:p_formula_id,
+	                token_id:p_token_id
+	            },callback);
+	    }
+
+	    function getFoodList(p_token_id,callback){
+	    	$.post(
+	            rootURL+'foodlist.php',
+	            {
+	                token_id:p_token_id
+	            },callback);	
+	    }
 
 		/*********************************AJAX请求*********************************/
 

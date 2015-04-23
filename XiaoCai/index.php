@@ -41,6 +41,7 @@
 	displayALertForm('正在加载...');
 	getHome(function(data){
 		var jsonData=JSON.parse(data);
+		console.log(jsonData['data']);
 		if(jsonData['msg']=='成功'){
 			var homeList=jsonData['data']['list'];
 			var homeListHtmlDOM="";

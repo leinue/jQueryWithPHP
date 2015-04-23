@@ -314,10 +314,13 @@
      	* @return small_image
      	*/
 
-      	function getHome(callback){
+      	function getHome(p_page,p_limit,callback){
           	$.post(
                 rootURL+'home.php',
-            	{},callback);
+            	{
+            		page:p_page,
+            		limit:p_limit
+            	},callback);
      	}
      
      	/**
@@ -351,11 +354,13 @@
      	* @return image
      	*/
 
-	    function getRecipeList(p_id,callback){
+	    function getRecipeList(p_id,p_page,p_limit,callback){
 	        $.post(
 	            rootURL+'recipelist.php',
 	            {
-	                id:p_id
+	                id:p_id,
+	                page:p_page,
+	                limit,p_limit
 	            },callback);
 	    }
      
@@ -388,12 +393,14 @@
 	    * @return reply_time
 	    */
 
-	    function getRecipeInfo(p_id,p_comments_id,callback){
+	    function getRecipeInfo(p_id,p_comments_id,p_page,p_limit,callback){
 	        $.post(
 	            rootURL+'recipeinfo.php',
 	            {
 	                id:p_id,
-	                comments_id:p_comments_id
+	                comments_id:p_comments_id,
+	                page:p_page,
+	                limit,p_limit
 	            },callback);
 	    }
 
@@ -449,10 +456,13 @@
 	    * @return created_time
 	    */
 
-	    function getSkillsList(callback){
+	    function getSkillsList(p_page,p_limit,callback){
 	        $.post(
 	            rootURL+'skillslist.php',
-	            {},callback);
+	            {
+	            	page:p_page,
+	            	limit,p_limit
+	            },callback);
 	    }
 
 	    /**
@@ -477,12 +487,14 @@
 	    * @return reply_time
 	    */
 
-	    function getSkillsInfo(p_id,p_comment_id,callback){
+	    function getSkillsInfo(p_id,p_comment_id,p_page,p_limit,callback){
 	        $.post(
 	            rootURL+'skillsinfo.php',
 	            {
 	                id:p_id,
-	                comments_id:p_comment_id
+	                comments_id:p_comment_id,
+	                page:p_page,
+	                limit:p_limit
 	            },callback);
 	    }
 
@@ -494,7 +506,7 @@
 	    * @return Nothing
 	    */
 
-	    function getComments(p_type,p_token_id,p_article_id,p_content,callback){
+	    function sendComments(p_type,p_token_id,p_article_id,p_content,callback){
 	        $.post(
 	       	    rootURL+'comments.php',
 	            {

@@ -57,7 +57,7 @@
 					var jsonData=JSON.parse(data);
 					console.log(tokenID);
 					displayALertForm(jsonData['msg']);
-					if(jsonData['msg']=='注销成功'){
+					if(jsonData['msg']=='注销成功' || jsonData['msg']=='请重新登陆'){
 						localStorage.uid='';
 						localStorage.nickname='';
 						localStorage.tokenID='';

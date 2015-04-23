@@ -168,10 +168,12 @@
 			$('.lo-re-area').css('display','none');
 			$('.logo-area').css('marginTop','30.273972%');
 			$('.logo-area').css('marginBottom','30.273972%');
+			$('.column-menu').show();
 		}else{
 			$('.lo-re-area').css('display','block');
 			$('.logo-area').css('marginTop','20.920502%');
 			$('.logo-area').css('marginBottom','0');
+			$('.column-menu').hide();
 		}
 
 	});

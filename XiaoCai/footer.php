@@ -3,13 +3,14 @@
 	<div class="main-footer">
 		<ul>
 			<li id="footer-menu-index"><a href="index.php"><img src="images/index.png"><span>晓菜</span></a></li>
-			<li id="footer-menu-recipes"><a href="recipes.php"><img src="images/recipe.png"><span>一手好菜</span></a></li>
+			<li id="footer-menu-recipes"><a href="recipes.php"><img src="images/recipes.png"><span>一手好菜</span></a></li>
 			<li id="footer-menu-skills"><a href="skills.php"><img src="images/skills.png"><span>玩转厨房</span></a></li>
 			<!--<li id="footer-menu-review"><img src="images/review.png">测评</li>-->		
 		</ul>
 	</div>
 </footer>
 
+</body>
 <script type="text/javascript">
 
 	$(document).ready(function(){
@@ -188,6 +189,4 @@
 	//displayALertForm('fuck u');
 
 </script>
-
-</body>
 </html>

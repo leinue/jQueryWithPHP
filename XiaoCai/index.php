@@ -38,10 +38,20 @@
 
 <script type="text/javascript">
 
+	function addToReadingList(obj){
+		var articleID=$(obj).attr('articleid');
+		var articleType=$(obj).attr('type');
+		console.log(localStorage.tokenID);
+		addReadingList(articleType,localStorage.tokenID,articleID,function(data){
+			var jsonData=JSON.parse(data);
+			displayALertForm(jsonData['msg']);
+		});
+	}
+
 	displayALertForm('正在加载...');
 	getHome(1,10,function(data){
 		var jsonData=JSON.parse(data);
-		console.log(jsonData['data']);
+		//console.log(jsonData['data']['list'][0]['type']);
 		if(jsonData['msg']=='成功'){
 			var homeList=jsonData['data']['list'];
 			var homeListHtmlDOM="";
@@ -49,7 +59,7 @@
 				if(homeList[i]['is_vip']!=null){
 					//带视频
 					var isVipHTML=homeList[i]['is_vip']=='1' ? '<div class="teacher-brand" id="monograph-member">会员专享</div>' : '';
-					homeListHtmlDOM+='<div idata="'+homeList[i]['id']+'" class="vip-enjoy"><div class="vip-video"><video src="movie.ogg" controls="controls">您的浏览器不支持 video 标签。</video></div><div class="vip-content"><div class="vip-title">'+homeList[i]["title"]+'</div><div class="vip-post">'+homeList[i]["paper"]+'</div><div class="vip-menu"><ul><li><span class="glyphicon glyphicon-eye-open"></span> '+homeList[i]["browse_num"]+'</li><li><span class="glyphicon glyphicon-heart-empty"></span></li><li><span class="glyphicon glyphicon-link"></span></li></ul></div><div class="teacher-brand"><img src="'+homeList[i]['arrange_image_url']+'"></div></div>'+isVipHTML+'</div>';
+					homeListHtmlDOM+='<div idata="'+homeList[i]['id']+'" class="vip-enjoy"><div class="vip-video"><video src="movie.ogg" controls="controls">您的浏览器不支持 video 标签。</video></div><div class="vip-content"><div class="vip-title">'+homeList[i]["title"]+'</div><div class="vip-post">'+homeList[i]["paper"]+'</div><div class="vip-menu"><ul><li><span class="glyphicon glyphicon-eye-open"></span> '+homeList[i]["browse_num"]+'</li><li type="'+homeList[i]['type']+'" onclick="addToReadingList(this);" articleid='+homeList[i]['id']+'><span class="glyphicon glyphicon-heart-empty"></span></li><li><span class="glyphicon glyphicon-link"></span></li></ul></div><div class="teacher-brand"><img src="'+homeList[i]['arrange_image_url']+'"></div></div>'+isVipHTML+'</div>';
 				}else{
 					//不带视频
 					var charCount=homeList[i]['paper'].length;

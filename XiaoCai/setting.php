@@ -55,19 +55,20 @@
 				var tokenID=localStorage.tokenID;
 				logOut(tokenID,function(data){
 					var jsonData=JSON.parse(data);
-					console.log(tokenID);
+					//console.log(tokenID);
 					displayALertForm(jsonData['msg']);
-					if(jsonData['msg']=='注销成功' || jsonData['msg']=='请重新登陆'){
+					console.log(jsonData);
+					if(jsonData['msg']=='注销成功' || jsonData['msg']=='请重新登陆' || jsonData['msg']=='该账号不存在,请重新登陆'){
 						localStorage.uid='';
 						localStorage.nickname='';
 						localStorage.tokenID='';
 						localStorage.headimgurl='';
 						localStorage.isReply='';
 						localStorage.isLogin=false;
-						displayALertForm('注销成功,3秒后将自动跳转...');
+						displayALertForm('注销成功,2秒后将自动跳转...');
 						setTimeout(function(){
 							location.reload();
-						},3000);
+						},2000);
 					}
 				});
 				break;

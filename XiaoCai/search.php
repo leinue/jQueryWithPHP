@@ -27,11 +27,29 @@
 	
 </section>
 
-<div class="loading">
-		<div class="loading-main"><span class="glyphicon glyphicon-option-horizontal"></span><span class="glyphicon glyphicon-option-horizontal"></span></div>
-	</div>
+<div class="loading"><div class="loading-main"><span class="glyphicon glyphicon-option-horizontal"></span><span class="glyphicon glyphicon-option-horizontal"></span></div></div>
 
 </div>
+
+<script type="text/javascript">
+	$('.search-form').keyup(function(event){
+		if(event.which == 13){
+			var searchContent=$('.search-form input').val();
+			if(searchContent!=''){
+				search_(searchContent,function(data){
+					if(data!=''){
+						var jsonData=JSON.parse(data);
+						console.log(jsonData['data']);
+					}else{
+						displayALertForm('搜索失败,请重试');
+					}
+				});
+			}else{
+				displayALertForm('搜索内容不能为空,请重新输入');
+			}
+		}
+	});
+</script>
 
 <?php include('footer.php');?>
 

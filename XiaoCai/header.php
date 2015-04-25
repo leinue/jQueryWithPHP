@@ -598,7 +598,7 @@
 	            },callback);	
 	    }
 
-	    function search(p_keyword,callback){
+	    function search_(p_keyword,callback){
 	    	$.post(
 	            rootURL+'search.php',
 	            {

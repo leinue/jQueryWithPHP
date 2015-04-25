@@ -1,8 +1,5 @@
 <?php require( 'header.php'); ?>
 
-<script type="text/javascript">
-
-</script>
   <header>
     <nav>
       <div class="header-title">
@@ -169,6 +166,46 @@
       }else{
         window.location.href="recipes.php";
       }
+
+      //提交留言18115992267  123456
+      var currentHref = window.location.href;
+      currentHref = currentHref.split('#')[1];
+      var flag = false;
+      $('.introduction-comment-input').keydown(function(event) {
+        if (event.which == 13 && localStorage.isLogin == 'true') {
+          var scomments = $('.introduction-comment-ul .introduction-comment-input input').val();
+          if (flag == false) {
+            var overtime = new Date();
+            localStorage.Time = overtime.getMinutes() + 0.50;
+            sendComments(1, localStorage.tokenID, currentHref, scomments,
+            function(data) {
+              var jsonData = JSON.parse(data);
+              displayALertForm(jsonData);
+              if (jsonData['msg'] == '留言成功') {
+                displayALertForm(jsonData['msg']);
+                flag = true;
+              } else {
+                displayALertForm(jsonData['msg']);
+              }
+            });
+          } else if (flag == true) {
+            var repeatTime = new Date();
+            if (repeatTime.getMinutes() < localStorage.Time) {
+              sendComments(1, localStorage.tokenID, currentHref, scomments,
+              function(data) {
+                var jsonData = JSON.parse(data);
+                if (jsonData['msg'] == '留言成功') {
+                  displayALertForm(jsonData['msg']);
+                  flag = true;
+                } else {
+                  displayALertForm(jsonData['msg']);
+                }
+              });
+              localStorage.Time = repeatTime.getMinutes() + 0.50;
+            }
+          }
+        }
+      });
 
       $('.vip-menu ul li:nth-child(2)').attr('type',1);
       $('.vip-menu ul li:nth-child(2)').attr('articleid',currentHref);

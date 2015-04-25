@@ -189,7 +189,6 @@
 	function addToReadingList(obj){
 		var articleID=$(obj).attr('articleid');
 		var articleType=$(obj).attr('type');
-		console.log(localStorage.tokenID);
 		addReadingList(articleType,localStorage.tokenID,articleID,function(data){
 			var jsonData=JSON.parse(data);
 			displayALertForm(jsonData['msg']);

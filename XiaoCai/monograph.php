@@ -6,7 +6,7 @@
       <div class="header-main-title monograph-header">
           <ul>
             <li class="header-skillsEvaluating-li"><span class="glyphicon glyphicon-eye-open"></span> <span id="viewer-count">0</span></li>
-            <li class="header-skillsEvaluating-li"><span class="glyphicon glyphicon-inbox"></span></li>
+            <li onclick="addToReadingList(this)" class="header-skillsEvaluating-li"><span class="glyphicon glyphicon-heart-empty"></span></li>
             <li class="header-skillsEvaluating-li"><span class="glyphicon glyphicon-link" id="mono-share"></span></li>
           </ul>
       </div>
@@ -88,6 +88,7 @@
 
         displayALertForm('正在加载...');
         var currentHref=document.location.href;
+
         if(currentHref.indexOf('#')!=-1){
           currentHref=currentHref.split('#')[1];
           getSkillsInfo(currentHref,0,1,10,function(data){
@@ -108,5 +109,11 @@
           window.location.href="skills.php";
         }
 
+        var likebtnobj=$('.monograph-header ul li:nth-child(2)');
+        likebtnobj.attr('type',2);
+        likebtnobj.attr('articleid',currentHref);
+
     });
   </script>
+
+  <?php require('footer.php') ?>

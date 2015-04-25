@@ -101,7 +101,7 @@
               $('.skeva-content').html(jsonData['data']['info']['content']);
               $('.skeva-content p').css('background','rgb(226,224,227)');  
             }else{
-              displayALertForm(jsonDatap['msg']);
+              displayALertForm(jsonData['msg']);
             }
           });
         }else{

@@ -138,27 +138,31 @@
       if(currentHref.indexOf('#')!=-1){
         currentHref=currentHref.split('#')[1];
         getRecipeInfo(currentHref,0,1,10,function(data){
-          var jsonData=JSON.parse(data);
-          if(jsonData['msg']!='成功'){
-            displayALertForm(jsonData['msg']);
-          }else{
-            var introList=jsonData['data'];
-            if(introList['info']!=''){
-              var introInfo=introList['info'];
-              console.log(introInfo);
-              $('.vip-title').html(introInfo['title']);
-              $('.vip-post').html(introInfo['paper']);
-              $('.introduction-time #prepare-time').html(introInfo['prepare_time']);
-              $('.introduction-time #cooking-time').html(introInfo['cooking_time']);
-              $('.introduction-time #enjoy-num').html(introInfo['enjoy_num']);
-              $('.vip-menu ul li #browser-num').html(introInfo['browse_num']);
-              $('.introduction-teacher-brand img').attr('src',introInfo['arrange_image_url']);
-            }
-            if(introList['comments']!=''){
-
+          if(data!=''){
+            var jsonData=JSON.parse(data);
+            if(jsonData['msg']!='成功'){
+              displayALertForm(jsonData['msg']);
             }else{
-              $('#comment-show-area').hide();
+              var introList=jsonData['data'];
+              if(introList['info']!=''){
+                var introInfo=introList['info'];
+                console.log(introInfo);
+                $('.vip-title').html(introInfo['title']);
+                $('.vip-post').html(introInfo['paper']);
+                $('.introduction-time #prepare-time').html(introInfo['prepare_time']);
+                $('.introduction-time #cooking-time').html(introInfo['cooking_time']);
+                $('.introduction-time #enjoy-num').html(introInfo['enjoy_num']);
+                $('.vip-menu ul li #browser-num').html(introInfo['browse_num']);
+                $('.introduction-teacher-brand img').attr('src',introInfo['arrange_image_url']);
+              }
+              if(introList['comments']!=''){
+
+              }else{
+                $('#comment-show-area').hide();
+              }
             }
+          }else{
+            displayALertForm('加载失败,请重试');
           }
         });
       }else{

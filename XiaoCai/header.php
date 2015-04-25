@@ -118,6 +118,19 @@
 			},timeInterval);
 		}
 
+		//显示没有数据的提示,如果text内容为空则隐藏提示
+		function displayNoData(text){
+			var nodata="<div class=\"nodata-form\">"+text+"</div>";
+			if(text==null){
+				if($('.nodata-form').length>0){
+					$('.nodata-form').remove();
+				}
+			}else{
+				$('body').append(nodata);
+			}
+			
+		}
+
 		function checkMobile(sMobile){
     		if(!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(sMobile))){
         		return false;
@@ -522,7 +535,7 @@
 	            rootURL+'homeinfo.php',
 	            {
 	                id:p_id,
-	                comments_id:p_comment_id,
+	                comments_id:p_comments_id,
 	                page:p_page,
 	                limit:p_limit
 	            },callback);
@@ -554,8 +567,7 @@
 	            rootURL+'readinglist.php',
 	            {
 	                type:p_type,
-	                token_id:p_token_id,
-	                article_id:p_article_id
+	                token_id:p_token_id
 	            },callback);
 	    }
 

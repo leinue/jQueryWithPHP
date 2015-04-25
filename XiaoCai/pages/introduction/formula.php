@@ -35,6 +35,7 @@
       		currentHref=currentHref.split('#')[1];
       		getRecipeInfoFormula(currentHref,function(data){
       			var jsonData=JSON.parse(data);
+            console.log(jsonData['data'][0]);
       			if(jsonData['msg']!='成功'){
       				displayALertForm(jsonData['msg']);
       			}else{
@@ -47,7 +48,7 @@
       						//console.log(formulaChild[j]);
       						formulaHTMLDOM+='<ul><li class="juice-list-li1"><span class="glyphicon glyphicon-plus-sign"></span></li><li class="juice-list-li3">'+formulaChild[j]['title']+'</li><li class="juice-list-li3">'+formulaChild[j]['dosage']+'</li><li class="juice-list-li3">'+formulaChild[j]['note']+'</li></ul>';
       					};
-      					formulaHTMLDOM='<div class="formula-juice"><div class="formula-juice-title"><div class="juice-title"><span>'+formulaList[i]['title']+'</span></div></div><div class="formula-juice-list">'+formulaHTMLDOM+'</div></div>';
+      					formulaHTMLDOM='<div id="formula-child-'+formulaList[i]['id']+'" class="formula-juice"><div class="formula-juice-title"><div class="juice-title"><span>'+formulaList[i]['title']+'</span></div></div><div class="formula-juice-list">'+formulaHTMLDOM+'</div></div>';
       					$('section').append(formulaHTMLDOM);
       					formulaHTMLDOM='';
       				};
@@ -56,6 +57,14 @@
       	}else{
       		window.location.href="recipes.php";
       	}
+
+        $('.formula-buy ul li .button-add').click(function(){
+          var recipeID=currentHref.split('#')[1];
+          var formulaID;
+          addFoodList(recipeID,formulaID,localStorage.tokenID,function(data){
+
+          });
+        });
     });
 
 </script>

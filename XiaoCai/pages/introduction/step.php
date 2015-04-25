@@ -94,7 +94,7 @@
 		var currentHref=document.location.href;
       	if(currentHref.indexOf('#')!=-1){
       		currentHref=currentHref.split('#')[1];
-      		getRecipeInfoFormula2(currentHref,function(data){
+      		getRecipeInfoSteps(currentHref,function(data){
       			var jsonData=JSON.parse(data);
       			if(jsonData['msg']!='成功'){
       				displayALertForm(jsonData['msg']);

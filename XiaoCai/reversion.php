@@ -60,7 +60,8 @@
 			};	
 		}else{
 			displayALertForm('暂时没有消息喔');
+			displayNoData('再怎么找都没有啦');
 		}
-		$('.reversion-page-content').append(replyListHTMLDom);
+		$('.reversion-page-content').append(replyListHTMLDom+'<div class="padding-div-row"></div>');
 	});
 </script>

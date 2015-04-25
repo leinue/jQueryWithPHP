@@ -4,6 +4,12 @@ body{
 	font-family: "微软雅黑";
 }
 
+header{
+	position: fixed;
+	top: 0px;
+	width: 100%;
+}
+
 nav{
 	width: 100%;
 	background: rgb(230,0,39);
@@ -114,7 +120,7 @@ nav{
 
 .nav-content ul li{
 	display: table-cell;
-	font-size: 22px;
+	font-size: 20px;
 }
 
 .nav-content ul li:first-child:active{
@@ -122,7 +128,7 @@ nav{
 }
 
 .nav-content ul li:first-child{
-	font-size: 22px;
+	font-size: 20px;
 	cursor: pointer;
 	width: 13.75%;
 }
@@ -156,11 +162,12 @@ nav{
 
 .nav-content ul .search-form input{
 	width: 82.75%;
-	height: 30px;
+	height: 26px;
 	border: none;
 	border-radius: 4px;
-	font-size: 14px;
+	font-size: 12px;
 	color: rgb(0,0,0);
+	text-align: center;
 }
 
 /*头部结束*/
@@ -174,6 +181,7 @@ section{
 
 .banner{
 	position: relative;
+	margin-top: 51px;
 	width: 100%;
 }
 
@@ -346,7 +354,8 @@ section{
 .header-title{
 	width: 100%;
 	text-align: center;
-	font-size: 20px;
+	font-size: 16px;
+	margin-bottom: -4px;
 }
 
 .header-back{
@@ -764,6 +773,7 @@ footer{
 	left: 0px;
 	width: 100%;
 	background: rgb(241,241,241);
+	font-size: 12px;
 }
 
 .main-footer{
@@ -778,8 +788,8 @@ footer{
 }
 
 .main-footer ul li{
-	padding-top: 6px;
-	padding-bottom: 10px;
+	padding-top: 4px;
+	padding-bottom: 4px;
 	display: table-cell;
 	text-align: center;
 	cursor: pointer;

@@ -177,6 +177,23 @@
 			$('.column-menu').hide();
 		}
 
+		$(window).scroll(floatMenuCase);
+
+		function floatMenuCase(){
+			if($(document).scrollTop()>56){
+				$('header').css('position','fixed')
+								 .css('opacity','0.6')
+								 .css('top','0px')
+								 .css('width','100%')
+								 .css('z-index','1000');
+			}else{
+				$('header').css('position','fixed')
+								 .css('opacity','1')
+								 .css('top','0px')
+								 .css('width','100%');
+			}
+		}
+
 	});
 	
 	document.addEventListener("touchmove",function(e){

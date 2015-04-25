@@ -598,6 +598,14 @@
 	            },callback);	
 	    }
 
+	    function search(p_keyword,callback){
+	    	$.post(
+	            rootURL+'search.php',
+	            {
+	                keyword:p_keyword
+	            },callback);	
+	    }
+
 		/*********************************AJAX请求*********************************/
 
 		/**********************************函数库**********************************/

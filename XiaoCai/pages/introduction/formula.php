@@ -5,10 +5,7 @@
 			<li class="formula-li2"><button class= "button-add">加入采购清单</button></li>
 			<li><span class="glyphicon glyphicon-menu-up"></span></li>
 		</ul>
-	</div>	
-	    <div id="formula-add">
-	    	加入成功
-	    </div>
+	</div>
 	</header>
 	<section></section>
 
@@ -30,12 +27,13 @@
         });
       
       	displayALertForm('正在加载...',500);
+
       	var currentHref=document.location.href;
       	if(currentHref.indexOf('#')!=-1){
       		currentHref=currentHref.split('#')[1];
       		getRecipeInfoFormula(currentHref,function(data){
       			var jsonData=JSON.parse(data);
-            console.log(jsonData['data'][0]);
+            //console.log(jsonData['data'][0]);
       			if(jsonData['msg']!='成功'){
       				displayALertForm(jsonData['msg']);
       			}else{
@@ -48,6 +46,7 @@
       						//console.log(formulaChild[j]);
       						formulaHTMLDOM+='<ul><li class="juice-list-li1"><span class="glyphicon glyphicon-plus-sign"></span></li><li class="juice-list-li3">'+formulaChild[j]['title']+'</li><li class="juice-list-li3">'+formulaChild[j]['dosage']+'</li><li class="juice-list-li3">'+formulaChild[j]['note']+'</li></ul>';
       					};
+                sessionStorage.formulaIDList+=formulaList[i]['id']+"|";
       					formulaHTMLDOM='<div id="formula-child-'+formulaList[i]['id']+'" class="formula-juice"><div class="formula-juice-title"><div class="juice-title"><span>'+formulaList[i]['title']+'</span></div></div><div class="formula-juice-list">'+formulaHTMLDOM+'</div></div>';
       					$('section').append(formulaHTMLDOM);
       					formulaHTMLDOM='';
@@ -58,11 +57,20 @@
       		window.location.href="recipes.php";
       	}
 
-        $('.formula-buy ul li .button-add').click(function(){
-          var recipeID=currentHref.split('#')[1];
-          var formulaID;
-          addFoodList(recipeID,formulaID,localStorage.tokenID,function(data){
+        var formulaIDList=sessionStorage.formulaIDList.split('|');
+        formulaIDList.splice(3,formulaIDList.length);
 
+        $('.formula-buy ul li .button-add').click(function(){
+          var recipeID=currentHref;
+          formulaIDList.forEach(function(formulaID){
+            addFoodList(recipeID,formulaID,localStorage.tokenID,function(data){
+              if(data!=''){
+                var jsonData=JSON.parse(data);
+                displayALertForm(jsonData['msg']);
+              }else{
+                displayALertForm('加入失败');
+              }
+            });
           });
         });
     });

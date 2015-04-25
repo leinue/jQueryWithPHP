@@ -146,7 +146,6 @@
               var introList=jsonData['data'];
               if(introList['info']!=''){
                 var introInfo=introList['info'];
-                console.log(introInfo);
                 $('.vip-title').html(introInfo['title']);
                 $('.vip-post').html(introInfo['paper']);
                 $('.introduction-time #prepare-time').html(introInfo['prepare_time']);

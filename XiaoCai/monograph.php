@@ -117,3 +117,7 @@
   </script>
 
   <?php require('footer.php') ?>
+
+  <script>
+    $('.main-footer').hide();
+  </script>

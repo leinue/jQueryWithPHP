@@ -47,7 +47,7 @@
         <div class="vip-menu">
           <ul>
             <li><span class="glyphicon glyphicon-eye-open"></span> <span id="browser-num">0</span></li>
-            <li>
+            <li onclick="addToReadingList(this)">
               <span class="glyphicon glyphicon-heart-empty">
               </span>
             </li>
@@ -169,6 +169,9 @@
         window.location.href="recipes.php";
       }
 
+      $('.vip-menu ul li:nth-child(2)').attr('type',1);
+      $('.vip-menu ul li:nth-child(2)').attr('articleid',currentHref);
+
       var tag = true;
       var flag = false;
       var index = false;
@@ -234,8 +237,6 @@
     $('#recipes-introduction-footer ul #introductionFooterLi3').click(function(){
       loadPagesA('pages/introduction/step.php','.introduction-page');
     });
-
-
 
   </script>
 

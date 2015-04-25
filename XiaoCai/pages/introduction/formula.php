@@ -1,4 +1,4 @@
-  <header>
+
 	<div class="formula-buy">
 		<ul>
 			<li class="formula-li1"><span>食材用量</span></li>
@@ -6,7 +6,7 @@
 			<li><span class="glyphicon glyphicon-menu-up"></span></li>
 		</ul>
 	</div>
-	</header>
+
 	<section></section>
 
 <script type="text/javascript">

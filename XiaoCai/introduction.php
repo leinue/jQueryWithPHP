@@ -16,8 +16,9 @@
       </div>
     </nav>
   </header>
+
+<section>
 <div class="introduction-page">
-  <section>
     <div class="vip-enjoy vip-enjoy-padding">
       <div class="vip-video">
         <video src="movie.ogg" controls="controls">
@@ -119,8 +120,9 @@
         </div>
       </ul>
     </div>
-    </section>
     </div>
+    </section>
+    
     <footer>
     <div id="recipes-introduction-footer">
       <ul id="recipes-introduction-footer-ul">
@@ -243,4 +245,5 @@
 
 <script>
   $('.main-footer').html('');
+  $('.introduction-page').css('marginTop','-7px');
 </script>

@@ -1,94 +1,49 @@
 
 <div class="step-page">
 
-	<div class="tomato-sauce">
-		<ul>
-			<li></li>
-			<li id="red1">制作茄汁底酱</li>
-		</ul>
-
-		<ul>
-			<li>1</li>
-			<li>烧煮至少两升水。取一口平底煎炒锅，加入两汤匙橄榄油，中高火力加热，放入洋葱碎和<span class="glyphicon glyphicon-triangle-top"></span></li>
-		</ul>
-
-		<ul>
-			<li>2</li>
-			<li>将洋葱煸炒至金黄色，直至锅底产生焦黄色粘着物，加入干白葡萄酒稀释锅底焦黄色粘着物。</li>
-		</ul>
-
-		<ul>
-			<li>3</li>
-			<li>翻炒30秒后，加入切碎的去皮番茄，番茄汁水和干贝，继续炖煮收汁至粘稠，盛出待用。</li>
-		</ul>
-	</div>	
-	    
-	        <div class="tomato-sauce-img">
-	    	    <ul>
-	    		   <li><img src=""></li>
-	    		   <li><img src=""></li>
-	    	   	</ul>
-	       	</div>
-
-	<div class="tomato-sauce">
-		<ul>
-			<li></li>
-			<li id="red2">烹煮意面</li>
-		</ul>
-
-		<ul>
-			<li>1</li>
-			<li>向煮面的锅内加入<span class="glyphicon glyphicon-unchecked"></span>，再向锅内倒入意面，搅动以免粘底，保持较高火力，煮9分钟（根据意面包装所示烹煮时间下限），沥干后拌入另外1汤匙橄榄油待用。</li>
-		</ul>
-
-	</div>	
-	    
-	        <div class="tomato-sauce-img">
-	    	    <ul>
-	    		   <li><img src=""></li>
-	    		   <li><img src=""></li>
-	    	  	</ul>
-	       	</div>
-
-
-
-	<div class="tomato-sauce">
-		<ul>
-			<li></li>
-			<li id="red3">混合翻炒并完成烹饪</li>
-		</ul>
-
-		<ul>
-			<li>1</li>
-			<li>取一口平底煎炒锅，加入2汤匙橄榄油，中高火力预热，直至油微微起烟，先加入1汤匙的基础茄汁，随后加入<span class="glyphicon glyphicon-record"></span>，继续翻炒。</li>
-		</ul>
-		<ul>
-			<li>2</li>
-			<li>在海鲜还没全熟的时候加入煮好的意面和剩余的基础茄汁、帕玛森芝士（留少量装盘用），最后加入1/2杯面汤，翻炒收汁，待酱汁能挂住意面，配合芝士碎、意芹装盘即可享用。</li>
-		</ul>
-	</div>	
-	    
-	        <div class="tomato-sauce-img">
-	    	    <ul>
-	    		   <li><img src=""></li>
-	    		   <li><img src=""></li>
-	    	   </ul>
-	       	</div>
-
-          	<div class="step-main-tips">
-            	<div class="step-tips">
-              
-                	<h3>Tips</h3>
-            		<ul>
-            			<li>内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要</li>
-            			<li>内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要</li>
-            			<li>内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要</li>
-            		</ul>
-            	</div>
-          	</div>
 </div>
 
 	<script>
+
+		function loadSteps(data){
+			var stepsHTMLDOM;
+			var stepsImgHTMLDOM;
+			data.forEach(function(e){
+				var ichild=1;
+				var stepsChild=e['children'];
+				var stepsContent=e['content'];
+				stepsHTMLDOM+='<ul><li></li><li stepid="'+e['id']+'" id="red1">'+stepsContent+'</li></ul>';
+				stepsChild.forEach(function(child){
+					if(child['type']=='1'){
+						//文字
+						stepsHTMLDOM+='<ul type='+child['type']+' id="'+child['id']+'"><li>'+ichild+'</li><li>'+child['content']+'<span class="glyphicon glyphicon-triangle-top"></span></li></ul>';
+					}else if(child['type']=='2'){
+						//图片
+						stepsImgHTMLDOM+='<li><img src="'+child['content']+'"></li>'
+					}
+					ichild+=1;
+				});
+				if(stepsImgHTMLDOM.substring(0,9)=='undefined' || stepsHTMLDOM.substring(0,9)=='undefined'){
+					stepsImgHTMLDOM=stepsImgHTMLDOM.substring(9,stepsImgHTMLDOM.length);
+					stepsHTMLDOM=stepsHTMLDOM.substring(9,stepsHTMLDOM.length);
+				}
+				stepsImgHTMLDOM='<div class="tomato-sauce-img"><ul>'+stepsImgHTMLDOM+'</ul></div>';
+				stepsHTMLDOM='<div class="tomato-sauce">'+stepsHTMLDOM+'</div>'+stepsImgHTMLDOM;
+				$('.step-page').append(stepsHTMLDOM);
+				stepsHTMLDOM='';
+				stepsImgHTMLDOM='';
+			});
+
+			$('.step-page').append('<div class="step-main-tips"><div class="step-tips"><h3>Tips</h3><ul><li>内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要</li><li>内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要</li><li>内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要</li></ul></div></div>');
+		}
+
+		function loadTips(data){
+
+		}
+
+		function loadRecommended(data){
+
+		}
 
 		displayALertForm('正在加载...',500);
 		var currentHref=document.location.href;
@@ -99,7 +54,18 @@
       			if(jsonData['msg']!='成功'){
       				displayALertForm(jsonData['msg']);
       			}else{
-      				console.log(jsonData['data'][0]);
+      				var recipeSteps=jsonData['data']['steps'];
+      				var recipeTips=jsonData['data']['tips'];
+      				var recipeRecommended=jsonData['data']['recommended'];
+      				if(recipeSteps!=''){
+      					loadSteps(recipeSteps);
+      				}else if(recipeTips!=''){
+      					loadTips(recipeTips);
+      				}else if(recipeRecommended!=''){
+      					loadRecommended(recipeRecommended);
+      				}else{
+      					displayNoData('再怎么找也没有啦');
+      				}
       			}
       		});
       	}else{

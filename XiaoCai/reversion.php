@@ -64,4 +64,6 @@
 		}
 		$('.reversion-page-content').append(replyListHTMLDom+'<div class="padding-div-row"></div>');
 	});
+
+	$('section').css('marginTop',$('header').height()+10);
 </script>

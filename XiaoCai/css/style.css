@@ -10,6 +10,10 @@ header{
 	width: 100%;
 }
 
+*{
+	box-sizing:none;
+}
+
 nav{
 	width: 100%;
 	background: rgb(230,0,39);
@@ -173,7 +177,6 @@ nav{
 /*头部结束*/
 
 section{
-	margin-top: 1px;
 	padding: 0px;
 }
 
@@ -181,7 +184,7 @@ section{
 
 .banner{
 	position: relative;
-	margin-top: 51px;
+	margin-top: -6px;
 	width: 100%;
 }
 
@@ -714,17 +717,17 @@ section{
 
 .nav-recipe-menu li:first-child{
 	cursor: pointer;
-	font-size: 16px;
+	font-size: 14px;
 }
 
 .nav-recipe-menu li:last-child{
 	cursor: pointer;
-	font-size: 16px;
+	font-size: 14px;
 }
 
 .recipe-menu-container{
 	position: absolute;
-	top: 100px;
+	top: 86px;
 	z-index: 1000;
 	width: 100%;
 	display: none;
@@ -736,7 +739,7 @@ section{
 	background: rgb(255,255,255);
 	opacity: 0.6;
 	color: rgb(10,0,0);
-	font-size: 15px;
+	font-size: 14px;
 }
 
 .recipe-menu-slidedown ul{

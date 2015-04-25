@@ -104,6 +104,8 @@
 			//$('body').animate({left:docW+'px'});
 			backPreviosPage('reading.php');
 		});
+
+		$('section').css('marginTop',$('header').height()+10);
 	});
 </script>
 

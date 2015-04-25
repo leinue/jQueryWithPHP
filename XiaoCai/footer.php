@@ -74,9 +74,9 @@
 		function toggleLeftMenu(){
 			var rate=0.2545;
 			if($(document).width()>400){
-				rate=0.2645;
+				rate=0.2565;
 			}else{
-				rate=0.2845;
+				rate=0.2545;
 			}
 			var docWidth=$(document).width()-($(document).width()*rate);
 			var mainPageWidth=$(document).width()*rate;
@@ -194,6 +194,8 @@
 			}
 		}
 
+		$('section').css('marginTop',$('header').height()+6);
+
 	});
 	
 	document.addEventListener("touchmove",function(e){
@@ -211,7 +213,6 @@
 			displayALertForm(jsonData['msg']);
 		});
 	}
-
 
 	//displayALertForm('fuck u');
 

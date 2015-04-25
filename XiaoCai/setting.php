@@ -81,5 +81,8 @@
 			default:
 				break;
 		}
+
 	});
+
+	$('section').css('marginTop',$('header').height()+12);
 </script>

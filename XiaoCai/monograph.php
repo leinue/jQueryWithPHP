@@ -44,46 +44,19 @@
 
 
   </section>
-  <div class="monoshare">
-          <div class="monoshareDiv">
-            <ul id="line">
-              <li id="shareTofriend"><img src=""></li>
-              <li id="shareTocircle"><img src=""></li>
-            </ul>
-             <ul id="monoshare-content">
-               <li>发送给朋友</li>
-               <li>分享至朋友圈</li>
-             </ul>
-          </div>
-  </div>
   <script type="text/javascript">
     $(document).ready(function(){
  
         $('#monograph-back').click(function(){
-              backPreviosPage('monograph.php');
-        });
-
-        $('.monoshare').click(function(){
-          $('.monoshare').fadeToggle();
-        });
-      
-        $('.monograph-header ul li:last-child').click(function(){
-                $('.monoshare').fadeToggle();
-                $('body').css('overflow','hidden');
-        });
-      
-        $('#shareTofriend').click(function(){
-                 $('.monoshare').css('display','none');
-                 $('body').css('overflow','visible');
-        });
-      
-        $('#shareTocircle').click(function(){
-                 $('.monoshare').css('display','none');
-                 $('body').css('overflow','visible');
+            backPreviosPage('monograph.php');
         });
 
         $('.header-back').click(function(){
           history.go(-1);
+        });
+
+        $('.monograph-header ul li:last-child').click(function(){
+            displayShareForm();
         });
 
         var currentHref=document.location.href;

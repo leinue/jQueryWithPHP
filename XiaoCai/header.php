@@ -148,6 +148,20 @@
 			return flag===0;
 		}
 
+		function hideShareForm(){
+			$('.monoshare').fadeOut(function(){
+				$('.monoshare').remove();
+			});
+			docIsMoved=1;
+		}
+
+		function displayShareForm(){
+			var dom='<div onclick="hideShareForm()" class="monoshare"><div class="monoshareDiv"><ul id="line"><li id="shareTofriend"><img src=""></li><li id="shareTocircle"><img src=""></li></ul><ul id="monoshare-content"><li>发送给朋友</li><li>分享至朋友圈</li></ul></div></div>';
+			$('body').append(dom);
+			$('.monoshare').fadeIn();
+			docIsMoved=0;
+		}
+
 		/*********************************AJAX请求*********************************/
 
 		var rootURL="curl/";

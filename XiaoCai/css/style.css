@@ -8,6 +8,7 @@ header{
 	position: fixed;
 	top: 0px;
 	width: 100%;
+	z-index: 65535;
 }
 
 *{
@@ -298,6 +299,7 @@ section{
 	text-align: center;
 	font-size: 14px;
 	right: 20px;
+	z-index: 65535;
 }
 
 .teacher-brand img{
@@ -747,6 +749,7 @@ section{
 	opacity: 0.6;
 	color: rgb(10,0,0);
 	font-size: 14px;
+	z-index: 65535;
 }
 
 .recipe-menu-slidedown ul{
@@ -1473,7 +1476,7 @@ footer{
 	padding: 6px;
 	bottom: 40px;
 	left: 10.9375%;
-	z-index: 2000;
+	z-index: 65535;
 	border-radius: 4px;
 	color: rgb(255,255,255);
 	text-align: center;
@@ -1488,4 +1491,8 @@ footer{
 	top: 52.083333%;
 	color: rgb(170,170,170);
 	font-weight: bold;
+}
+
+footer{
+	z-index: 65535;
 }

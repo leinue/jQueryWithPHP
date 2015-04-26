@@ -196,7 +196,7 @@
 		}
 
 		$('section').css('marginTop',$('header').height()+6);
-
+		
 	});
 	
 	document.addEventListener("touchmove",function(e){

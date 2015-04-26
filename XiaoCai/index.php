@@ -18,13 +18,13 @@
 <section>
 	<div class="banner">
 		<ul>
-			<li style="background-image: url('images/first.jpg');"></li>
+			<li id="slide-1" style="background-image: url('images/first.jpg');"></li>
 
-			<li style="background-image: url('images/second.jpg');"></li>
+			<li id="slide-2" style="background-image: url('images/second.jpg');"></li>
 
-			<li style="background-image: url('images/third.jpg');"></li>
+			<li id="slide-3" style="background-image: url('images/third.jpg');"></li>
 
-			<li style="background-image: url('images/forth.jpg');"></li>
+			<li id="slide-4" style="background-image: url('images/forth.jpg');"></li>
 		</ul>
 	</div>
 

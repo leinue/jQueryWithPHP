@@ -145,6 +145,7 @@
 			}
 			var activeElem='.main-footer ul #footer-menu-'+currentHref;
 			$(activeElem+' a span').addClass('main-footer-menu-active');
+			console.log(currentHref);
 			$(activeElem+' a img').attr('src','images/'+currentHref+'_active.png');		
 		}
 		
@@ -180,7 +181,7 @@
 		$(window).scroll(floatMenuCase);
 
 		function floatMenuCase(){
-			if($(document).scrollTop()>56){
+			if($(document).scrollTop()>$('header').height()){
 				$('header').css('position','fixed')
 								 .css('opacity','0.6')
 								 .css('top','0px')

@@ -69,6 +69,8 @@
 			fileInput.click();
 		});
 
+		$('section').css('marginTop',$('header').height()+50);
+
 	});
 
 </script>

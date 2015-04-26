@@ -84,6 +84,8 @@
 				displayALertForm('请完整填写信息');
 			}
 		});
+	
+	$('section').css('marginTop',$('header').height()+50);
 
 	});
 

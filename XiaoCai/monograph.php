@@ -44,7 +44,6 @@
 
 
   </section>
-<section>
   <div class="monoshare">
           <div class="monoshareDiv">
             <ul id="line">
@@ -57,12 +56,11 @@
              </ul>
           </div>
   </div>
-  </section>
   <script type="text/javascript">
     $(document).ready(function(){
  
         $('#monograph-back').click(function(){
-                backPreviosPage('monograph.php');
+              backPreviosPage('monograph.php');
         });
 
         $('.monoshare').click(function(){
@@ -159,5 +157,13 @@
         }
       });
 
+      $('section').css('marginTop',$('header').height());
+
     });
+  </script>
+
+  <?php require('footer.php'); ?>
+
+  <script>
+    $('.main-footer').hide();
   </script>

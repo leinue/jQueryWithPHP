@@ -1318,6 +1318,7 @@ footer{
 	cursor: pointer;
 }
 .monograph-img1{
+	margin-top: -4px;
 	width: 100%;
 }
 .monograph-img1 img{

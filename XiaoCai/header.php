@@ -545,7 +545,7 @@
 	            rootURL+'projectinfo.php',
 	            {
 	                id:p_id,
-	                comments_id:p_comment_id,
+	                comments_id:p_comments_id,
 	                page:p_page,
 	                limit:p_limit
 	            },callback);

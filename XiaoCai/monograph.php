@@ -6,7 +6,7 @@
       <div class="header-main-title monograph-header">
           <ul>
             <li class="header-skillsEvaluating-li"><span class="glyphicon glyphicon-eye-open"></span> <span id="viewer-count">0</span></li>
-            <li onclick="addToReadingList(this)" class="header-skillsEvaluating-li"><span class="glyphicon glyphicon-heart-empty"></span></li>
+            <li class="header-skillsEvaluating-li"><span class="glyphicon glyphicon-inbox"></span></li>
             <li class="header-skillsEvaluating-li"><span class="glyphicon glyphicon-link" id="mono-share"></span></li>
           </ul>
       </div>
@@ -21,7 +21,7 @@
      </div>
 
       <div class="skills-evaluating-title">
-          <h4>0</h3>
+          <h4>0</h4>
           <p>0</p>
         </div>
 
@@ -40,6 +40,8 @@
                 晓菜
             </div>
         </div>
+
+
 
   </section>
 <section>
@@ -86,38 +88,76 @@
           history.go(-1);
         });
 
-        displayALertForm('正在加载...');
         var currentHref=document.location.href;
-
-        if(currentHref.indexOf('#')!=-1){
-          currentHref=currentHref.split('#')[1];
-          getSkillsInfo(currentHref,0,1,10,function(data){
-            var jsonData=JSON.parse(data);
-            if(jsonData['msg']=='成功'){
-              $('.monograph-img1 img').attr('src',jsonData['data']['info']['big_image']);
-              $('.monograph-header ul .header-skillsEvaluating-li #viewer-count').html(jsonData['data']['info']['browse_num']);
-              $('.skills-evaluating-title h4').html(jsonData['data']['info']['title']);
-              $('.skills-evaluating-title p').html(jsonData['data']['info']['created_time']);
-              $('.content-summaryIn').html(jsonData['data']['info']['paper']);
-              $('.skeva-content').html(jsonData['data']['info']['content']);
-              $('.skeva-content p').css('background','rgb(226,224,227)');  
-            }else{
-              displayALertForm(jsonData['msg']);
-            }
-          });
+        tag = currentHref.split('#')[2];
+        displayALertForm('正在加载...');
+        if(tag == 'type1'){
+             if(currentHref.indexOf('#')!=-1){
+                currentHref=currentHref.split('#')[1];
+                getSkillsInfo(currentHref,0,1,10,function(data){
+                var jsonData=JSON.parse(data);
+                //console.log(jsonData);
+                  if(jsonData['msg']=='成功'){
+                      $('.monograph-img1 img').attr('src',jsonData['data']['info']['big_image']);
+                      $('.monograph-header ul .header-skillsEvaluating-li #viewer-count').html(jsonData['data']['info']['browse_num']);
+                      $('.skills-evaluating-title h4').html(jsonData['data']['info']['title']);
+                      $('.skills-evaluating-title p').html(jsonData['data']['info']['created_time']);
+                      $('.content-summaryIn').html(jsonData['data']['info']['paper']);
+                      $('.skeva-content').html(jsonData['data']['info']['content']);
+                      $('.skeva-content p').css('background','rgb(226,224,227)');  
+                  }else{
+                       displayALertForm(jsonData['msg']);
+                       }
+               });
         }else{
           window.location.href="skills.php";
         }
+      }
+      //首页文章单个信息
+      var currentHref = window.location.href;
+      tag = currentHref.split('#')[2];
+       if(tag == 'type'){
+          displayALertForm('正在加载...');
+          if(currentHref.indexOf('#')!=-1){
+          currentHref=currentHref.split('#')[1];
+          getHomeInfo(currentHref,0,1,10,function(data){
+              var jsonData=JSON.parse(data);
+              if(jsonData['msg']=='成功'){
+                  $('.monograph-img1 img').attr('src',jsonData['data']['info']['big_image']);
+                  $('.monograph-header ul .header-skillsEvaluating-li #viewer-count').html(jsonData['data']['info']['browse_num']);
+                  $('.skills-evaluating-title h4').html(jsonData['data']['info']['title']);
+                  $('.skills-evaluating-title p').html(jsonData['data']['info']['created_time']);
+                  $('.content-summaryIn').html(jsonData['data']['info']['paper']);
+                  $('.skeva-content').html(jsonData['data']['info']['content']);
+                  $('.skeva-content p').css('background','rgb(226,224,227)');  
+              }else{
+                  displayALertForm(jsonData['msg']);
+              }
+          });
+        }else{
+          window.location.href="index.php";
+        }
+      }
 
-        var likebtnobj=$('.monograph-header ul li:nth-child(2)');
-        likebtnobj.attr('type',2);
-        likebtnobj.attr('articleid',currentHref);
+      //专题(首页的幻灯片)单个信息
+      getProjectInfo(1,0,1,10,function(data){
+        if(data!=''){
+          var jsonData = JSON.parse(data);
+          if(jsonData['msg'] == '成功'){
+            $('.monograph-img1 img').attr('src',jsonData['data']['info']['image']);
+            $('.monograph-header ul .header-skillsEvaluating-li #viewer-count').html(jsonData['data']['info']['browse_num']);
+            $('.skills-evaluating-title h4').html(jsonData['data']['info']['title']);
+            $('.skills-evaluating-title p').html(jsonData['data']['info']['created_time']);
+            $('.content-summaryIn').html(jsonData['data']['info']['paper']);
+            // $('.skeva-content').html(jsonData['data']['info']['content']);
+            $('.skeva-content p').css('background','rgb(226,224,227)');  
+            }else{
+              displayALertForm(jsonData['msg']);
+            }
+        }else{
+          displayALertForm('获取失败,请重试');
+        }
+      });
 
     });
-  </script>
-
-  <?php require('footer.php') ?>
-
-  <script>
-    $('.main-footer').hide();
   </script>

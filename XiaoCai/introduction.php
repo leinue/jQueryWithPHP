@@ -264,7 +264,7 @@
       history.go(-1);
     });
 
-      $('#recipes-introduction-footer ul #introductionFooterLi1').click(function(){
+    $('#recipes-introduction-footer ul #introductionFooterLi1').click(function(){
       loadPagesA('introduction.php','body');
     });
 

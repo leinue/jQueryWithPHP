@@ -5,6 +5,9 @@
 
 	<script>
 
+		$('.formula-juice').each(function(e){
+			$(this).remove();
+		});
 		function loadSteps(data){
 			var stepsHTMLDOM;
 			var stepsImgHTMLDOM;

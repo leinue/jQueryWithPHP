@@ -37,38 +37,45 @@
 </div>
 
 <script type="text/javascript">
+	$(document).ready(function(){
 
-	displayALertForm('正在加载...');
-	getHome(1,10,function(data){
-		var jsonData=JSON.parse(data);
-		//console.log(jsonData['data']['list'][0]['type']);
-		if(jsonData['msg']=='成功'){
-			var homeList=jsonData['data']['list'];
-			var homeListHtmlDOM="";
-			for (var i = 0; i < homeList.length; i++) {
-				if(homeList[i]['is_vip']!=null){
-					//带视频
-					var isVipHTML=homeList[i]['is_vip']=='1' ? '<div class="teacher-brand" id="monograph-member">会员专享</div>' : '';
-					homeListHtmlDOM+='<div idata="'+homeList[i]['id']+'" class="vip-enjoy"><div class="vip-video"><video src="movie.ogg" controls="controls">您的浏览器不支持 video 标签。</video></div><div class="vip-content"><div class="vip-title"><a href="introduction.php#'+homeList[i]['id']+'">'+homeList[i]["title"]+'</a></div><div class="vip-post"><a href="introduction.php#'+homeList[i]['id']+'">'+homeList[i]["paper"]+'</a></div><div class="vip-menu"><ul><li><span class="glyphicon glyphicon-eye-open"></span> '+homeList[i]["browse_num"]+'</li><li><span class="glyphicon glyphicon-heart-empty"></span></li><li><span class="glyphicon glyphicon-link"></span></li></ul></div><div class="teacher-brand"><img src="'+homeList[i]['arrange_image_url']+'"></div></div>'+isVipHTML+'</div>';
-				}else{
-					//不带视频
-					var charCount=homeList[i]['paper'].length;
-					var changeFontSizeCSS='';
-					if(charCount>=20){
-						changeFontSizeCSS="readling-list-title-small";
+		displayALertForm('正在加载...');
+		getHome(1,10,function(data){
+			var jsonData=JSON.parse(data);
+			//console.log(jsonData['data']['list'][0]['type']);
+			if(jsonData['msg']=='成功'){
+				var homeList=jsonData['data']['list'];
+				var homeListHtmlDOM="";
+				for (var i = 0; i < homeList.length; i++) {
+					if(homeList[i]['is_vip']!=null){
+						//带视频
+						var isVipHTML=homeList[i]['is_vip']=='1' ? '<div class="teacher-brand" id="monograph-member">会员专享</div>' : '';
+						homeListHtmlDOM+='<div idata="'+homeList[i]['id']+'" class="vip-enjoy"><div class="vip-video"><video src="movie.ogg" controls="controls">您的浏览器不支持 video 标签。</video></div><div class="vip-content"><div class="vip-title"><a href="introduction.php#'+homeList[i]['id']+'">'+homeList[i]["title"]+'</a></div><div class="vip-post"><a href="introduction.php#'+homeList[i]['id']+'">'+homeList[i]["paper"]+'</a></div><div class="vip-menu"><ul><li><span class="glyphicon glyphicon-eye-open"></span> '+homeList[i]["browse_num"]+'</li><li><span class="glyphicon glyphicon-heart-empty"></span></li><li><span class="glyphicon glyphicon-link"></span></li></ul></div><div class="teacher-brand"><img src="'+homeList[i]['arrange_image_url']+'"></div></div>'+isVipHTML+'</div>';
 					}else{
-						changeFontSizeCSS='';
+						//不带视频
+						var charCount=homeList[i]['paper'].length;
+						var changeFontSizeCSS='';
+						if(charCount>=20){
+							changeFontSizeCSS="readling-list-title-small";
+						}else{
+							changeFontSizeCSS='';
+						}
+						homeListHtmlDOM+='<div idata="'+homeList[i]['id']+'" class="reading-list-a"><div class="reading-list-img"><img src="'+homeList[i]['image']+'"></div><div class="reading-list-all-content"><div class="reading-list-all-title '+changeFontSizeCSS+'"><p><a href="monograph.php#'+homeList[i]['id']+'#type">'+homeList[i]['title']+'</a></p></div><div class="reading-list-all-summary"><p><a href="monograph.php?#'+homeList[i]['id']+'#type">'+homeList[i]['paper']+'</a></p></div></div><div class="reading-list-all-footer"><ul><li><span class="glyphicon glyphicon-bookmark"></span> '+postType[parseInt(homeList[i]['type'])-1]+'</li><li><span class="glyphicon glyphicon-time"></span> '+homeList[i]['created_time'].split(' ')[0]+'</li></ul></div></div>';
 					}
-					homeListHtmlDOM+='<div idata="'+homeList[i]['id']+'" class="reading-list-a"><div class="reading-list-img"><img src="'+homeList[i]['image']+'"></div><div class="reading-list-all-content"><div class="reading-list-all-title '+changeFontSizeCSS+'"><p><a href="monograph.php#'+homeList[i]['id']+'#type">'+homeList[i]['title']+'</a></p></div><div class="reading-list-all-summary"><p><a href="monograph.php?#'+homeList[i]['id']+'#type">'+homeList[i]['paper']+'</a></p></div></div><div class="reading-list-all-footer"><ul><li><span class="glyphicon glyphicon-bookmark"></span> '+postType[parseInt(homeList[i]['type'])-1]+'</li><li><span class="glyphicon glyphicon-time"></span> '+homeList[i]['created_time'].split(' ')[0]+'</li></ul></div></div>';
-				}
-				//
-			};
-			$('section').append(homeListHtmlDOM+'<div class="padding-div-row"></div>');
-		}else{
-			displayALertForm(jsonData['msg']);
-		}
-	});
+					//
+				};
+				$('section').append(homeListHtmlDOM+'<div class="padding-div-row"></div>');
+			}else{
+				displayALertForm(jsonData['msg']);
+			}
+		});
 
+		$('.banner ul li').click(function(){
+			var typeID=$(this).attr('id');
+			typeID=typeID.split('-')[1];
+			window.location.href = 'monograph.php#'+typeID;
+		});
+	});
 </script>
 
 <?php require('footer.php'); ?>

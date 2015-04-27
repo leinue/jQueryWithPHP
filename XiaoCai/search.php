@@ -9,7 +9,7 @@
 			<div class="header-main-title search-form search-page"><input type="search" placeholder="食谱 食材 工具 话题" /></div>
 		</div>
 		<div class="header-reading-menu">
-			<ul>
+			<ul id="search-menu">
 				<li id="reading-list-All"><span class="header-reading-menu-active">全部</span></li>
 				<li id="reading-list-Home"><span>首页</span></li>
 				<li id="reading-list-Recipe"><span>一手好菜</span></li>
@@ -36,6 +36,7 @@
 
 	var oData;
 	var hasSearched=false;
+	var currentType='All';
 	
 	function toggleMenu(obj){
 		//获得当前活跃菜单项的index
@@ -52,7 +53,6 @@
 		displayALertForm(jsonData['msg']);
 		if(jsonData['msg']=='成功'){
 			var listNum=jsonData['data'][fucktype]['count'];
-			console.log(listNum);
 			if(listNum!==0){
 				var homeList=jsonData['data'][fucktype]['list'];
 				var homeListHtmlDOM='';
@@ -97,15 +97,11 @@
 			displayALertForm('搜索内容不能为空,请重新输入');
 		}
 	}
-
-	function getMenuActive(){
-		
-	}
-
+	
 	$('.search-form').keyup(function(event){
 		if(event.which == 13){
-
-			startSearching('All');
+			$('.reading-all-list').html('');
+			startSearching(currentType);
 			hasSearched=true;
 		}else{
 			hasSearched=false;
@@ -115,14 +111,15 @@
 	//头部菜单点击事件
 	$('.header-reading-menu ul li span').click(function(){
 		var typeClicked=$(this).parent().attr("id").split('-');
-		$('.reading-all-list').html('');
 		var _this=$(this);
 		//显示正在加载
 		$('.loading').fadeIn();
 		//loadReadingList(readingType[typeClicked[2]],function(){});
 		var searchType=typeClicked[2];
+		$('.reading-all-list').html('');
 		startSearching(searchType);
 		hasSearched=true;
+		currentType=searchType;
 		//去掉正在加载
 		$('.loading').fadeOut();
 		//修改现行活动菜单

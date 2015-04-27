@@ -75,6 +75,7 @@
 			typeID=typeID.split('-')[1];
 			window.location.href = 'monograph.php#'+typeID;
 		});
+		
 	});
 </script>
 

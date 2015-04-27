@@ -128,6 +128,18 @@ nav{
 	font-size: 20px;
 }
 
+.nav-content ul .foodlist-menu{
+	text-align: center;
+}
+
+.nav-content ul .delete-all{
+	text-align: right;
+	font-size: 16px;
+	padding-right: 24px;
+	width: 20%;
+	cursor: pointer;
+}
+
 .nav-content ul li:first-child:active{
 	color: rgb(230,0,39);
 }

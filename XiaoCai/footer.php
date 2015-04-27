@@ -47,11 +47,6 @@
 			}
 		}
 
-		$(document).click(function(){
-			//$('header').slideToggle();
-			//$('footer').slideToggle();
-		});
-
 		/*幻灯片开始*/
 
 		if(window.chrome) {$('.banner li').css('background-size', '100% 100%');}
@@ -107,19 +102,13 @@
 			loadPagesA(pageName,'body');
 		}
 
-		//加载阅读列表界面
-		$('.menu-reading-list').click(function(){
-			loadPagesInMenu('reading.php');
-		});
-
-		//加载收到的回复界面
-		$('.menu-response').click(function(){
-			loadPagesInMenu('reversion.php');
-		});
-
-		//加载设置界面
-		$('.menu-setting').click(function(){
-			loadPagesInMenu('setting.php');
+		$('.column-menu ul li').click(function(){
+			var titleClicked=$(this).attr('class').split('-')[2];
+			if(titleClicked!='foodlist'){
+				loadPagesInMenu(titleClicked+'.php');
+			}else{
+				window.location.href=titleClicked+'.php';
+			}
 		});
 
 		//加载登录页面

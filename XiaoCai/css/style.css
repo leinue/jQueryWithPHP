@@ -125,19 +125,25 @@ nav{
 
 .nav-content ul li{
 	display: table-cell;
-	font-size: 20px;
+	font-size: 16px;
 }
 
 .nav-content ul .foodlist-menu{
 	text-align: center;
+	font-size: 16px;
 }
 
 .nav-content ul .delete-all{
 	text-align: right;
-	font-size: 16px;
+	font-size: 14px;
 	padding-right: 24px;
 	width: 20%;
 	cursor: pointer;
+}
+
+.nav-content ul .header-back{
+	float: none;
+	font-size: 16px;
 }
 
 .nav-content ul li:first-child:active{
@@ -145,13 +151,14 @@ nav{
 }
 
 .nav-content ul li:first-child{
-	font-size: 20px;
+	font-size: 16px;
 	cursor: pointer;
 	width: 13.75%;
 }
 
 .nav-content ul .main-title{
 	width: 23.75%;
+	font-size: 18px;
 }
 
 .nav-content ul .recipe-title{
@@ -175,9 +182,6 @@ nav{
 		font-size: 1em;
 	}
 }
-
-
-
 
 .search-form input{
 	width: 82.75%;
@@ -589,6 +593,48 @@ section{
 
 .setting-list ul li:last-child{
 	margin-top: 14px;
+}
+
+.food-list ul li{
+	margin-bottom: 6px;
+}
+
+.food-list ul li .food-list-title:not(span){
+	color: rgb(230,0,39);
+}
+
+.food-list ul li:last-child{
+	margin-top: 0px;
+}
+
+.food-list-detail{
+	margin-left: -14px;
+	font-size: 14px;
+}
+
+.food-list-detail ul li{
+	margin-bottom: 0px;
+	color: rgb(94,94,94);
+	border-bottom: 1px solid rgb(223,223,223);
+	width: 105%;
+}
+
+.food-list-detail ul li div{
+	margin-left: 9.275%;
+}
+
+.food-list-detail ul li div span{
+	color: rgb(94,94,94);
+	margin-right: 12.5%;
+}
+
+.food-list-detail ul li:first-child{
+	border-top: 2px solid rgb(226,224,227);
+}
+
+.food-list-detail ul li:last-child{
+	border: none;
+	margin-bottom: -6px;
 }
 
 /*修改/找回密码页面开始*/

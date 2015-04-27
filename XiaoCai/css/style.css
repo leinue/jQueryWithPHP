@@ -599,8 +599,12 @@ section{
 	margin-bottom: 6px;
 }
 
-.food-list ul li .food-list-title:not(span){
+.food-list ul li .food-list-active:not(span){
 	color: rgb(230,0,39);
+}
+
+.food-list ul li .food-list-title span:nth-child(2){
+	display: none;
 }
 
 .food-list ul li:last-child{
@@ -608,6 +612,7 @@ section{
 }
 
 .food-list-detail{
+	display: none;
 	margin-left: -14px;
 	font-size: 14px;
 }

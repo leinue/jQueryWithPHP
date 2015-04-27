@@ -145,7 +145,6 @@
 			}
 			var activeElem='.main-footer ul #footer-menu-'+currentHref;
 			$(activeElem+' a span').addClass('main-footer-menu-active');
-			console.log(currentHref);
 			$(activeElem+' a img').attr('src','images/'+currentHref+'_active.png');		
 		}
 		
@@ -196,6 +195,10 @@
 		}
 
 		$('section').css('marginTop',$('header').height()+6);
+
+	    $('.header-back').click(function() {
+     		history.go(-1);
+    	});
 		
 	});
 	

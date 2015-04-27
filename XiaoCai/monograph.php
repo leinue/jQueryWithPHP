@@ -46,14 +46,6 @@
   </section>
   <script type="text/javascript">
     $(document).ready(function(){
- 
-        $('#monograph-back').click(function(){
-            backPreviosPage('monograph.php');
-        });
-
-        $('.header-back').click(function(){
-          history.go(-1);
-        });
 
         $('.monograph-header ul li:last-child').click(function(){
             displayShareForm();

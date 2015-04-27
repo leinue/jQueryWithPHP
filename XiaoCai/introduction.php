@@ -259,11 +259,6 @@
       });
     });
 
-    $('.header-back').click(function() {
-      //backPreviosPage('introduction.php');
-      history.go(-1);
-    });
-
     $('#recipes-introduction-footer ul #introductionFooterLi1').click(function(){
       loadPagesA('introduction.php','body');
     });

@@ -56,9 +56,16 @@
 		$('.send-ver-code').click(function(){
 			var sMobile=$('.change-password-input ul li #reg-mobile').val();
 			if(checkMobile(sMobile)){
+				displayALertForm('请求传送中,请稍等...');
 				sendSms(sMobile,1,function(data){
 					var jsonData=JSON.parse(data);
 					displayALertForm(jsonData['msg']);
+					if(jsonData['msg']=='注册成功'){
+						displayALertForm('注册成功,3秒后将自动跳转...');
+						setTimeout(function(){
+							location.reload();
+						},3000);
+					}
 				});
 			}else{
 				displayALertForm("手机号非法");
@@ -79,6 +86,8 @@
 				displayALertForm('请完整填写信息');
 			}
 		});
+
+		$('section').css('marginTop',$('header').height()+50);
 
 	});
 

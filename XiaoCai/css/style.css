@@ -539,14 +539,6 @@ section{
 	margin-right: 24px;
 }
 
-/*.reversion-new .reading-list-all-content{
-	border-right: 1px solid rgb(199,199,199);
-}*/
-
-.reversion-new .reading-list-all-title{
-
-}
-
 .reversion-new-flag{
 	width: 20px;
 	padding-top: 10px;
@@ -572,8 +564,13 @@ section{
 	background: rgb(255,255,255);
 	padding-top: 8px;
 	padding-bottom: 8px;
-	padding-left: 14px;
 	cursor: pointer;
+}
+
+.setting-list ul li a:not(input){
+	margin-left: 14px;
+	color: rgb(94,94,94);
+	text-decoration: none;
 }
 
 .setting-list ul li span{
@@ -603,7 +600,7 @@ section{
 	color: rgb(230,0,39);
 }
 
-.food-list ul li .food-list-title span:nth-child(2){
+.food-list ul li .food-list-title span:nth-child(3){
 	display: none;
 }
 
@@ -613,7 +610,6 @@ section{
 
 .food-list-detail{
 	display: none;
-	margin-left: -14px;
 	font-size: 14px;
 }
 
@@ -621,7 +617,6 @@ section{
 	margin-bottom: 0px;
 	color: rgb(94,94,94);
 	border-bottom: 1px solid rgb(223,223,223);
-	width: 105%;
 }
 
 .food-list-detail ul li div{
@@ -657,6 +652,9 @@ section{
 }
 
 .change-password-input ul li input{
+	margin-left: 14px;
+	height: 100%;
+	widows: 100%;
 	border: none;
 }
 

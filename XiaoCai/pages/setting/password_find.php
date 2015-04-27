@@ -14,7 +14,7 @@
 		<ul>
 			<li id="setting-list-phone-num-input">
 				<input id="find-pw-phone" placeholder="手机号" />
-				<a id="findpw-send-vercode" class="button button-caution button-pill button-small send-ver-code">发送验证码</a></li>
+				<button id="findpw-send-vercode" class="button button-caution button-pill button-small send-ver-code">发送验证码</button></li>
 			<li id="setting-list-password-o-input"><input type="password" placeholder="输入密码" /></li>
 			<li id="setting-list-password-new-input" class="setting-list-second"><input type="password" placeholder="确认密码" /></li>
 			<li id="setting-list-password-confrom-input"><input placeholder="手机验证码" /></li>

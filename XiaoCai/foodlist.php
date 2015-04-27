@@ -17,7 +17,7 @@
 		<ul>
 			<li>
 				<div class="food-list-title">
-					香酥炸鸡配手工酸奶酱
+					<a href="javascript:void(0)">香酥炸鸡配手工酸奶酱</a>
 					<span class="glyphicon glyphicon-menu-right"></span>
 					<span class="glyphicon glyphicon-remove"></span>
 				</div>
@@ -30,7 +30,7 @@
 			</li>
 			<li>
 				<div class="food-list-title">
-					香酥炸鸡配手工酸奶酱
+					<a href="javascript:void(0)">香酥炸鸡配手工酸奶酱</a>
 					<span class="glyphicon glyphicon-menu-right"></span>
 					<span class="glyphicon glyphicon-remove"></span>
 				</div>
@@ -43,7 +43,7 @@
 			</li>
 			<li>
 				<div class="food-list-title">
-					香酥炸鸡配手工酸奶酱
+					<a href="javascript:void(0)">香酥炸鸡配手工酸奶酱</a>
 					<span class="glyphicon glyphicon-menu-right"></span>
 					<span class="glyphicon glyphicon-remove"></span>
 				</div>
@@ -66,9 +66,9 @@
 	$('.food-list-title:not(span)').click(function(){
 		var this_=$(this);
 		this_.next().slideToggle();
-		this_.toggleClass('food-list-active');
-		this_.find('span:nth-child(2)').toggle();
-		var fthspan=this_.find('span:nth-child(1)');
+		this_.find('a').toggleClass('food-list-active');
+		this_.find('span:last-child').toggle();
+		var fthspan=this_.find('span:nth-child(2)');
 		if(fthspan.attr('class')=='glyphicon glyphicon-menu-down'){
 			fthspan.attr('class','glyphicon glyphicon-menu-right');
 		}else{

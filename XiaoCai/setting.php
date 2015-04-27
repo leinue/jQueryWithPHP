@@ -12,11 +12,11 @@
 <section>
 	<div class="setting-list">
 		<ul>
-			<li id="setting-list-password" class="login-show">修改密码<span class="glyphicon glyphicon-menu-right"></span></li>
-			<li id="setting-list-fpassword" class="setting-list-second login-show">找回密码<span class="glyphicon glyphicon-menu-right"></span></li>
-			<li id="setting-list-profile" class="setting-list-second login-show">填写资料<span class="glyphicon glyphicon-menu-right"></span></li>
-			<li id="setting-list-logout" class="setting-list-third login-show">注销</li>
-			<li id="setting-list-setting">关于<span class="glyphicon glyphicon-menu-right"></span></li>
+			<li id="setting-list-password" class="login-show"><a href="javascript:void(0)">修改密码</a><span class="glyphicon glyphicon-menu-right"></span></li>
+			<li id="setting-list-fpassword" class="setting-list-second login-show"><a href="javascript:void(0)">找回密码</a><span class="glyphicon glyphicon-menu-right"></span></li>
+			<li id="setting-list-profile" class="setting-list-second login-show"><a href="javascript:void(0)">填写资料</a><span class="glyphicon glyphicon-menu-right"></span></li>
+			<li id="setting-list-logout" class="setting-list-third login-show"><a href="javascript:void(0)">注销</a></li>
+			<li id="setting-list-setting"><a href="javascript:void(0)">关于</a><span class="glyphicon glyphicon-menu-right"></span></li>
 		</ul>
 	</div>
 

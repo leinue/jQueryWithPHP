@@ -35,8 +35,21 @@
 <script type="text/javascript">
 
 	var oData;
-	var hasSearched=false;
 	var currentType='All';
+	var hasSearched;
+
+	if(localStorage.searchKeywords!='' || $('.search-form input').val()!=''){
+		hasSearched=true;
+		$('.search-form input').val(localStorage.searchKeywords);
+		search_(localStorage.searchKeywords,function(data){
+			displayALertForm('数据查询中,请稍候',4000);
+			oData=data;
+			laodSearchResult(currentType);
+		});
+		localStorage.searchKeywords='';
+	}else{
+		hasSearched=false;
+	}
 	
 	function toggleMenu(obj){
 		//获得当前活跃菜单项的index
@@ -48,7 +61,8 @@
 	var searchPostType={'1':'introduction.php','2':'monograph.php','3':'首页','4':'专题'};
 
 	//type有5种类型:All,Recipe,Skills,Home,Project
-	function laodSearchResult(fucktype){
+	function laodSearchResult(fucktype,ooData){
+		ooData=(typeof oData!='undefined' ? ooData : oData);
 		var jsonData=JSON.parse(oData);
 		displayALertForm(jsonData['msg']);
 		if(jsonData['msg']=='成功'){
@@ -97,7 +111,7 @@
 			displayALertForm('搜索内容不能为空,请重新输入');
 		}
 	}
-	
+
 	$('.search-form').keyup(function(event){
 		if(event.which == 13){
 			$('.reading-all-list').html('');

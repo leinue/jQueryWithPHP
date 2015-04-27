@@ -42,7 +42,6 @@
 		displayALertForm('正在加载...');
 		getHome(1,10,function(data){
 			var jsonData=JSON.parse(data);
-			//console.log(jsonData['data']['list'][0]['type']);
 			if(jsonData['msg']=='成功'){
 				var homeList=jsonData['data']['list'];
 				var homeListHtmlDOM="";
@@ -60,7 +59,7 @@
 						}else{
 							changeFontSizeCSS='';
 						}
-						homeListHtmlDOM+='<div idata="'+homeList[i]['id']+'" class="reading-list-a"><div class="reading-list-img"><img src="'+homeList[i]['image']+'"></div><div class="reading-list-all-content"><div class="reading-list-all-title '+changeFontSizeCSS+'"><p><a href="monograph.php#'+homeList[i]['id']+'#type">'+homeList[i]['title']+'</a></p></div><div class="reading-list-all-summary"><p><a href="monograph.php?#'+homeList[i]['id']+'#type">'+homeList[i]['paper']+'</a></p></div></div><div class="reading-list-all-footer"><ul><li><span class="glyphicon glyphicon-bookmark"></span> '+postType[parseInt(homeList[i]['type'])-1]+'</li><li><span class="glyphicon glyphicon-time"></span> '+homeList[i]['created_time'].split(' ')[0]+'</li></ul></div></div>';
+						homeListHtmlDOM+='<div idata="'+homeList[i]['id']+'" class="reading-list-a"><div class="reading-list-img"><img src="'+homeList[i]['image']+'"></div><div class="reading-list-all-content"><div class="reading-list-all-title '+changeFontSizeCSS+'"><p><a href="monograph.php#'+homeList[i]['id']+'#type">'+homeList[i]['title']+'</a></p></div><div class="reading-list-all-summary"><p><a href="monograph.php?#'+homeList[i]['id']+'">'+homeList[i]['paper']+'</a></p></div></div><div class="reading-list-all-footer"><ul><li><span class="glyphicon glyphicon-bookmark"></span> '+postType[parseInt(homeList[i]['type'])-1]+'</li><li><span class="glyphicon glyphicon-time"></span> '+homeList[i]['created_time'].split(' ')[0]+'</li></ul></div></div>';
 					}
 					//
 				};
@@ -75,7 +74,17 @@
 			typeID=typeID.split('-')[1];
 			window.location.href = 'monograph.php#'+typeID;
 		});
-		
+
+		$('.search-form').keyup(function(event){
+			if(event.which == 13){
+				var searchContent=$('.search-form input').val();
+				if(searchContent!=''){
+					localStorage.searchKeywords=searchContent;
+					window.location.href = 'search.php';
+				}
+			}
+		});
+
 	});
 </script>
 

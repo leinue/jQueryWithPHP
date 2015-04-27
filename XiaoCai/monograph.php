@@ -51,59 +51,43 @@
             displayShareForm();
         });
 
+        function loadSeparateInfo(jsonData){
+          if(jsonData['msg']=='成功'){
+            $('.monograph-img1 img').attr('src',jsonData['data']['info']['big_image']);
+            $('.monograph-header ul .header-skillsEvaluating-li #viewer-count').html(jsonData['data']['info']['browse_num']);
+            $('.skills-evaluating-title h4').html(jsonData['data']['info']['title']);
+            $('.skills-evaluating-title p').html(jsonData['data']['info']['created_time']);
+            $('.content-summaryIn').html(jsonData['data']['info']['paper']);
+            $('.skeva-content').html(jsonData['data']['info']['content']);
+            $('.skeva-content p').css('background','rgb(226,224,227)');  
+            }else{
+              displayALertForm(jsonData['msg']);
+          }
+        }
+
         var currentHref=document.location.href;
-        tag = currentHref.split('#')[2];
         displayALertForm('正在加载...');
-        if(tag == 'type1'){
-             if(currentHref.indexOf('#')!=-1){
-                currentHref=currentHref.split('#')[1];
-                getSkillsInfo(currentHref,0,1,10,function(data){
-                var jsonData=JSON.parse(data);
-                //console.log(jsonData);
-                  if(jsonData['msg']=='成功'){
-                      $('.monograph-img1 img').attr('src',jsonData['data']['info']['big_image']);
-                      $('.monograph-header ul .header-skillsEvaluating-li #viewer-count').html(jsonData['data']['info']['browse_num']);
-                      $('.skills-evaluating-title h4').html(jsonData['data']['info']['title']);
-                      $('.skills-evaluating-title p').html(jsonData['data']['info']['created_time']);
-                      $('.content-summaryIn').html(jsonData['data']['info']['paper']);
-                      $('.skeva-content').html(jsonData['data']['info']['content']);
-                      $('.skeva-content p').css('background','rgb(226,224,227)');  
-                  }else{
-                       displayALertForm(jsonData['msg']);
-                       }
-               });
+        if(currentHref.indexOf('#')!=-1){
+          articleID=currentHref.split('#')[1];
+          tag = currentHref.split('#')[2];
+          console.log(tag);
+          if(tag=='type2'){
+            getSkillsInfo(articleID,0,1,10,function(data){
+              var jsonData=JSON.parse(data);
+              loadSeparateInfo(jsonData);
+            });
+          }else if(tag=='type3'){
+            getHomeInfo(articleID,0,1,10,function(data){
+              var jsonData=JSON.parse(data);
+              loadSeparateInfo(jsonData);
+            });
+          }
         }else{
           window.location.href="skills.php";
         }
-      }
-      //首页文章单个信息
-      var currentHref = window.location.href;
-      tag = currentHref.split('#')[2];
-       if(tag == 'type'){
-          displayALertForm('正在加载...');
-          if(currentHref.indexOf('#')!=-1){
-          currentHref=currentHref.split('#')[1];
-          getHomeInfo(currentHref,0,1,10,function(data){
-              var jsonData=JSON.parse(data);
-              if(jsonData['msg']=='成功'){
-                  $('.monograph-img1 img').attr('src',jsonData['data']['info']['big_image']);
-                  $('.monograph-header ul .header-skillsEvaluating-li #viewer-count').html(jsonData['data']['info']['browse_num']);
-                  $('.skills-evaluating-title h4').html(jsonData['data']['info']['title']);
-                  $('.skills-evaluating-title p').html(jsonData['data']['info']['created_time']);
-                  $('.content-summaryIn').html(jsonData['data']['info']['paper']);
-                  $('.skeva-content').html(jsonData['data']['info']['content']);
-                  $('.skeva-content p').css('background','rgb(226,224,227)');  
-              }else{
-                  displayALertForm(jsonData['msg']);
-              }
-          });
-        }else{
-          window.location.href="index.php";
-        }
-      }
 
       //专题(首页的幻灯片)单个信息
-      getProjectInfo(1,0,1,10,function(data){
+      /*getProjectInfo(1,0,1,10,function(data){
         if(data!=''){
           var jsonData = JSON.parse(data);
           if(jsonData['msg'] == '成功'){
@@ -120,7 +104,7 @@
         }else{
           displayALertForm('获取失败,请重试');
         }
-      });
+      });*/
 
       $('section').css('marginTop',$('header').height());
 

@@ -59,7 +59,8 @@
 						}else{
 							changeFontSizeCSS='';
 						}
-						homeListHtmlDOM+='<div idata="'+homeList[i]['id']+'" class="reading-list-a"><div class="reading-list-img"><img src="'+homeList[i]['image']+'"></div><div class="reading-list-all-content"><div class="reading-list-all-title '+changeFontSizeCSS+'"><p><a href="monograph.php#'+homeList[i]['id']+'#type">'+homeList[i]['title']+'</a></p></div><div class="reading-list-all-summary"><p><a href="monograph.php?#'+homeList[i]['id']+'">'+homeList[i]['paper']+'</a></p></div></div><div class="reading-list-all-footer"><ul><li><span class="glyphicon glyphicon-bookmark"></span> '+postType[parseInt(homeList[i]['type'])-1]+'</li><li><span class="glyphicon glyphicon-time"></span> '+homeList[i]['created_time'].split(' ')[0]+'</li></ul></div></div>';
+						var homeArticleType=homeList[i]['type'];
+						homeListHtmlDOM+='<div idata="'+homeList[i]['id']+'" class="reading-list-a"><div class="reading-list-img"><img src="'+homeList[i]['image']+'"></div><div class="reading-list-all-content"><div class="reading-list-all-title '+changeFontSizeCSS+'"><p><a href="monograph.php#'+homeList[i]['id']+'#type'+homeArticleType+'">'+homeList[i]['title']+'</a></p></div><div class="reading-list-all-summary"><p><a href="monograph.php?#'+homeList[i]['id']+'#type'+homeArticleType+'">'+homeList[i]['paper']+'</a></p></div></div><div class="reading-list-all-footer"><ul><li><span class="glyphicon glyphicon-bookmark"></span> '+postType[parseInt(homeList[i]['type'])-1]+'</li><li><span class="glyphicon glyphicon-time"></span> '+homeList[i]['created_time'].split(' ')[0]+'</li></ul></div></div>';
 					}
 					//
 				};

@@ -211,6 +211,7 @@ section{
 	list-style: none;
 	margin-left: -40px;
 	width: 100%;
+	box-sizing: content-box;
 }
 
 .banner ul li{
@@ -315,7 +316,7 @@ section{
 	text-align: center;
 	font-size: 14px;
 	right: 20px;
-	z-index: 65535;
+	z-index: 65000;
 }
 
 .teacher-brand img{

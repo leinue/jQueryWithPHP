@@ -6,7 +6,9 @@
 	<nav>
 		<div class="header-title">
 			<div class="header-back"><span class="glyphicon glyphicon-menu-left"></span></div>
-			<div class="header-main-title search-form search-page"><input type="search" placeholder="食谱 食材 工具 话题" /></div>
+			<div class="header-main-title search-form search-page">
+					<input type="search" placeholder="食谱 食材 工具 话题" />
+			</div>
 		</div>
 		<div class="header-reading-menu">
 			<ul id="search-menu">

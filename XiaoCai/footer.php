@@ -57,7 +57,8 @@
 			arrows: true,	
 			fluid: true,
 			dots: true,
-			keys:true
+			keys:true,
+			delay:4000
 		});
 
 		/*幻灯片结束*/

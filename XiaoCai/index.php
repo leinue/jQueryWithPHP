@@ -88,10 +88,6 @@
 
 	});
 	
-	function locateToIntroduction(obj){
-		var ref=$(obj).attr('ref');
-		window.location.href=ref;
-	}
 </script>
 
 <?php require('footer.php'); ?>

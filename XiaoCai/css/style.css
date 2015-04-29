@@ -261,6 +261,7 @@ section{
 .vip-video .vip-video-img{
 	position: relative;	
 	margin-left: -10px;
+	cursor: pointer;
 }
 
 .vip-content{
@@ -573,6 +574,10 @@ section{
 	cursor: pointer;
 }
 
+.setting-list ul li:active{
+	background: rgb(205,205,205);
+}
+
 .setting-list ul li a:not(input){
 	margin-left: 14px;
 	color: rgb(94,94,94);
@@ -657,10 +662,14 @@ section{
 	cursor: default;
 }
 
+.change-password-input ul li:active{
+	background: rgb(255,255,255);
+}
+
 .change-password-input ul li input{
 	margin-left: 14px;
 	height: 100%;
-	widows: 100%;
+	width: 100%;
 	border: none;
 }
 

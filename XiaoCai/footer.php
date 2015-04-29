@@ -77,7 +77,7 @@
 			var docWidth=$(document).width()-($(document).width()*rate);
 			var mainPageWidth=$(document).width()*rate;
 			if(!isSlided){
-				$('.main-page').animate({left:docWidth+'px'},400,function(){
+				$('.main-page').animate({left:docWidth+'px'},300,function(){
 					$('.login-page').css('display','block');
 					//$('.main-page').css('width',mainPageWidth+'px');
 				});

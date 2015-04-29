@@ -322,7 +322,7 @@ section{
 	text-align: center;
 	font-size: 14px;
 	right: 20px;
-	z-index: 65000;
+	z-index: 60000;
 }
 
 .teacher-brand img{
@@ -1487,24 +1487,25 @@ footer{
 	  display: none;
 }
 .monoshareDiv{
+		margin-top: 62.5%;
+    	margin-left: 17.875%;
 	    width: 50%;
-	    margin-top: 300px;
 	    display: table;
 	    background: rgb(241,241,241);
 	    padding: 6%;
         border-radius: 8px;
-        top: -30%;
-        left: 25%;
-        position: absolute;
+        z-index: 65535;
 }
 .monoshareDiv ul{
 	   display: table-row;
+	   z-index: 65535;
 }
 .monoshareDiv ul li{
 	   display: table-cell;
 	   width: 50%;
 	   text-align: center;
 	   cursor: pointer;
+	   z-index: 65535;
 }
 @media screen and (max-width:1900px){
     .monoshareDiv ul li img,.monoshareDiv ul li{
@@ -1528,10 +1529,6 @@ footer{
     .monoshareDiv ul li img,.monoshareDiv ul li{
     	   width: 80px;
     	   font-size: 0.8em;
-    }
-
-    .monoshareDiv{
-    	left: 16.875%;
     }
 }
 .monoshareDiv #line li:first-child{

@@ -79,7 +79,6 @@
 			if(!isSlided){
 				$('.main-page').animate({left:docWidth+'px'},300,function(){
 					$('.login-page').css('display','block');
-					//$('.main-page').css('width',mainPageWidth+'px');
 				});
 				$('footer').hide();
 				setNoTouchMove();
@@ -89,11 +88,10 @@
 				$('.login-page').css('display','none');
 				$('footer').show();
 				setTouchMove();
-				//$('.main-page').css('width',oWidth+'px');
 				isSlided=false;
 			}	
 		}
-		//var oWidth=$('.main-page').width();//主界面的原宽度
+
 		$('.nav-menu').click(function(){
 			toggleLeftMenu();
 		});
@@ -124,7 +122,6 @@
 
 		//设置活跃菜单
 		function setActiveA(){
-			//var currentItem=JSON2Stack(localStorage.pageStack).currentPage.split('.')[0];
 			var currentHref=document.location.href;
 			if(currentHref.charAt(currentHref.length-1)!='/'){
 				currentHref=currentHref.split('.');
@@ -139,13 +136,6 @@
 		}
 		
 		setActiveA();
-
-		//底部菜单加载事件
-		/*$('.main-footer ul li').click(function(){
-			setActiveA();
-			var pageName=$(this).attr('id').split('-');
-			loadPagesA(pageName[2]+'.php','body');
-		});*/
 
 		$('.main-footer ul li').mousedown(function(){
 			var imgsrc=$(this).find('a').find('img').attr('src');
@@ -212,8 +202,6 @@
 		var ref=$(obj).attr('ref');
 		window.location.href=ref;
 	}
-
-	//displayALertForm('fuck u');
 
 </script>
 </html>

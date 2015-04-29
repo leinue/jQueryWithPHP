@@ -8,7 +8,10 @@
 			<ul>
 				<li class="nav-menu"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></li>
 				<li class="main-title">晓菜</li>
-				<li class="search-form"><input type="search" placeholder="食谱 食材 工具 话题" /></li>
+				<li class="search-form">
+					<input type="search" placeholder="食谱 食材 工具 话题" />
+					<div class="search-input-icon"><span class="glyphicon glyphicon-search"></span></div>
+				</li>
 			</ul>
 		</div>
 	</nav>
@@ -85,6 +88,10 @@
 				}
 			}
 		});
+
+		$('.search-form input').focus(function(){$('.nav-content ul li .search-input-icon').hide();});
+
+		$('.search-form input').blur(function(){$('.nav-content ul li .search-input-icon').show();});
 
 	});
 	

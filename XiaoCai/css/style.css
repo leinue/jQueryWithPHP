@@ -128,6 +128,14 @@ nav{
 	font-size: 16px;
 }
 
+.nav-content ul li .search-input-icon{
+	font-size: 13px;
+	color: rgb(117,117,117);
+	position: absolute;
+	top: 16px;
+	left: 46.1666667%;
+}
+
 .nav-content ul .foodlist-menu{
 	text-align: center;
 	font-size: 16px;
@@ -371,7 +379,7 @@ section{
 	color: rgb(255,0,0);
 	height: 12px;
 	position: absolute;
-	top: 69.5833333%;
+	top: 60%;
 }
 
 .column-menu li a{

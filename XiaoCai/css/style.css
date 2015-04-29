@@ -258,6 +258,11 @@ section{
 	border-top-right-radius: 4px;		
 }
 
+.vip-video .vip-video-img{
+	position: relative;	
+	margin-left: -10px;
+}
+
 .vip-content{
 	padding: 10px;
 	cursor: pointer;

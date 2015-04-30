@@ -16,9 +16,9 @@
 	$(document).ready(function(){
 
 		//添加动画效果
-		$('ul li,a,h1,h2,h3,h4,h5,h6,p,span,.fast-register,.button-add,.search-form input').hover(
+		$('ul li,a,h1,h2,h3,h4,h5,h6,p,span,.fast-register,.button-add').hover(
 			function(){
-				$(this).stop().animate({opacity:0.6},'fast');
+				$(this).stop().animate({opacity:0.9},'fast');
 			},
 			function(){
 				$(this).stop().animate({opacity:1},'fast');
@@ -162,7 +162,7 @@
 		function floatMenuCase(){
 			if($(document).scrollTop()>$('header').height()){
 				$('header').css('position','fixed')
-								 .css('opacity','0.6')
+								 .css('opacity','0.9')
 								 .css('top','0px')
 								 .css('width','100%')
 								 .css('z-index','1000');

@@ -78,15 +78,14 @@
     </div>
     </section>
     
-    <footer>
-      <div id="recipes-introduction-footer">
-        <ul id="recipes-introduction-footer-ul">
-          <li><span id="introduction" class="borderActive">介绍</span></li>
-          <li><span id="formula">配方</span></li>
-          <li><span id="step">步骤</span></li>
-        </ul>
-      </div>
-    </footer>
+    <div id="recipes-introduction-footer">
+      <ul id="recipes-introduction-footer-ul">
+        <li><span id="introduction" class="borderActive">介绍</span></li>
+        <li><span id="formula">配方</span></li>
+        <li><span id="step">步骤</span></li>
+      </ul>
+    </div>
+    
   <script type="text/javascript">
     $(document).ready(function() {
 
@@ -200,7 +199,7 @@
           if(thisSpan.hasClass('borderActive')){thisSpan.removeClass('borderActive');}
         });
         _this.find('span').addClass('borderActive');
-        if(type=='introduction'){loadPagesA('introduction.php','section');
+        if(type=='introduction'){loadPagesA('introduction.php','body');
         }else{loadPagesA('pages/introduction/'+type+'.php','.introduction-page');}
       });
 

@@ -44,7 +44,7 @@
       					formulaHTMLDOM+='';
       					for (var j = 0; j < formulaChild.length; j++) {
       						//console.log(formulaChild[j]);
-      						formulaHTMLDOM+='<ul><li class="juice-list-li1"><span class="glyphicon glyphicon-plus-sign"></span></li><li class="juice-list-li3">'+formulaChild[j]['title']+'</li><li class="juice-list-li3">'+formulaChild[j]['dosage']+'</li><li class="juice-list-li3">'+formulaChild[j]['note']+'</li></ul>';
+      						formulaHTMLDOM+='<ul><li class="juice-list-li1"><span class="glyphicon glyphicon-plus"></span></li><li class="juice-list-li3">'+formulaChild[j]['title']+'</li><li class="juice-list-li3">'+formulaChild[j]['dosage']+'</li><li class="juice-list-li3">'+formulaChild[j]['note']+'</li></ul>';
       					};
                 sessionStorage.formulaIDList+=formulaList[i]['id']+"|";
       					formulaHTMLDOM='<div id="formula-child-'+formulaList[i]['id']+'" class="formula-juice"><div class="formula-juice-title"><div class="juice-title"><span>'+formulaList[i]['title']+'</span></div></div><div class="formula-juice-list">'+formulaHTMLDOM+'</div></div>';
@@ -74,9 +74,6 @@
           });
         });
 
-        if(localStorage.isLogin!='true'){
-          $('.formula-buy ul li:nth-child(2)').css('visibility','hidden');
-        }
     });
 
 </script>

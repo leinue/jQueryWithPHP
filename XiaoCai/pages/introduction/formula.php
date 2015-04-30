@@ -40,6 +40,7 @@
       			}else{
       				var formulaList=jsonData['data'];
       				var formulaHTMLDOM='';
+              console.log(formulaList[0]);
       				for (var i = 0; i < formulaList.length; i++) {
       					formulaChild=formulaList[i]['children'];
       					formulaHTMLDOM+='';
@@ -47,11 +48,10 @@
       						//console.log(formulaChild[j]);
       						formulaHTMLDOM+='<ul><li class="juice-list-li1"><span class="glyphicon glyphicon-plus"></span></li><li class="juice-list-li3">'+formulaChild[j]['title']+'</li><li class="juice-list-li3">'+formulaChild[j]['dosage']+'</li><li class="juice-list-li3">'+formulaChild[j]['note']+'</li></ul>';
       					};
-                sessionStorage.formulaIDList+=formulaList[i]['id']+"|";
       					formulaHTMLDOM='<div id="formula-child-'+formulaList[i]['id']+'" class="formula-juice"><div class="formula-juice-title"><div class="juice-title"><span>'+formulaList[i]['title']+'</span></div></div><div class="formula-juice-list">'+formulaHTMLDOM+'</div></div>';
-      					$('section').append(formulaHTMLDOM);
-      					formulaHTMLDOM='';
-      				};
+      					$('.introduction-page').append(formulaHTMLDOM);
+      				  formulaHTMLDOM='';
+              };
       			}
       		});
       	}else{

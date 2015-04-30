@@ -625,6 +625,52 @@
 
 		/**********************************函数库**********************************/
 
+		/*********************************DOM操作**********************************/
+
+		function changeReadingListSize(data){
+			var changeFontSizeCSS='';
+			var charCount=data.length;
+			if(charCount>=20){
+				changeFontSizeCSS="readling-list-title-small";
+			}else{changeFontSizeCSS='';}
+			return changeFontSizeCSS;
+		}
+
+		function cutReadingListPaper(data){
+			var paperContent=data;
+			var charCount=paperContent.length;
+			if(charCount>=20){
+				return paperContent.substring(0,20)+'……';
+			}
+			return paperContent;
+		}
+
+		function cutReadingListTitle(data){
+			var paperTitle=data;
+			var titleCount=paperTitle.length;
+			if(titleCount>=20){
+				return paperTitle.substring(0,20)+'……';
+			}
+			return paperTitle;
+		}
+
+		function printReadingList(jsondata,elem){
+			var homeList=jsondata;
+			var homeListHtmlDOM='';
+			for (var i = 0; i < homeList.length; i++) {
+				var papaerContent=homeList[i]['paper'];
+				var paperTitle=homeList[i]['title'];
+				var changeFontSizeCSS;
+				paperTitle=cutReadingListTitle(paperTitle);
+				changeFontSizeCSS=changeReadingListSize(papaerContent);
+				papaerContent=cutReadingListPaper(papaerContent);
+				homeListHtmlDOM+='<div ref="monograph.php#'+homeList[i]['id']+'#type2" onclick="locateToIntroduction(this)" id="skills-'+homeList[i]['id']+'" class="reading-list-a"><div class="reading-list-img"><img src="'+homeList[i]['image']+'"></div><div class="reading-list-all-content"><div class="reading-list-all-title '+changeFontSizeCSS+'"><p>'+paperTitle+'</p></div><div class="reading-list-all-summary"><p>'+papaerContent+'</p></div></div><div class="reading-list-all-footer"><ul><li><span class="glyphicon glyphicon-bookmark"></span> 玩转厨房</li><li><span class="glyphicon glyphicon-time"></span> '+homeList[i]['created_time'].split(' ')[0]+'</li></ul></div></div>';
+			};
+			$(elem).append(homeListHtmlDOM+'<div class="padding-div-row"></div>');
+		}
+
+		/*********************************DOM操作**********************************/		
+
 		/*******************************全局变量区域*******************************/
 		
 		var isSlided=false;//侧边栏是否被滑出

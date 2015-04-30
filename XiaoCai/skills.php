@@ -35,23 +35,7 @@
 		var jsonData=JSON.parse(data);
 		if(jsonData['msg']=='成功'){
 			var homeList=jsonData['data'];
-			var homeListHtmlDOM='';
-			for (var i = 0; i < homeList.length; i++) {
-				var papaerContent=homeList[i]['paper'];
-				var paperTitle=homeList[i]['title'];
-				var charCount=papaerContent.length;
-				var titleCount=paperTitle.length;
-					var changeFontSizeCSS='';
-					if(charCount>=20){
-						changeFontSizeCSS="readling-list-title-small";
-						papaerContent=papaerContent.substring(0,20)+'……';
-					}else{changeFontSizeCSS='';}
-					if(titleCount>=20){
-						paperTitle=paperTitle.substring(0,20)+'……';
-					}
-				homeListHtmlDOM+='<div ref="monograph.php#'+homeList[i]['id']+'#type2" onclick="locateToIntroduction(this)" id="skills-'+homeList[i]['id']+'" class="reading-list-a"><div class="reading-list-img"><img src="'+homeList[i]['image']+'"></div><div class="reading-list-all-content"><div class="reading-list-all-title '+changeFontSizeCSS+'"><p>'+paperTitle+'</p></div><div class="reading-list-all-summary"><p>'+papaerContent+'</p></div></div><div class="reading-list-all-footer"><ul><li><span class="glyphicon glyphicon-bookmark"></span> 玩转厨房</li><li><span class="glyphicon glyphicon-time"></span> '+homeList[i]['created_time'].split(' ')[0]+'</li></ul></div></div>';
-			};
-			$('section').append(homeListHtmlDOM+'<div class="padding-div-row"></div>');
+			printReadingList(homeList,'section');
 		}else{
 			displayALertForm(jsonData['msg']);
 		}

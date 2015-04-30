@@ -24,6 +24,7 @@
         	}else{
         		$(this).find('span').attr('class','glyphicon glyphicon-menu-up');
         	}
+          $('.recipes-introduction-footer').toggleClass('fixed-pos');
         });
       
       	displayALertForm('正在加载...',1000);

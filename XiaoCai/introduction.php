@@ -78,14 +78,14 @@
     </div>
     </section>
     
-    <div id="recipes-introduction-footer">
+    <div class="recipes-introduction-footer">
       <ul id="recipes-introduction-footer-ul">
         <li><span id="introduction" class="borderActive">介绍</span></li>
         <li><span id="formula">配方</span></li>
         <li><span id="step">步骤</span></li>
       </ul>
     </div>
-    
+
   <script type="text/javascript">
     $(document).ready(function() {
 
@@ -190,11 +190,11 @@
       $('.vip-menu ul li:nth-child(2)').attr('type',1);
       $('.vip-menu ul li:nth-child(2)').attr('articleid',currentHref);
 
-      $('#recipes-introduction-footer ul li').click(function(){
+      $('.recipes-introduction-footer ul li').click(function(){
         var _this=$(this);
         var type=_this.find('span').attr('id');
         var elm;
-        $('#recipes-introduction-footer ul li').each(function(e){
+        $('.recipes-introduction-footer ul li').each(function(e){
           var thisSpan=$(this).find('span');
           if(thisSpan.hasClass('borderActive')){thisSpan.removeClass('borderActive');}
         });

@@ -992,6 +992,10 @@ footer{
 	cursor: pointer;
 }
 
+.introduction-comment-input-container textarea{
+	border: none;
+}
+
 .introduction-comment-title{
 	width: 100%;
 	display: table;

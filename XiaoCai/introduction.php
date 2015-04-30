@@ -66,7 +66,12 @@
               <img width="50" id="user-comment-photo" height="50" src="images/default_photo.png" />   
             </div>
         </li>
-        <li><div class="introduction-comment-input-container"><span>在此输入留言或内容</span></div></li>
+        <li>
+          <div class="introduction-comment-input-container">
+            <span>在此输入留言或内容</span>
+            <textarea style="display:none"></textarea>
+          </div>
+        </li>
       </ul>
       <ul>
         <li>
@@ -167,8 +172,9 @@
         });
       }
 
-      $('.introduction-comment-input').keydown(function(event) {
+      $('.introduction-comment-input-container textarea').keydown(function(event) {
         if (event.which == 13 && localStorage.isLogin == 'true') {
+          displayALertForm('消息发送中，请稍候...');
           var scomments = $('.introduction-comment-ul .introduction-comment-input input').val();
           if (flag == false) {
             var overtime = new Date();
@@ -198,6 +204,18 @@
         _this.find('span').addClass('borderActive');
         if(type=='introduction'){loadPagesA('introduction.php','section');
         }else{loadPagesA('pages/introduction/'+type+'.php','.introduction-page');}
+      });
+
+      $('.introduction-comment-input-container').click(function(){
+        var _this=$(this);
+        var thisInput=_this.find('textarea');
+        if(thisInput.css('display')=='none' || thisInput.val()==''){
+          _this.find('span').toggle();
+          thisInput.attr('width',_this.parent().width());
+          thisInput.attr('height',_this.parent().height());
+          thisInput.toggle();
+          thisInput.focus();
+        }
       });
 
     });

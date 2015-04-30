@@ -58,79 +58,65 @@
         <div class="teacher-brand introduction-teacher-brand"><img src=""></div>
       </div>
     </div>
+    
     <div class="introduction-comment">
-      <ul class="introduction-comment-ul">
-        <li class="introduction-comment-photo">
-          <div class="logo-area register-area  profile-upload-photo">
-            <div class="profile-phtot-uploaded introduction-photo-uploaded">
-              <img width="40" height="40" src="images/default_photo.png" />
+      <ul>
+        <li>
+            <div class="profile-phtot-uploaded">
+              <img width="50" id="user-comment-photo" height="50" src="images/default_photo.png" />   
             </div>
-          </div>
         </li>
-        <li class="introduction-comment-input">
-          <input type="text">
-        </li>
+        <li><div class="introduction-comment-input-container"><span>在此输入留言或内容</span></div></li>
       </ul>
-      <ul id="comment-show-area" class="introduction-comment-ul">
-        <li class="introduction-comment-photo">
-          <div class="logo-area register-area  profile-upload-photo">
-            <div class="profile-phtot-uploaded introduction-photo-uploaded">
-              <img width="40" height="40" src="images/default_photo.png" />
+      <ul>
+        <li>
+          <div class="profile-phtot-uploaded">
+              <img width="50" id="user-comment-photo" height="50" src="images/default_photo.png" />   
+          </div>
+        </li>
+        <li>
+          <div class="introduction-comment-title">
+            <ul>
+              <li>雯雯 Carl</li>
+              <li>2015-03-08</li>
+            </ul>
+          </div>
+          <div class="introduction-comment-content">
+            <span>文字内容文字kjkkl内容文字内容文字内容文字4558akaakll内容文字内容文字内容文字内容文字内容文字内容</span>
+          </div>
+          <div class="introduction-comment-reply">
+            <div class="introduction-comment-title">
+              <ul>
+                <li>雯雯 Carl</li>
+                <li>2015-03-08</li>
+              </ul>
+            </div>
+            <div class="introduction-comment-content comment-reply-content">
+              <span>文字内容文字内容文字内容文字内容文字4558akaakll内容文字内容文字内容文字内容文字内容文字内容</span>
             </div>
           </div>
         </li>
-        <div class="introduction-comment-show">
-          <div class="introduction-comment-showComment">
-            <ul class="introduction-comment-show-ul">
-              <li>
-                <h3>
-                  嗡嗡Carl
-                </h3>
-              </li>
-              <li>
-                2015-4-7
-              </li>
-            </ul>
-            <div class="introduction-comment-showComment-p">
-              <p>
-                显示评论显示评论显示评论显示评论显示评论显示评论显示评论显示评论显示评论显示评论显示评论显示评论显示评论显示
-              </p>
-            </div>
-          </div>
-          <div class="introduction-comment-showXiaocai">
-            <ul>
-              <li>
-                <h3>
-                  晓菜
-                </h3>
-              </li>
-              <li>
-                2015-3-28
-              </li>
-            </ul>
-            <div class="offical-comments">
-              <p>
-                内容文字内容文字内容文字内容文字内容文字内容
-              </p>
-            </div>
-          </div>
-        </div>
       </ul>
     </div>
+
     </div>
     </section>
     
     <footer>
-    <div id="recipes-introduction-footer">
-      <ul id="recipes-introduction-footer-ul">
-        <li><span id="introduction" class="borderActive">介绍</span></li>
-        <li><span id="formula">配方</span></li>
-        <li><span id="step">步骤</span></li>
-      </ul>
-    </div>
+      <div id="recipes-introduction-footer">
+        <ul id="recipes-introduction-footer-ul">
+          <li><span id="introduction" class="borderActive">介绍</span></li>
+          <li><span id="formula">配方</span></li>
+          <li><span id="step">步骤</span></li>
+        </ul>
+      </div>
     </footer>
   <script type="text/javascript">
     $(document).ready(function() {
+
+      function displayCommentsList(){
+
+      }
 
       displayALertForm('正在加载...',1000);
       var currentHref=document.location.href;
@@ -154,7 +140,7 @@
                 $('.introduction-teacher-brand img').attr('src',introInfo['arrange_image_url']);
               }
               if(introList['comments']!=''){
-
+                displayCommentsList();
               }else{
                 $('#comment-show-area').hide();
               }
@@ -167,39 +153,31 @@
         window.location.href="recipes.php";
       }
 
-      var currentHref = window.location.href;
-      currentHref = currentHref.split('#')[1];
       var flag = false;
+      function submitComments(articleid,comments){
+        sendComments(1, localStorage.tokenID, articleid, comments,function(data) {
+          var jsonData = JSON.parse(data);
+          displayALertForm(jsonData);
+          if (jsonData['msg'] == '留言成功') {
+            displayALertForm(jsonData['msg']);
+            flag = true;
+          } else {
+            displayALertForm(jsonData['msg']);
+          }
+        });
+      }
+
       $('.introduction-comment-input').keydown(function(event) {
         if (event.which == 13 && localStorage.isLogin == 'true') {
           var scomments = $('.introduction-comment-ul .introduction-comment-input input').val();
           if (flag == false) {
             var overtime = new Date();
             localStorage.Time = overtime.getMinutes() + 0.50;
-            sendComments(1, localStorage.tokenID, currentHref, scomments,
-            function(data) {
-              var jsonData = JSON.parse(data);
-              displayALertForm(jsonData);
-              if (jsonData['msg'] == '留言成功') {
-                displayALertForm(jsonData['msg']);
-                flag = true;
-              } else {
-                displayALertForm(jsonData['msg']);
-              }
-            });
+            submitComments(currentHref,scomments);
           } else if (flag == true) {
             var repeatTime = new Date();
             if (repeatTime.getMinutes() < localStorage.Time) {
-              sendComments(1, localStorage.tokenID, currentHref, scomments,
-              function(data) {
-                var jsonData = JSON.parse(data);
-                if (jsonData['msg'] == '留言成功') {
-                  displayALertForm(jsonData['msg']);
-                  flag = true;
-                } else {
-                  displayALertForm(jsonData['msg']);
-                }
-              });
+              submitComments(currentHref,scomments);
               localStorage.Time = repeatTime.getMinutes() + 0.50;
             }
           }
@@ -212,12 +190,12 @@
       $('#recipes-introduction-footer ul li').click(function(){
         var _this=$(this);
         var type=_this.find('span').attr('id');
+        var elm;
         $('#recipes-introduction-footer ul li').each(function(e){
           var thisSpan=$(this).find('span');
           if(thisSpan.hasClass('borderActive')){thisSpan.removeClass('borderActive');}
         });
         _this.find('span').addClass('borderActive');
-        var elm;
         if(type=='introduction'){loadPagesA('introduction.php','section');
         }else{loadPagesA('pages/introduction/'+type+'.php','.introduction-page');}
       });

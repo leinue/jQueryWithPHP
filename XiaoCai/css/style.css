@@ -913,6 +913,7 @@ footer{
 .vip-enjoy-padding {
   margin: 0px;
   margin-top: -1px;
+  background: rgb(249,249,249);
 }
 .vip-enjoy-padding .vip-video {
   border-radius: 0px;
@@ -946,86 +947,91 @@ footer{
   color: rgb(167,34,29);
 }
 .introduction-teacher-brand {
-  top: 365px;
+  top: 342px;
 }
-.introduction-comment {
-  width: 100%;
-  display: table;
-  padding-right: 14px;
+
+.introduction-comment{
+	display: table;
+	width: 100%;
+	margin-bottom: 16px;
+	margin-top: 4px;
 }
-.introduction-comment .introduction-comment-ul {
-  display: table-row;
-  width: 100%;
+
+.introduction-comment ul{
+	display: table-row;
+	list-style: none;
 }
-.introduction-comment .introduction-comment-ul li {
-  display: table-cell;
+
+.introduction-comment ul li{
+	display: table-cell;
+	padding-right: 16px;
+	padding-left: 16px;
 }
-.offical-comments {
-  width: 150%;
-  padding-right: 25px;
+
+.introduction-comment ul li:first-child{
+	margin-top: 16px;
+	width: 60px;
 }
-.logo-area {
-  width: 100%;
-  margin-top:14px;
+
+.introduction-comment ul li .profile-phtot-uploaded{
+	width: 60px;
+	height: 60px;
+	margin:0px;
+	padding-left: 4px;
+	padding-top: 4px;
+	margin-top: 16px;
 }
-.introduction-comment .introduction-comment-ul .introduction-comment-photo {
-  }
-.introduction-comment .introduction-comment-ul .introduction-comment-input {
-  width: 70%;
+
+.introduction-comment-input-container{
+	width: 100%;
+	padding: 16px;
+	background: rgb(255,255,255);
+	border-radius: 4px;
+	box-shadow: 1px 1px 1px #C7C7C7;
+	color: rgb(148,148,148);
+	cursor: pointer;
 }
-.introduction-comment .introduction-comment-ul .introduction-comment-input input {
-  height: 67px;
-  width: 95%;
+
+.introduction-comment-title{
+	width: 100%;
+	display: table;
 }
-.introduction-comment-ul .introduction-comment-show {
-  width:100%;
+
+.introduction-comment-title ul li{
+	padding: 0px;
+	width: 100%;
 }
-.introduction-photo-uploaded {
-  width: 60px;
-  height: 60px;
-  border-radius: 30px;
+
+.introduction-comment-title ul li:first-child{
+	width: 75%;
+	color: rgb(31,31,31);
+	font-weight: bold;
+	font-size: 15px;
+	text-align: left;
+	padding-left: 0px;
 }
-.introduction-comment-ul .introduction-comment-show .introduction-comment-showComment {
-  width: 100%;
-  display: table;
+
+.introduction-comment-title ul li:last-child{
+	color: rgb(148,148,148);
+	font-size: 12px;
+	text-align: right;
 }
-.introduction-comment-ul .introduction-comment-show .introduction-comment-showComment ul {
-  display: table-row;
+
+.introduction-comment-content{
+	margin-top: 4px;
+	padding-bottom: 16px;
 }
-.introduction-comment-ul .introduction-comment-show .introduction-comment-showComment ul li {
-  display: table-cell;
-  width: 10px;
+
+.introduction-comment-reply{
+	border-left: 4px solid rgb(229,1,38);
+	padding-left: 10px;
+	padding-top: 0px;
 }
-.introduction-comment-ul .introduction-comment-show .introduction-comment-showComment ul li:last-child {
-  text-align: right;
-  color: rgb(117,115,118);
+
+.comment-reply-content{
+	padding: 0px;
 }
-.introduction-comment-show ul li h3 {
-  font-size: 18px;
-}
-.introduction-comment-showXiaocai {
-  width: 100%;
-  display: table;
-  border-left: 4px solid rgb(167,34,29);
-  padding-left: 10px;
-}
-.introduction-comment-showXiaocai ul {
-  display: table-row;
-}
-.introduction-comment-ul .introduction-comment-show .introduction-comment-showXiaocai ul li:last-child {
-  text-align: right;
-  color: rgb(117,115,118);
-}
-.introduction-comment-showXiaocai ul li {
-  display: table-cell;
-}
-.introduction-comment-showXiaocai p {
-  color: rgb(117,115,118);
-}
-.introduction-comment-showComment-p{
-    width: 213%;
-    color: rgb(117,115,118);
-}
+
 #recipes-introduction-footer {
   width: 100%;
   display: table;

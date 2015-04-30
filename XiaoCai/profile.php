@@ -12,7 +12,7 @@
 </header>
 
 <section>
-	<div class="logo-area register-area  profile-upload-photo">
+	<div class="logo-area register-area profile-upload-photo">
 		<div class="profile-phtot-uploaded">
 			<img width="95" id="user-profile-photo" height="95" src="images/default_photo.png" />		
 		</div>

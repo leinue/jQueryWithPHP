@@ -14,7 +14,7 @@
 <section>
 	<div class="logo-area register-area  profile-upload-photo">
 		<div class="profile-phtot-uploaded">
-			<img width="95" height="95" src="images/default_photo.png" />		
+			<img width="95" id="user-profile-photo" height="95" src="images/default_photo.png" />		
 		</div>
 		<span>上传头像</span>
 	</div>
@@ -33,7 +33,7 @@
 		<div class="loading-main"><span class="glyphicon glyphicon-option-horizontal"></span><span class="glyphicon glyphicon-option-horizontal"></span></div>
 	</div>
 	
-	<input type="file" style="display: none" id="fileInput" />
+	<input type="file" onchange="printImg(this)" style="display: none" id="fileInput" />
 </section>
 
 </div>
@@ -72,5 +72,21 @@
 		$('section').css('marginTop',$('header').height()+50);
 
 	});
+
+	function getFileUrl(sourceId) {
+		var url;
+		if (navigator.userAgent.indexOf("MSIE")>=1) { // IE
+			url = document.getElementById(sourceId).value;
+		} else if(navigator.userAgent.indexOf("Firefox")>0) { // Firefox
+			url = window.URL.createObjectURL(document.getElementById(sourceId).files.item(0));
+		} else if(navigator.userAgent.indexOf("Chrome")>0) { // Chrome
+			url = window.URL.createObjectURL(document.getElementById(sourceId).files.item(0));
+		}
+		return url;
+	}
+
+	function preImg(sourceId, targetId) {document.getElementById(targetId).src=getFileUrl(sourceId);}
+
+	function printImg(obj){preImg('fileInput','user-profile-photo');}
 
 </script>

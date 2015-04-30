@@ -6,7 +6,7 @@
       <div class="header-main-title monograph-header">
           <ul>
             <li class="header-skillsEvaluating-li"><span class="glyphicon glyphicon-eye-open"></span> <span id="viewer-count">0</span></li>
-            <li class="header-skillsEvaluating-li"><span class="glyphicon glyphicon-inbox"></span></li>
+            <li class="header-skillsEvaluating-li"><span class="glyphicon glyphicon-heart-empty"></span></li>
             <li class="header-skillsEvaluating-li"><span class="glyphicon glyphicon-link" id="mono-share"></span></li>
           </ul>
       </div>

@@ -26,7 +26,7 @@
         	}
         });
       
-      	displayALertForm('正在加载...',500);
+      	displayALertForm('正在加载...',1000);
 
       	var currentHref=document.location.href;
       	if(currentHref.indexOf('#')!=-1){

@@ -1036,19 +1036,24 @@ footer{
 	padding: 0px;
 }
 
-#recipes-introduction-footer {
+.recipes-introduction-footer {
   width: 100%;
   display: table;
   color: rgb(117,115,118);
-  bottom: 0px;
   margin-top: 20px;
   background: rgb(241,241,241);
 }
-#recipes-introduction-footer ul {
+
+.fixed-pos{
+	position: fixed;
+	bottom: 0;
+}
+
+.recipes-introduction-footer ul {
   display: table-row;
   margin-left: 50px;
 }
-#recipes-introduction-footer ul li{
+.recipes-introduction-footer ul li{
   display: table-cell;
   font-size: 14px;
   text-align: center;
@@ -1057,11 +1062,11 @@ footer{
   padding-bottom: 14px;
 }
 
-#recipes-introduction-footer ul li:active{
+.recipes-introduction-footer ul li:active{
 	color: rgb(230,0,39);
 }
 
-#recipes-introduction-footer #recipes-introduction-footer-ul li span {
+.recipes-introduction-footer #recipes-introduction-footer-ul li span {
   padding-bottom: 2px;
 }
 .borderActive {
@@ -1141,6 +1146,10 @@ footer{
 	  margin-bottom: -60px;
 }
 
+.skeva-content ul{
+	background-color: rgb(226,224,227)!important;
+}
+
 .skeva-content p{
 	background: rgb(226,224,227);
 }
@@ -1152,7 +1161,7 @@ footer{
 	  margin-bottom: 20px;
 	  margin-top: 20px;
 }
-.skeva-img img{
+.skeva-img img,.skeva-content p img{
 	  width: 100%;
 	  height: 200px;
 }
@@ -1365,6 +1374,7 @@ footer{
 	 }
    .juice-list-li1 span{
        color: rgb(239,51,50);
+       cursor: pointer;
    }
 .formula-juice-list ul .juice-list-li2{
       width: 5%;

@@ -73,35 +73,6 @@
           </div>
         </li>
       </ul>
-      <ul>
-        <li>
-          <div class="profile-phtot-uploaded">
-              <img width="50" id="user-comment-photo" height="50" src="images/default_photo.png" />   
-          </div>
-        </li>
-        <li>
-          <div class="introduction-comment-title">
-            <ul>
-              <li>雯雯 Carl</li>
-              <li>2015-03-08</li>
-            </ul>
-          </div>
-          <div class="introduction-comment-content">
-            <span>文字内容文字kjkkl内容文字内容文字内容文字4558akaakll内容文字内容文字内容文字内容文字内容文字内容</span>
-          </div>
-          <div class="introduction-comment-reply">
-            <div class="introduction-comment-title">
-              <ul>
-                <li>雯雯 Carl</li>
-                <li>2015-03-08</li>
-              </ul>
-            </div>
-            <div class="introduction-comment-content comment-reply-content">
-              <span>文字内容文字内容文字内容文字内容文字4558akaakll内容文字内容文字内容文字内容文字内容文字内容</span>
-            </div>
-          </div>
-        </li>
-      </ul>
     </div>
 
     </div>
@@ -119,8 +90,23 @@
   <script type="text/javascript">
     $(document).ready(function() {
 
-      function displayCommentsList(){
+      $('.profile-phtot-uploaded #user-comment-photo').attr('src',localStorage.headimgurl);
 
+      function displayCommentsList(data){
+        var commentsList=data;
+        var usereply;
+        var officalReply;
+        var username;
+        commentsList.forEach(function(e){
+          username=e['username']==''?'[读取失败]':e['username'];
+          usereply='<ul><li><div class="profile-phtot-uploaded"><img width="50" id="user-comment-po" height="50" src="'+e['headimgurl']+'"></div></li><li><div class="introduction-comment-title"><ul><li>'+username+'</li><li>'+e['created_time']+'</li></ul></div><div class="introduction-comment-content"><span>'+e['content']+'</span></div>';
+          if(e['reply_username']==null){
+            officalReply='';
+          }else{
+          officalReply='<div class="introduction-comment-reply"><div class="introduction-comment-title"><ul><li>'+e['reply_username']+'</li><li>'+e['reply_time']+'</li></ul></div><div class="introduction-comment-content comment-reply-content"><span>'+e['reply_content']+'</span></div></div></li></ul>';            
+          }
+          $('.introduction-comment').append(usereply+officalReply);
+        });
       }
 
       displayALertForm('正在加载...',1000);
@@ -145,7 +131,7 @@
                 $('.introduction-teacher-brand img').attr('src',introInfo['arrange_image_url']);
               }
               if(introList['comments']!=''){
-                displayCommentsList();
+                displayCommentsList(introList['comments']);
               }else{
                 $('#comment-show-area').hide();
               }
@@ -158,6 +144,15 @@
         window.location.href="recipes.php";
       }
 
+      function getCurrentTime(){
+        var myDate = new Date();
+        var month=myDate.getMonth()+1;
+        var date=myDate.getDate();
+        month=(month<10)?'0'+month:month;
+        date=(date<10)?'0'+date:date;
+        return myDate.getFullYear()+'-'+month+'-'+date;
+      }
+
       var flag = false;
       function submitComments(articleid,comments){
         sendComments(1, localStorage.tokenID, articleid, comments,function(data) {
@@ -165,6 +160,9 @@
           displayALertForm(jsonData);
           if (jsonData['msg'] == '留言成功') {
             displayALertForm(jsonData['msg']);
+            var usereply='<ul><li><div class="profile-phtot-uploaded"><img width="50" id="user-comment-po" height="50" src="'+localStorage.headimgurl+'"></div></li><li><div class="introduction-comment-title"><ul><li>'+localStorage.nickname+'</li><li>'+getCurrentTime()+'</li></ul></div><div class="introduction-comment-content"><span>'+comments+'</span></div>';
+            $('.introduction-comment').append(usereply);
+            $('html, body').animate({scrollTop: $(document).height()}, 300);
             flag = true;
           } else {
             displayALertForm(jsonData['msg']);
@@ -173,9 +171,9 @@
       }
 
       $('.introduction-comment-input-container textarea').keydown(function(event) {
-        if (event.which == 13 && localStorage.isLogin == 'true') {
+        if (event.ctrlKey && event.which == 13 && localStorage.isLogin == 'true') {
           displayALertForm('消息发送中，请稍候...');
-          var scomments = $('.introduction-comment-ul .introduction-comment-input input').val();
+          var scomments = $('.introduction-comment-input-container textarea').val();
           if (flag == false) {
             var overtime = new Date();
             localStorage.Time = overtime.getMinutes() + 0.50;

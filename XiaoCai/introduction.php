@@ -123,9 +123,9 @@
     <footer>
     <div id="recipes-introduction-footer">
       <ul id="recipes-introduction-footer-ul">
-        <li><span id="introductionFooterLi1">介绍</span></li>
-        <li><span id="introductionFooterLi2">配方</span></li>
-        <li><span id="introductionFooterLi3">步骤</span></li>
+        <li><span id="introduction" class="borderActive">介绍</span></li>
+        <li><span id="formula">配方</span></li>
+        <li><span id="step">步骤</span></li>
       </ul>
     </div>
     </footer>
@@ -167,7 +167,6 @@
         window.location.href="recipes.php";
       }
 
-      //提交留言18115992267  123456
       var currentHref = window.location.href;
       currentHref = currentHref.split('#')[1];
       var flag = false;
@@ -210,65 +209,19 @@
       $('.vip-menu ul li:nth-child(2)').attr('type',1);
       $('.vip-menu ul li:nth-child(2)').attr('articleid',currentHref);
 
-      var tag = true;
-      var flag = false;
-      var index = false;
-      $('#introductionFooterLi1').addClass('borderActive');
-      $('#introductionFooterLi1').click(function() {
-        if (!tag) {
-          $(this).addClass('borderActive');
-          if (flag) {
-            $('#introductionFooterLi2').removeClass('borderActive');
-            flag = false;
-          }
-          if (index) {
-            $('#introductionFooterLi3').removeClass('borderActive');
-            index = false;
-          }
-          tag = true;
-        }
+      $('#recipes-introduction-footer ul li').click(function(){
+        var _this=$(this);
+        var type=_this.find('span').attr('id');
+        $('#recipes-introduction-footer ul li').each(function(e){
+          var thisSpan=$(this).find('span');
+          if(thisSpan.hasClass('borderActive')){thisSpan.removeClass('borderActive');}
+        });
+        _this.find('span').addClass('borderActive');
+        var elm;
+        if(type=='introduction'){loadPagesA('introduction.php','section');
+        }else{loadPagesA('pages/introduction/'+type+'.php','.introduction-page');}
       });
-      $('#introductionFooterLi2').click(function() {
-        if (!flag) {
-          $(this).addClass('borderActive');
-          if (tag) {
-            $('#introductionFooterLi1').removeClass('borderActive');
-            tag = false;
-          }
-          if (index) {
-            $('#introductionFooterLi3').removeClass('borderActive');
-            index = false;
-          }
 
-          flag = true;
-        }
-      });
-      $('#introductionFooterLi3').click(function() {
-        if (!index) {
-          $(this).addClass('borderActive');
-          if (flag) {
-            $('#introductionFooterLi2').removeClass('borderActive');
-            flag = false;
-          }
-          if (tag) {
-            $('#introductionFooterLi1').removeClass('borderActive');
-            tag = false;
-          }
-          index = true;
-        }
-      });
-    });
-
-    $('#recipes-introduction-footer ul #introductionFooterLi1').click(function(){
-      loadPagesA('introduction.php','body');
-    });
-
-    $('#recipes-introduction-footer ul #introductionFooterLi2').click(function(){
-      loadPagesA('pages/introduction/formula.php','.introduction-page');
-    });
-
-    $('#recipes-introduction-footer ul #introductionFooterLi3').click(function(){
-      loadPagesA('pages/introduction/step.php','.introduction-page');
     });
 
   </script>

@@ -41,6 +41,9 @@
 			$('.header-reading-menu-active').removeClass('header-reading-menu-active');	
 		}
 
+		var readingTypeNum={1:'recipe',2:'skills',3:'all',4:'review'};
+		var reaingTypeURL={1:'introduction.php',2:'monograph.php'};
+
 		function loadReadingList(type,callback){
 			displayNoData();
 			getReadingList(type,localStorage.tokenID,function(data){
@@ -51,14 +54,13 @@
 						if(homeList!=null){
 							var homeListHtmlDOM='';
 							for (var i = 0; i < homeList.length; i++) {
-								var charCount=homeList[i]['paper'].length;
-									var changeFontSizeCSS='';
-									if(charCount>=20){
-										changeFontSizeCSS="readling-list-title-small";
-									}else{
-										changeFontSizeCSS='';
-								}
-								homeListHtmlDOM+='<div id="skills-'+homeList[i]['id']+'" class="reading-list-a"><div class="reading-list-img"><img src="'+homeList[i]['image']+'"></div><div class="reading-list-all-content"><div class="reading-list-all-title '+changeFontSizeCSS+'"><p><a href="monograph.php#'+homeList[i]['id']+'">'+homeList[i]['title']+'</a></p></div><div class="reading-list-all-summary"><p><a href="monograph.php?#'+homeList[i]['id']+'">'+homeList[i]['paper']+'</a></p></div></div><div class="reading-list-all-footer"><ul><li><span class="glyphicon glyphicon-bookmark"></span> 玩转厨房</li><li><span class="glyphicon glyphicon-time"></span> '+homeList[i]['created_time'].split(' ')[0]+'</li></ul></div></div>';
+								var papaerContent=homeList[i]['paper'];
+								var paperTitle=homeList[i]['title'];
+								var changeFontSizeCSS;
+								paperTitle=cutReadingListTitle(paperTitle);
+								changeFontSizeCSS=changeReadingListSize(papaerContent);
+								papaerContent=cutReadingListPaper(papaerContent);
+								homeListHtmlDOM+='<div ref="'+reaingTypeURL[homeList[i]['type']]+'#'+homeList[i]['article_id']+'#type2" onclick="locateToIntroduction(this)" type="'+homeList[i]['type']+'" articleid="'+homeList[i]['article_id']+'" class="reading-list-a"><div class="reading-list-img"><img src="'+homeList[i]['image']+'"></div><div class="reading-list-all-content"><div class="reading-list-all-title '+changeFontSizeCSS+'"><p>'+paperTitle+'</p></div><div class="reading-list-all-summary"><p>'+papaerContent+'</p></div></div><div class="reading-list-all-footer"><ul><li><span class="glyphicon glyphicon-bookmark"></span> 玩转厨房</li><li><span class="glyphicon glyphicon-time"></span> '+homeList[i]['created_time'].split(' ')[0]+'</li></ul></div></div>';
 							};
 							$('.reading-all-list').append(homeListHtmlDOM+'<div class="padding-div-row"></div>');
 						}else{

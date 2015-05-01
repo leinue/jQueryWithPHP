@@ -190,6 +190,7 @@
 	},false);
 
 	function addToReadingList(obj){
+		displayALertForm('正在添加到收藏列表...');
 		var articleID=$(obj).attr('articleid');
 		var articleType=$(obj).attr('type');
 		addReadingList(articleType,localStorage.tokenID,articleID,function(data){
@@ -199,6 +200,7 @@
 	}
 
 	function locateToIntroduction(obj){
+		displayALertForm('正在为您跳转...');
 		var ref=$(obj).attr('ref');
 		window.location.href=ref;
 	}

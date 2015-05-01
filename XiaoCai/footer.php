@@ -203,5 +203,8 @@
 		window.location.href=ref;
 	}
 
+	$('.search-form input').focus(function(){$('.nav-content ul li .search-input-icon').hide();});
+		$('.search-form input').blur(function(){$('.nav-content ul li .search-input-icon').show();});
+
 </script>
 </html>

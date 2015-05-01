@@ -10,7 +10,7 @@
 	<section></section>
 
 <script type="text/javascript">
-	$(document).ready(function(){
+
         $('#formula-buy-img').click(function(){
             $('#formula-add').css('display','block');
             $('#formula-add').css({           
@@ -45,8 +45,8 @@
       					formulaChild=formulaList[i]['children'];
       					formulaHTMLDOM+='';
       					for (var j = 0; j < formulaChild.length; j++) {
-      						//console.log(formulaChild[j]);
-      						formulaHTMLDOM+='<ul><li class="juice-list-li1"><span class="glyphicon glyphicon-plus"></span></li><li class="juice-list-li3">'+formulaChild[j]['title']+'</li><li class="juice-list-li3">'+formulaChild[j]['dosage']+'</li><li class="juice-list-li3">'+formulaChild[j]['note']+'</li></ul>';
+      						console.log(formulaChild[j]);
+      						formulaHTMLDOM+='<ul><li class="juice-list-li1"><span idata="'+formulaChild[j]['id']+'" onclick="addToShoppingList(this)" class="glyphicon glyphicon-plus"></span></li><li class="juice-list-li3">'+formulaChild[j]['title']+'</li><li class="juice-list-li3">'+formulaChild[j]['dosage']+'</li><li class="juice-list-li3">'+formulaChild[j]['note']+'</li></ul>';
       					};
       					formulaHTMLDOM='<div id="formula-child-'+formulaList[i]['id']+'" class="formula-juice"><div class="formula-juice-title"><div class="juice-title"><span>'+formulaList[i]['title']+'</span></div></div><div class="formula-juice-list">'+formulaHTMLDOM+'</div></div>';
       					$('.introduction-page').append(formulaHTMLDOM);
@@ -58,10 +58,10 @@
       		window.location.href="recipes.php";
       	}
 
-        var formulaIDList=sessionStorage.formulaIDList.split('|');
-        formulaIDList.splice(3,formulaIDList.length);
+        //var formulaIDList=sessionStorage.formulaIDList.split('|');
+        //formulaIDList.splice(3,formulaIDList.length);
 
-        $('.formula-buy ul li .button-add').click(function(){
+        /*$('.formula-buy ul li .button-add').click(function(){
           var recipeID=currentHref;
           formulaIDList.forEach(function(formulaID){
             addFoodList(recipeID,formulaID,localStorage.tokenID,function(data){
@@ -73,8 +73,23 @@
               }
             });
           });
+        });*/
+      
+      function addToShoppingList(obj){
+        var formulaID=$(obj).attr('idata');
+        displayALertForm('正在为您加入采购清单...');
+        addFoodList(currentHref,formulaID,localStorage.tokenID,function(data){
+          if(data!=''){
+            var jsonData=JSON.parse(data);
+            displayALertForm(jsonData['msg']);
+          }else{
+            displayALertForm('加入失败,请重试');
+          }
         });
+      }
 
-    });
+      $('.formula-juice-list ul .juice-list-li1').find('span').on('click',function(){
+          console.log('ddd');
+      });
 
 </script>

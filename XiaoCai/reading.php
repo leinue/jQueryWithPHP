@@ -102,8 +102,6 @@
 
 		//退回按钮事件
 		$('.header-back').click(function(){
-			//var docW=$(document).width();
-			//$('body').animate({left:docW+'px'});
 			backPreviosPage('reading.php');
 		});
 

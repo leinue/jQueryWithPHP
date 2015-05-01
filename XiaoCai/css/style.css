@@ -752,7 +752,7 @@ section{
 }
 
 .setting-list #wechat-nickname input{
-	width: 100%;
+	width: 90%;
 	color: rgb(102,102,102);
 	text-align: center;
 }
@@ -1378,6 +1378,10 @@ footer{
 	   text-align: center;
 	   width: 20%;
 	 }
+
+.formula-juice-list ul li:first-child:active{
+	color: rgb(212,0,43);
+}
    .juice-list-li1 span{
        color: rgb(239,51,50);
        cursor: pointer;

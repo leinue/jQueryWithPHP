@@ -67,10 +67,12 @@
 	getFoodList(localStorage.tokenID,function(data){
 		if(!data){
 			displayALertForm('读取出错,请重试');
+			dsiplayNoData('再怎么找也没有啦');
 		}else{
 			var jsondata=JSON.parse(data);
 			if(!jsondata['msg']=='成功'){
-				displayALertForm(jsondata['msg'])
+				displayALertForm(jsondata['msg']);
+				dsiplayNoData('再怎么找也没有啦');
 			}else{
 				displayALertForm('读取成功,正在加载...');
 				var foodList=jsondata['data'];
@@ -79,7 +81,7 @@
 						var recipeID=e['recipe_id'];
 						var recipeTitle=e['recipe_title'];
 						var recipeChildren=e['children'];
-						var mainMenuDOM='<div mainmenu onclick="toggleRecipeMenu(this)" recipeID="'+recipeID+'" class="food-list-title"><a href="javascript:void(0)">'+recipeTitle+'</a><span class="glyphicon glyphicon-menu-right"></span><span recipeid="'+recipeID+'" onclick="removeFormula(this)" class="glyphicon glyphicon-remove"></span></div>';
+						var mainMenuDOM='<div mainmenu onclick="toggleRecipeMenu(this)" recipeid="'+recipeID+'" class="food-list-title"><a href="javascript:void(0)">'+recipeTitle+'</a><span class="glyphicon glyphicon-menu-right"></span><span recipeid="'+recipeID+'" onclick="removeFormula(this,true)" class="glyphicon glyphicon-remove"></span></div>';
 						var childMenuDom;
 						recipeChildren.forEach(function(child){
 							var childID=child['recipe_id'];
@@ -87,7 +89,7 @@
 							var childTitle=child['title'];
 							var dosage=child['dosage'];
 							var status=child['status'];
-							childMenuDom+='<li childata='+childID+' formulaID='+formulaID+' status='+status+' childmenu="true"><div>'+childTitle+'<span>'+dosage+'</span></div></li>';
+							childMenuDom+='<li onclick="removeFormula(this,false)" childata='+childID+' recipeid="'+recipeID+'" formulaid='+formulaID+' status='+status+' childmenu="true"><div>'+childTitle+'<span>'+dosage+'</span></div></li>';
 							if(childMenuDom.substring(0,9)=="undefined"){
 								childMenuDom=childMenuDom.substring(9,childMenuDom.length);
 							}	
@@ -117,11 +119,13 @@
 		}
 	}
 
-	function removeFormula(obj){
+	function removeFormula(obj,isAll){
 		displayALertForm('正在为您删除...');
 		var this_=$(obj);
-		var recipeid=this_.attr('recipeid');
-		deleteFoodList(recipeid,0,localStorage.tokenID,function(data){
+		var recipeid.this_.attr('recipeid');;
+		var formulaid;
+		if(isAll){formulaid=0;}else{formulaid=this_.attr('formulaid');}
+		deleteFoodList(recipeid,formulaid,localStorage.tokenID,function(data){
 			if(data!=''){
 				var jsondata=JSON.parse(data);
 				if(jsondata['msg']='删除成功'){

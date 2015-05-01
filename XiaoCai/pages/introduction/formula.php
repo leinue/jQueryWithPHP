@@ -40,7 +40,6 @@
       			}else{
       				var formulaList=jsonData['data'];
       				var formulaHTMLDOM='';
-              console.log(formulaList[0]);
       				for (var i = 0; i < formulaList.length; i++) {
       					formulaChild=formulaList[i]['children'];
       					formulaHTMLDOM+='';
@@ -58,22 +57,17 @@
       		window.location.href="recipes.php";
       	}
 
-        //var formulaIDList=sessionStorage.formulaIDList.split('|');
-        //formulaIDList.splice(3,formulaIDList.length);
-
-        /*$('.formula-buy ul li .button-add').click(function(){
+        $('.formula-buy ul li .button-add').click(function(){
           var recipeID=currentHref;
-          formulaIDList.forEach(function(formulaID){
-            addFoodList(recipeID,formulaID,localStorage.tokenID,function(data){
-              if(data!=''){
-                var jsonData=JSON.parse(data);
-                displayALertForm(jsonData['msg']);
-              }else{
-                displayALertForm('加入失败');
-              }
-            });
+          addFoodList(recipeID,0,localStorage.tokenID,function(data){
+            if(data!=''){
+              var jsonData=JSON.parse(data);
+              displayALertForm(jsonData['msg']);
+            }else{
+              displayALertForm('加入失败');
+            }
           });
-        });*/
+        });
       
       function addToShoppingList(obj){
         var formulaID=$(obj).attr('idata');
@@ -87,9 +81,5 @@
           }
         });
       }
-
-      $('.formula-juice-list ul .juice-list-li1').find('span').on('click',function(){
-          console.log('ddd');
-      });
 
 </script>

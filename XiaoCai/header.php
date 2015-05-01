@@ -595,6 +595,7 @@
 	            },callback);
 	    }
 
+	    //p_formula_id或p_recipe_id为0表示不传参,不能同时为0
 	    function deleteFoodList(p_recipe_id,p_formula_id,p_token_id,callback){
 	    	$.post(
 	            rootURL+'deletefoodlist.php',

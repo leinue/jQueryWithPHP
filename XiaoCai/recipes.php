@@ -46,7 +46,6 @@
 </div>
 
 <script type="text/javascript">
-	$(document).ready(function(){
 		
 		//食谱上方按钮被单击
 		//method可以为up|down
@@ -67,8 +66,8 @@
 		var recipeLeftMenuIsSlided=false;
 		var recipeRightMenuIsSlided=false;
 
-		$('.nav-recipe-menu ul li').click(function(){
-			var typeClicked=$(this).attr('id').split('-');
+		function toggleSlideMenu(obj){
+			var typeClicked=$(obj).attr('id').split('-');
 			if(!recipeMenuIsSlided){
 				if(recipeLeftMenuIsSlided){
 					toggleBtnArrow('.nav-recipe-menu ul #recipe-material-index span','up');
@@ -76,8 +75,8 @@
 					recipeLeftMenuIsSlided=false;
 					recipeMenuIsSlided=false;
 					if(typeClicked[2]=='index'){
-						$(this).find('span').removeClass('glyphicon glyphicon-triangle-bottom');
-						$(this).find('span').addClass('glyphicon glyphicon-triangle-right');
+						$(obj).find('span').removeClass('glyphicon glyphicon-triangle-bottom');
+						$(obj).find('span').addClass('glyphicon glyphicon-triangle-right');
 						return;
 					}
 				}
@@ -88,14 +87,14 @@
 					recipeRightMenuIsSlided=false;
 					recipeMenuIsSlided=false;
 					if(typeClicked[2]=='style'){
-						$(this).find('span').removeClass('glyphicon glyphicon-triangle-bottom');
-						$(this).find('span').addClass('glyphicon glyphicon-triangle-right');
+						$(obj).find('span').removeClass('glyphicon glyphicon-triangle-bottom');
+						$(obj).find('span').addClass('glyphicon glyphicon-triangle-right');
 						return;
 					}
 				}
 
-				$(this).find('span').removeClass('glyphicon glyphicon-triangle-right');
-				$(this).find('span').addClass('glyphicon glyphicon-triangle-bottom');
+				$(obj).find('span').removeClass('glyphicon glyphicon-triangle-right');
+				$(obj).find('span').addClass('glyphicon glyphicon-triangle-bottom');
 				
 				$('#recipe-menu-'+typeClicked[2]).slideDown();
 				if(typeClicked[2]=='index'){
@@ -104,11 +103,11 @@
 					recipeRightMenuIsSlided=true;
 				}
 			}
-		});
+		}
 
-		/*$('.vip-title,.vip-post').click(function(){
-			loadPagesA('introduction.php','body');
-		});*/
+		$('.nav-recipe-menu ul li').click(function(){
+			toggleSlideMenu(this);
+		});
 		
 		displayALertForm('正在加载...');
 		getRecipeClassify(function(data){
@@ -123,22 +122,22 @@
 					var rightRow2='';
 					var count=Math.ceil(parseInt(menuChild.length)/2);
 					for (var j = 0; j < count; j++) {
-						leftRow1+="<li idata=\""+menuChild[j]['id']+"\"><img src=\""+menuChild[j]['icon']+"\">"+menuChild[j]['title']+"</li>";
+						leftRow1+="<li onclick='handleSlidedownMenuEvent(this,\"left\")' idata=\""+menuChild[j]['id']+"\"><img src=\""+menuChild[j]['icon']+"\">"+menuChild[j]['title']+"</li>";
 					};
 					leftRow1="<ul>"+leftRow1+"</ul>";
 					for (var j = 3; j < menuChild.length; j++) {
-						leftRow2+="<li idata=\""+menuChild[j]['id']+"\"><img src=\""+menuChild[j]['icon']+"\">"+menuChild[j]['title']+"</li>";
+						leftRow2+="<li onclick='handleSlidedownMenuEvent(this,\"left\")' idata=\""+menuChild[j]['id']+"\"><img src=\""+menuChild[j]['icon']+"\">"+menuChild[j]['title']+"</li>";
 					};
 					leftRow2="<ul>"+leftRow2+"</ul>";
 
 					var menuChild=jsonData['data'][1]['children'];
 					var count=Math.ceil(parseInt(menuChild.length)/2);
 					for (var j = 0; j < count; j++) {
-						rightRow1+="<li idata=\""+menuChild[j]['id']+"\">"+menuChild[j]['title']+"</li>";
+						rightRow1+="<li onclick='handleSlidedownMenuEvent(this,\"right\")'  idata=\""+menuChild[j]['id']+"\">"+menuChild[j]['title']+"</li>";
 					};
 					rightRow1="<ul>"+rightRow1+"</ul>";
 					for (var j = 3; j < menuChild.length; j++) {
-						rightRow2+="<li idata=\""+menuChild[j]['id']+"\">"+menuChild[j]['title']+"</li>";
+						rightRow2+="<li onclick='handleSlidedownMenuEvent(this,\"right\")'  idata=\""+menuChild[j]['id']+"\">"+menuChild[j]['title']+"</li>";
 					};
 					rightRow2="<ul>"+rightRow2+"</ul>";
 					$('#recipe-menu-index .recipe-menu-slidedown').append(leftRow1+leftRow2);
@@ -150,31 +149,41 @@
 
 		function dsiplayRecipePost(data){
 			var jsonData=JSON.parse(data);
+			displayNoData();
 			var homeList=jsonData['data'];
-			var homeListHtmlDOM='';
-			for (var i = 0; i < homeList.length; i++) {
-				console.log(homeList[i]);
-				var isVipHTML=homeList[i]['is_vip']=='1' ? '<div class="teacher-brand" id="monograph-member">会员专享</div>' : '';
-				homeListHtmlDOM+='<div idata="'+homeList[i]['id']+'" class="vip-enjoy"><div ref="introduction.php#'+homeList[i]['id']+'" onclick="locateToIntroduction(this)" class="vip-video"><img class="vip-video-img" src="'+homeList[i]['image']+'" alt="'+homeList[i]['title']+'"></img></div><div class="vip-content"><div ref="introduction.php#'+homeList[i]['id']+'" onclick="locateToIntroduction(this)" class="vip-title">'+homeList[i]["title"]+'</a></div><div ref="introduction.php#'+homeList[i]['id']+'" onclick="locateToIntroduction(this)" class="vip-post">'+homeList[i]["paper"]+'</a></div><div class="vip-menu"><ul><li><span class="glyphicon glyphicon-eye-open"></span> '+homeList[i]["browse_num"]+'</li><li type="'+homeList[i]['type']+'" articleid="'+homeList[i]['id']+'" onclick="addToReadingList(this);"><span class="glyphicon glyphicon-heart-empty"></span></li><li onclick="displayShareForm();"><span class="glyphicon glyphicon-link"></span></li></ul></div><div class="teacher-brand"><img src="'+homeList[i]['arrange_image_url']+'"></div></div>'+isVipHTML+'</div>';
-			};
-			$('section').append(homeListHtmlDOM+'<div class="padding-div-row"></div>');
+			if(homeList!=null){
+				var homeListHtmlDOM='';
+				for (var i = 0; i < homeList.length; i++) {
+					var isVipHTML=homeList[i]['is_vip']=='1' ? '<div class="teacher-brand" id="monograph-member">会员专享</div>' : '';
+					homeListHtmlDOM+='<div idata="'+homeList[i]['id']+'" class="vip-enjoy"><div ref="introduction.php#'+homeList[i]['id']+'" onclick="locateToIntroduction(this)" class="vip-video"><img class="vip-video-img" src="'+homeList[i]['image']+'" alt="'+homeList[i]['title']+'"></img></div><div class="vip-content"><div ref="introduction.php#'+homeList[i]['id']+'" onclick="locateToIntroduction(this)" class="vip-title">'+homeList[i]["title"]+'</a></div><div ref="introduction.php#'+homeList[i]['id']+'" onclick="locateToIntroduction(this)" class="vip-post">'+homeList[i]["paper"]+'</a></div><div class="vip-menu"><ul><li><span class="glyphicon glyphicon-eye-open"></span> '+homeList[i]["browse_num"]+'</li><li type="'+homeList[i]['type']+'" articleid="'+homeList[i]['id']+'" onclick="addToReadingList(this);"><span class="glyphicon glyphicon-heart-empty"></span></li><li onclick="displayShareForm();"><span class="glyphicon glyphicon-link"></span></li></ul></div><div class="teacher-brand"><img src="'+homeList[i]['arrange_image_url']+'"></div></div>'+isVipHTML+'</div>';
+				};
+				$('section').append(homeListHtmlDOM+'<div class="padding-div-row"></div>');
+			}else{
+				displayNoData('再怎么找也没有啦');
+			}
 		}
-
-		$('.recipe-menu-container .recipe-menu-slidedown ul li').click(function(){
-			$(this).slideToggle();
-			$('.loading').fadeIn();
-			getRecipeList($(this).attr('idata'),1,10,function(data){
-				$('section').html('');
-				dsiplayRecipePost(data);
-				$('.loading').fadeOut();
-			});
-		});
 	
 		getRecipeList(10,1,10,function(data){
 			dsiplayRecipePost(data);
 		});
-		
-	});
+	
+		function handleSlidedownMenuEvent(obj,which){
+			if(which=='left'){
+				$(obj).parent().parent().parent().slideToggle();
+				toggleBtnArrow('.nav-recipe-menu ul #recipe-material-index span','up');
+				recipeLeftMenuIsSlided=false;
+			}else if(which=='right'){
+				$(obj).parent().parent().parent().slideToggle();
+				toggleBtnArrow('.nav-recipe-menu ul #recipe-material-style span','up');
+				recipeRightMenuIsSlided=false;
+			}
+			$('.loading').fadeIn();
+			getRecipeList($(obj).attr('idata'),1,10,function(data){
+				$('section').html('');
+				dsiplayRecipePost(data);
+				$('.loading').fadeOut();
+			});
+		}
 
 </script>
 

@@ -331,7 +331,7 @@ section{
 	text-align: center;
 	font-size: 14px;
 	right: 20px;
-	z-index: 60000;
+	z-index: 40000;
 }
 
 .teacher-brand img{
@@ -854,6 +854,10 @@ section{
 	display: table-cell;
 	border-right: 1px solid rgb(200,198,199);
 	border-bottom: 1px solid rgb(200,198,199);
+}
+
+.recipe-menu-slidedown ul li:active{
+	background: rgb(205,205,205);
 }
 
 .recipe-menu-slidedown ul li img{

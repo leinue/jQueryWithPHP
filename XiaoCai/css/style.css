@@ -849,7 +849,7 @@ section{
 
 .recipe-menu-container{
 	position: absolute;
-	top: 86px;
+	top: 80px;
 	z-index: 1000;
 	width: 100%;
 	display: none;

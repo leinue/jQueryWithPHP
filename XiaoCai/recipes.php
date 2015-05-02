@@ -62,6 +62,8 @@
 			}
 		}
 
+		$('.recipe-menu-container').css('top',$('header').height());
+
 		var recipeMenuIsSlided=false;
 		var recipeLeftMenuIsSlided=false;
 		var recipeRightMenuIsSlided=false;

@@ -41,6 +41,7 @@
 
 	$('.setting-list ul li').click(function(){
 		var elemID=$(this).attr('id').split('-');
+		isIndex=false;
 		switch(elemID[2]){
 			case 'password':
 				loadPagesA('pages/setting/password_change.php','body');

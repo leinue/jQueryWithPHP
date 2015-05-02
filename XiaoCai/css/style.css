@@ -1,5 +1,4 @@
 body{
-	height: 100%;
 	margin: 0px;
 	background: rgb(226,224,227);
 	font-family: "微软雅黑";
@@ -10,10 +9,6 @@ header{
 	top: 0px;
 	width: 100%;
 	z-index: 65535;
-}
-
-*{
-	box-sizing:none;
 }
 
 nav{
@@ -253,7 +248,9 @@ section{
 
 .vip-video{
 	height: 200px;
-	border-bottom: 1px solid rgb(0,0,0);
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	border-bottom: px solid rgb(226,224,227);
 }
 
 .vip-video video{
@@ -488,10 +485,11 @@ section{
 	float: left;
 	height: 100%;
 	width: 41.09589%;
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
 }
 
 .reading-list-img img{
-	background-position:center;
 	width: 100%;
 	height:100%;
 	border-top-left-radius: 4px;

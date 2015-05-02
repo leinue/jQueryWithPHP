@@ -93,6 +93,7 @@
 
 		function loadPagesInMenu(pageName){
 			toggleLeftMenu();
+			isIndex=false;
 			loadPagesA(pageName,'body');
 		}
 
@@ -103,6 +104,7 @@
 			}else{
 				window.location.href=titleClicked+'.php';
 			}
+			isIndex=false;
 		});
 
 		//加载登录页面

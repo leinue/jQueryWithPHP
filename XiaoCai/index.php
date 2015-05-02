@@ -25,8 +25,6 @@
 
 			<li id="slide-2" style="background-image: url('images/second.jpg');"></li>
 
-			<li id="slide-3" style="background-image: url('images/third.jpg');"></li>
-
 			<li id="slide-4" style="background-image: url('images/forth.jpg');"></li>
 		</ul>
 	</div>
@@ -42,6 +40,8 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 
+		isIndex=true;
+
 		function loadHomeArticle(jsonData){
 			if(jsonData!=defaultPage){
 				var homeList=jsonData['data']['list'];
@@ -51,7 +51,7 @@
 						if(homeList[i]['is_vip']!=null){
 							//带视频
 							var isVipHTML=homeList[i]['is_vip']=='1' ? '<div class="teacher-brand" id="monograph-member">会员专享</div>' : '';
-							homeListHtmlDOM+='<div idata="'+homeList[i]['id']+'" class="vip-enjoy"><div ref="introduction.php#'+homeList[i]['id']+'" onclick="locateToIntroduction(this)" class="vip-video"><img class="vip-video-img" src="'+homeList[i]['image']+'" alt="'+homeList[i]['title']+'"></img></div><div class="vip-content"><div ref="introduction.php#'+homeList[i]['id']+'" onclick="locateToIntroduction(this)" class="vip-title">'+homeList[i]["title"]+'</a></div><div ref="introduction.php#'+homeList[i]['id']+'" onclick="locateToIntroduction(this)" class="vip-post">'+homeList[i]["paper"]+'</a></div><div class="vip-menu"><ul><li><span class="glyphicon glyphicon-eye-open"></span> '+homeList[i]["browse_num"]+'</li><li type="'+homeList[i]['type']+'" articleid="'+homeList[i]['id']+'" onclick="addToReadingList(this);"><span class="glyphicon glyphicon-heart-empty"></span></li><li onclick="displayShareForm();"><span class="glyphicon glyphicon-link"></span></li></ul></div><div class="teacher-brand"><img src="'+homeList[i]['arrange_image_url']+'"></div></div>'+isVipHTML+'</div>';
+							homeListHtmlDOM+='<div idata="'+homeList[i]['id']+'" class="vip-enjoy"><div ref="introduction.php#'+homeList[i]['id']+'" onclick="locateToIntroduction(this)" style="background:url('+homeList[i]['image']+') repeat scroll center center transparent;" class="vip-video"></div><div class="vip-content"><div ref="introduction.php#'+homeList[i]['id']+'" onclick="locateToIntroduction(this)" class="vip-title">'+homeList[i]["title"]+'</a></div><div ref="introduction.php#'+homeList[i]['id']+'" onclick="locateToIntroduction(this)" class="vip-post">'+homeList[i]["paper"]+'</a></div><div class="vip-menu"><ul><li><span class="glyphicon glyphicon-eye-open"></span> '+homeList[i]["browse_num"]+'</li><li type="'+homeList[i]['type']+'" articleid="'+homeList[i]['id']+'" onclick="addToReadingList(this);"><span class="glyphicon glyphicon-heart-empty"></span></li><li onclick="displayShareForm();"><span class="glyphicon glyphicon-link"></span></li></ul></div><div class="teacher-brand"><img src="'+homeList[i]['arrange_image_url']+'"></div></div>'+isVipHTML+'</div>';
 						}else{
 							//不带视频
 							var papaerContent=homeList[i]['paper'];
@@ -60,7 +60,7 @@
 							paperTitle=cutReadingListTitle(paperTitle);
 							changeFontSizeCSS=changeReadingListSize(papaerContent);
 							papaerContent=cutReadingListPaper(papaerContent);
-							homeListHtmlDOM+='<div ref="monograph.php#'+homeList[i]['id']+'#type2" onclick="locateToIntroduction(this)" id="skills-'+homeList[i]['id']+'" class="reading-list-a"><div class="reading-list-img"><img src="'+homeList[i]['image']+'"></div><div class="reading-list-all-content"><div class="reading-list-all-title '+changeFontSizeCSS+'"><p>'+paperTitle+'</p></div><div class="reading-list-all-summary"><p>'+papaerContent+'</p></div></div><div class="reading-list-all-footer"><ul><li><span class="glyphicon glyphicon-bookmark"></span> 玩转厨房</li><li><span class="glyphicon glyphicon-time"></span> '+formatDate(homeList[i]['created_time'].split(' ')[0])+'</li></ul></div></div>';
+							homeListHtmlDOM+='<div ref="monograph.php#'+homeList[i]['id']+'#type2" onclick="locateToIntroduction(this)" id="skills-'+homeList[i]['id']+'" class="reading-list-a"><div style="background:url('+homeList[i]['image']+') repeat scroll center center transparent;" class="reading-list-img"></div><div class="reading-list-all-content"><div class="reading-list-all-title '+changeFontSizeCSS+'"><p>'+paperTitle+'</p></div><div class="reading-list-all-summary"><p>'+papaerContent+'</p></div></div><div class="reading-list-all-footer"><ul><li><span class="glyphicon glyphicon-bookmark"></span> 玩转厨房</li><li><span class="glyphicon glyphicon-time"></span> '+formatDate(homeList[i]['created_time'].split(' ')[0])+'</li></ul></div></div>';
 						}
 					};
 					$('section').append(homeListHtmlDOM+'<div class="padding-div-row"></div>');
@@ -73,7 +73,11 @@
 		}
 
 		function loadHomeSlide(jsonData){
-
+			jsonData.forEach(function(slide){
+				var slideHTMLDOM='<li id="slide-'+slide['id']+'" style="background-image: url('+slide['image']+');"></li>';
+				console.log(slideHTMLDOM);
+				$('.banner ul').append(slideHTMLDOM);
+			});
 		}
 
 		displayALertForm('正在加载...');
@@ -84,7 +88,7 @@
 					var jsonData=JSON.parse(data);
 					if(jsonData['msg']=='成功'){
 						if(slide){
-							loadHomeSlide(jsonData);
+							loadHomeSlide(jsonData['data']['slide']);
 						}
 						$('.padding-div-row').remove();
 						loadHomeArticle(jsonData);
@@ -116,7 +120,7 @@
 		});
 
 		function handleHomePagination(){
-			if(isUserAtBottom()){
+			if(isUserAtBottom() && isIndex){
 				displayALertForm('加载中...');
 				loadHomeArticle(++defaultPage,defaultLimit,false);
 			}	

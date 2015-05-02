@@ -14,47 +14,7 @@
 
 <section style="padding-top:1px">
 	<div class="setting-list food-list">
-		<ul mainmenucontainer>
-			<li>
-				<div mainmenu class="food-list-title">
-					<a href="javascript:void(0)">香酥炸鸡配手工酸奶酱</a>
-					<span class="glyphicon glyphicon-menu-right"></span>
-					<span class="glyphicon glyphicon-remove"></span>
-				</div>
-				<div class="setting-list food-list-detail">
-					<ul>
-						<li childmenu><div>白羊葱<span>1汤勺</span></div></li>
-						<li childmenu><div class="food-list-detail-name">蒜泥<span>1/2茶勺</span></div></li>
-					</ul>
-				</div>
-			</li>
-			<li>
-				<div mainmenu class="food-list-title">
-					<a href="javascript:void(0)">香酥炸鸡配手工酸奶酱</a>
-					<span class="glyphicon glyphicon-menu-right"></span>
-					<span class="glyphicon glyphicon-remove"></span>
-				</div>
-				<div class="setting-list food-list-detail">
-					<ul>
-						<li class="formula-deleted" childmenu><div>白羊葱<span class="formula-deleted">1汤勺</span></div></li>
-						<li childmenu><div class="food-list-detail-name">蒜泥<span>1/2茶勺</span></div></li>
-					</ul>
-				</div>
-			</li>
-			<li>
-				<div mainmenu class="food-list-title">
-					<a href="javascript:void(0)">香酥炸鸡配手工酸奶酱</a>
-					<span class="glyphicon glyphicon-menu-right"></span>
-					<span class="glyphicon glyphicon-remove"></span>
-				</div>
-				<div class="setting-list food-list-detail">
-					<ul>
-						<li childmenu><div>白羊葱<span>1汤勺</span></div></li>
-						<li childmenu><div class="food-list-detail-name">蒜泥<span>1/2茶勺</span></div></li>
-					</ul>
-				</div>
-			</li>
-		</ul>
+		<ul mainmenucontainer></ul>
 	</div>
 
 	<div class="loading">
@@ -127,10 +87,6 @@
 				var jsondata=JSON.parse(data);
 				if(jsondata['msg']=='删除成功'){
 					displayALertForm(jsondata['msg']);
-					var thisParent=this_.parent().parent();
-					if(thisParent.attr('recipeid')==recipeid){
-						thisParent.fadeOut();
-					}
 				}else{
 					displayALertForm(jsondata['msg']);
 				}
@@ -148,6 +104,10 @@
 		if(isAll){
 			formulaid=0;
 			removeFromFoodList(recipeid,formulaid);
+			var thisParent=this_.parent().parent();
+			if(thisParent.attr('recipeid')==recipeid){
+				thisParent.fadeOut();
+			}
 		}else{
 			formulaid=this_.attr('formulaid');
 			if(this_.attr('status')=='0'){
@@ -160,7 +120,6 @@
 			thisDIV.toggleClass('formula-deleted');
 			thisDIV.find('span').toggleClass('formula-deleted');
 		}
-		
 	}
 
 	$('.food-list ul li div[mainmenu]').on('click',function(){

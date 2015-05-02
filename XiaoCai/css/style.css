@@ -147,6 +147,11 @@ nav{
 	padding-right: 24px;
 	width: 20%;
 	cursor: pointer;
+	height: 100%;
+}
+
+.nav-content ul .delete-all:active{
+	color: rgb(170,170,170);
 }
 
 .nav-content ul .header-back{
@@ -1342,10 +1347,19 @@ footer{
       padding-top: 6px;
       padding-bottom: 6px;
       text-align: center;
-      background: rgb(212,0,43);
+      background: rgb(230,0,39);
       color: rgb(255,255,255);
       border:none;
 }
+
+.button-add:hover{
+	background: rgb(253,67,81);
+}
+
+.button-add:active{
+	background: rgb(244,91,103);
+}
+
 .formula-juice{
 	   width: 100%;
 }
@@ -1357,7 +1371,6 @@ footer{
        padding-top: 15px;
        padding-left: 20px;
        font-size: 1.1em;
-
 }
 
 .formula-deleted{

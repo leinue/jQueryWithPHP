@@ -191,6 +191,8 @@
 				return '今天';
 			}else if(date==globalDateList[1]){
 				return '昨天';
+			}else{
+				return date;
 			}
       	}
 

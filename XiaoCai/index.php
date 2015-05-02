@@ -42,11 +42,8 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 
-		var homeDefaultPage=1;
-		var homeDefaultPageLimit=10;
-
 		function loadHomeArticle(jsonData){
-			if(jsonData!=homeDefaultPage){
+			if(jsonData!=defaultPage){
 				var homeList=jsonData['data']['list'];
 				if(homeList!=''){
 					var homeListHtmlDOM="";
@@ -89,6 +86,7 @@
 						if(slide){
 							loadHomeSlide(jsonData);
 						}
+						$('.padding-div-row').remove();
 						loadHomeArticle(jsonData);
 					}else{
 						displayALertForm(jsonData['msg']);
@@ -99,7 +97,7 @@
 			});
 		}
 
-		loadHomeList(homeDefaultPage,homeDefaultPageLimit,true);
+		loadHomeList(defaultPage,defaultLimit,true);
 		
 		$('.banner ul li').click(function(){
 			var typeID=$(this).attr('id');
@@ -120,7 +118,7 @@
 		function handleHomePagination(){
 			if(isUserAtBottom()){
 				displayALertForm('加载中...');
-				loadHomeArticle(++homeDefaultPage,homeDefaultPageLimit,false);
+				loadHomeArticle(++defaultPage,defaultLimit,false);
 			}	
 		}
 

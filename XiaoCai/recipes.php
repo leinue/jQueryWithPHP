@@ -152,6 +152,8 @@
 			
 		});
 
+		var currentRecipesType=10;
+
 		function dsiplayRecipePost(data){
 			var jsonData=JSON.parse(data);
 			displayNoData();
@@ -167,14 +169,24 @@
 				displayNoData('再怎么找也没有啦');
 			}
 		}
-	
-		getRecipeList(10,1,10,function(data){
-			if(data!=''){
-				dsiplayRecipePost(data);
-			}else{
-				displayALertForm('获取失败,请重试');
-			}
-		});
+		
+		function loadRecipesList(type,page,limit,other){
+			$('.loading').fadeIn();
+			getRecipeList(type,page,limit,function(data){
+				if(data!=''){
+					if(other){
+						$('section').html('');
+					}
+					$('.padding-div-row').remove();
+					dsiplayRecipePost(data);
+					$('.loading').fadeOut();
+				}else{
+					displayALertForm('获取失败,请重试');
+				}
+			});
+		}
+
+		loadRecipesList(currentRecipesType,defaultPage,defaultLimit,false);
 	
 		function handleSlidedownMenuEvent(obj,which){
 			if(which=='left'){
@@ -187,15 +199,17 @@
 				recipeRightMenuIsSlided=false;
 			}
 			$('.loading').fadeIn();
-			getRecipeList($(obj).attr('idata'),1,10,function(data){
-				$('section').html('');
-				dsiplayRecipePost(data);
-				$('.loading').fadeOut();
-			});
+			currentRecipesType=$(obj).attr('idata');
+			recipesDefaultPage=1;
+			recipeDefaultLimit=10;
+			loadRecipesList(currentRecipesType,defaultPage,defaultLimit,true);
 		}
 
 		function handleRecipesPagination(){
-			
+			if(isUserAtBottom()){
+				displayALertForm('加载中...');
+				loadRecipesList(currentRecipesType,++defaultPage,defaultLimit,false);
+			}
 		}
 
 		$(window).scroll(handleRecipesPagination);

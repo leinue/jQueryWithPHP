@@ -29,22 +29,36 @@
 </div>
 
 <script type="text/javascript">
-	
+
 	displayALertForm('正在加载..');
-	getSkillsList(1,10,function(data){
-		if(data!=''){
-			var jsonData=JSON.parse(data);
-			if(jsonData['msg']=='成功'){
-				var homeList=jsonData['data'];
-				printReadingList(homeList,'section');
+
+	function loadSkillsList(page,limit){
+		getSkillsList(page,limit,function(data){
+			if(data!=''){
+				var jsonData=JSON.parse(data);
+				if(jsonData['msg']=='成功'){
+					var homeList=jsonData['data'];
+					$('.padding-div-row').remove();
+					printReadingList(homeList,'section');
+				}else{
+					displayALertForm(jsonData['msg']);
+				}
 			}else{
-				displayALertForm(jsonData['msg']);
+				displayALertForm('获取失败,请重试');
 			}
-		}else{
-			displayALertForm('获取失败,请重试');
+		});
+	}
+
+	loadSkillsList(defaultPage,defaultLimit);
+
+	function handleSkillsPagination(){
+		if(isUserAtBottom()){
+			displayALertForm('加载中...');
+			loadSkillsList(++defaultPage,++defaultLimit);
 		}
-		
-	});
+	}
+
+	$(window).scroll(handleSkillsPagination);
 
 </script>
 

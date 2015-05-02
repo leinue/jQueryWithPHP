@@ -75,13 +75,13 @@
 				$('.main-page').animate({left:docWidth+'px'},300,function(){
 					$('.login-page').css('display','block');
 				});
-				$('footer').hide();
+				$('footer').slideUp();
 				setNoTouchMove();
 				isSlided=true;
 			}else{
 				$('.main-page').animate({left:'0px'});
 				$('.login-page').css('display','none');
-				$('footer').show();
+				$('footer').slideDown();
 				setTouchMove();
 				isSlided=false;
 			}	
@@ -202,7 +202,7 @@
 
 	$('.search-form input').focus(function(){$('.nav-content ul li .search-input-icon').hide();});
 	$('.search-form input').blur(function(){$('.nav-content ul li .search-input-icon').show();});
-	$('html').click(function(){$('footer').slideToggle();});
+	//$('html:not(div)').click(function(){$('footer').slideToggle();});
 
 </script>
 </html>

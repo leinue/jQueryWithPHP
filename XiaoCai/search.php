@@ -12,11 +12,23 @@
 		</div>
 		<div class="header-reading-menu">
 			<ul id="search-menu">
-				<li id="reading-list-All"><span class="header-reading-menu-active">全部</span></li>
-				<li id="reading-list-Home"><span>首页</span></li>
-				<li id="reading-list-Recipe"><span>一手好菜</span></li>
-				<li id="reading-list-Skills"><span>玩转厨房</span></li>
-				<li id="reading-list-Project"><span>专题</span></li>
+				<li id="reading-list-All">
+					<span class="header-reading-menu-active">全部</span>
+					<div id="all-result" style="left: 17.1555555%;" class="search-list-tips">99+</div>
+				</li>
+				<li id="reading-list-Home">
+					<span>首页</span>
+					<div id="home-result" style="left: 32.1555555%;" class="search-list-tips">0</div>
+				</li>
+				<li id="reading-list-Recipe">
+					<span>一手好菜</span>
+					<div id="recipe-result" style="left: 59.1555555%;" class="search-list-tips">20</div>
+				</li>
+				<li id="reading-list-Skills">
+					<span>玩转厨房</span>
+					<div id="skills-result" style="left: 89.1555555%;" class="search-list-tips">0</div>
+				</li>
+				<!--<li id="reading-list-Project"><span>专题</span></li>-->
 			</ul>
 		</div>
 	</nav>
@@ -130,7 +142,6 @@
 		var _this=$(this);
 		//显示正在加载
 		$('.loading').fadeIn();
-		//loadReadingList(readingType[typeClicked[2]],function(){});
 		var searchType=typeClicked[2];
 		$('.reading-all-list').html('');
 		startSearching(searchType);

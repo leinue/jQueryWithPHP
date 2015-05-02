@@ -417,7 +417,7 @@ section{
 }
 
 .header-reading-menu{
-	font-size: 12px;
+	font-size: 13px;
 	display: table;
 	width: 90%;
 	text-align: center;
@@ -430,6 +430,27 @@ section{
 .header-reading-menu-active{
 	padding-bottom: 2px;
 	border-bottom: 1px solid rgb(255,255,255);
+}
+
+.search-list-tips{
+	font-size: 9px;
+	position: absolute;
+	top: 44px;
+}
+
+
+@media screen and (min-width:400px){
+	#search-menu li #all-result{left: 15.9555555%!important;}
+	#search-menu li #home-result{left: 31.2555555%!important;}
+	#search-menu li #recipe-result{left: 56.9555555%!important;}
+	#search-menu li #skills-result{left: 86.9555555%!important;}
+}
+
+@media screen and (min-width:900px){
+	#search-menu li #all-result{left: 14.1555555%!important;}
+	#search-menu li #home-result{left: 29.1555555%!important;}
+	#search-menu li #recipe-result{left: 53.1555555%!important;}
+	#search-menu li #skills-result{left: 83.1555555%!important;}
 }
 
 .header-reading-menu ul{

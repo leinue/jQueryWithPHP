@@ -1013,7 +1013,7 @@ footer{
 }
 
 .introduction-comment-title ul li:first-child{
-	width: 75%;
+	width: 65%;
 	color: rgb(31,31,31);
 	font-weight: bold;
 	font-size: 15px;
@@ -1359,6 +1359,12 @@ footer{
        font-size: 1.1em;
 
 }
+
+.formula-deleted{
+	text-decoration: line-through;
+	color: rgb(192,192,192)!important;
+}
+
 .formula-juice-list{
 	width: 100%;
 	display: table;

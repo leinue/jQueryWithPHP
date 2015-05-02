@@ -36,7 +36,7 @@
 				</div>
 				<div class="setting-list food-list-detail">
 					<ul>
-						<li childmenu><div>白羊葱<span>1汤勺</span></div></li>
+						<li class="formula-deleted" childmenu><div>白羊葱<span class="formula-deleted">1汤勺</span></div></li>
 						<li childmenu><div class="food-list-detail-name">蒜泥<span>1/2茶勺</span></div></li>
 					</ul>
 				</div>
@@ -89,10 +89,12 @@
 							var childTitle=child['title'];
 							var dosage=child['dosage'];
 							var status=child['status'];
-							childMenuDom+='<li onclick="removeFormula(this,false)" childata='+childID+' recipeid="'+recipeID+'" formulaid='+formulaID+' status='+status+' childmenu="true"><div>'+childTitle+'<span>'+dosage+'</span></div></li>';
+							var formulaDeletedCSS='';
+							if(status=='0'){formulaDeletedCSS='class="formula-deleted"';}
+							childMenuDom+='<li onclick="removeFormula(this,false)" childata='+childID+' recipeid="'+recipeID+'" formulaid='+formulaID+' status='+status+' childmenu="true"><div '+formulaDeletedCSS+'>'+childTitle+'<span '+formulaDeletedCSS+'>'+dosage+'</span></div></li>';
 							if(childMenuDom.substring(0,9)=="undefined"){
 								childMenuDom=childMenuDom.substring(9,childMenuDom.length);
-							}	
+							}
 						});
 						childMenuDom='<div class="setting-list food-list-detail"><ul>'+childMenuDom+'</ul></div>';
 						mainMenuDOM='<li recipeid="'+recipeID+'">'+mainMenuDOM+childMenuDom+'</li>';
@@ -154,6 +156,9 @@
 				recipeid=0;
 				removeFromFoodList(recipeid,formulaid);
 			}
+			var thisDIV=this_.find('div');
+			thisDIV.toggleClass('formula-deleted');
+			thisDIV.find('span').toggleClass('formula-deleted');
 		}
 		
 	}

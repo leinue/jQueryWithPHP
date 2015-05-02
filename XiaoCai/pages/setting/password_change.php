@@ -36,7 +36,6 @@
 			backPreviosPage('setting.php');
 		});
 
-
 		$('#confirm-to-change-pw').click(function(){
 			if(!inputInfoIsNull('.change-password-input ul li')){
 				displayALertForm('请完整填写信息');
@@ -44,10 +43,13 @@
 				var originPW=$('.change-password-input ul #setting-list-password-o-input input').val();
 				var newPW=$('.change-password-input ul #setting-list-password-new-input input').val();
 				var confirmPW=$('.change-password-input ul #setting-list-password-confrom-input input').val();
-				console.log(localStorage.tokenID,originPW,newPW,confirmPW);
 				changePassword(localStorage.tokenID,newPW,confirmPW,originPW,function(data){
-					var jsonData=JSON.parse(data);
-					displayALertForm(jsonData['msg']);
+					if(data!=''){
+						var jsonData=JSON.parse(data);
+						displayALertForm(jsonData['msg']);
+					}else{
+						displayALertForm('获取失败,请重试');
+					}
 				});
 			}
 		});

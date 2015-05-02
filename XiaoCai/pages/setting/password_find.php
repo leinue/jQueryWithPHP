@@ -43,8 +43,12 @@
 			var sMobile=$('.change-password-input ul li #find-pw-phone').val();
 			if(checkMobile(sMobile)){
 				sendSms(sMobile,2,function(data){
-					var jsonData=JSON.parse(data);
-					displayALertForm(jsonData['msg']);
+					if(data!=''){
+						var jsonData=JSON.parse(data);
+						displayALertForm(jsonData['msg']);
+					}else{
+						displayALertForm('获取失败,请重试');
+					}
 				});
 			}else{
 				displayALertForm("手机号非法");
@@ -59,8 +63,12 @@
 				var confirmPW=$('.change-password-input ul #setting-list-password-new-input input').val();
 				var verCode=$('.change-password-input ul #setting-list-password-confrom-input input').val();
 				changePassword(localStorage.mobileNum,originPW,confirmPW,verCode,function(data){
-					var jsonData=JSON.parse(data);
-					displayALertForm(jsonData['msg']);
+					if(data!=''){
+						var jsonData=JSON.parse(data);
+						displayALertForm(jsonData['msg']);
+					}else{
+						displayALertForm('获取失败,请重试');
+					}
 				});
 			}
 		});

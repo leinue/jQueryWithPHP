@@ -35,47 +35,56 @@
       	if(currentHref.indexOf('#')!=-1){
       		currentHref=currentHref.split('#')[1];
       		getRecipeInfoFormula(currentHref,function(data){
-            sessionStorage.formulaidList='';
-      			var jsonData=JSON.parse(data);
-            //console.log(jsonData['data'][0]);
-      			if(jsonData['msg']!='成功'){
-      				displayALertForm(jsonData['msg']);
-      			}else{
-      				var formulaList=jsonData['data'];
-      				var formulaHTMLDOM='';
-      				for (var i = 0; i < formulaList.length; i++) {
-      					formulaChild=formulaList[i]['children'];
-      					formulaHTMLDOM+='';
-      					for (var j = 0; j < formulaChild.length; j++) {
-      						formulaHTMLDOM+='<ul><li class="juice-list-li1"><span recipeid="'+currentHref+'" formulaid="'+formulaChild[j]['id']+'" onclick="addToShoppingList(this)" class="glyphicon glyphicon-plus"></span></li><li class="juice-list-li3">'+formulaChild[j]['title']+'</li><li class="juice-list-li3">'+formulaChild[j]['dosage']+'</li><li class="juice-list-li3">'+formulaChild[j]['note']+'</li></ul>';
-      					};
-                sessionStorage.formulaidList+=formulaList[i]['id']+'|';
-      					formulaHTMLDOM='<div id="formula-child-'+formulaList[i]['id']+'" class="formula-juice"><div class="formula-juice-title"><div class="juice-title"><span>'+formulaList[i]['title']+'</span></div></div><div class="formula-juice-list">'+formulaHTMLDOM+'</div></div>';
-      					$('.introduction-page').append(formulaHTMLDOM);
-      				  formulaHTMLDOM='';
-              };
-      			}
+            if(data!=''){
+              sessionStorage.formulaidList='';
+              var jsonData=JSON.parse(data);
+              //console.log(jsonData['data'][0]);
+              if(jsonData['msg']!='成功'){
+                displayALertForm(jsonData['msg']);
+              }else{
+                var formulaList=jsonData['data'];
+                var formulaHTMLDOM='';
+                for (var i = 0; i < formulaList.length; i++) {
+                  formulaChild=formulaList[i]['children'];
+                  formulaHTMLDOM+='';
+                  for (var j = 0; j < formulaChild.length; j++) {
+                    formulaHTMLDOM+='<ul><li class="juice-list-li1"><span recipeid="'+currentHref+'" formulaid="'+formulaChild[j]['id']+'" onclick="addToShoppingList(this)" class="glyphicon glyphicon-plus"></span></li><li class="juice-list-li3">'+formulaChild[j]['title']+'</li><li class="juice-list-li3">'+formulaChild[j]['dosage']+'</li><li class="juice-list-li3">'+formulaChild[j]['note']+'</li></ul>';
+                  };
+                  sessionStorage.formulaidList+=formulaList[i]['id']+'|';
+                  formulaHTMLDOM='<div id="formula-child-'+formulaList[i]['id']+'" class="formula-juice"><div class="formula-juice-title"><div class="juice-title"><span>'+formulaList[i]['title']+'</span></div></div><div class="formula-juice-list">'+formulaHTMLDOM+'</div></div>';
+                  $('.introduction-page').append(formulaHTMLDOM);
+                  formulaHTMLDOM='';
+                };
+              }
+            }else{
+              displayALertForm('获取失败,请重试');
+            }
       		});
       	}else{
       		window.location.href="recipes.php";
       	}
 
-        var formulaIDList=sessionStorage.formulaidList.split('|');
-        formulaIDList=formulaIDList.slice(0,formulaIDList.length-1);
-
+        if(typeof sessionStorage.recipeIDList !='undefined'){
+          var formulaIDList=sessionStorage.formulaidList.split('|');
+          formulaIDList=formulaIDList.slice(0,formulaIDList.length-1);
+        }
+        
         $('.formula-buy ul li .button-add').click(function(){
-          var recipeID=currentHref;
-          formulaIDList.forEach(function(formulaID){
-            addFoodList(recipeID,formulaID,localStorage.tokenID,function(data){
-              if(data!=''){
-                var jsonData=JSON.parse(data);
-                displayALertForm(jsonData['msg']);
-              }else{
-                displayALertForm('加入失败,请重试');
-              }
+          if(typeof formulaIDList != 'undefined'){
+            var recipeID=currentHref;
+            formulaIDList.forEach(function(formulaID){
+              addFoodList(recipeID,formulaID,localStorage.tokenID,function(data){
+                if(data!=''){
+                  var jsonData=JSON.parse(data);
+                  displayALertForm(jsonData['msg']);
+                }else{
+                  displayALertForm('加入失败,请重试');
+                }
+              });
             });
-          });
-          
+          }else{
+            displayALertForm('没有数据可添加');
+          }
         });
 
 </script>

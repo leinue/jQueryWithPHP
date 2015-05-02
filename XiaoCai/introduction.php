@@ -143,28 +143,23 @@
         window.location.href="recipes.php";
       }
 
-      function getCurrentTime(){
-        var myDate = new Date();
-        var month=myDate.getMonth()+1;
-        var date=myDate.getDate();
-        month=(month<10)?'0'+month:month;
-        date=(date<10)?'0'+date:date;
-        return myDate.getFullYear()+'-'+month+'-'+date;
-      }
-
       var flag = false;
       function submitComments(articleid,comments){
         sendComments(1, localStorage.tokenID, articleid, comments,function(data) {
-          var jsonData = JSON.parse(data);
-          displayALertForm(jsonData);
-          if (jsonData['msg'] == '留言成功') {
-            displayALertForm(jsonData['msg']);
-            var usereply='<ul><li><div class="profile-phtot-uploaded"><img width="50" id="user-comment-po" height="50" src="'+localStorage.headimgurl+'"></div></li><li><div class="introduction-comment-title"><ul><li>'+localStorage.nickname+'</li><li>'+getCurrentTime()+'</li></ul></div><div class="introduction-comment-content"><span>'+comments+'</span></div>';
-            $('.introduction-comment').append(usereply);
-            $('html, body').animate({scrollTop: $(document).height()}, 300);
-            flag = true;
-          } else {
-            displayALertForm(jsonData['msg']);
+          if(data!=''){
+            var jsonData = JSON.parse(data);
+            displayALertForm(jsonData);
+            if (jsonData['msg'] == '留言成功') {
+              displayALertForm(jsonData['msg']);
+              var usereply='<ul><li><div class="profile-phtot-uploaded"><img width="50" id="user-comment-po" height="50" src="'+localStorage.headimgurl+'"></div></li><li><div class="introduction-comment-title"><ul><li>'+localStorage.nickname+'</li><li>'+getCurrentTime()+'</li></ul></div><div class="introduction-comment-content"><span>'+comments+'</span></div>';
+              $('.introduction-comment').append(usereply);
+              $('html, body').animate({scrollTop: $(document).height()}, 300);
+              flag = true;
+            } else {
+              displayALertForm(jsonData['msg']);
+            }
+          }else{
+            displayALertForm('获取失败,请重试');
           }
         });
       }

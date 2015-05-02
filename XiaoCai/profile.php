@@ -57,8 +57,12 @@
 				var headimgURL=fileInput.value;
 				var nickname=$('.change-password-input ul #wechat-nickname input').val();
 				changeUserData(tokenID,nickname,headimgURL,function(data){
-					var jsonData=JSON.parse(data);
-					displayALertForm(jsonData['msg']);
+					if(data!=''){
+						var jsonData=JSON.parse(data);
+						displayALertForm(jsonData['msg']);
+					}else{
+						displayALertForm('获取失败,请重试');
+					}
 				});
 			}else{
 				displayALertForm('请完整填写信息');

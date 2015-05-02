@@ -54,28 +54,35 @@
 			case 'logout':
 				var tokenID=localStorage.tokenID;
 				logOut(tokenID,function(data){
-					var jsonData=JSON.parse(data);
-					//console.log(tokenID);
-					displayALertForm(jsonData['msg']);
-					console.log(jsonData);
-					if(jsonData['msg']=='注销成功' || jsonData['msg']=='请重新登陆' || jsonData['msg']=='该账号不存在,请重新登陆'){
-						localStorage.uid='';
-						localStorage.nickname='';
-						localStorage.tokenID='';
-						localStorage.headimgurl='';
-						localStorage.isReply='';
-						localStorage.isLogin=false;
-						displayALertForm('注销成功,2秒后将自动跳转...');
-						setTimeout(function(){
-							location.reload();
-						},2000);
+					if(data!=''){
+						var jsonData=JSON.parse(data);
+						displayALertForm(jsonData['msg']);
+						if(jsonData['msg']=='注销成功' || jsonData['msg']=='请重新登陆' || jsonData['msg']=='该账号不存在,请重新登陆'){
+							localStorage.uid='';
+							localStorage.nickname='';
+							localStorage.tokenID='';
+							localStorage.headimgurl='';
+							localStorage.isReply='';
+							localStorage.isLogin=false;
+							displayALertForm('注销成功,2秒后将自动跳转...');
+							setTimeout(function(){
+								location.reload();
+							},2000);
+						}
+					}else{
+						displayALertForm('获取失败,请重试');
 					}
+					
 				});
 				break;
 			case 'setting':
 				getAbout(function(data){
-					var jsonData=JSON.parse(data);
-					displayALertForm(jsonData['data']);
+					if(data!=''){
+						var jsonData=JSON.parse(data);
+						displayALertForm(jsonData['data']);
+					}else{
+						displayALertForm('获取失败,请重试');
+					}
 				});
 				break;
 			default:

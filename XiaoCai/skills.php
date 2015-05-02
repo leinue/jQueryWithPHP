@@ -32,13 +32,18 @@
 	
 	displayALertForm('正在加载..');
 	getSkillsList(1,10,function(data){
-		var jsonData=JSON.parse(data);
-		if(jsonData['msg']=='成功'){
-			var homeList=jsonData['data'];
-			printReadingList(homeList,'section');
+		if(data!=''){
+			var jsonData=JSON.parse(data);
+			if(jsonData['msg']=='成功'){
+				var homeList=jsonData['data'];
+				printReadingList(homeList,'section');
+			}else{
+				displayALertForm(jsonData['msg']);
+			}
 		}else{
-			displayALertForm(jsonData['msg']);
+			displayALertForm('获取失败,请重试');
 		}
+		
 	});
 
 </script>

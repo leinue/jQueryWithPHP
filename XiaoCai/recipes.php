@@ -111,7 +111,8 @@
 		
 		displayALertForm('正在加载...');
 		getRecipeClassify(function(data){
-			var jsonData=JSON.parse(data);
+			if(data!=''){
+				var jsonData=JSON.parse(data);
 				if(jsonData['msg']=='成功'){
 					$('.nav-recipe-menu ul li #recipe-menu-name-first').html(jsonData['data'][0]['title']);
 					$('.nav-recipe-menu ul li #recipe-menu-name-second').html(jsonData['data'][1]['title']);
@@ -145,6 +146,10 @@
 				}else{
 					displayALertForm(jsonData['msg']);
 				}
+			}else{
+				displayALertForm('获取失败,请重试');
+			}
+			
 		});
 
 		function dsiplayRecipePost(data){
@@ -164,7 +169,11 @@
 		}
 	
 		getRecipeList(10,1,10,function(data){
-			dsiplayRecipePost(data);
+			if(data!=''){
+				dsiplayRecipePost(data);
+			}else{
+				displayALertForm('获取失败,请重试');
+			}
 		});
 	
 		function handleSlidedownMenuEvent(obj,which){

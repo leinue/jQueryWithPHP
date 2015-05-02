@@ -163,6 +163,37 @@
 			docIsMoved=0;
 		}
 
+		function getCurrentTime(){
+	        var myDate = new Date();
+	        var month=myDate.getMonth()+1;
+	        var date=myDate.getDate();
+	        month=(month<10)?'0'+month:month;
+	        date=(date<10)?'0'+date:date;
+	        return myDate.getFullYear()+'-'+month+'-'+date;
+      	}
+
+      	function formatDate(date){
+      		var nowadays=getCurrentTime();
+			var LSTR_ndate=nowadays.split('-');
+			var LSTR_Year=LSTR_ndate[0]; 
+			var LSTR_Month=LSTR_ndate[1]; 
+			var LSTR_Date=LSTR_ndate[2];
+			var uom = new Date(LSTR_Year,LSTR_Month,LSTR_Date);
+			uom.setDate(uom.getDate()-1);
+			var LINT_MM=uom.getMonth(); 
+			LINT_MM++; 
+			var LSTR_MM=LINT_MM > 10?LINT_MM:("0"+LINT_MM);
+			var LINT_DD=uom.getDate();
+			var LSTR_DD=LINT_DD > 10?LINT_DD:("0"+LINT_DD);
+			uom = uom.getFullYear() + "-" + LSTR_MM + "-" + LSTR_DD; 
+			var globalDateList=[getCurrentTime(),uom];
+			if(date==globalDateList[0]){
+				return '今天';
+			}else if(date==globalDateList[1]){
+				return '昨天';
+			}
+      	}
+
 		/*********************************AJAX请求*********************************/
 
 		var rootURL="curl/";
@@ -665,7 +696,7 @@
 				paperTitle=cutReadingListTitle(paperTitle);
 				changeFontSizeCSS=changeReadingListSize(papaerContent);
 				papaerContent=cutReadingListPaper(papaerContent);
-				homeListHtmlDOM+='<div ref="monograph.php#'+homeList[i]['id']+'#type2" onclick="locateToIntroduction(this)" id="skills-'+homeList[i]['id']+'" class="reading-list-a"><div class="reading-list-img"><img src="'+homeList[i]['image']+'"></div><div class="reading-list-all-content"><div class="reading-list-all-title '+changeFontSizeCSS+'"><p>'+paperTitle+'</p></div><div class="reading-list-all-summary"><p>'+papaerContent+'</p></div></div><div class="reading-list-all-footer"><ul><li><span class="glyphicon glyphicon-bookmark"></span> 玩转厨房</li><li><span class="glyphicon glyphicon-time"></span> '+homeList[i]['created_time'].split(' ')[0]+'</li></ul></div></div>';
+				homeListHtmlDOM+='<div ref="monograph.php#'+homeList[i]['id']+'#type2" onclick="locateToIntroduction(this)" id="skills-'+homeList[i]['id']+'" class="reading-list-a"><div class="reading-list-img"><img src="'+homeList[i]['image']+'"></div><div class="reading-list-all-content"><div class="reading-list-all-title '+changeFontSizeCSS+'"><p>'+paperTitle+'</p></div><div class="reading-list-all-summary"><p>'+papaerContent+'</p></div></div><div class="reading-list-all-footer"><ul><li><span class="glyphicon glyphicon-bookmark"></span> 玩转厨房</li><li><span class="glyphicon glyphicon-time"></span> '+formatDate(homeList[i]['created_time'].split(' ')[0])+'</li></ul></div></div>';
 			};
 			$(elem).append(homeListHtmlDOM+'<div class="padding-div-row"></div>');
 		}

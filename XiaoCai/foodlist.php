@@ -37,12 +37,14 @@
 				displayALertForm('读取成功,正在加载...');
 				var foodList=jsondata['data'];
 				if(foodList!=''){
+					sessionStorage.recipeIDList='';
 					foodList.forEach(function(e){
 						var recipeID=e['recipe_id'];
 						var recipeTitle=e['recipe_title'];
 						var recipeChildren=e['children'];
 						var mainMenuDOM='<div mainmenu onclick="toggleRecipeMenu(this)" recipeid="'+recipeID+'" class="food-list-title"><a href="javascript:void(0)">'+recipeTitle+'</a><span class="glyphicon glyphicon-menu-right"></span><span recipeid="'+recipeID+'" onclick="removeFormula(this,true)" class="glyphicon glyphicon-remove"></span></div>';
 						var childMenuDom;
+						sessionStorage.recipeIDList+=recipeID+'|';
 						recipeChildren.forEach(function(child){
 							var childID=child['recipe_id'];
 							var formulaID=child['formula_id'];
@@ -114,11 +116,10 @@
 				addToShoppingList(this_);
 			}else{
 				recipeid=0;
-				removeFromFoodList(recipeid,formulaid);
+				var thisDIV=this_.find('div');
+				thisDIV.toggleClass('formula-deleted');
+				thisDIV.find('span').toggleClass('formula-deleted');
 			}
-			var thisDIV=this_.find('div');
-			thisDIV.toggleClass('formula-deleted');
-			thisDIV.find('span').toggleClass('formula-deleted');
 		}
 	}
 
@@ -135,8 +136,22 @@
 		}
 	});
 
-	$('.food-list-detail ul li[childmenu]').click(function(){
+	if(typeof sessionStorage.recipeIDList !='undefined'){
+		var recipeIDList=sessionStorage.recipeIDList.split('|');
+   		recipeIDList=recipeIDList.slice(0,recipeIDList.length-1);
+   		console.log(recipeIDList);
+	}
 
+	$('.nav-content ul .delete-all').click(function(){
+		if(typeof recipeIDList!='undefined'){
+			displayALertForm('正在为您清空购物清单...');
+			recipeIDList.forEach(function(rid){
+				removeFromFoodList(rid,0);
+				$('.food-list ul li').fadeOut();
+			});
+		}else{
+			displayALertForm('没有数据可清空');
+		}
 	});
 </script>
 

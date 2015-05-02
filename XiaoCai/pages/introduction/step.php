@@ -53,23 +53,28 @@
       	if(currentHref.indexOf('#')!=-1){
       		currentHref=currentHref.split('#')[1];
       		getRecipeInfoSteps(currentHref,function(data){
-      			var jsonData=JSON.parse(data);
-      			if(jsonData['msg']!='成功'){
-      				displayALertForm(jsonData['msg']);
+      			if(data!=''){
+					var jsonData=JSON.parse(data);
+	      			if(jsonData['msg']!='成功'){
+	      				displayALertForm(jsonData['msg']);
+	      			}else{
+	      				var recipeSteps=jsonData['data']['steps'];
+	      				var recipeTips=jsonData['data']['tips'];
+	      				var recipeRecommended=jsonData['data']['recommended'];
+	      				if(recipeSteps!=''){
+	      					loadSteps(recipeSteps);
+	      				}else if(recipeTips!=''){
+	      					loadTips(recipeTips);
+	      				}else if(recipeRecommended!=''){
+	      					loadRecommended(recipeRecommended);
+	      				}else{
+	      					displayNoData('再怎么找也没有啦');
+	      				}
+	      			}
       			}else{
-      				var recipeSteps=jsonData['data']['steps'];
-      				var recipeTips=jsonData['data']['tips'];
-      				var recipeRecommended=jsonData['data']['recommended'];
-      				if(recipeSteps!=''){
-      					loadSteps(recipeSteps);
-      				}else if(recipeTips!=''){
-      					loadTips(recipeTips);
-      				}else if(recipeRecommended!=''){
-      					loadRecommended(recipeRecommended);
-      				}else{
-      					displayNoData('再怎么找也没有啦');
-      				}
-      			}
+					displayALertForm('获取失败,请重试');
+				}
+      			
       		});
       	}else{
       		window.location.href="recipes.php";

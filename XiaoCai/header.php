@@ -670,6 +670,21 @@
 			$(elem).append(homeListHtmlDOM+'<div class="padding-div-row"></div>');
 		}
 
+		function addToShoppingList(obj){
+			var this_=$(obj);
+			recipedID=this_.attr('recipeid');
+			formulaID=this_.attr('formulaid');
+	        displayALertForm('正在为您加入采购清单...');
+	        addFoodList(recipedID,formulaID,localStorage.tokenID,function(data){
+	          if(data!=''){
+	            var jsonData=JSON.parse(data);
+	            displayALertForm(jsonData['msg']);
+	          }else{
+	            displayALertForm('加入失败,请重试');
+	          }
+	        });
+      	}
+
 		/*********************************DOM操作**********************************/		
 
 		/*******************************全局变量区域*******************************/

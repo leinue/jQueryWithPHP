@@ -76,7 +76,7 @@
 			}else{
 				displayALertForm('读取成功,正在加载...');
 				var foodList=jsondata['data'];
-				if(foodList==''){
+				if(foodList!=''){
 					foodList.forEach(function(e){
 						var recipeID=e['recipe_id'];
 						var recipeTitle=e['recipe_title'];
@@ -100,7 +100,7 @@
 						mainMenuDOM='';
 					});
 				}else{
-					dsiplayNoData('再怎么找也没有啦');
+					displayNoData('再怎么找也没有啦');
 				}
 			}
 		}
@@ -119,16 +119,11 @@
 		}
 	}
 
-	function removeFormula(obj,isAll){
-		displayALertForm('正在为您删除...');
-		var this_=$(obj);
-		var recipeid.this_.attr('recipeid');;
-		var formulaid;
-		if(isAll){formulaid=0;}else{formulaid=this_.attr('formulaid');}
+	function removeFromFoodList(recipeid,formulaid){
 		deleteFoodList(recipeid,formulaid,localStorage.tokenID,function(data){
 			if(data!=''){
 				var jsondata=JSON.parse(data);
-				if(jsondata['msg']='删除成功'){
+				if(jsondata['msg']=='删除成功'){
 					displayALertForm(jsondata['msg']);
 					var thisParent=this_.parent().parent();
 					if(thisParent.attr('recipeid')==recipeid){
@@ -141,6 +136,26 @@
 				displayALertForm('删除失败,请重试');
 			}
 		});
+	}
+
+	function removeFormula(obj,isAll){
+		displayALertForm('正在为您删除...');
+		var this_=$(obj);
+		var recipeid=this_.attr('recipeid');
+		var formulaid;
+		if(isAll){
+			formulaid=0;
+			removeFromFoodList(recipeid,formulaid);
+		}else{
+			formulaid=this_.attr('formulaid');
+			if(this_.attr('status')=='0'){
+				addToShoppingList(this_);
+			}else{
+				recipeid=0;
+				removeFromFoodList(recipeid,formulaid);
+			}
+		}
+		
 	}
 
 	$('.food-list ul li div[mainmenu]').on('click',function(){

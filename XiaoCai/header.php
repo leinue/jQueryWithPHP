@@ -196,6 +196,8 @@
 			}
       	}
 
+      	function isUserAtBottom(){return ($(window).height()+$(window).scrollTop())>=$(document).height();}
+
 		/*********************************AJAX请求*********************************/
 
 		var rootURL="curl/";

@@ -194,6 +194,12 @@
 			});
 		}
 
+		function handleRecipesPagination(){
+			
+		}
+
+		$(window).scroll(handleRecipesPagination);
+
 </script>
 
 <?php include('footer.php'); ?>

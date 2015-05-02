@@ -25,14 +25,9 @@
 			}
 		);
 
-		function isUserAtBottom(){
-			return (($(document).height()-$(window).height())-$(window).scrollTop())<=60 ? true:false;
-		}
-
 		//处理底部菜单滑动事件,若用户滑动到底部则自动隐藏
 		function handleFooterEvent(){
-			//console.log($(window).scrollTop());
-			if(($(window).height()+$(window).scrollTop())>=$(document).height()){
+			if(isUserAtBottom()){
 				if(footerIsDisplayed){
 					
 				}else{

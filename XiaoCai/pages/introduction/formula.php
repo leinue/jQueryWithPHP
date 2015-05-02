@@ -11,12 +11,6 @@
 
 <script type="text/javascript">
 
-        $('#formula-buy-img').click(function(){
-            $('#formula-add').css('display','block');
-            $('#formula-add').css({           
-                 }).show(300).delay(2000).hide(300);  
-        });
-
         $('.formula-buy ul li:last-child').click(function(){
         	$('.formula-juice').slideToggle();
         	if($(this).find('span').attr('class').split(' ')[1]=='glyphicon-menu-up'){
@@ -49,7 +43,7 @@
                   formulaHTMLDOM+='';
                   for (var j = 0; j < formulaChild.length; j++) {
                     formulaHTMLDOM+='<ul><li class="juice-list-li1"><span recipeid="'+currentHref+'" formulaid="'+formulaChild[j]['id']+'" onclick="addToShoppingList(this)" class="glyphicon glyphicon-plus"></span></li><li class="juice-list-li3">'+formulaChild[j]['title']+'</li><li class="juice-list-li3">'+formulaChild[j]['dosage']+'</li><li class="juice-list-li3">'+formulaChild[j]['note']+'</li></ul>';
-                  };
+                  }
                   sessionStorage.formulaidList+=formulaList[i]['id']+'|';
                   formulaHTMLDOM='<div id="formula-child-'+formulaList[i]['id']+'" class="formula-juice"><div class="formula-juice-title"><div class="juice-title"><span>'+formulaList[i]['title']+'</span></div></div><div class="formula-juice-list">'+formulaHTMLDOM+'</div></div>';
                   $('.introduction-page').append(formulaHTMLDOM);

@@ -97,7 +97,7 @@
         var officalReply;
         var username;
         commentsList.forEach(function(e){
-          username=e['username']==''?'[读取失败]':e['username'];
+          username=e['username']==''?'[undefined]':e['username'];
           usereply='<ul><li><div class="profile-phtot-uploaded"><img width="50" id="user-comment-po" height="50" src="'+e['headimgurl']+'"></div></li><li><div class="introduction-comment-title"><ul><li>'+username+'</li><li>'+e['created_time']+'</li></ul></div><div class="introduction-comment-content"><span>'+e['content']+'</span></div>';
           if(e['reply_username']==null){
             officalReply='';

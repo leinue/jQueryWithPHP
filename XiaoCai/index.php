@@ -42,12 +42,13 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 
-		displayALertForm('正在加载...');
-		getHome(1,10,function(data){
-			if(data!=''){
-				var jsonData=JSON.parse(data);
-				if(jsonData['msg']=='成功'){
-					var homeList=jsonData['data']['list'];
+		var homeDefaultPage=1;
+		var homeDefaultPageLimit=10;
+
+		function loadHomeArticle(jsonData){
+			if(jsonData!=homeDefaultPage){
+				var homeList=jsonData['data']['list'];
+				if(homeList!=''){
 					var homeListHtmlDOM="";
 					for (var i = 0; i < homeList.length; i++) {
 						if(homeList[i]['is_vip']!=null){
@@ -67,13 +68,39 @@
 					};
 					$('section').append(homeListHtmlDOM+'<div class="padding-div-row"></div>');
 				}else{
-					displayALertForm(jsonData['msg']);
+					displayALertForm('没有数据了');
 				}
 			}else{
-				displayALertForm('获取失败,请重试');
+					displayALertForm('没有数据了');
 			}
-		});
+		}
 
+		function loadHomeSlide(jsonData){
+
+		}
+
+		displayALertForm('正在加载...');
+
+		function loadHomeList(page,limit,slide){
+			getHome(page,limit,function(data){
+				if(data!=''){
+					var jsonData=JSON.parse(data);
+					if(jsonData['msg']=='成功'){
+						if(slide){
+							loadHomeSlide(jsonData);
+						}
+						loadHomeArticle(jsonData);
+					}else{
+						displayALertForm(jsonData['msg']);
+					}
+				}else{
+					displayALertForm('获取失败,请重试');
+				}
+			});
+		}
+
+		loadHomeList(homeDefaultPage,homeDefaultPageLimit,true);
+		
 		$('.banner ul li').click(function(){
 			var typeID=$(this).attr('id');
 			typeID=typeID.split('-')[1];
@@ -89,6 +116,15 @@
 				}
 			}
 		});
+
+		function handleHomePagination(){
+			if(isUserAtBottom()){
+				displayALertForm('加载中...');
+				loadHomeArticle(++homeDefaultPage,homeDefaultPageLimit,false);
+			}	
+		}
+
+		$(window).scroll(handleHomePagination);
 	});
 	
 </script>

@@ -60,7 +60,6 @@
 							paperTitle=cutReadingListTitle(paperTitle);
 							changeFontSizeCSS=changeReadingListSize(papaerContent);
 							papaerContent=cutReadingListPaper(papaerContent);
-							console.log(homeList[i]);
 							homeListHtmlDOM+='<div ref="monograph.php?id='+homeList[i]['id']+'&type='+homeList[i]['type']+'" onclick="locateToIntroduction(this)" id="skills-'+homeList[i]['id']+'" class="reading-list-a"><div style="background:url('+homeList[i]['image']+') no-repeat scroll center center transparent;background-size:cover;" class="reading-list-img"></div><div class="reading-list-all-content"><div class="reading-list-all-title '+changeFontSizeCSS+'"><p>'+paperTitle+'</p></div><div class="reading-list-all-summary"><p>'+papaerContent+'</p></div></div><div class="reading-list-all-footer"><ul><li><span class="glyphicon glyphicon-bookmark"></span> 玩转厨房</li><li><span class="glyphicon glyphicon-time"></span> '+formatDate(homeList[i]['created_time'].split(' ')[0])+'</li></ul></div></div>';
 						}
 					};
@@ -76,7 +75,6 @@
 		function loadHomeSlide(jsonData){
 			jsonData.forEach(function(slide){
 				var slideHTMLDOM='<li id="slide-'+slide['id']+'" style="background-image: url('+slide['image']+');"></li>';
-				console.log(slideHTMLDOM);
 				$('.banner ul').append(slideHTMLDOM);
 			});
 		}

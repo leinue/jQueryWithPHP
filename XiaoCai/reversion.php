@@ -13,48 +13,6 @@
 	<div class="reversion-page-content">
 		
 	</div>
-	<div class="reading-list-a reversion-list-a reversion-new">
-		<div class="reading-list-img reversion-list-img">
-			<img src="http://www.webmaster5u.com/upfiles/file/201107/20110723234012108.jpg">
-		</div>
-		<div class="reversion-whole">
-			<div class="reversion-list-all-content">
-				<div class="reversion-list-all-title">
-					<p>菜谱炸鸡配酸奶酱菜谱炸鸡配酸配</p>
-				</div>
-			</div>
-			<div class="reading-list-all-foot">
-				<div class="reversion-list-foot-table">
-					<ul>
-						<li><span class="glyphicon glyphicon-bookmark"></span> 食谱</li>
-						<li><span class="glyphicon glyphicon-time"></span> 2015-05-03</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<div class="reversion-right">NEW</div>
-	</div>
-
-	<div class="reading-list-a reversion-list-a reversion-looked">
-		<div class="reading-list-img reversion-list-img">
-			<img src="http://www.webmaster5u.com/upfiles/file/201107/20110723234012108.jpg">
-		</div>
-		<div class="reversion-whole">
-			<div class="reversion-list-all-content">
-				<div class="reversion-list-all-title">
-					<p>菜谱炸鸡配酸奶酱菜谱炸鸡配酸配</p>
-				</div>
-			</div>
-			<div class="reading-list-all-foot">
-				<div class="reversion-list-foot-table">
-					<ul>
-						<li><span class="glyphicon glyphicon-bookmark"></span> 食谱</li>
-						<li><span class="glyphicon glyphicon-time"></span> 2015-05-03</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
 
 	<div class="loading">
 		<div class="loading-main"><span class="glyphicon glyphicon-option-horizontal"></span><span class="glyphicon glyphicon-option-horizontal"></span></div>
@@ -70,22 +28,25 @@
 	});
 
 	displayALertForm('正在加载...');
-	/*getReply(localStorage.tokenID,function(data){
+	getReply(localStorage.tokenID,function(data){
 		if(data!=''){
 			var jsonData=JSON.parse(data);
 			var replyList=jsonData['data'];
 			var replyListHTMLDom='';
 			if(replyList!=null || replyList!='' || replyList!='null'){
+				var reversionStatus;
+				var reversionTips;
 				for (var i = 0; i < replyList.length; i++) {
 					if(replyList[i]['status']==='1'){
 						//新信息
-						console.log(replyList[i]);
-						replyListHTMLDom+='<div class="reading-list-a reversion-list-a reversion-new"><div style="background:url('+replyList[i]['article_image']+') no-repeat scroll center center transparent;background-size:cover;" class="reading-list-img reversion-list-img"></div><div class="reading-list-all-content"><div class="reading-list-all-title reversion-looked"><p>'+replyList[i]['article_title']+'</p></div></div><div class="reading-list-all-footer"><ul><li><span class="glyphicon glyphicon-bookmark"></span> '+replyType[parseInt(replyList[i]['type'])-1]+'</li><li><span class="glyphicon glyphicon-time"></span> '+replyList[i]['created_time'].split(' ')[0]+'</li></ul></div></div>';
+						reversionStatus='reversion-new';
+						reversionTips='<div class="reversion-right">NEW</div>';
 					}else{
 						//已读信息
-						console.log(replyList[i]['article_image']);
-						replyListHTMLDom+='<div class="reading-list-a reversion-list-a"><div style="background:url('+replyList[i]['article_image']+') no-repeat scroll center center transparent;background-size:cover;" class="reading-list-img reversion-list-img"></div><div class="reading-list-all-content"><div class="reading-list-all-title reversion-looked"><p>'+replyList[i]['article_title']+'</p></div></div><div class="reading-list-all-footer"><ul><li><span class="glyphicon glyphicon-bookmark"></span> '+replyType[parseInt(replyList[i]['type'])-1]+'</li><li><span class="glyphicon glyphicon-time"></span> '+replyList[i]['created_time'].split(' ')[0]+'</li></ul></div></div>';
+						reversionStatus='reversion-looked';
+						reversionTips='';
 					}
+					replyListHTMLDom+='	<div class="reading-list-a reversion-list-a '+reversionStatus+'"><div style="background:url('+replyList[i]['article_image']+') no-repeat scroll center center transparent;background-size:cover;" class="reading-list-img reversion-list-img"></div><div class="reversion-whole"><div class="reversion-list-all-content"><div class="reversion-list-all-title"><p>'+replyList[i]['article_title']+'</p></div></div><div class="reading-list-all-foot"><div class="reversion-list-foot-table"><ul><li><span class="glyphicon glyphicon-bookmark"></span> '+replyType[parseInt(replyList[i]['type'])-1]+'</li><li><span class="glyphicon glyphicon-time"></span> '+formatDate(replyList[i]['created_time'].split(' ')[0])+'</li></ul></div></div></div>'+reversionTips+'</div>';
 				};	
 			}else{
 				displayALertForm('暂时没有消息喔');
@@ -95,7 +56,7 @@
 		}else{
 			displayALertForm('获取失败,请重试');
 		}
-	});*/
+	});
 
 	$('section').css('marginTop',$('header').height()+10);
 </script>

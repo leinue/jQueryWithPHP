@@ -185,6 +185,7 @@
       $('.vip-menu ul li:nth-child(2)').attr('articleid',articleID);
 
       $('.recipes-introduction-footer ul li').click(function(){
+        displayALertForm('正在努力加载,请稍候...',4000);
         var _this=$(this);
         var type=_this.find('span').attr('id');
         var elm;

@@ -84,6 +84,7 @@
 
 	function handleReversionList(){
 		if(isUserAtBottom()){
+			displayALertForm('正在加载...');
 			loadReversionList(jsonReplyList);
 		}
 	}

@@ -44,16 +44,20 @@
 		isIndex=false;
 		switch(elemID[2]){
 			case 'password':
+				displayALertForm('正在努力加载,请稍候...');
 				loadPagesA('pages/setting/password_change.php','body');
 				break;
 			case 'fpassword':
+				displayALertForm('正在努力加载,请稍候...');
 				loadPagesA('pages/setting/password_find.php','body');
 				break;
 			case 'profile':
+				displayALertForm('正在努力加载,请稍候...');
 				loadPagesA('profile.php','body');
 				break;
 			case 'logout':
 				var tokenID=localStorage.tokenID;
+				displayALertForm('正在为您注销,请稍候...');
 				logOut(tokenID,function(data){
 					if(data!=''){
 						var jsonData=JSON.parse(data);

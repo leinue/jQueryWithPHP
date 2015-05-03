@@ -574,7 +574,6 @@ section{
 
 .reversion-looked{
 	color: rgb(168,168,168);
-	height: 80px;
 }
 
 .reversion-whole{
@@ -582,6 +581,10 @@ section{
 	width: 80%;
 	padding-top: 10px;
 	padding-bottom: 10px;
+}
+
+.reversion-looked .reversion-whole{
+	width: 100%;
 }
 
 .reversion-right{
@@ -594,14 +597,14 @@ section{
 	padding-bottom: 30px;
 }
 
-.reversion-new .reversion-list-all-content{
+.reversion-list-all-content{
 	float: none;
 	margin-left:102px;
 	padding: 0px 0px 10px 10px;
 	height: 70px;
 }
 
-.reversion-new .reading-list-all-foot{
+.reading-list-all-foot{
 	margin-left: 102px;
 	padding-right: 10px;
 }
@@ -623,12 +626,12 @@ section{
 	margin-right: 15px;
 }
 
-.reversion-new .reversion-list-foot-table ul li:first-child{
+.reversion-list-foot-table ul li:first-child{
 	padding-left: 10px;
 	text-align: left;
 }
 
-.reversion-new .reversion-list-foot-table ul li:last-child{
+.reversion-list-foot-table ul li:last-child{
 	text-align: right;
 }
 

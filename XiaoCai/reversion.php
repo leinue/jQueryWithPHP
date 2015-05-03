@@ -20,7 +20,7 @@
 		<div class="reversion-whole">
 			<div class="reversion-list-all-content">
 				<div class="reversion-list-all-title">
-					<p>菜谱炸鸡配酸奶酱菜谱炸鸡配酸配酸奶</p>
+					<p>菜谱炸鸡配酸奶酱菜谱炸鸡配酸配</p>
 				</div>
 			</div>
 			<div class="reading-list-all-foot">
@@ -33,6 +33,27 @@
 			</div>
 		</div>
 		<div class="reversion-right">NEW</div>
+	</div>
+
+	<div class="reading-list-a reversion-list-a reversion-looked">
+		<div class="reading-list-img reversion-list-img">
+			<img src="http://www.webmaster5u.com/upfiles/file/201107/20110723234012108.jpg">
+		</div>
+		<div class="reversion-whole">
+			<div class="reversion-list-all-content">
+				<div class="reversion-list-all-title">
+					<p>菜谱炸鸡配酸奶酱菜谱炸鸡配酸配</p>
+				</div>
+			</div>
+			<div class="reading-list-all-foot">
+				<div class="reversion-list-foot-table">
+					<ul>
+						<li><span class="glyphicon glyphicon-bookmark"></span> 食谱</li>
+						<li><span class="glyphicon glyphicon-time"></span> 2015-05-03</li>
+					</ul>
+				</div>
+			</div>
+		</div>
 	</div>
 
 	<div class="loading">

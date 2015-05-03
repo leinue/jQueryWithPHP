@@ -577,8 +577,59 @@ section{
 	height: 80px;
 }
 
-.reversion-new .reading-list-all-footer ul li:last-child{
-	margin-right: 24px;
+.reversion-whole{
+	height: 100%;
+	width: 80%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.reversion-right{
+	border-left: 1px solid rgb(199,199,199);
+	margin-left: 82%;
+	margin-top: -88px;
+	color: rgb(230,0,39);
+	text-align: center;
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+.reversion-new .reversion-list-all-content{
+	float: none;
+	margin-left:102px;
+	padding: 0px 0px 10px 10px;
+	height: 70px;
+}
+
+.reversion-new .reading-list-all-foot{
+	margin-left: 102px;
+	padding-right: 10px;
+}
+
+.reversion-list-foot-table{
+	display: table;
+	color: #C8C8C8;
+	font-size: 10px;
+	width: 100%;
+}
+
+.reversion-list-foot-table ul{
+	list-style: none;
+	display: table-row;
+}
+
+.reversion-list-foot-table ul li{
+	display: table-cell;
+	margin-right: 15px;
+}
+
+.reversion-new .reversion-list-foot-table ul li:first-child{
+	padding-left: 10px;
+	text-align: left;
+}
+
+.reversion-new .reversion-list-foot-table ul li:last-child{
+	text-align: right;
 }
 
 .reversion-new-flag{

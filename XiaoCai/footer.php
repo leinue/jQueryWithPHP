@@ -2,7 +2,7 @@
 <footer>
 	<div class="main-footer">
 		<ul>
-			<li id="footer-menu-index"><img src="images/index.png"><span>晓菜</span></li>
+			<li id="footer-menu-index" class="main-footer-active"><img src="images/index.png"><span>晓菜</span></li>
 			<li id="footer-menu-recipes"><img src="images/recipes.png"><span>一手好菜</span></li>
 			<li id="footer-menu-skills"><img src="images/skills.png"><span>玩转厨房</span></li>
 			<!--<li id="footer-menu-review"><img src="images/review.png">测评</li>-->		
@@ -136,15 +136,11 @@
 
 		$('.main-footer ul li').click(function(){
 			displayALertForm('正在为您跳转,请稍候...');
-			var this_=$(this);
-			var thisImg=this_.find('img');
-			var pageName=this_.attr('id').split('-')[2];
-			var imgsrc=thisImg.attr('src');
-			var imgsrcArray=imgsrc.split('.');
-			var imgsrcNoExtension=imgsrcArray[0];
-			var imgsrcExtension=imgsrcArray[1];
-			thisImg.attr('src',imgsrcNoExtension+'_active.'+imgsrcExtension);
-			window.location.href=pageName+'.php';
+			var this_=$(this);var thisImg=this_.find('img');var pageName=this_.attr('id').split('-')[2];var imgsrc=thisImg.attr('src');
+			var imgsrcArray=imgsrc.split('.');var imgsrcNoExtension=imgsrcArray[0];var imgsrcExtension=imgsrcArray[1];var menuActive=$('.main-footer-active').find('img');
+			var activeName=menuActive.attr('src').split('.')[0];activeName=activeName.split('/')[1];activeName=activeName.split('_')[0]+'.png';
+			menuActive.attr('src','images/'+activeName);$('.main-footer-active').removeClass('min-footer-active');thisImg.attr('src',imgsrcNoExtension+'_active.'+imgsrcExtension);
+			this_.addClass('main-footer-active');window.location.href=pageName+'.php';
 		});
 
 		if(localStorage.isLogin=='true'){
@@ -163,16 +159,9 @@
 
 		function floatMenuCase(){
 			if($(document).scrollTop()>$('header').height()){
-				$('header').css('position','fixed')
-								 .css('opacity','0.9')
-								 .css('top','0px')
-								 .css('width','100%')
-								 .css('z-index','1000');
+				$('header').css('position','fixed').css('opacity','0.9').css('top','0px').css('width','100%').css('z-index','1000');
 			}else{
-				$('header').css('position','fixed')
-								 .css('opacity','1')
-								 .css('top','0px')
-								 .css('width','100%');
+				$('header').css('position','fixed').css('opacity','1').css('top','0px').css('width','100%');
 			}
 		}
 

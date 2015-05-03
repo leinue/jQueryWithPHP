@@ -41,8 +41,6 @@
             </div>
         </div>
 
-
-
   </section>
   <script type="text/javascript">
     $(document).ready(function(){
@@ -65,18 +63,16 @@
           }
         }
 
-        var currentHref=document.location.href;
+        var articleID=getQueryString("id");
+        var tag=getQueryString("type");
         displayALertForm('正在加载...');
-        if(currentHref.indexOf('#')!=-1){
-          articleID=currentHref.split('#')[1];
-          tag = currentHref.split('#')[2];
-          console.log(tag);
-          if(tag=='type2'){
+        if(isQueryValid({articleID,tag})){
+          if(tag=='2'){
             getSkillsInfo(articleID,0,1,10,function(data){
               var jsonData=JSON.parse(data);
               loadSeparateInfo(jsonData);
             });
-          }else if(tag=='type3'){
+          }else if(tag=='3'){
             getHomeInfo(articleID,0,1,10,function(data){
               var jsonData=JSON.parse(data);
               loadSeparateInfo(jsonData);

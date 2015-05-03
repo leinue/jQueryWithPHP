@@ -109,10 +109,9 @@
       }
 
       displayALertForm('正在加载...',1000);
-      var currentHref=document.location.href;
-      if(currentHref.indexOf('#')!=-1){
-        currentHref=currentHref.split('#')[1];
-        getRecipeInfo(currentHref,0,1,10,function(data){
+      var articleID=getQueryString("id");      
+      if(isQueryValid(articleID)){
+        getRecipeInfo(articleID,0,1,10,function(data){
           if(data!=''){
             var jsonData=JSON.parse(data);
             if(jsonData['msg']!='成功'){
@@ -171,11 +170,11 @@
           if (flag == false) {
             var overtime = new Date();
             localStorage.Time = overtime.getMinutes() + 0.50;
-            submitComments(currentHref,scomments);
+            submitComments(articleID,scomments);
           } else if (flag == true) {
             var repeatTime = new Date();
             if (repeatTime.getMinutes() < localStorage.Time) {
-              submitComments(currentHref,scomments);
+              submitComments(articleID,scomments);
               localStorage.Time = repeatTime.getMinutes() + 0.50;
             }
           }
@@ -183,7 +182,7 @@
       });
 
       $('.vip-menu ul li:nth-child(2)').attr('type',1);
-      $('.vip-menu ul li:nth-child(2)').attr('articleid',currentHref);
+      $('.vip-menu ul li:nth-child(2)').attr('articleid',articleID);
 
       $('.recipes-introduction-footer ul li').click(function(){
         var _this=$(this);

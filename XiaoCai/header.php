@@ -201,6 +201,28 @@
 
       	function isUserAtBottom(){return ($(window).height()+$(window).scrollTop())>=$(document).height();}
 
+      	function getQueryString(name){
+		    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+		    var r = window.location.search.substr(1).match(reg);
+		    if(r!=null)return  unescape(r[2]); return null;
+		}
+
+		function isQueryValid(arr){
+			var flag=0,count=0;
+			if(typeof arr =='object'){
+				for(var key in arr){
+					if(arr[key] !=null && arr[key].toString().length>=1){
+						console.log(arr[key]);
+						flag+=1;
+					}
+					count++;
+				}
+				return flag==count;
+			}else{
+				return arr !=null && arr.toString().length>=1;
+			}
+		}
+
 		/*********************************AJAX请求*********************************/
 
 		var rootURL="curl/";
@@ -713,7 +735,7 @@
 				paperTitle=cutReadingListTitle(paperTitle);
 				changeFontSizeCSS=changeReadingListSize(papaerContent);
 				papaerContent=cutReadingListPaper(papaerContent);
-				homeListHtmlDOM+='<div ref="monograph.php#'+homeList[i]['id']+'#type2" onclick="locateToIntroduction(this)" id="skills-'+homeList[i]['id']+'" class="reading-list-a"><div style="background:url('+homeList[i]['image']+') no-repeat scroll center center transparent;background-size:cover;" class="reading-list-img"></div><div class="reading-list-all-content"><div class="reading-list-all-title '+changeFontSizeCSS+'"><p>'+paperTitle+'</p></div><div class="reading-list-all-summary"><p>'+papaerContent+'</p></div></div><div class="reading-list-all-footer"><ul><li><span class="glyphicon glyphicon-bookmark"></span> 玩转厨房</li><li><span class="glyphicon glyphicon-time"></span> '+formatDate(homeList[i]['created_time'].split(' ')[0])+'</li></ul></div></div>';
+				homeListHtmlDOM+='<div ref="monograph.php?id='+homeList[i]['id']+'&type=2" onclick="locateToIntroduction(this)" id="skills-'+homeList[i]['id']+'" class="reading-list-a"><div style="background:url('+homeList[i]['image']+') no-repeat scroll center center transparent;background-size:cover;" class="reading-list-img"></div><div class="reading-list-all-content"><div class="reading-list-all-title '+changeFontSizeCSS+'"><p>'+paperTitle+'</p></div><div class="reading-list-all-summary"><p>'+papaerContent+'</p></div></div><div class="reading-list-all-footer"><ul><li><span class="glyphicon glyphicon-bookmark"></span> 玩转厨房</li><li><span class="glyphicon glyphicon-time"></span> '+formatDate(homeList[i]['created_time'].split(' ')[0])+'</li></ul></div></div>';
 			};
 			$(elem).append(homeListHtmlDOM+'<div class="padding-div-row"></div>');
 		}
@@ -757,7 +779,13 @@
 		var WECHAT_REDIRECT_URI;
 		var WECHAT_SCOPE='snsapi_login';
 		var WECHAT_STATE=Math.ceil(Math.random()*100);
-		
+		var WECHAT_SECRECT;
+		var WECHAT_GET_CODE="https://open.weixin.qq.com/connect/qrconnect?appid="+WECHAT_APPID+"&redirect_uri="+WECHAT_REDIRECT_URI+"&response_type=code&scope="+WECHAT_SCOPE+"&state="+WECHAT_STATE+"#wechat_redirect";
+		var WECHAT_GET_ACCESS_TOKEN="https://api.weixin.qq.com/sns/oauth2/access_token?appid="+WECHAT_APPID+"&secret="+WECHAT_SECRECT+"&code=CODE&grant_type=authorization_code";
+		var WECHAT_REFRESH_TOKEN="https://api.weixin.qq.com/sns/oauth2/refresh_token?appid="+WECHAT_APPID+"&grant_type=refresh_token&refresh_token=REFRESH_TOKEN";
+		var WECHAT_IS_ACCESS_TOKEN_VALID="https://api.weixin.qq.com/sns/auth?access_token=ACCESS_TOKEN&openid=OPENID";
+		var WECHAT_GET_USER_INFO="https://api.weixin.qq.com/sns/userinfo?access_token=ACCESS_TOKEN&openid=OPENID";
+
 		/*******************************全局变量区域*******************************/
 
 	</script>

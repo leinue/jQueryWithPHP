@@ -91,7 +91,7 @@
 
 		$('.wechat-logo').click(function(){
 			displayALertForm('正在为您跳转到微信登录...');
-			window.location.href="https://open.weixin.qq.com/connect/qrconnect?appid="+WECHAT_APPID+"&redirect_uri="+WECHAT_REDIRECT_URI+"&response_type=code&scope="+WECHAT_SCOPE+"&state="+WECHAT_STATE+"#wechat_redirect";
+			window.location.href=WECHAT_GET_CODE;
 		});
 
 	});

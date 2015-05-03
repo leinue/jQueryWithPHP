@@ -25,10 +25,9 @@
 
         var formulaidList=new Array();
 
-      	var currentHref=document.location.href;
-      	if(currentHref.indexOf('#')!=-1){
-      		currentHref=currentHref.split('#')[1];
-      		getRecipeInfoFormula(currentHref,function(data){
+      	var recipeID=getQueryString('id');
+      	if(isQueryValid(recipeID)){
+      		getRecipeInfoFormula(recipeID,function(data){
             if(data!=''){
               sessionStorage.formulaidList='';
               var jsonData=JSON.parse(data);
@@ -42,7 +41,7 @@
                   formulaChild=formulaList[i]['children'];
                   formulaHTMLDOM+='';
                   for (var j = 0; j < formulaChild.length; j++) {
-                    formulaHTMLDOM+='<ul><li class="juice-list-li1"><span recipeid="'+currentHref+'" formulaid="'+formulaChild[j]['id']+'" onclick="addToShoppingList(this)" class="glyphicon glyphicon-plus"></span></li><li class="juice-list-li3">'+formulaChild[j]['title']+'</li><li class="juice-list-li3">'+formulaChild[j]['dosage']+'</li><li class="juice-list-li3">'+formulaChild[j]['note']+'</li></ul>';
+                    formulaHTMLDOM+='<ul><li class="juice-list-li1"><span recipeid="'+recipeID+'" formulaid="'+formulaChild[j]['id']+'" onclick="addToShoppingList(this)" class="glyphicon glyphicon-plus"></span></li><li class="juice-list-li3">'+formulaChild[j]['title']+'</li><li class="juice-list-li3">'+formulaChild[j]['dosage']+'</li><li class="juice-list-li3">'+formulaChild[j]['note']+'</li></ul>';
                   }
                   sessionStorage.formulaidList+=formulaList[i]['id']+'|';
                   formulaHTMLDOM='<div id="formula-child-'+formulaList[i]['id']+'" class="formula-juice"><div class="formula-juice-title"><div class="juice-title"><span>'+formulaList[i]['title']+'</span></div></div><div class="formula-juice-list">'+formulaHTMLDOM+'</div></div>';
@@ -65,7 +64,6 @@
         
         $('.formula-buy ul li .button-add').click(function(){
           if(typeof formulaIDList != 'undefined'){
-            var recipeID=currentHref;
             formulaIDList.forEach(function(formulaID){
               addFoodList(recipeID,formulaID,localStorage.tokenID,function(data){
                 if(data!=''){

@@ -49,10 +49,9 @@
 		}
 
 		displayALertForm('正在加载...',500);
-		var currentHref=document.location.href;
-      	if(currentHref.indexOf('#')!=-1){
-      		currentHref=currentHref.split('#')[1];
-      		getRecipeInfoSteps(currentHref,function(data){
+		var recipeID=getQueryString('id');
+      	if(isQueryValid(recipeID)){
+      		getRecipeInfoSteps(recipeID,function(data){
       			if(data!=''){
 					var jsonData=JSON.parse(data);
 	      			if(jsonData['msg']!='成功'){

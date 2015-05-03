@@ -205,6 +205,16 @@
 
 		var rootURL="curl/";
 
+		function registerOrLoginByWechat(p_openid,p_nickname,p_headimgurl,callback){
+			$.post(
+				rootURL+"weixin.php",
+				{
+					openid:p_mobile,
+					nickname:p_nickname,
+					headimgurl:p_headimgurl
+				},callback);
+		}
+
 		/**
 		* 通过手机号注册用户
 		* @param mobile 手机号
@@ -742,6 +752,11 @@
 		var defaultLimit=10;
 
 		var isIndex=false;
+
+		var WECHAT_APPID;
+		var WECHAT_REDIRECT_URI;
+		var WECHAT_SCOPE='snsapi_login';
+		var WECHAT_STATE=Math.ceil(Math.random()*100);
 		
 		/*******************************全局变量区域*******************************/
 

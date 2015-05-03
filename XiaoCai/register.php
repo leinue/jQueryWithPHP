@@ -21,7 +21,7 @@
 		<ul>
 			<li id="setting-list-phone-num-input">
 				<input id="reg-mobile" type="tel" max="11" placeholder="手机号" />
-				<a class="button button-caution button-pill button-small send-ver-code">发送验证码</a>
+				<a style="color:#FFF" class="button button-caution button-pill button-small send-ver-code">发送验证码</a>
 			</li>
 			<li id="setting-list-password-o-input"><input type="password" placeholder="登录密码" /></li>
 			<li id="setting-list-password-new-input" class="setting-list-second"><input type="password" placeholder="确认密码" /></li>
@@ -88,6 +88,11 @@
 		});
 
 		$('section').css('marginTop',$('header').height()+50);
+
+		$('.wechat-logo').click(function(){
+			displayALertForm('正在为您跳转到微信登录...');
+			window.location.href="https://open.weixin.qq.com/connect/qrconnect?appid="+WECHAT_APPID+"&redirect_uri="+WECHAT_REDIRECT_URI+"&response_type=code&scope="+WECHAT_SCOPE+"&state="+WECHAT_STATE+"#wechat_redirect";
+		});
 
 	});
 

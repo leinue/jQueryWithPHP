@@ -32,22 +32,12 @@
 				if(footerIsDisplayed){
 					
 				}else{
-					$('footer').css({
-						'position':'relative',
-						'top':$('.main-page').height(),
-						'height':footerHeight
-					});
+					$('.main-page').css({'padding-bottom':'70px'});
 					footerIsDisplayed=true;
 				}
 			}else{
 				if($(window).scrollTop()==0){
-					$('footer').css({
-						'position':'fixed',
-						'bottom':'0',
-						'left':'0',
-						'top':'auto',
-						'height':'auto'
-					});
+					$('.main-page').css({'padding-bottom':'0px'});
 					footerIsDisplayed=false;
 				}
 			}
@@ -207,7 +197,10 @@
 		window.location.href=ref;
 	}
 
-	$('.search-form input').focus(function(){$('.nav-content ul li .search-input-icon').hide();});
+	$('.search-form input').focus(function(){
+		$('.nav-content ul li .search-input-icon').hide();
+
+	});
 	$('.search-form input').blur(function(){$('.nav-content ul li .search-input-icon').show();});
 	//$('html:not(div)').click(function(){$('footer').slideToggle();});
 

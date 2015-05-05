@@ -212,13 +212,6 @@
 			if(isUserAtBottom()){
 				displayALertForm('加载中...');
 				loadRecipesList(currentRecipesType,++defaultPage,defaultLimit,false);
-				$('footer').css({
-					'position':'fixed',
-					'bottom':'0',
-					'left':'0',
-					'top':'auto',
-					'height':'auto'
-				});
 			}
 		}
 

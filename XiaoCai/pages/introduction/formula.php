@@ -58,7 +58,7 @@
       	}
 
         if(typeof sessionStorage.formulaIDList !='undefined'){
-          var formulaIDList=sessionStorage.formulaidList.split('|');
+          var formulaIDList=sessionStorage.formulaIDList.split('|');
           formulaIDList=formulaIDList.slice(0,formulaIDList.length-1);
         }
         

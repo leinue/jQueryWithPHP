@@ -14,7 +14,7 @@
     </nav>
   </header>
 
-<section>
+<section class="introduction-main-section">
 <div class="introduction-page">
     <div class="vip-enjoy vip-enjoy-padding">
       <div class="vip-video">
@@ -212,9 +212,9 @@
 
       function handleRecipesFooterEvent(){
           if(isUserAtBottom()){
-            $('.recipes-introduction-footer').css('position','relative');
+            $('.introduction-main-section').css('margin-bottom','70px');
           }else{
-            $('.recipes-introduction-footer').css('position','fixed');
+            $('.introduction-main-section').css('margin-bottom','0px');
           }
       }
 

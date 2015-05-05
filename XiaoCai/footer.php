@@ -27,16 +27,27 @@
 
 		//处理底部菜单滑动事件,若用户滑动到底部则自动隐藏
 		function handleFooterEvent(){
+			var footerHeight=$('footer').height();
 			if(isUserAtBottom()){
 				if(footerIsDisplayed){
 					
 				}else{
-					$('footer').slideUp();
+					$('footer').css({
+						'position':'absolute',
+						'top':$('.main-page').height(),
+						'height':footerHeight
+					});
 					footerIsDisplayed=true;
 				}
 			}else{
 				if($(window).scrollTop()==0){
-					$('footer').slideDown();
+					$('footer').css({
+						'position':'fixed',
+						'bottom':'0',
+						'left':'0',
+						'top':'auto',
+						'height':'auto'
+					});
 					footerIsDisplayed=false;
 				}
 			}

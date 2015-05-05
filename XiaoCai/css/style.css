@@ -951,11 +951,11 @@ section{
 footer{
 	z-index: 1000;
 	position: fixed;
-	bottom: 0px;
-	left: 0px;
+	bottom: 0;
 	width: 100%;
 	background: rgb(241,241,241);
 	font-size: 12px;
+	color: rgb(100,100,100);
 }
 
 .main-footer{

@@ -210,6 +210,17 @@
         }
       });
 
+      function handleRecipesFooterEvent(){
+          if(isUserAtBottom()){
+            console.log('at bottom');
+            $('.recipes-introduction-footer').css('position','relative');
+          }else{
+            $('.recipes-introduction-footer').css('position','fixed');
+          }
+      }
+
+      $(window).scroll(handleRecipesFooterEvent);
+
     });
 
   </script>

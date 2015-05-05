@@ -1127,6 +1127,8 @@ footer{
   color: rgb(117,115,118);
   margin-top: 20px;
   background: rgb(241,241,241);
+  position: fixed;
+  bottom: 0;
 }
 
 .fixed-pos{

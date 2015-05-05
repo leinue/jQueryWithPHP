@@ -44,7 +44,6 @@
                     formulaHTMLDOM+='<ul><li class="juice-list-li1"><span recipeid="'+recipeID+'" formulaid="'+formulaChild[j]['id']+'" onclick="addToShoppingList(this)" class="glyphicon glyphicon-plus"></span></li><li class="juice-list-li3">'+formulaChild[j]['title']+'</li><li class="juice-list-li3">'+formulaChild[j]['dosage']+'</li><li class="juice-list-li3">'+formulaChild[j]['note']+'</li></ul>';
                   }
                   sessionStorage.formulaIDList+=formulaList[i]['id']+'|';
-                  console.log(sessionStorage.formulaIDList);
                   formulaHTMLDOM='<div id="formula-child-'+formulaList[i]['id']+'" class="formula-juice"><div class="formula-juice-title"><div class="juice-title"><span>'+formulaList[i]['title']+'</span></div></div><div class="formula-juice-list">'+formulaHTMLDOM+'</div></div>';
                   $('.introduction-page').append(formulaHTMLDOM);
                   formulaHTMLDOM='';

@@ -213,7 +213,6 @@
 			if(typeof arr =='object'){
 				for(var key in arr){
 					if(arr[key] !=null && arr[key].toString().length>=1){
-						console.log(arr[key]);
 						flag+=1;
 					}
 					count++;

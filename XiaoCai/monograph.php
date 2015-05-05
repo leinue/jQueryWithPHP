@@ -54,7 +54,6 @@
 
         function loadSeparateInfo(jsonData){
           if(jsonData['msg']=='成功'){
-            console.log(jsonData['data']['info']);
             $('.monograph-img1 img').attr('src',jsonData['data']['info']['big_image']);
             $('.monograph-header ul .header-skillsEvaluating-li #viewer-count').html(jsonData['data']['info']['browse_num']);
             $('.skills-evaluating-title h4').html(jsonData['data']['info']['title']);

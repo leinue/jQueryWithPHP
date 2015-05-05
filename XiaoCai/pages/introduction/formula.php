@@ -29,7 +29,7 @@
       	if(isQueryValid(recipeID)){
       		getRecipeInfoFormula(recipeID,function(data){
             if(data!=''){
-              sessionStorage.formulaidList='';
+              sessionStorage.formulaIDList='';
               var jsonData=JSON.parse(data);
               //console.log(jsonData['data'][0]);
               if(jsonData['msg']!='成功'){
@@ -43,7 +43,8 @@
                   for (var j = 0; j < formulaChild.length; j++) {
                     formulaHTMLDOM+='<ul><li class="juice-list-li1"><span recipeid="'+recipeID+'" formulaid="'+formulaChild[j]['id']+'" onclick="addToShoppingList(this)" class="glyphicon glyphicon-plus"></span></li><li class="juice-list-li3">'+formulaChild[j]['title']+'</li><li class="juice-list-li3">'+formulaChild[j]['dosage']+'</li><li class="juice-list-li3">'+formulaChild[j]['note']+'</li></ul>';
                   }
-                  sessionStorage.formulaidList+=formulaList[i]['id']+'|';
+                  sessionStorage.formulaIDList+=formulaList[i]['id']+'|';
+                  console.log(sessionStorage.formulaIDList);
                   formulaHTMLDOM='<div id="formula-child-'+formulaList[i]['id']+'" class="formula-juice"><div class="formula-juice-title"><div class="juice-title"><span>'+formulaList[i]['title']+'</span></div></div><div class="formula-juice-list">'+formulaHTMLDOM+'</div></div>';
                   $('.introduction-page').append(formulaHTMLDOM);
                   formulaHTMLDOM='';
@@ -57,13 +58,13 @@
       		window.location.href="recipes.php";
       	}
 
-        if(typeof sessionStorage.recipeIDList !='undefined'){
+        if(typeof sessionStorage.formulaIDList !='undefined'){
           var formulaIDList=sessionStorage.formulaidList.split('|');
           formulaIDList=formulaIDList.slice(0,formulaIDList.length-1);
         }
         
         $('.formula-buy ul li .button-add').click(function(){
-          if(typeof formulaIDList != 'undefined'){
+          if(formulaIDList != ''){
             formulaIDList.forEach(function(formulaID){
               addFoodList(recipeID,formulaID,localStorage.tokenID,function(data){
                 if(data!=''){

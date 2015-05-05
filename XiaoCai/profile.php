@@ -53,6 +53,7 @@
 
 		$('#profile-confirm').click(function(){
 			if(inputInfoIsNull('.change-password-input ul li') && fileInput.value!=''){
+				displayALertForm('正在为您处理,请稍候...');
 				var tokenID=localStorage.tokenID;
 				var headimgURL=fileInput.value;
 				var nickname=$('.change-password-input ul #wechat-nickname input').val();

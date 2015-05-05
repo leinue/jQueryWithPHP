@@ -99,7 +99,7 @@
 	}
 
 	function removeFormula(obj,isAll){
-		displayALertForm('正在为您删除...');
+		displayALertForm('正在为您执行操作...');
 		var this_=$(obj);
 		var recipeid=this_.attr('recipeid');
 		var formulaid;

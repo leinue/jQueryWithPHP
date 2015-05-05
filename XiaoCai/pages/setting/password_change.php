@@ -40,6 +40,7 @@
 			if(!inputInfoIsNull('.change-password-input ul li')){
 				displayALertForm('请完整填写信息');
 			}else{
+				displayALertForm('正在为您处理,请稍候...');
 				var originPW=$('.change-password-input ul #setting-list-password-o-input input').val();
 				var newPW=$('.change-password-input ul #setting-list-password-new-input input').val();
 				var confirmPW=$('.change-password-input ul #setting-list-password-confrom-input input').val();

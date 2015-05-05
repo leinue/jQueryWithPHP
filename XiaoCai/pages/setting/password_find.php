@@ -42,6 +42,7 @@
 		$('#findpw-send-vercode').click(function(){
 			var sMobile=$('.change-password-input ul li #find-pw-phone').val();
 			if(checkMobile(sMobile)){
+				displayALertForm('正在为您处理,请稍候...');
 				sendSms(sMobile,2,function(data){
 					if(data!=''){
 						var jsonData=JSON.parse(data);

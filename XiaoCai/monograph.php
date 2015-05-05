@@ -65,8 +65,10 @@
 
         var articleID=getQueryString("id");
         var tag=getQueryString("type");
+        displayALertForm('id='+articleID+',type='+tag);
         displayALertForm('正在加载...');
         if(isQueryValid({articleID,tag})){
+          displayALertForm('验证成功');
           if(tag=='2'){
             getSkillsInfo(articleID,0,1,10,function(data){
               var jsonData=JSON.parse(data);

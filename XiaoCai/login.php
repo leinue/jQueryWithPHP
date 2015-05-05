@@ -56,6 +56,7 @@
 		$('.change-password-input #login-phone-num-input input').attr('value',localStorage.mobileNum);
 
 		$('#btn-confirm-login').click(function(){
+			displayALertForm('正在为您登录,请稍候...');
 			if(inputInfoIsNull('.change-password-input ul li')){
 				var smobile=$('.change-password-input ul #login-phone-num-input input').val();
 				var password=$('.change-password-input ul #login-password-o-input input').val();

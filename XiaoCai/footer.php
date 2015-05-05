@@ -33,7 +33,7 @@
 					
 				}else{
 					$('footer').css({
-						'position':'absolute',
+						'position':'relative',
 						'top':$('.main-page').height(),
 						'height':footerHeight
 					});

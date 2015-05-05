@@ -55,6 +55,13 @@
 		if(isUserAtBottom()){
 			displayALertForm('加载中...');
 			loadSkillsList(++defaultPage,++defaultLimit);
+			$('footer').css({
+				'position':'fixed',
+				'bottom':'0',
+				'left':'0',
+				'top':'auto',
+				'height':'auto'
+			});
 		}
 	}
 

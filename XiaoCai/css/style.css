@@ -382,8 +382,8 @@ section{
 	font-size: 50px;
 	color: rgb(255,0,0);
 	height: 12px;
-	position: absolute;
-	top: 60%;
+	position: fixed;
+	
 }
 
 .column-menu li a{

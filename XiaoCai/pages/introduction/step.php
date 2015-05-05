@@ -41,7 +41,7 @@
 		}
 
 		function loadTips(data){
-
+			console.log(data);
 		}
 
 		function loadRecommended(data){
@@ -57,6 +57,7 @@
 	      			if(jsonData['msg']!='成功'){
 	      				displayALertForm(jsonData['msg']);
 	      			}else{
+	      				console.log(jsonData['data']);
 	      				var recipeSteps=jsonData['data']['steps'];
 	      				var recipeTips=jsonData['data']['tips'];
 	      				var recipeRecommended=jsonData['data']['recommended'];

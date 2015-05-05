@@ -6,7 +6,7 @@
       <div class="header-main-title monograph-header">
           <ul>
             <li class="header-skillsEvaluating-li"><span class="glyphicon glyphicon-eye-open"></span> <span id="viewer-count">0</span></li>
-            <li class="header-skillsEvaluating-li"><span class="glyphicon glyphicon-heart-empty"></span></li>
+            <li onclick="addToReadingList(this)" class="header-skillsEvaluating-li"><span class="glyphicon glyphicon-heart-empty"></span></li>
             <li class="header-skillsEvaluating-li"><span class="glyphicon glyphicon-link" id="mono-share"></span></li>
           </ul>
       </div>
@@ -49,22 +49,27 @@
             displayShareForm();
         });
 
+        var articleID=getQueryString("id");
+        var tag=getQueryString("type");
+
         function loadSeparateInfo(jsonData){
           if(jsonData['msg']=='成功'){
+            console.log(jsonData['data']['info']);
             $('.monograph-img1 img').attr('src',jsonData['data']['info']['big_image']);
             $('.monograph-header ul .header-skillsEvaluating-li #viewer-count').html(jsonData['data']['info']['browse_num']);
             $('.skills-evaluating-title h4').html(jsonData['data']['info']['title']);
             $('.skills-evaluating-title p').html(jsonData['data']['info']['created_time']);
             $('.content-summaryIn').html(jsonData['data']['info']['paper']);
             $('.skeva-content').html(jsonData['data']['info']['content']);
-            $('.skeva-content p').css('background','rgb(226,224,227)');  
-            }else{
+            $('.skeva-content p').css('background','rgb(226,224,227)');
+            var btnAdd=$('.monograph-header ul li:nth-child(2)');
+            btnAdd.attr('articleid',jsonData['data']['info']['id']);
+            btnAdd.attr('type',tag);
+          }else{
               displayALertForm(jsonData['msg']);
           }
         }
 
-        var articleID=getQueryString("id");
-        var tag=getQueryString("type");
         displayALertForm('id='+articleID+',type='+tag);
         displayALertForm('正在加载...');
         if(isQueryValid({articleID,tag})){

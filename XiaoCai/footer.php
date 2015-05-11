@@ -115,7 +115,7 @@
 
 		//加载快速注册页面
 		$('.lo-re-area .fast-register').click(function(){
-			loadPagesInMenu('register.php');
+			window.location.href='register.php';
 		});
 
 		//设置活跃菜单

@@ -37,15 +37,14 @@
 				stepsImgHTMLDOM='';
 			});
 
-			$('.step-page').append('<div class="step-main-tips"><div class="step-tips"><h3>Tips</h3><ul><li>内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要</li><li>内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要</li><li>内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要内容摘要</li></ul></div></div>');
 		}
 
 		function loadTips(data){
-			console.log(data);
+			$('.step-page').append('<div class="step-main-tips"><div class="step-tips"><h3>Tips</h3><ul><li>'+data+'</li></ul></div></div>');
 		}
 
 		function loadRecommended(data){
-
+			$('.step-page').append('<div class="step-main-recommended"><div class="step-main-recommended-title">推荐产品</div><div class="step-main-reco-content">'+data+'</div></div>');
 		}
 
 		displayALertForm('正在加载...',500);
@@ -57,18 +56,17 @@
 	      			if(jsonData['msg']!='成功'){
 	      				displayALertForm(jsonData['msg']);
 	      			}else{
-	      				console.log(jsonData['data']);
 	      				var recipeSteps=jsonData['data']['steps'];
 	      				var recipeTips=jsonData['data']['tips'];
 	      				var recipeRecommended=jsonData['data']['recommended'];
 	      				if(recipeSteps!=''){
 	      					loadSteps(recipeSteps);
-	      				}else if(recipeTips!=''){
+	      				}
+	      				if(recipeTips!=''){
 	      					loadTips(recipeTips);
-	      				}else if(recipeRecommended!=''){
+	      				}
+	      				if(recipeRecommended!=''){
 	      					loadRecommended(recipeRecommended);
-	      				}else{
-	      					displayNoData('再怎么找也没有啦');
 	      				}
 	      			}
       			}else{

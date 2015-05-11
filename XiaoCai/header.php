@@ -775,11 +775,11 @@
 
 		var isIndex=false;
 
-		var WECHAT_APPID;
+		var WECHAT_APPID="wxcd5e8635095ba695";
 		var WECHAT_REDIRECT_URI;
 		var WECHAT_SCOPE='snsapi_login';
 		var WECHAT_STATE=Math.ceil(Math.random()*100);
-		var WECHAT_SECRECT;
+		var WECHAT_SECRECT="114f18ef6fac879b406821f0e084620c";
 		var WECHAT_GET_CODE="https://open.weixin.qq.com/connect/qrconnect?appid="+WECHAT_APPID+"&redirect_uri="+WECHAT_REDIRECT_URI+"&response_type=code&scope="+WECHAT_SCOPE+"&state="+WECHAT_STATE+"#wechat_redirect";
 		var WECHAT_GET_ACCESS_TOKEN="https://api.weixin.qq.com/sns/oauth2/access_token?appid="+WECHAT_APPID+"&secret="+WECHAT_SECRECT+"&code=CODE&grant_type=authorization_code";
 		var WECHAT_REFRESH_TOKEN="https://api.weixin.qq.com/sns/oauth2/refresh_token?appid="+WECHAT_APPID+"&grant_type=refresh_token&refresh_token=REFRESH_TOKEN";

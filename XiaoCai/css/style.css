@@ -1254,6 +1254,7 @@ footer{
 }
 .skeva-xiaocai{
 	   width: 100%;
+	   margin-top: 60px;
 }
 .skeva-xiaocai h3{
 	   margin: 0 auto;
@@ -1351,6 +1352,26 @@ footer{
 	   padding-right: 25px;
 	   padding-bottom: 10px;
 	   color: rgb(93,94,91);
+}
+
+.step-main-recommended{
+	width: 100%;
+	padding-left: 25px;
+	padding-right: 25px;
+	padding-bottom: 25px;
+}
+
+.step-main-recommended-title{
+	color: rgb(239,0,39);
+	font-size: 15px;
+}
+
+.step-main-reco-content{
+	margin-top: 10px;
+}
+
+.step-main-reco-content p span{
+	background-color: #E2E0E3!important;	
 }
 
 /*formula*/

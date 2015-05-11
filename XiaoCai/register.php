@@ -1,3 +1,4 @@
+<?php require('header.php'); ?>
 
 <div class="register-page">
 	
@@ -50,7 +51,7 @@
 	$(document).ready(function(){
 
 		$('.header-back').click(function(){
-			backPreviosPage('register.php');
+			history.back(-1);
 		});
 
 		$('.send-ver-code').click(function(){
@@ -91,9 +92,13 @@
 
 		$('.wechat-logo').click(function(){
 			displayALertForm('正在为您跳转到微信登录...');
+			WECHAT_REDIRECT_URI=window.location.href;
+			var WECHAT_GET_CODE="https://open.weixin.qq.com/connect/qrconnect?appid="+WECHAT_APPID+"&redirect_uri="+WECHAT_REDIRECT_URI+"&response_type=code&scope="+WECHAT_SCOPE+"&state="+WECHAT_STATE+"#wechat_redirect";
 			window.location.href=WECHAT_GET_CODE;
 		});
 
 	});
 
 </script>
+
+<? require('footer.php'); ?>

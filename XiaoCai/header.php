@@ -793,5 +793,6 @@
 </head>
 
 <body>
+<a style="display:none;" id="top" name="top"></a>
 <?php include('login_column.php'); ?>
 

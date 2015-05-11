@@ -62,8 +62,19 @@
 		//用户滑动页面时处理
 		$(window).scroll(handleFooterEvent);
 
+		function pageScroll() { 
+			window.scrollBy(0,-10); 
+			scrolldelay = setTimeout('pageScroll()',100);
+			if(document.documentElement.scrollTop==0){
+				clearTimeout(scrolldelay);
+			}
+		}
+
+		
+
 		/*菜单按钮被点击*/
 		function toggleLeftMenu(){
+			$('html, body').animate({scrollTop:0}, 'slow');
 			var rate=0.2545;
 			if($(document).width()>400){
 				rate=0.2565;

@@ -7,7 +7,7 @@
           <ul>
             <li class="header-skillsEvaluating-li"><span class="glyphicon glyphicon-eye-open"></span> <span id="viewer-count">0</span></li>
             <li onclick="addToReadingList(this)" class="header-skillsEvaluating-li"><span class="glyphicon glyphicon-heart-empty"></span></li>
-            <li class="header-skillsEvaluating-li"><span class="glyphicon glyphicon-link" id="mono-share"></span></li>
+            <li class="header-skillsEvaluating-li"><span class="glyphicon glyphicon-random" id="mono-share"></span></li>
           </ul>
       </div>
     </div>

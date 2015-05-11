@@ -48,7 +48,6 @@
 	function loadReversionList(replyList){
 		var replyListHTMLDom='';
 		replyTotalCount=replyList.length;
-		console.log(replyTotalCount);
 		var count;
 		if(replyList!=null || replyList!='' || replyList!='null'){
 			var reversionStatus;
@@ -69,7 +68,7 @@
 					reversionStatus='reversion-looked';
 					reversionTips='';
 				}
-				replyListHTMLDom+='	<div class="reading-list-a reversion-list-a '+reversionStatus+'"><div style="background:url('+replyList[i]['article_image']+') no-repeat scroll center center transparent;background-size:cover;" class="reading-list-img reversion-list-img"></div><div class="reversion-whole"><div class="reversion-list-all-content"><div class="reversion-list-all-title"><p>'+replyList[i]['article_title']+'</p></div></div><div class="reading-list-all-foot"><div class="reversion-list-foot-table"><ul><li><span class="glyphicon glyphicon-bookmark"></span> '+replyType[parseInt(replyList[i]['type'])-1]+'</li><li><span class="glyphicon glyphicon-time"></span> '+formatDate(replyList[i]['created_time'].split(' ')[0])+'</li></ul></div></div></div>'+reversionTips+'</div>';
+				replyListHTMLDom+='<div onclick="locateToIntroduction(this)" ref="introduction.php?id='+1+'&type='+replyList[i]['type']+'#com'+replyList[i]['id']+'" class="reading-list-a reversion-list-a '+reversionStatus+'"><div style="background:url('+replyList[i]['article_image']+') no-repeat scroll center center transparent;background-size:cover;" class="reading-list-img reversion-list-img"></div><div class="reversion-whole"><div class="reversion-list-all-content"><div class="reversion-list-all-title"><p>'+replyList[i]['article_title']+'</p></div></div><div class="reading-list-all-foot"><div class="reversion-list-foot-table"><ul><li><span class="glyphicon glyphicon-bookmark"></span> '+replyType[parseInt(replyList[i]['type'])-1]+'</li><li><span class="glyphicon glyphicon-time"></span> '+formatDate(replyList[i]['created_time'].split(' ')[0])+'</li></ul></div></div></div>'+reversionTips+'</div>';
 				replyHasReadCount++;
 			};	
 		}else{

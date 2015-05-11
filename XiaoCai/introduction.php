@@ -50,7 +50,7 @@
               </span>
             </li>
             <li>
-              <span class="glyphicon glyphicon-link">
+              <span class="glyphicon glyphicon-random">
               </span>
             </li>
           </ul>
@@ -98,7 +98,7 @@
         var username;
         commentsList.forEach(function(e){
           username=e['username']==''?'[undefined]':e['username'];
-          usereply='<ul><li><div class="profile-phtot-uploaded"><img width="50" id="user-comment-po" height="50" src="'+e['headimgurl']+'"></div></li><li><div class="introduction-comment-title"><ul><li>'+username+'</li><li>'+e['created_time']+'</li></ul></div><div class="introduction-comment-content"><span>'+e['content']+'</span></div>';
+          usereply='<ul><li><a id="com'+e['id']+'"></a><div class="profile-phtot-uploaded"><img width="50" id="user-comment-po" height="50" src="'+e['headimgurl']+'"></div></li><li><div class="introduction-comment-title"><ul><li>'+username+'</li><li>'+e['created_time']+'</li></ul></div><div class="introduction-comment-content"><span>'+e['content']+'</span></div>';
           if(e['reply_username']==null){
             officalReply='';
           }else{
@@ -109,7 +109,7 @@
       }
 
       displayALertForm('正在加载...',1000);
-      var articleID=getQueryString("id");      
+      var articleID=getQueryString("id");  
       if(isQueryValid(articleID)){
         getRecipeInfo(articleID,0,1,10,function(data){
           if(data!=''){
@@ -130,6 +130,11 @@
               }
               if(introList['comments']!=''){
                 displayCommentsList(introList['comments']);
+                var anchorUrl=window.location.href;
+      if(anchorUrl.indexOf('#')!=-1){
+        anchorUrl=anchorUrl.split('#');
+        document.getElementById(anchorUrl[1]).scrollIntoView();
+      }
               }else{
                 $('#comment-show-area').hide();
               }

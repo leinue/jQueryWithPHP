@@ -161,6 +161,7 @@
 			var dom='<div onclick="hideShareForm()" class="monoshare"><div class="monoshareDiv"><ul id="line"><li id="shareTofriend"><img src=""></li><li id="shareTocircle"><img src=""></li></ul><ul id="monoshare-content"><li>发送给朋友</li><li>分享至朋友圈</li></ul></div></div>';
 			$('body').append(dom);
 			$('.monoshare').fadeIn();
+			$('.monoshare').css('position','fixed').css('z-index','65535');
 			var leftRate=($('.monoshareDiv').width()/$(document).width()-10).toFixed(8);
 			leftRate=leftRate.slice(2,4)+"."+leftRate.slice(4,8)+"%";
 			$('.monoshareDiv').css('left',leftRate);

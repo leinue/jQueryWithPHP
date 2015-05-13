@@ -238,15 +238,6 @@
 				},callback);
 		}
 
-		/**
-		* 通过手机号注册用户
-		* @param mobile 手机号
-		* @param password 密码
-		* @param repassword 确认密码
-		* @param code 手机验证码
-		* @return JSONObject [uid|mobile|token_id]
-		**/
-
 		function regByMobile(p_mobile,p_password,p_repassword,p_code,callback){
 			$.post(
 				rootURL+"regbymobile.php",
@@ -258,13 +249,6 @@
 				},callback);
 		}
 
-		/**
-		* 通过手机号登录
-		* @param mobile 手机号
-		* @param password 密码
-		* @return JSONObject [uid|nickname|is_reply(是否有回复留言 1有 0无)|headimgurl|token_id]
-		*/
-
 		function signInByMobile(p_mobile,p_password,callback){
 			$.post(
 				rootURL+"login.php",
@@ -274,26 +258,12 @@
 				},callback);
 		}
 
-		/**
-		* 注销登出
-		* @param token_id 登录返回的token_id
-		* @return Nothing
-		*/
-
 		function logOut(p_token_id,callback){
 			$.post(
 				rootURL+"logout.php",
 				{token_id:p_token_id},
 				callback);
 		}
-
-		/**
-		* 修改昵称和头像
-		* @param token_id 登录返回的token_id
-		* @param nickname 新昵称
-		* @param headimgurl 二进制文件头像
-		* @return JSONObject [uid|nickname|headimgurl|token_id]
-		*/
 
 		function changeUserData(p_token_id,p_nickname,p_headimgurl,callback){
 			$.post(
@@ -305,12 +275,6 @@
 				},callback);
 		}
 
-		/**
-		* @param mobile 手机号
-		* @param type 发送类型 1 注册 2 忘记密码
-		* @return Nothing
-		*/
-
 		function sendSms(p_mobile,p_type,callback){
 			$.post(
 				rootURL+"sendsms.php",
@@ -319,15 +283,6 @@
 					type:p_type
 				},callback);
 		}
-
-		/**
-		* 找回密码
-		* @param mobile 手机号
-		* @param password 密码
-		* @param repassword 确认密码
-		* @param code 手机验证码
-		* @return JSONObject
-		*/
 
 		function forgotPassword(p_mobile,p_password,p_repassword,p_code,callback){
 			$.post(
@@ -340,15 +295,6 @@
 				},callback);
 		}
 
-		/**
-		* 修改密码
-		* @param mobile 手机号
-		* @param password 密码
-		* @param repassword 确认密码
-		* @param oldpassword 旧密码
-		* @return JSONObject
-		*/
-
 		function changePassword(p_token_id,p_password,p_repassword,p_oldpassword,callback){
 			$.post(
 				rootURL+"changepassword.php",
@@ -360,26 +306,9 @@
 				},callback);
 		}
 
-		/**
-		* 关于页面
-		* @return About
-		*/
-
 		function getAbout(callback){
 			$.post(rootURL+"about.php",{},callback);
 		}
-
-		/**
-		* 留言列表
-		* @param token_id
-		* @return JSONObject
-		* @return article_image 留言的文章的图片地址
-		* @return article_title 留言的文章的标题
-		* @return content 留言内容
-		* @return type 模块类型 1一手好菜 2玩转厨房 3首页文章 4专题
-		* @return status 状态0正常 1后台回复未读 2用户已读
-		* @return created_time 留言时间
-		*/
 
 		function getReply(p_token_id,callback){
 			$.post(
@@ -387,30 +316,6 @@
 				{token_id:p_token_id},
 				callback);
 		}
-
-     	/**
-	  	* @param nil
-     	* @return id
-     	* @return image
-     	* @return title
-     	* @return type
-     	* @return id
-     	* @return title
-     	* @return papaer
-     	* @return browse_num
-     	* @return title
-     	* @return created_time
-     	* @return video_id
-     	* @return video_url_360
-     	* @return video_url_480video_url_720
-     	* @return video_url_1080
-     	* @return arrange_image_url
-     	* @return is_vip
-     	* @return image
-     	* @return big
-     	* @return image
-     	* @return small_image
-     	*/
 
       	function getHome(p_page,p_limit,callback){
           	$.post(
@@ -420,37 +325,12 @@
             		limit:p_limit
             	},callback);
      	}
-     
-     	/**
-     	* @param nil
-     	* @return id
-     	* @return title
-     	* @return icon
-     	* @return childern
-     	*/
 
       	function getRecipeClassify(callback){
           	$.post(
                 rootURL+'recipeclassify.php',
               	{},callback);
      	}
-     
-     	/**
-     	* @param id
-     	* @return id
-     	* @return title
-     	* @return paper
-     	* @return browse_num
-     	* @return title
-     	* @return created_time
-     	* @return video_id
-     	* @return video_url_360
-     	* @return video_url_480video_url_720
-     	* @return video_url_1080
-     	* @return arrange_image_url
-     	* @return is_vip
-     	* @return image
-     	*/
 
 	    function getRecipeList(p_id,p_page,p_limit,callback){
 	        $.post(
@@ -461,35 +341,6 @@
 	                limit:p_limit
 	            },callback);
 	    }
-     
-	    /**
-	    * @param id
-	    * @param comments_id
-	    * @return id
-	   	* @return title
-	    * @return paper
-	    * @return browse_num
-     	* @return title
-	    * @return created_time
-	    * @return video_id
-	    * @return video_url_360
-	    * @return video_url_480video_url_720
-	    * @return video_url_1080
-	    * @return arrange_image_url
-	    * @return prepare_time
-	    * @return image
-	    * @return cooking_time
-	    * @return enjoy_num
-	    * @return id
-	    * @return user_id
-	    * @return username
-	    * @return content
-	    * @return headimgurl
-	    * @return created_time
-	    * @return reply_username
-	    * @return reply_content
-	    * @return reply_time
-	    */
 
 	    function getRecipeInfo(p_id,p_comments_id,p_page,p_limit,callback){
 	        $.post(
@@ -502,18 +353,6 @@
 	            },callback);
 	    }
 
-	    /**
-	    * @param id
-	  	* @return id
-	    * @return content
-	    * @return children
-	    * @return id
-	    * @return type
-		* @return content
-	    * @return tips
-	    * @return recommened
-	    */
-
 	    function getRecipeInfoSteps(p_id,callback){
 	        $.post(
 	            rootURL+'recipeinfosteps.php',
@@ -521,18 +360,6 @@
 	                id:p_id
 	            },callback);
 	    }
-
-	    /**
-	    * @param id
-	  	* @return id
-	    * @return content
-	    * @return children
-	    * @return id
-	    * @return type
-		* @return content
-	    * @return messsage
-	    * @return node
-	    */
 
 	    function getRecipeInfoFormula(p_id,callback){
 	        $.post(
@@ -542,18 +369,6 @@
 	            },callback);
 	    }
 
-	    /**
-	    * @param nil
-	    * @return id
-	    * @return title
-	    * @return paper
-	    * @return browse
-	    * @return num
-	    * @return small_image
-	    * @return big_image
-	    * @return created_time
-	    */
-
 	    function getSkillsList(p_page,p_limit,callback){
 	        $.post(
 	            rootURL+'skillslist.php',
@@ -562,28 +377,6 @@
 	            	limit:p_limit
 	            },callback);
 	    }
-
-	    /**
-	    * @param id
-	    * @param comment_id
-	    * @return id
-	    * @return title
-	  	* @return papaer
-	    * @return content
-	    * @return browse_num
-	    * @return small_image
-	    * @return big_image
-	    * @return created_time
-	    * @return id
-	    * @return user_id
-	    * @return username
-	    * @return content
-	    * @return headimgurl
-	    * @return created_time
-	    * @return reply_username
-	    * @return reply_content
-	    * @return reply_time
-	    */
 
 	    function getSkillsInfo(p_id,p_comment_id,p_page,p_limit,callback){
 	        $.post(
@@ -595,15 +388,7 @@
 	                limit:p_limit
 	            },callback);
 	    }
-
-	    /**
-	    * @param type
-	    * @param token_id
-	    * @param article_id
-	    * @param content
-	    * @return Nothing
-	    */
-
+	    
 	    function sendComments(p_type,p_token_id,p_article_id,p_content,callback){
 	        $.post(
 	       	    rootURL+'comments.php',

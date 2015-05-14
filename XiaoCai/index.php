@@ -64,12 +64,18 @@
 						if(homeList[i]['is_vip']!=null){
 							//带视频
 							var paperLength=homeList[i]['paper'].length;
+							if(paperLength<44){
+								teacherBrandCSS='margin-top:-140px!important;'
+							}
 							if(paperLength>=44){
-								teacherBrandCSS='margin-top:-180px!important;'
+								teacherBrandCSS='margin-top:-165px!important;'
 							}else if(paperLength>=34){
 								teacherBrandCSS='margin-top:-150px!important;';
-							}else{
-								teacherBrandCSS='';
+							}
+							if(paperLength>=48 && paperLength<65){
+								teacherBrandCSS='margin-top:-170px!important;';
+							}else if(paperLength>=45){
+								teacherBrandCSS='margin-top:-190px!important;';
 							}
 							var isVipHTML=homeList[i]['is_vip']=='1' ? '<div class="teacher-brand" id="monograph-member">会员专享</div>' : '';
 							homeListHtmlDOM+='<div idata="'+homeList[i]['id']+'" class="vip-enjoy"><div ref="introduction.php?id='+homeList[i]['id']+'" onclick="locateToIntroduction(this)" style="background:url('+homeList[i]['image']+') no-repeat scroll center center transparent;background-size:cover;" class="vip-video"></div><div class="vip-content"><div ref="introduction.php?id='+homeList[i]['id']+'" onclick="locateToIntroduction(this)" class="vip-title">'+homeList[i]["title"]+'</a></div><div ref="introduction.php?id='+homeList[i]['id']+'" onclick="locateToIntroduction(this)" class="vip-post">'+homeList[i]["paper"]+'</a></div><div class="vip-menu"><ul><li><span class="glyphicon glyphicon-eye-open"></span> '+homeList[i]["browse_num"]+'</li><li type="'+homeList[i]['type']+'" articleid="'+homeList[i]['id']+'" onclick="addToReadingList(this);"><span class="glyphicon glyphicon-heart-empty"></span></li><li onclick="displayShareForm();"><span class="glyphicon glyphicon-link"></span></li></ul></div><div style="'+teacherBrandCSS+'" class="teacher-brand"><img src="'+homeList[i]['arrange_image_url']+'"></div></div>'+isVipHTML+'</div>';

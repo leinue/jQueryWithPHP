@@ -70,11 +70,13 @@
 			}
 		}
 
-		
-
 		/*菜单按钮被点击*/
 		function toggleLeftMenu(){
-			$('html, body').animate({scrollTop:0}, 'slow');
+			var needScrollToTop=false;
+			if($(window).scrollTop()!=0){
+				$('html,body').animate({scrollTop:0}, 'slow');
+				needScrollToTop=true;
+			}
 			var rate=0.2545;
 			if($(document).width()>400){
 				rate=0.2565;
@@ -92,8 +94,12 @@
 				setNoTouchMove();
 				isSlided=true;
 			}else{
-				$('header').css('position','fixed');
-				$('.main-page').animate({left:'0px'});
+				if(needScrollToTop){
+					$('header').animate({left:'0px'},300);
+				}
+				$('.main-page').animate({left:'0px'},300,function(){
+					$('header').css('position','fixed');
+				});
 				$('.login-page').css('display','none');
 				$('footer').slideDown();
 				setTouchMove();

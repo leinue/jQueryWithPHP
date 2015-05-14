@@ -73,7 +73,7 @@
 			if(!recipeMenuIsSlided){
 				if(recipeLeftMenuIsSlided){
 					toggleBtnArrow('.nav-recipe-menu ul #recipe-material-index span','up');
-					$('#recipe-menu-index').slideUp();
+					$('#recipe-menu-index').slideUp(200);
 					recipeLeftMenuIsSlided=false;
 					recipeMenuIsSlided=false;
 					if(typeClicked[2]=='index'){
@@ -85,7 +85,7 @@
 
 				if(recipeRightMenuIsSlided){
 					toggleBtnArrow('.nav-recipe-menu ul #recipe-material-style span','up');
-					$('#recipe-menu-style').slideUp();
+					$('#recipe-menu-style').slideUp(200);
 					recipeRightMenuIsSlided=false;
 					recipeMenuIsSlided=false;
 					if(typeClicked[2]=='style'){
@@ -98,7 +98,7 @@
 				$(obj).find('span').removeClass('glyphicon glyphicon-triangle-right');
 				$(obj).find('span').addClass('glyphicon glyphicon-triangle-bottom');
 				
-				$('#recipe-menu-'+typeClicked[2]).slideDown();
+				$('#recipe-menu-'+typeClicked[2]).slideDown(200);
 				if(typeClicked[2]=='index'){
 					recipeLeftMenuIsSlided=true;
 				}else if(typeClicked[2]=='style'){
@@ -165,12 +165,18 @@
 				var teacherBrandCSS='';
 				for (var i = 0; i < homeList.length; i++) {
 					var paperLength=homeList[i]['paper'].length;
+					if(paperLength<44){
+						teacherBrandCSS='margin-top:-140px!important;'
+					}
 					if(paperLength>=44){
-						teacherBrandCSS='margin-top:-180px!important;'
+						teacherBrandCSS='margin-top:-165px!important;'
 					}else if(paperLength>=34){
 						teacherBrandCSS='margin-top:-150px!important;';
-					}else{
-						teacherBrandCSS='';
+					}
+					if(paperLength>=48 && paperLength<65){
+						teacherBrandCSS='margin-top:-170px!important;';
+					}else if(paperLength>=45){
+						teacherBrandCSS='margin-top:-190px!important;';
 					}
 					var isVipHTML=homeList[i]['is_vip']=='1' ? '<div class="teacher-brand" id="monograph-member">会员专享</div>' : '';
 					homeListHtmlDOM+='<div idata="'+homeList[i]['id']+'" class="vip-enjoy"><div ref="introduction.php?id='+homeList[i]['id']+'" onclick="locateToIntroduction(this)" style="background:url('+homeList[i]['image']+') no-repeat scroll center center transparent;background-size:cover;" class="vip-video"></div><div class="vip-content"><div ref="introduction.php?id='+homeList[i]['id']+'" onclick="locateToIntroduction(this)" class="vip-title">'+homeList[i]["title"]+'</a></div><div ref="introduction.php?id='+homeList[i]['id']+'" onclick="locateToIntroduction(this)" class="vip-post">'+homeList[i]["paper"]+'</a></div><div class="vip-menu"><ul><li><span class="glyphicon glyphicon-eye-open"></span> '+homeList[i]["browse_num"]+'</li><li type="1" articleid="'+homeList[i]['id']+'" onclick="addToReadingList(this);"><span class="glyphicon glyphicon-heart-empty"></span></li><li onclick="displayShareForm();"><span class="glyphicon glyphicon-link"></span></li></ul></div><div style="'+teacherBrandCSS+'" class="teacher-brand"><img src="'+homeList[i]['arrange_image_url']+'"></div></div>'+isVipHTML+'</div>';
@@ -201,11 +207,11 @@
 	
 		function handleSlidedownMenuEvent(obj,which){
 			if(which=='left'){
-				$(obj).parent().parent().parent().slideToggle();
+				$(obj).parent().parent().parent().slideToggle(200);
 				toggleBtnArrow('.nav-recipe-menu ul #recipe-material-index span','up');
 				recipeLeftMenuIsSlided=false;
 			}else if(which=='right'){
-				$(obj).parent().parent().parent().slideToggle();
+				$(obj).parent().parent().parent().slideToggle(200);
 				toggleBtnArrow('.nav-recipe-menu ul #recipe-material-style span','up');
 				recipeRightMenuIsSlided=false;
 			}

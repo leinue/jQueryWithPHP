@@ -366,7 +366,7 @@ section{
 }
 
 .column-menu ul li:nth-child(3){
-	margin-left: -4px;
+	margin-left: 0px;
 }
 
 .column-menu ul li:last-child{
@@ -384,12 +384,14 @@ section{
 	margin-right: 20px;
 }
 
+.column-menu ul .left-menu-reversion span{
+	margin-right: 16px;
+}
+
 #response-flag{
 	font-size: 50px;
 	color: rgb(255,0,0);
-	/*left: 55.875%;
-	top: 57%;*/
-	margin-top: -90px;
+	margin-top: -86px;
 	margin-left: 120px;
 	padding: 0px;
 	min-height: 10px;

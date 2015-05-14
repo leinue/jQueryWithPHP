@@ -1,7 +1,7 @@
 
 <div class="login-page">
 	<div class="logo-area">
-		<img width="180" height="80" src="images/logo.png" />
+		<img width="180" height="80" src="images/xiaocai_logo.svg" />
 		吃大餐·做晓菜
 	</div>
 

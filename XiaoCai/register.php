@@ -14,7 +14,7 @@
 
 <section>
 	<div class="logo-area register-area">
-		<img width="180" height="80" src="images/logo.png" />
+		<img width="180" height="80" src="images/xiaocai_logo.svg" />
 		吃大餐·做晓菜
 	</div>
 	
@@ -25,7 +25,7 @@
 				<a style="color:#FFF" class="button button-caution button-pill button-small send-ver-code">发送验证码</a>
 			</li>
 			<li id="setting-list-password-o-input"><input type="password" placeholder="登录密码" /></li>
-			<li style="border-bottom: 1px solid rgb(226,224,227);" id="setting-list-password-new-input" class="setting-list-second"><input type="password" placeholder="确认密码" /></li>
+			<li id="setting-list-password-new-input" class="setting-list-second"><input type="password" placeholder="确认密码" /></li>
 			<li id="setting-list-password-confrom-input"><input placeholder="手机验证码" /></li>
 		</ul>
 	</div>

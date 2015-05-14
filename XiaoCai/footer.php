@@ -84,6 +84,7 @@
 			var docWidth=$(document).width()-($(document).width()*rate);
 			var mainPageWidth=$(document).width()*rate;
 			if(!isSlided){
+				$('header').css('position','absolute');
 				$('.main-page').animate({left:docWidth+'px'},300,function(){
 					$('.login-page').css('display','block');
 				});
@@ -91,6 +92,7 @@
 				setNoTouchMove();
 				isSlided=true;
 			}else{
+				$('header').css('position','fixed');
 				$('.main-page').animate({left:'0px'});
 				$('.login-page').css('display','none');
 				$('footer').slideDown();
@@ -121,7 +123,7 @@
 
 		//加载登录页面
 		$('.lo-re-area .button').click(function(){
-			loadPagesInMenu('login.php');
+			window.location.href="login.php";
 		});
 
 		//加载快速注册页面

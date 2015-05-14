@@ -21,12 +21,24 @@
 <section>
 	<div class="banner">
 		<ul>
-			<li id="slide-1" style="background-image: url('images/first.jpg');"></li>
-
-			<li id="slide-2" style="background-image: url('images/second.jpg');"></li>
-
-			<li id="slide-4" style="background-image: url('images/forth.jpg');"></li>
-			<li id="slide-5" style="background-image: url(http://7xid1a.com2.z0.glb.qiniucdn.com/Project/85dda3251a58dc48fd82ab9697e293df.png?imageView2/2/w/750);"></li>
+			<?php	
+				require('curl/base.php');
+				$url="http://114.215.189.210/api.php/Api/Recipe/home";
+				$post_data=array();
+				$oupput=curlPost($url,$post_data);
+				$op_json=json_decode($oupput);
+				$slideData=$op_json->data->slide;
+				if($slideData!=null){
+					foreach ($slideData as $key => $value) {
+						print_r("<li id=\"slide-".$value->id."\" title=".$value->title." style=\"background-image: url(".$value->image.");\"></li>");
+					}
+				}else{
+					echo "<li id=\"slide-1\" style=\"background-image: url('images/first.jpg');\"></li>
+					<li id=\"slide-2\" style=\"background-image: url('images/second.jpg');\"></li>
+					<li id=\"slide-4\" style=\"background-image: url('images/forth.jpg');\"></li>
+					<li id=\"slide-5\" style=\"background-image: url(http://7xid1a.com2.z0.glb.qiniucdn.com/Project/85dda3251a58dc48fd82ab9697e293df.png?imageView2/2/w/750);\"></li>";
+				}
+			?>
 		</ul>
 	</div>
 
@@ -51,8 +63,16 @@
 					for (var i = 0; i < homeList.length; i++) {
 						if(homeList[i]['is_vip']!=null){
 							//带视频
+							var paperLength=homeList[i]['paper'].length;
+							if(paperLength>=44){
+								teacherBrandCSS='margin-top:-180px!important;'
+							}else if(paperLength>=34){
+								teacherBrandCSS='margin-top:-150px!important;';
+							}else{
+								teacherBrandCSS='';
+							}
 							var isVipHTML=homeList[i]['is_vip']=='1' ? '<div class="teacher-brand" id="monograph-member">会员专享</div>' : '';
-							homeListHtmlDOM+='<div idata="'+homeList[i]['id']+'" class="vip-enjoy"><div ref="introduction.php?id='+homeList[i]['id']+'" onclick="locateToIntroduction(this)" style="background:url('+homeList[i]['image']+') no-repeat scroll center center transparent;background-size:cover;" class="vip-video"></div><div class="vip-content"><div ref="introduction.php?id='+homeList[i]['id']+'" onclick="locateToIntroduction(this)" class="vip-title">'+homeList[i]["title"]+'</a></div><div ref="introduction.php?id='+homeList[i]['id']+'" onclick="locateToIntroduction(this)" class="vip-post">'+homeList[i]["paper"]+'</a></div><div class="vip-menu"><ul><li><span class="glyphicon glyphicon-eye-open"></span> '+homeList[i]["browse_num"]+'</li><li type="'+homeList[i]['type']+'" articleid="'+homeList[i]['id']+'" onclick="addToReadingList(this);"><span class="glyphicon glyphicon-heart-empty"></span></li><li onclick="displayShareForm();"><span class="glyphicon glyphicon-link"></span></li></ul></div><div class="teacher-brand"><img src="'+homeList[i]['arrange_image_url']+'"></div></div>'+isVipHTML+'</div>';
+							homeListHtmlDOM+='<div idata="'+homeList[i]['id']+'" class="vip-enjoy"><div ref="introduction.php?id='+homeList[i]['id']+'" onclick="locateToIntroduction(this)" style="background:url('+homeList[i]['image']+') no-repeat scroll center center transparent;background-size:cover;" class="vip-video"></div><div class="vip-content"><div ref="introduction.php?id='+homeList[i]['id']+'" onclick="locateToIntroduction(this)" class="vip-title">'+homeList[i]["title"]+'</a></div><div ref="introduction.php?id='+homeList[i]['id']+'" onclick="locateToIntroduction(this)" class="vip-post">'+homeList[i]["paper"]+'</a></div><div class="vip-menu"><ul><li><span class="glyphicon glyphicon-eye-open"></span> '+homeList[i]["browse_num"]+'</li><li type="'+homeList[i]['type']+'" articleid="'+homeList[i]['id']+'" onclick="addToReadingList(this);"><span class="glyphicon glyphicon-heart-empty"></span></li><li onclick="displayShareForm();"><span class="glyphicon glyphicon-link"></span></li></ul></div><div style="'+teacherBrandCSS+'" class="teacher-brand"><img src="'+homeList[i]['arrange_image_url']+'"></div></div>'+isVipHTML+'</div>';
 						}else{
 							//不带视频
 							var papaerContent=homeList[i]['paper'];
@@ -73,12 +93,13 @@
 			}
 		}
 
-		function loadHomeSlide(jsonData){
+		/*function loadHomeSlide(jsonData){
+			console.log(jsonData[0]);
 			jsonData.forEach(function(slide){
 				var slideHTMLDOM='<li id="slide-'+slide['id']+'" style="background-image: url('+slide['image']+');"></li>';
 				$('.banner ul').append(slideHTMLDOM);
 			});
-		}
+		}*/
 
 		displayALertForm('正在加载...');
 
@@ -88,7 +109,7 @@
 					var jsonData=JSON.parse(data);
 					if(jsonData['msg']=='成功'){
 						if(slide){
-							loadHomeSlide(jsonData['data']['slide']);
+							//loadHomeSlide(jsonData['data']['slide']);
 						}
 						$('.padding-div-row').remove();
 						loadHomeArticle(jsonData);

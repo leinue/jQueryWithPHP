@@ -139,7 +139,6 @@
 	if(typeof sessionStorage.recipeIDList !='undefined'){
 		var recipeIDList=sessionStorage.recipeIDList.split('|');
    		recipeIDList=recipeIDList.slice(0,recipeIDList.length-1);
-   		console.log(recipeIDList);
 	}
 
 	$('.nav-content ul .delete-all').click(function(){

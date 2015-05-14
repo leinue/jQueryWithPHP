@@ -1,3 +1,4 @@
+<?php  require('header.php'); ?>
 
 <div class="login-main-page">
 	
@@ -50,7 +51,7 @@
 	$(document).ready(function(){
 
 		$('.header-back').click(function(){
-			backPreviosPage('register.php');
+			history.go(-1);
 		});
 
 		$('.change-password-input #login-phone-num-input input').attr('value',localStorage.mobileNum);
@@ -73,9 +74,9 @@
 						localStorage.mobileNum=smobile;
 						localStorage.loginByWechat=false;
 						localStorage.isLogin=true;
-						displayALertForm('登录成功,2秒后将自动跳转...');
+						displayALertForm('登录成功,2秒后将自动跳转...',2000);
 						setTimeout(function(){
-							location.reload();
+							window.location.href='index.php';
 						},2000);
 					}else{
 						localStorage.isLogin=false;
@@ -90,4 +91,10 @@
 
 	});
 
+</script>
+
+<?php  require('footer.php'); ?>
+
+<script>
+$('footer').hide();
 </script>

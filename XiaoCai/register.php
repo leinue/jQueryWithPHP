@@ -62,9 +62,9 @@
 					var jsonData=JSON.parse(data);
 					displayALertForm(jsonData['msg']);
 					if(jsonData['msg']=='注册成功'){
-						displayALertForm('注册成功,3秒后将自动跳转...');
+						displayALertForm('注册成功,2秒后将自动跳转...',2000);
 						setTimeout(function(){
-							location.reload();
+							window.location.href="login.php";
 						},3000);
 					}
 				});
@@ -92,7 +92,7 @@
 
 		$('.wechat-logo').click(function(){
 			displayALertForm('正在为您跳转到微信登录...');
-			WECHAT_REDIRECT_URI=window.location.href;
+			wechat_redirectDIRECT_URI=window.location.href;
 			var WECHAT_GET_CODE="https://open.weixin.qq.com/connect/qrconnect?appid="+WECHAT_APPID+"&redirect_uri="+WECHAT_REDIRECT_URI+"&response_type=code&scope="+WECHAT_SCOPE+"&state="+WECHAT_STATE+"#wechat_redirect";
 			window.location.href=WECHAT_GET_CODE;
 		});
@@ -102,3 +102,7 @@
 </script>
 
 <? require('footer.php'); ?>
+
+<script>
+$('footer').hide();
+</script>

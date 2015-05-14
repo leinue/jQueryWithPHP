@@ -773,10 +773,6 @@ section{
 	margin-top: 18.75%;
 }
 
-.change-password-input ul li:first-child{
-	border-bottom: 1px solid rgb(226,224,227);
-}
-
 .change-password-input ul li:last-child{
 	margin-top: 1px;
 }

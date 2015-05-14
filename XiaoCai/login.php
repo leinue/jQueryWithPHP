@@ -29,8 +29,8 @@
 	<div class="change-password-submit-button">
 		<a id="btn-confirm-login" class="button button-caution button-pill">登录</a>
 		<div class="fast-register true-register">
-			<span id="login-fast-register">快速注册</span>
-			<span id="login-find-pw">找回密码</span>
+			<span onclick="javascript:window.location.href='register.php'" id="login-fast-register">快速注册</span>
+			<span onclick="javascript:window.location.href='password_find.php'" id="login-find-pw">找回密码</span>
 		</div>
 		<div class="fast-register">————— 或 —————</div>
 		<div class="wechat-logo">

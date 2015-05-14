@@ -10,9 +10,9 @@
 </header>
 
 <section>
-	<div class="setting-list change-password-input">
+	<div class="setting-list change-password-input password-change-page">
 		<ul>
-			<li id="setting-list-password-o-input"><input type="password" placeholder="原密码" /></li>
+			<li  style="border-bottom: 1px solid rgb(226,224,227);" id="setting-list-password-o-input"><input type="password" placeholder="原密码" /></li>
 			<li id="setting-list-password-new-input" class="setting-list-second"><input type="password" placeholder="新密码" /></li>
 			<li id="setting-list-password-confrom-input"><input placeholder="确认新密码" type="password" /></li>
 		</ul>

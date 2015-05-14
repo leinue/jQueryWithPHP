@@ -126,9 +126,9 @@ nav{
 
 .nav-content ul li .search-input-icon{
 	font-size: 13px;
-	color: rgb(117,117,117);
+	color: rgb(193,193,193);
 	position: absolute;
-	top: 16px;
+	top: 17px;
 	left: 46.1666667%;
 }
 
@@ -178,11 +178,21 @@ nav{
 	.nav-content ul .recipe-title{
 		font-size: 22px;
 	}
+
+	.nav-content ul li #recipe-search-icon{
+		top: 22px!important;
+	}
 }
 
 @media screen and (max-width: 400px){
 	.nav-content ul .recipe-title{
 		font-size: 1.125em;
+	}
+	.nav-content ul li .search-input-icon{
+		top: 18px;
+	}
+	.nav-content ul li #recipe-search-icon{
+		top: 16px!important;
 	}
 }
 
@@ -192,9 +202,13 @@ nav{
 	}
 }
 
-.search-form input{
-	width: 82.75%;
+.search-form{
 	height: 26px;
+}
+
+.search-form input{
+	width: 83.75%;
+	height: 100%;
 	border: none;
 	border-radius: 4px;
 	font-size: 12px;
@@ -757,6 +771,10 @@ section{
 
 .change-password-input{
 	margin-top: 18.75%;
+}
+
+.change-password-input ul li:first-child{
+	border-bottom: 1px solid rgb(226,224,227);
 }
 
 .change-password-input ul li:last-child{

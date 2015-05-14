@@ -10,7 +10,7 @@
 				<li class="main-title recipe-title">一手好菜</li>
 				<li class="search-form">
 					<input type="search" placeholder="食谱 食材 工具 话题" />
-					<div style="top:15px;" class="search-input-icon"><span class="glyphicon glyphicon-search"></span></div>
+					<div style="top:15px;" class="search-input-icon" id="recipe-search-icon"><span class="glyphicon glyphicon-search"></span></div>
 				</li>
 			</ul>
 		</div>

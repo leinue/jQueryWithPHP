@@ -19,7 +19,7 @@
 
 
 <section>
-	<div class="banner">
+	<div id="slide-banner" class="banner">
 		<ul>
 			<?php	
 				require('curl/base.php');
@@ -39,6 +39,7 @@
 					<li id=\"slide-5\" style=\"background-image: url(http://7xid1a.com2.z0.glb.qiniucdn.com/Project/85dda3251a58dc48fd82ab9697e293df.png?imageView2/2/w/750);\"></li>";
 				}
 			?>
+			<li id="slide-1" style="background-image: url('images/first.jpg');"></li>
 		</ul>
 	</div>
 
@@ -99,14 +100,6 @@
 			}
 		}
 
-		/*function loadHomeSlide(jsonData){
-			console.log(jsonData[0]);
-			jsonData.forEach(function(slide){
-				var slideHTMLDOM='<li id="slide-'+slide['id']+'" style="background-image: url('+slide['image']+');"></li>';
-				$('.banner ul').append(slideHTMLDOM);
-			});
-		}*/
-
 		displayALertForm('正在加载...');
 
 		function loadHomeList(page,limit,slide){
@@ -114,9 +107,7 @@
 				if(data!=''){
 					var jsonData=JSON.parse(data);
 					if(jsonData['msg']=='成功'){
-						if(slide){
-							//loadHomeSlide(jsonData['data']['slide']);
-						}
+						if(slide){}
 						$('.padding-div-row').remove();
 						loadHomeArticle(jsonData);
 					}else{
@@ -152,6 +143,35 @@
 				loadHomeArticle(++defaultPage,defaultLimit,false);
 			}	
 		}
+
+		var startX, startY, endX, endY;
+		var slidey = $('.banner').unslider(),
+    	slideyData = slidey.data('unslider');
+    	
+        document.getElementById("slide-banner").addEventListener("touchstart", touchStart, false);
+        document.getElementById("slide-banner").addEventListener("touchmove", touchMove, false);
+        document.getElementById("slide-banner").addEventListener("touchend", touchEnd, false);
+        
+        function touchStart(event) {
+        	setNoTouchMove();
+            var touch = event.touches[0];
+            startY = touch.pageY;
+            startX = touch.pageX;
+        }
+        
+        function touchMove(event) {
+            var touch = event.touches[0];
+            endX = touch.pageX;
+            if ((startX - endX) > 100) {
+               	slideyData.prev();
+            }else{
+            	slideyData.next();
+            }
+        }
+
+        function touchEnd(event) {
+        	setTouchMove();
+        }
 
 		$(window).scroll(handleHomePagination);
 	});

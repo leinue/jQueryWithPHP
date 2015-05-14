@@ -32,7 +32,11 @@
        </div>
 
         <div class="skeva-content">
-              内容
+              
+        </div>
+
+        <div style="margin-top:80px;" id="project-article">
+          
         </div>
 
         <div class="skeva-xiaocai">
@@ -52,14 +56,51 @@
         var articleID=getQueryString("id");
         var tag=getQueryString("type");
 
-        function loadSeparateInfo(jsonData){
+        function loadSeparateInfo(jsonData,type){
+          type=type==null ? '1':type;
           if(jsonData['msg']=='成功'){
-            $('.monograph-img1 img').attr('src',jsonData['data']['info']['big_image']);
+            console.log(type);
+            if(type!='4'){
+              $('.monograph-img1 img').attr('src',jsonData['data']['info']['big_image']);            
+            }else{
+              $('.monograph-img1 img').attr('src',jsonData['data']['info']['image']);
+            }
             $('.monograph-header ul .header-skillsEvaluating-li #viewer-count').html(jsonData['data']['info']['browse_num']);
             $('.skills-evaluating-title h4').html(jsonData['data']['info']['title']);
             $('.skills-evaluating-title p').html(jsonData['data']['info']['created_time']);
             $('.content-summaryIn').html(jsonData['data']['info']['paper']);
-            $('.skeva-content').html(jsonData['data']['info']['content']);
+            if(type=='4'){
+              var homeListHtmlDOM="";
+              var homeList=jsonData['data']['ProjectArticle'];
+              for (var i = 0; i < homeList.length; i++) {
+                if(homeList[i]['is_vip']!=null){
+                  //带视频
+                  var paperLength=homeList[i]['paper'].length;
+                  if(paperLength>=44){
+                    teacherBrandCSS='margin-top:-180px!important;'
+                  }else if(paperLength>=34){
+                    teacherBrandCSS='margin-top:-150px!important;';
+                  }else{
+                    teacherBrandCSS='';
+                  }
+                  var isVipHTML=homeList[i]['is_vip']=='1' ? '<div class="teacher-brand" id="monograph-member">会员专享</div>' : '';
+                  homeListHtmlDOM+='<div idata="'+homeList[i]['id']+'" class="vip-enjoy"><div ref="introduction.php?id='+homeList[i]['id']+'" onclick="locateToIntroduction(this)" style="background:url('+homeList[i]['image']+') no-repeat scroll center center transparent;background-size:cover;" class="vip-video"></div><div class="vip-content"><div ref="introduction.php?id='+homeList[i]['id']+'" onclick="locateToIntroduction(this)" class="vip-title">'+homeList[i]["title"]+'</a></div><div ref="introduction.php?id='+homeList[i]['id']+'" onclick="locateToIntroduction(this)" class="vip-post">'+homeList[i]["paper"]+'</a></div><div class="vip-menu"><ul><li><span class="glyphicon glyphicon-eye-open"></span> '+homeList[i]["browse_num"]+'</li><li type="'+homeList[i]['type']+'" articleid="'+homeList[i]['id']+'" onclick="addToReadingList(this);"><span class="glyphicon glyphicon-heart-empty"></span></li><li onclick="displayShareForm();"><span class="glyphicon glyphicon-link"></span></li></ul></div><div style="'+teacherBrandCSS+'" class="teacher-brand"><img src="'+homeList[i]['arrange_image_url']+'"></div></div>'+isVipHTML+'</div>';
+                }else{
+                  //不带视频
+                  var papaerContent=homeList[i]['paper'];
+                  var paperTitle=homeList[i]['title'];
+                  var changeFontSizeCSS;
+                  paperTitle=cutReadingListTitle(paperTitle);
+                  changeFontSizeCSS=changeReadingListSize(papaerContent);
+                  papaerContent=cutReadingListPaper(papaerContent);
+                  homeListHtmlDOM+='<div ref="monograph.php?id='+homeList[i]['id']+'&type='+homeList[i]['type']+'" onclick="locateToIntroduction(this)" id="skills-'+homeList[i]['id']+'" class="reading-list-a"><div style="background:url('+homeList[i]['image']+') no-repeat scroll center center transparent;background-size:cover;" class="reading-list-img"></div><div class="reading-list-all-content"><div class="reading-list-all-title '+changeFontSizeCSS+'"><p>'+paperTitle+'</p></div><div class="reading-list-all-summary"><p>'+papaerContent+'</p></div></div><div class="reading-list-all-footer"><ul><li><span class="glyphicon glyphicon-bookmark"></span> 玩转厨房</li><li><span class="glyphicon glyphicon-time"></span> '+formatDate(homeList[i]['created_time'].split(' ')[0])+'</li></ul></div></div>';
+                }
+              };
+              $('#project-article').append(homeListHtmlDOM+'<div class="padding-div-row"></div>');
+              $('.skeva-xiaocai').attr('style','margin-top:10px;');
+            }else{
+              $('.skeva-content').html(jsonData['data']['info']['content']);              
+            }
             $('.skeva-content p').css('background','rgb(226,224,227)');
             var btnAdd=$('.monograph-header ul li:nth-child(2)');
             btnAdd.attr('articleid',jsonData['data']['info']['id']);
@@ -83,30 +124,15 @@
               var jsonData=JSON.parse(data);
               loadSeparateInfo(jsonData);
             });
+          }else if(tag=='4'){
+            getProjectInfo(articleID,0,1,10,function(data){
+              var jsonData=JSON.parse(data);
+              loadSeparateInfo(jsonData,'4');
+            });
           }
         }else{
           window.location.href="skills.php";
         }
-
-      //专题(首页的幻灯片)单个信息
-      /*getProjectInfo(1,0,1,10,function(data){
-        if(data!=''){
-          var jsonData = JSON.parse(data);
-          if(jsonData['msg'] == '成功'){
-            $('.monograph-img1 img').attr('src',jsonData['data']['info']['image']);
-            $('.monograph-header ul .header-skillsEvaluating-li #viewer-count').html(jsonData['data']['info']['browse_num']);
-            $('.skills-evaluating-title h4').html(jsonData['data']['info']['title']);
-            $('.skills-evaluating-title p').html(jsonData['data']['info']['created_time']);
-            $('.content-summaryIn').html(jsonData['data']['info']['paper']);
-            // $('.skeva-content').html(jsonData['data']['info']['content']);
-            $('.skeva-content p').css('background','rgb(226,224,227)');  
-            }else{
-              displayALertForm(jsonData['msg']);
-            }
-        }else{
-          displayALertForm('获取失败,请重试');
-        }
-      });*/
 
       $('section').css('marginTop',$('header').height());
 

@@ -127,7 +127,7 @@
 		$('.banner ul li').click(function(){
 			var typeID=$(this).attr('id');
 			typeID=typeID.split('-')[1];
-			window.location.href = 'monograph.php#'+typeID;
+			window.location.href = 'monograph.php?id='+typeID+"&type=4";
 		});
 
 		$('.search-form').keyup(function(event){

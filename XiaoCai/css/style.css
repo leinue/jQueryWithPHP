@@ -269,14 +269,14 @@ section{
 
 .vip-video video{
 	width: 100%;
-	height: 200px;
+	height: 74.074074%;
 	border-top-left-radius: 4px;
 	border-top-right-radius: 4px; 
 }
 
 .vip-video img{
 	width: 100%;
-	height: 200px;
+	height: 74.074074%;
 	position: absolute;
 	left: 10px;
 	border-top-left-radius: 4px;
@@ -471,6 +471,18 @@ section{
 	#search-menu li #home-result{left: 31.2555555%!important;}
 	#search-menu li #recipe-result{left: 56.9555555%!important;}
 	#search-menu li #skills-result{left: 86.9555555%!important;}
+	
+	.vip-enjoy{
+		height: 500px;
+	}
+	
+	.vip-menu{
+		margin-top: 4.421%;
+	}
+
+	.vip-video{
+		height: 74.0741%;
+	}
 }
 
 @media screen and (min-width:900px){
@@ -478,6 +490,10 @@ section{
 	#search-menu li #home-result{left: 29.1555555%!important;}
 	#search-menu li #recipe-result{left: 53.1555555%!important;}
 	#search-menu li #skills-result{left: 83.1555555%!important;}
+	
+	.vip-enjoy{
+		height: 800px;
+	}
 }
 
 .header-reading-menu ul{
@@ -637,6 +653,7 @@ section{
 .reading-list-all-foot{
 	margin-left: 102px;
 	padding-right: 10px;
+	margin-top: 50px;
 }
 
 .reversion-list-foot-table{
@@ -1433,10 +1450,15 @@ footer{
     .formula-buy ul li button,.formula-buy ul li span{
     	   font-size: 0.8em;
     }
+
 }
 @media screen and (max-width:400px){
     .formula-buy ul li button,.formula-buy ul li span{
     	   font-size: 0.7em;
+    }
+
+    .reading-list-all-foot{
+    	margin-top: 40px;
     }
 }
 @media screen and (max-width:1900px){

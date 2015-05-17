@@ -69,8 +69,8 @@
         <li>
           <div class="introduction-comment-input-container">
             <span>在此输入留言或内容</span>
-            <textarea style="display:none"></textarea>
-            <input style="display:none" value="提交" type="button">
+            <textarea style="display:none;width:100%;"></textarea>
+            <input style="margin:0 auto;display:none;margin-top:10px;" class="button button-caution button-pill" value="提交" type="button">
           </div>
         </li>
       </ul>

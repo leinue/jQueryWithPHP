@@ -70,6 +70,7 @@
           <div class="introduction-comment-input-container">
             <span>在此输入留言或内容</span>
             <textarea style="display:none"></textarea>
+            <input style="display:none" value="提交" type="button">
           </div>
         </li>
       </ul>
@@ -168,10 +169,8 @@
         });
       }
 
-      $('.introduction-comment-input-container textarea').keydown(function(event) {
-        if (event.ctrlKey && event.which == 13 && localStorage.isLogin == 'true') {
-          displayALertForm('消息发送中，请稍候...');
-          var scomments = $('.introduction-comment-input-container textarea').val();
+      function sendComments(){
+        displayALertForm('消息发送中，请稍候...');
           if (flag == false) {
             var overtime = new Date();
             localStorage.Time = overtime.getMinutes() + 0.50;
@@ -183,6 +182,33 @@
               localStorage.Time = repeatTime.getMinutes() + 0.50;
             }
           }
+      }
+
+      $('.introduction-comment-input-container textarea').keydown(function(event) {
+        if (event.ctrlKey && event.which == 13) {
+          if(localStorage.isLogin=='true'){
+            var scomments = $('.introduction-comment-input-container textarea').val();
+            if(scomments!=''){
+              sendComments();
+            }else{
+              displayALertForm('请填写内容');
+            }
+          }else{
+            displayALertForm('请登录');
+          }
+        }
+      });
+
+      $('.introduction-comment-input-container input').click(function(){
+        if(localStorage.isLogin == 'true'){
+          var scomments = $('.introduction-comment-input-container textarea').val();
+          if(scomments!=''){
+            sendComments();
+          }else{
+            displayALertForm('请填写内容');
+          }
+        }else{
+          displayALertForm('请登录');
         }
       });
 
@@ -206,11 +232,13 @@
       $('.introduction-comment-input-container').click(function(){
         var _this=$(this);
         var thisInput=_this.find('textarea');
+        var thisBtn=_this.find('input');
         if(thisInput.css('display')=='none' || thisInput.val()==''){
           _this.find('span').toggle();
           thisInput.attr('width',_this.parent().width());
           thisInput.attr('height',_this.parent().height());
           thisInput.toggle();
+          thisBtn.toggle();
           thisInput.focus();
         }
       });

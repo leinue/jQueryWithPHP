@@ -138,6 +138,15 @@ nav{
 	left: 46.1666667%;
 }
 
+.nav-content ul li .search-input-icon:hover{
+	color: rgb(130,130,130);
+	cursor: pointer;
+}
+
+.nav-content ul li .search-input-icon:active{
+	color: rgb(130,130,130);
+}
+
 .nav-content ul .foodlist-menu{
 	text-align: center;
 	font-size: 16px;

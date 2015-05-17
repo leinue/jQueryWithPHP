@@ -218,9 +218,26 @@
 	}
 
 	$('.search-form input').focus(function(){
-		$('.nav-content ul li .search-input-icon').hide();
-
+		$('.nav-content ul li .search-input-icon').css({
+			'left':'316px',
+			'width':'24px',
+			'height':'24px'
+		});
 	});
+
+	$('.search-form').keyup(function(event){
+		if(event.which == 13){
+			localStorage.searchKeywords=$('.search-form input').val();
+			window.location.href='search.php';
+		}else{
+		}
+	});
+
+	$('.nav-content ul li .search-input-icon').click(function(){
+		localStorage.searchKeywords=$('.search-form input').val();
+		window.location.href='search.php';
+	});
+
 	$('.search-form input').blur(function(){$('.nav-content ul li .search-input-icon').show();});
 	//$('html:not(div)').click(function(){$('footer').slideToggle();});
 

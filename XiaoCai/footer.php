@@ -207,6 +207,9 @@
 		var articleType=$(obj).attr('type');
 		addReadingList(articleType,localStorage.tokenID,articleID,function(data){
 			var jsonData=JSON.parse(data);
+			if(jsonData['status']=='1'){
+				$(obj).find('span').css('color','rgb(230,0,39)');
+			}
 			displayALertForm(jsonData['msg']);
 		});
 	}

@@ -162,10 +162,12 @@
         function touchMove(event) {
             var touch = event.touches[0];
             endX = touch.pageX;
-            if ((startX - endX) > 100) {
-               	slideyData.prev();
-            }else{
-            	slideyData.next();
+            if(!isSlided){
+            	if ((startX - endX) > 100) {
+	               	slideyData.prev();
+	            }else{
+	            	slideyData.next();
+	            }
             }
         }
 

@@ -7,8 +7,11 @@
 		<div class="nav-content">
 			<ul>
 				<li class="nav-menu"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></li>
-				<li class="main-title">玩转厨房</li>
+				<li class="main-title"></li>
 			</ul>
+		</div>
+		<div class="skills-nav-title">
+			玩转厨房
 		</div>
 	</nav>
 </header>

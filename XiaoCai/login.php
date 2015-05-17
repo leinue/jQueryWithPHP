@@ -65,7 +65,6 @@
 					var jsonData=JSON.parse(data);
 					displayALertForm(jsonData['msg']);
 					if(jsonData['msg']=='登录成功'){
-						//console.log(jsonData['data']);
 						localStorage.uid=jsonData['data']['uid'];
 						localStorage.nickname=jsonData['data']['nickname'];
 						localStorage.tokenID=jsonData['data']['token_id'];
@@ -75,9 +74,7 @@
 						localStorage.loginByWechat=false;
 						localStorage.isLogin=true;
 						displayALertForm('登录成功,2秒后将自动跳转...',2000);
-						setTimeout(function(){
-							window.location.href='index.php';
-						},2000);
+						setTimeout("location.href='index.php'",2000);
 					}else{
 						localStorage.isLogin=false;
 					}

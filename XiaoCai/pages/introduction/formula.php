@@ -21,7 +21,7 @@
           $('.recipes-introduction-footer').toggleClass('fixed-pos');
         });
       
-      	displayALertForm('正在加载...',1000);
+      	displayALertForm('正在加载...',2000);
 
         var formulaidList=new Array();
 
@@ -31,9 +31,8 @@
             if(data!=''){
               sessionStorage.formulaIDList='';
               var jsonData=JSON.parse(data);
-              //console.log(jsonData['data'][0]);
               if(jsonData['msg']!='成功'){
-                displayALertForm(jsonData['msg']);
+                displayALertForm(jsonData['msg'],2000);
               }else{
                 var formulaList=jsonData['data'];
                 var formulaHTMLDOM='';
@@ -63,12 +62,12 @@
         }
         
         $('.formula-buy ul li .button-add').click(function(){
-          if(formulaIDList != ''){
+          if(formulaIDList!=''){
             formulaIDList.forEach(function(formulaID){
               addFoodList(recipeID,formulaID,localStorage.tokenID,function(data){
                 if(data!=''){
                   var jsonData=JSON.parse(data);
-                  displayALertForm(jsonData['msg']);
+                  displayALertForm(jsonData['msg'],2000);
                 }else{
                   displayALertForm('加入失败,请重试');
                 }

@@ -221,11 +221,7 @@
 	}
 
 	$('.search-form input').focus(function(){
-		$('.nav-content ul li .search-input-icon').css({
-			'left':'316px',
-			'width':'24px',
-			'height':'24px'
-		});
+		$('.nav-content ul li .search-input-icon').hide();
 	});
 
 	$('.search-form').keyup(function(event){

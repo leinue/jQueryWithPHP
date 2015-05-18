@@ -83,14 +83,11 @@
 			}
 		});
 	
-	$('section').css('marginTop',$('header').height()+50);
+		$('section').css('marginTop',$('header').height()+50);
+		$('footer').hide();
 
 	});
 
 </script>
 
 <?php  require('footer.php'); ?>
-
-<script>
-$('footer').hide();
-</script>

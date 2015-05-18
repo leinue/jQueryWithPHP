@@ -143,7 +143,7 @@
 		function inputInfoIsNull(elem){
 			var flag=0;
 			$(elem).each(function(index,element){
-				if($(element).find('input').val()==''){
+				if($(elem).find('input').val()==''){
 					flag+=1;
 				}
 			});
@@ -516,7 +516,8 @@
 			var homeListHtmlDOM='';
 			for (var i = 0; i < homeList.length; i++) {
 				var papaerContent=homeList[i]['paper'];
-				var paperTitle=homeList[i]['title'];
+				var paper
+				Title=homeList[i]['title'];
 				var changeFontSizeCSS;
 				paperTitle=cutReadingListTitle(paperTitle);
 				changeFontSizeCSS=changeReadingListSize(papaerContent);

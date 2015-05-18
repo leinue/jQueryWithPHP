@@ -13,7 +13,7 @@
 	<div class="setting-list">
 		<ul>
 			<li id="setting-list-password" class="login-show"><a href="javascript:void(0)">修改密码</a><span class="glyphicon glyphicon-menu-right"></span></li>
-			<li id="setting-list-fpassword" class="setting-list-second login-show"><a href="password_find.php">找回密码</a><span class="glyphicon glyphicon-menu-right"></span></li>
+			<li id="setting-list-fpassword" class="setting-list-second login-show"><a href="javascript:void(0)">找回密码</a><span class="glyphicon glyphicon-menu-right"></span></li>
 			<li id="setting-list-profile" class="setting-list-second login-show"><a href="javascript:void(0)">填写资料</a><span class="glyphicon glyphicon-menu-right"></span></li>
 			<li id="setting-list-logout" class="setting-list-third login-show"><a href="javascript:void(0)">注销</a></li>
 			<li id="setting-list-setting"><a href="javascript:void(0)">关于</a><span class="glyphicon glyphicon-menu-right"></span></li>
@@ -50,6 +50,9 @@
 			case 'profile':
 				displayALertForm('正在努力加载,请稍候...');
 				loadPagesA('profile.php','body');
+				break;
+			case 'fpassword':
+				window.location.href="password_find.php"
 				break;
 			case 'logout':
 				var tokenID=localStorage.tokenID;

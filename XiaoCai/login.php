@@ -15,7 +15,6 @@
 <section>
 	<div class="logo-area register-area">
 		<img width="180" height="80" src="images/xiaocai_logo.svg" />
-		吃大餐·做晓菜
 	</div>
 	
 	<div class="setting-list change-password-input">

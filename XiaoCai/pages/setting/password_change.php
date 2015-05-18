@@ -44,6 +44,10 @@
 				var originPW=$('.change-password-input ul #setting-list-password-o-input input').val();
 				var newPW=$('.change-password-input ul #setting-list-password-new-input input').val();
 				var confirmPW=$('.change-password-input ul #setting-list-password-confrom-input input').val();
+				console.log(originPW);
+				console.log(newPW);
+				console.log(confirmPW);
+				console.log(localStorage.tokenID);
 				changePassword(localStorage.tokenID,newPW,confirmPW,originPW,function(data){
 					if(data!=''){
 						var jsonData=JSON.parse(data);

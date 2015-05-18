@@ -169,7 +169,7 @@
         });
       }
 
-      function sendComments(){
+      function sendComments_(scomments){
         displayALertForm('消息发送中，请稍候...');
           if (flag == false) {
             var overtime = new Date();
@@ -189,7 +189,7 @@
           if(localStorage.isLogin=='true'){
             var scomments = $('.introduction-comment-input-container textarea').val();
             if(scomments!=''){
-              sendComments();
+              sendComments_(scomments);
             }else{
               displayALertForm('请填写内容');
             }
@@ -203,7 +203,7 @@
         if(localStorage.isLogin == 'true'){
           var scomments = $('.introduction-comment-input-container textarea').val();
           if(scomments!=''){
-            sendComments();
+            sendComments_(scomments);
           }else{
             displayALertForm('请填写内容');
           }

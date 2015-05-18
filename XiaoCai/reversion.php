@@ -58,7 +58,6 @@
 				count=replyDefaultCount+replyHasReadCount;
 			}
 			for (var i = replyHasReadCount; i < count; i++) {
-				console.log(replyList[i]);
 				if(replyList[i]['status']==='1'){
 					//新信息
 					reversionStatus='reversion-new';

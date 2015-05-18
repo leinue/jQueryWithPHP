@@ -44,7 +44,7 @@
                   }
                   sessionStorage.formulaIDList+=formulaList[i]['id']+'|';
                   formulaHTMLDOM='<div id="formula-child-'+formulaList[i]['id']+'" class="formula-juice"><div class="formula-juice-title"><div class="juice-title"><span>'+formulaList[i]['title']+'</span></div></div><div class="formula-juice-list">'+formulaHTMLDOM+'</div></div>';
-                  $('.introduction-pag[e').append(formulaHTMLDOM);
+                  $('.introduction-page').append(formulaHTMLDOM);
                   formulaHTMLDOM='';
                 };
               }

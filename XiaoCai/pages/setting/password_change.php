@@ -12,7 +12,7 @@
 <section>
 	<div class="setting-list change-password-input password-change-page">
 		<ul>
-			<li  style="border-bottom: 1px solid rgb(226,224,227);" id="setting-list-password-o-input"><input type="password" placeholder="原密码" /></li>
+			<li  style="" id="setting-list-password-o-input"><input type="password" placeholder="原密码" /></li>
 			<li id="setting-list-password-new-input" class="setting-list-second"><input type="password" placeholder="新密码" /></li>
 			<li id="setting-list-password-confrom-input"><input placeholder="确认新密码" type="password" /></li>
 		</ul>
@@ -44,10 +44,6 @@
 				var originPW=$('.change-password-input ul #setting-list-password-o-input input').val();
 				var newPW=$('.change-password-input ul #setting-list-password-new-input input').val();
 				var confirmPW=$('.change-password-input ul #setting-list-password-confrom-input input').val();
-				console.log(originPW);
-				console.log(newPW);
-				console.log(confirmPW);
-				console.log(localStorage.tokenID);
 				changePassword(localStorage.tokenID,newPW,confirmPW,originPW,function(data){
 					if(data!=''){
 						var jsonData=JSON.parse(data);

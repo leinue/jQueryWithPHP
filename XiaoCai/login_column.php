@@ -16,7 +16,54 @@
 				<span class="glyphicon glyphicon-envelope"></span>
 				收到的回复
 			</li>
-			<li class="left-menu-setting"><span class="glyphicon glyphicon-cog"></span>设置<div id="response-flag"><span>·</span></div></li>
+			<li class="left-menu-setting"><span class="glyphicon glyphicon-cog"></span>设置<div style="opacity:0;" id="response-flag"><span>·</span></div></li>
 		</ul>
 	</div>
 </div>
+
+<script type="text/javascript">
+	$('document').ready(function(){
+		var replyTotalCount;
+		var replyDefaultCount=10;
+		var replyHasReadCount=0;
+		var jsonReplyList;
+
+		function getReplyListData(){
+			getReply(localStorage.tokenID,function(data){
+				if(data!=''){
+					var jsonData=JSON.parse(data);
+					var replyList=jsonData['data'];
+					jsonReplyList=replyList;
+					loadReversionList(replyList);
+				}else{
+					displayALertForm('获取新消息失败,请重试');
+				}
+			});
+		}
+
+		function loadReversionList(replyList){
+			var replyListHTMLDom='';
+			replyTotalCount=replyList.length;
+			var count;
+			if(replyList!=null || replyList!='' || replyList!='null'){
+				var reversionStatus;
+				var reversionTips;
+				if(replyTotalCount-replyHasReadCount<10){
+					count=replyTotalCount;
+				}else{
+					count=replyDefaultCount+replyHasReadCount;
+				}
+				for (var i = replyHasReadCount; i < count; i++) {
+					if(replyList[i]['status']==='1'){
+						$('#response-flag').css('opacity','1');
+					}else{
+						$('#response-flag').css('opacity','0');	
+					}
+					replyHasReadCount++;
+				};	
+			}
+		}
+
+		getReplyListData();
+	});
+</script>

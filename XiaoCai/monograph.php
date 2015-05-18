@@ -137,12 +137,12 @@
         }
 
       $('section').css('marginTop',$('header').height());
-
+      $('.main-footer').hide();
     });
   </script>
 
   <?php require('footer.php'); ?>
 
   <script>
-    $('.main-footer').hide();
+    
   </script>

@@ -516,8 +516,7 @@
 			var homeListHtmlDOM='';
 			for (var i = 0; i < homeList.length; i++) {
 				var papaerContent=homeList[i]['paper'];
-				var paper
-				Title=homeList[i]['title'];
+				var paperTitle=homeList[i]['title'];
 				var changeFontSizeCSS;
 				paperTitle=cutReadingListTitle(paperTitle);
 				changeFontSizeCSS=changeReadingListSize(papaerContent);

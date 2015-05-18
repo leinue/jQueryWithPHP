@@ -80,14 +80,7 @@
 				});
 				break;
 			case 'setting':
-				getAbout(function(data){
-					if(data!=''){
-						var jsonData=JSON.parse(data);
-						displayALertForm(jsonData['data']);
-					}else{
-						displayALertForm('获取失败,请重试');
-					}
-				});
+				window.location.href="about.php";
 				break;
 			default:
 				break;

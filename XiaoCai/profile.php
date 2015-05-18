@@ -33,7 +33,7 @@
 		<div class="loading-main"><span class="glyphicon glyphicon-option-horizontal"></span><span class="glyphicon glyphicon-option-horizontal"></span></div>
 	</div>
 	
-	<input type="file" onchange="printImg(this)" style="display: none" id="fileInput" />
+	<input type="file" accept="image/*" onchange="printImg(this)" style="display: none" id="fileInput" />
 </section>
 
 </div>
@@ -87,6 +87,7 @@
 		} else if(navigator.userAgent.indexOf("Chrome")>0) { // Chrome
 			url = window.URL.createObjectURL(document.getElementById(sourceId).files.item(0));
 		}
+		alert(url);
 		return url;
 	}
 

@@ -535,7 +535,7 @@ section{
 	margin-top: 14px;
 	margin-right:14px;
 	border-radius: 4px;
-	height: 130px;
+	height: 25%;
 	background: rgb(255,255,255);
 	box-shadow: 1px 1px 1px rgb(199,199,199);
 }
@@ -547,7 +547,7 @@ section{
 .reading-list-img{
 	float: left;
 	height: 100%;
-	width: 41.09589%;
+	width: 40.677966%;
 	border-top-left-radius: 4px;
 	border-bottom-left-radius: 4px;
 }

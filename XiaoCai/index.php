@@ -149,7 +149,7 @@
     	slideyData = slidey.data('unslider');
     	
         document.getElementById("slide-banner").addEventListener("touchstart", touchStart, false);
-        document.getElementById("slide-banner").addEventListener("touchmove", touchMove, false);
+        document.getElementById("slide-banner").addEventListener("touchmove", handleSlideMove, false);
         document.getElementById("slide-banner").addEventListener("touchend", touchEnd, false);
         
         function touchStart(event) {
@@ -159,7 +159,7 @@
             startX = touch.pageX;
         }
         
-        function touchMove(event) {
+        function handleSlideMove(event) {
             var touch = event.touches[0];
             endX = touch.pageX;
             if(!isSlided){
@@ -168,11 +168,13 @@
 	            }else{
 	            	slideyData.next();
 	            }
+            }else{
+            	setNoTouchMove();
             }
         }
 
         function touchEnd(event) {
-        	setTouchMove();
+        	setNoTouchMove();
         }
 
 		$(window).scroll(handleHomePagination);

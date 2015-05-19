@@ -120,6 +120,7 @@
             }else{
               var introList=jsonData['data'];
               if(introList['info']!=''){
+                console.log(introList['info']);
                 var introInfo=introList['info'];
                 $('.vip-title').html(introInfo['title']);
                 $('.vip-post').html(introInfo['paper']);
@@ -128,14 +129,15 @@
                 $('.introduction-time #enjoy-num').html(introInfo['enjoy_num']);
                 $('.vip-menu ul li #browser-num').html(introInfo['browse_num']);
                 $('.introduction-teacher-brand img').attr('src',introInfo['arrange_image_url']);
+                $('.vip-video video').attr('src',introInfo['video_url_480']);
               }
               if(introList['comments']!=''){
                 displayCommentsList(introList['comments']);
                 var anchorUrl=window.location.href;
-      if(anchorUrl.indexOf('#')!=-1){
-        anchorUrl=anchorUrl.split('#');
-        document.getElementById(anchorUrl[1]).scrollIntoView();
-      }
+                if(anchorUrl.indexOf('#')!=-1){
+                  anchorUrl=anchorUrl.split('#');
+                  document.getElementById(anchorUrl[1]).scrollIntoView();
+                }
               }else{
                 $('#comment-show-area').hide();
               }
@@ -161,7 +163,11 @@
               $('html, body').animate({scrollTop: $(document).height()}, 300);
               flag = true;
             } else {
-              displayALertForm(jsonData['msg']);
+              if(jsonData['msg'].indexOf('不存在')!=-1){
+                self.location='login.php';
+              }else{
+                displayALertForm(jsonData['msg']);
+              }
             }
           }else{
             displayALertForm('获取失败,请重试');

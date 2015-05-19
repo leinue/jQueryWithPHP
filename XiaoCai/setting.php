@@ -48,8 +48,7 @@
 				loadPagesA('pages/setting/password_change.php','body');
 				break;
 			case 'profile':
-				displayALertForm('正在努力加载,请稍候...');
-				loadPagesA('profile.php','body');
+				self.location.href="profile.php";
 				break;
 			case 'fpassword':
 				window.location.href="password_find.php"

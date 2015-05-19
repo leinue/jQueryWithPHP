@@ -1,3 +1,4 @@
+<?php require('header.php'); ?>
 
 <div class="login-main-page">
 	
@@ -91,7 +92,7 @@
 		var fileInput=document.getElementById("file_head");
 
 		$('.header-back').click(function(){
-			backPreviosPage('register.php');
+			history.go(-1);
 		});
 
 		$('.profile-phtot-uploaded img').attr('src',localStorage.headimgurl);
@@ -122,6 +123,8 @@
 
 		$('section').css('marginTop',$('header').height()+50);
 
+		$('footer').hide();
+
 	});
 
 	function getFileUrl(sourceId) {
@@ -141,3 +144,5 @@
 	function printImg(obj){preImg('fileInput','user-profile-photo');}
 
 </script>
+
+<?php require('footer.php'); ?>

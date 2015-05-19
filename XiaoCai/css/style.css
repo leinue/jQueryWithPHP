@@ -462,10 +462,18 @@ section{
 	font-size: 1em;
 }
 
+.header-main-title{
+	width: 100%;
+	text-align: center;
+	position: absolute;
+}
+
 .header-back{
 	float: left;
 	margin-left: 14px;
 	cursor: pointer;
+	z-index: 65535;
+	position: absolute;
 }
 
 .header-back:active{

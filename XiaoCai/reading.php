@@ -4,7 +4,7 @@
 	<nav>
 		<div class="header-title">
 			<div class="header-back"><span class="glyphicon glyphicon-menu-left"></span></div>
-			<div class="header-main-title">阅读列表</div>
+			<div class="header-main-title" style="position:relative">阅读列表</div>
 		</div>
 		<div class="header-reading-menu">
 			<ul>

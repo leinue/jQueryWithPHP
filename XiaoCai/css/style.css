@@ -1601,14 +1601,14 @@ footer{
 /*monograph*/
 
 .monograph-back{
-	padding-top: 14px;
+	padding-top: 16px;
 	padding-bottom: 14px;
 }
 
 .monograph-header{
 	display: table;
 	margin-top: -16px;
-	margin-bottom: -10px;
+	margin-bottom: -16px;
 }
 
 .monograph-header ul{
@@ -1620,13 +1620,20 @@ footer{
 	cursor: pointer;
 	font-size: 1.125em;
 	color: rgb(221,221,221);
-	padding: 15px 14px;
+	padding-top: 18px;
+	padding-left: 14px;
+	padding-right: 12px;
+	padding-bottom: 12px;
 }
 
 .monograph-header ul li:first-child{
-	padding-left: 6px;
-	padding-right: 6px;
+	padding-left: 8px;
+	padding-right: 8px;
 	width: auto;
+}
+
+.monograph-header ul li img{
+	margin-top: -2px;
 }
 
 .monograph-header ul li:hover{

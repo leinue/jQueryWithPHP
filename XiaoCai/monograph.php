@@ -1,6 +1,6 @@
 <?php require( 'header.php'); ?>
 <header>
-  <nav>
+  <nav style="padding-bottom:0px;">
     <div class="header-title">
       <div class="header-back monograph-back"><span class="glyphicon glyphicon-menu-left"></span></div>
       <div class="header-main-title monograph-header">
@@ -144,5 +144,5 @@
   <?php require('footer.php'); ?>
 
   <script>
-    
+    $('section').css('margin-top',$('header').height()-10);
   </script>

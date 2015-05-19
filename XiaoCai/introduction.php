@@ -44,13 +44,13 @@
         </div>
         <div class="vip-menu">
           <ul>
-            <li><span class="glyphicon glyphicon-eye-open"></span> <span id="browser-num">0</span></li>
+            <li><img width="28" height="14" src="images/watch_grey.png"></img> <span id="browser-num">0</span></li>
             <li onclick="addToReadingList(this)">
-              <span class="glyphicon glyphicon-heart-empty">
+              <img width="16" height="16" src="images/add_grey.png"></img>
               </span>
             </li>
             <li>
-              <span class="glyphicon glyphicon-random">
+              <img width="16" height="16" id="mono-share" src="images/share_grey.png"></img>
               </span>
             </li>
           </ul>
@@ -265,7 +265,7 @@
 
       $(window).scroll(handleRecipesFooterEvent);
       $('.main-footer').html('');
-      $('.introduction-page').css('marginTop','-7px');
+      $('.introduction-page').css('margin-top','-7px');
 
       var media=document.getElementById("video-main");
       var eventListener=function(e){

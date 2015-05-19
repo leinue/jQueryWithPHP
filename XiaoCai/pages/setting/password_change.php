@@ -1,7 +1,7 @@
 <div class="passwordc-page">
 	
 <header>
-	<nav>
+	<nav style="padding-top: 8px;padding-bottom:30px;">
 		<div class="header-title">
 			<div class="header-back"><span class="glyphicon glyphicon-menu-left"></span></div>
 			<div class="header-main-title">修改密码</div>

@@ -1,7 +1,7 @@
 <?php require( 'header.php'); ?>
 
   <header>
-    <nav>
+    <nav style="padding-top: 8px;padding-bottom:30px;">
       <div class="header-title">
         <div class="header-back">
           <span class="glyphicon glyphicon-menu-left">
@@ -161,6 +161,7 @@
               var usereply='<ul><li><div class="profile-phtot-uploaded"><img width="50" id="user-comment-po" height="50" src="'+localStorage.headimgurl+'"></div></li><li><div class="introduction-comment-title"><ul><li>'+localStorage.nickname+'</li><li>'+getCurrentTime()+'</li></ul></div><div class="introduction-comment-content"><span>'+comments+'</span></div>';
               $('.introduction-comment').append(usereply);
               $('html, body').animate({scrollTop: $(document).height()}, 300);
+              $('.introduction-comment-input-container').html('<span>在此输入留言或内容</span><textarea style="display:none;width:100%;"></textarea><input style="margin:0 auto;display:none;margin-top:10px;" class="button button-caution button-pill" value="提交" type="button">');
               flag = true;
             } else {
               if(jsonData['msg'].indexOf('不存在')!=-1){

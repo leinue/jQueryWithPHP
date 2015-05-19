@@ -76,6 +76,9 @@
 						if(browser.versions.iPhone){
 							alert('登录成功,点击确定跳转');
 							window.location.href="index.php";
+						}else if(browser.versions.iPad){
+							alert('登录成功,点击确定跳转');
+							window.location.href="index.php";
 						}else{
 							setTimeout("location.href='index.php'",2000);
 						}

@@ -80,7 +80,7 @@ nav{
 .logo-area{
 	margin: 0 auto;
 	width: 180px;
-	margin-top: 20.920502%;
+	margin-top: 50.920502%;
 	color: rgb(116,114,117);
 	font-size: 1.125em;
 	text-align: center;
@@ -411,7 +411,7 @@ section{
 /*侧边栏工具菜单开始*/
 
 .column-menu{
-	margin-top: 12.552301%;
+	margin-top: 16.552301%;
 	color: rgb(97,95,98);
 	font-size: 1em;
 	width: 99.98%;
@@ -423,9 +423,9 @@ section{
 }
 
 .column-menu ul li{
-	border-top: 1px solid rgb(212,212,212);
-	padding-top: 4px;
-	padding-bottom: 4px;
+	/*border-top: 1px solid rgb(212,212,212);*/
+	padding-top: 10px;
+	padding-bottom: 10px;
 	padding-left: 12.552301%;
 	margin-bottom: 1px;
 	cursor: pointer;
@@ -436,7 +436,7 @@ section{
 }
 
 .column-menu ul li:last-child{
-	border-bottom: 1px solid rgb(212,212,212);
+	/*border-bottom: 1px solid rgb(212,212,212);*/
 	padding-bottom: 22px;
 }
 
@@ -654,7 +654,7 @@ section{
 .reading-list-all-footer ul li{
 	padding-right: 10px;
 	padding-left: 10px;
-	margin-top: 10px;
+	margin-top: 6px;
 }
 
 .reading-list-all-footer ul li:first-child{

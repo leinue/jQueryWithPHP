@@ -55,7 +55,7 @@
             </li>
           </ul>
         </div>
-        <div class="display:none;" class="teacher-brand introduction-teacher-brand"><img src=""></div>
+        <div class="display:none!important;" class="teacher-brand introduction-teacher-brand"><img style="display:none;" src=""></div>
       </div>
     </div>
     
@@ -92,6 +92,8 @@
 
       $('.profile-phtot-uploaded #user-comment-photo').attr('src',localStorage.headimgurl);
 
+      var favouriteList=getFavourteList();
+
       function displayCommentsList(data){
         var commentsList=data;
         var usereply;
@@ -120,7 +122,6 @@
             }else{
               var introList=jsonData['data'];
               if(introList['info']!=''){
-                console.log(introList['info']);
                 var introInfo=introList['info'];
                 $('.vip-title').html(introInfo['title']);
                 $('.vip-post').html(introInfo['paper']);
@@ -130,8 +131,10 @@
                 $('.vip-menu ul li #browser-num').html(introInfo['browse_num']);
                 $('.introduction-teacher-brand img').attr('src',introInfo['arrange_image_url']);
                 if(introInfo['video_url_480']==''){
-                  $('.vip-video').html('');
-                  $('.vip-video').attr('style','background:url('+introInfo['image']+') no-repeat scroll center center transparent;background-size:cover;');
+                  $('.vip-video').attr('style','background:url('+introInfo['image']+') no-repeat scroll center center transparent;background-size:cover;width:100%;'+'padding-top:'+$('.vip-video video').height());
+                  if(!browser.versions.iPad){
+                    $('.vip-video video').hide();
+                  }
                 }else{
                   $('.vip-video video').attr('src',introInfo['video_url_480']);
                 }
@@ -153,6 +156,18 @@
         });
       }else{
         window.location.href="recipes.php";
+      }
+
+      if(typeof favouriteList!='undefined'){
+        for (var k = 0; k < favouriteList.length; k++) {
+          var collection=favouriteList[k].split('|');
+          var atype=collection[0];
+          var aid=collection[1];
+          if(aid==articleID){
+            $('.vip-menu ul li:nth-child(2)').find('img').attr('src','images/add_red.png');
+            break;
+          }
+        };
       }
 
       var flag = false;

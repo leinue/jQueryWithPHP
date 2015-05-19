@@ -564,6 +564,15 @@
 	        });
       	}
 
+      	function getFavourteList(){
+      		if(typeof localStorage.favourite!='undefined'){
+				var favouriteList=localStorage.favourite;
+				favouriteList=favouriteList.substring(10,favouriteList.length);
+				favouriteList=favouriteList.split('+');
+			}
+			return favouriteList;
+      	}
+
 		/*********************************DOM操作**********************************/		
 
 		/*******************************全局变量区域*******************************/

@@ -179,8 +179,8 @@
 
 		if(localStorage.isLogin=='true'){
 			$('.lo-re-area').css('display','none');
-			$('.logo-area').css('marginTop','30.273972%');
-			$('.logo-area').css('marginBottom','30.273972%');
+			$('.logo-area').css('marginTop','50.273972%');
+			$('.logo-area').css('marginBottom','26.273972%');
 			$('.column-menu').show();
 		}else{
 			$('.lo-re-area').css('display','block');

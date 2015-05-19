@@ -53,6 +53,19 @@
 
         var articleID=getQueryString("id");
         var tag=getQueryString("type");
+        var favouriteList=getFavourteList();
+
+        if(typeof favouriteList!='undefined'){
+          for (var k = 0; k < favouriteList.length; k++) {
+            var collection=favouriteList[k].split('|');
+            var atype=collection[0];
+            var aid=collection[1];
+            if(aid==articleID && atype==tag){
+              $('.monograph-header ul li:nth-child(2)').css('background','rgb(187,0,37)');
+              break;
+            }
+          };
+        }
 
         function loadSeparateInfo(jsonData,type){
           type=(type==null) ? '1':type;

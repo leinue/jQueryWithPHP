@@ -343,7 +343,7 @@ section{
 }
 
 .vip-menu{
-	color: rgb(139,139,139);
+	color: rgb(200,200,200);
 	font-size: 1.125em;
 	display: table;
 	margin-top: 10px;
@@ -360,6 +360,10 @@ section{
 	width: 33.4558275%;
 	text-align: center;
 	cursor: pointer;
+}
+
+.vip-menu ul li img{
+	margin-top:-3px;
 }
 
 .vip-menu ul li:hover{
@@ -1614,20 +1618,20 @@ footer{
 .monograph-header ul li{
 	display: table-cell;
 	cursor: pointer;
-	padding-top: 16px;
-	padding-bottom: 10px;
 	font-size: 1.125em;
+	color: rgb(221,221,221);
+	padding: 15px 14px;
 }
 
 .monograph-header ul li:first-child{
-	padding-left: 4px;
-	padding-right: 4px;
+	padding-left: 6px;
+	padding-right: 6px;
+	width: auto;
 }
 
 .monograph-header ul li:hover{
 	background: rgb(187,0,37);
 }
-
 
 #skills-evaluating-back{
 	cursor: pointer;

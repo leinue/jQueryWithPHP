@@ -5,9 +5,9 @@
       <div class="header-back monograph-back"><span class="glyphicon glyphicon-menu-left"></span></div>
       <div class="header-main-title monograph-header">
           <ul>
-            <li class="header-skillsEvaluating-li"><span class="glyphicon glyphicon-eye-open"></span> <span id="viewer-count">0</span></li>
-            <li onclick="addToReadingList(this)" class="header-skillsEvaluating-li"><span class="glyphicon glyphicon-heart-empty"></span></li>
-            <li class="header-skillsEvaluating-li"><span class="glyphicon glyphicon-random" id="mono-share"></span></li>
+            <li class="header-skillsEvaluating-li"><img width="28" height="14" src="images/watch_white.png"></img> <span id="viewer-count">0</span></li>
+            <li onclick="addToReadingList(this)" class="header-skillsEvaluating-li"><img width="16" height="16" src="images/add_white.png"></img></li>
+            <li class="header-skillsEvaluating-li"></span><img width="16" height="16" id="mono-share" src="images/share_white.png"></img></li>
           </ul>
       </div>
     </div>
@@ -87,7 +87,7 @@
                     teacherBrandCSS='margin-top:-190px!important;';
                   }
                   var isVipHTML=homeList[i]['is_vip']=='1' ? '<div class="teacher-brand" id="monograph-member">会员专享</div>' : '';
-                  homeListHtmlDOM+='<div idata="'+homeList[i]['id']+'" class="vip-enjoy"><div ref="introduction.php?id='+homeList[i]['id']+'" onclick="locateToIntroduction(this)" style="background:url('+homeList[i]['image']+') no-repeat scroll center center transparent;background-size:cover;" class="vip-video"></div><div class="vip-content"><div ref="introduction.php?id='+homeList[i]['id']+'" onclick="locateToIntroduction(this)" class="vip-title">'+homeList[i]["title"]+'</a></div><div ref="introduction.php?id='+homeList[i]['id']+'" onclick="locateToIntroduction(this)" class="vip-post">'+homeList[i]["paper"]+'</a></div><div class="vip-menu"><ul><li><span class="glyphicon glyphicon-eye-open"></span> '+homeList[i]["browse_num"]+'</li><li type="'+homeList[i]['type']+'" articleid="'+homeList[i]['id']+'" onclick="addToReadingList(this);"><span class="glyphicon glyphicon-heart-empty"></span></li><li onclick="displayShareForm();"><span class="glyphicon glyphicon-link"></span></li></ul></div><div style="'+teacherBrandCSS+'" class="teacher-brand"><img src="'+homeList[i]['arrange_image_url']+'"></div></div>'+isVipHTML+'</div>';
+                  homeListHtmlDOM+='<div idata="'+homeList[i]['id']+'" class="vip-enjoy"><div ref="introduction.php?id='+homeList[i]['id']+'" onclick="locateToIntroduction(this)" style="background:url('+homeList[i]['image']+') no-repeat scroll center center transparent;background-size:cover;" class="vip-video"></div><div class="vip-content"><div ref="introduction.php?id='+homeList[i]['id']+'" onclick="locateToIntroduction(this)" class="vip-title">'+homeList[i]["title"]+'</a></div><div ref="introduction.php?id='+homeList[i]['id']+'" onclick="locateToIntroduction(this)" class="vip-post">'+homeList[i]["paper"]+'</a></div><div class="vip-menu"><ul><li><img width="30" height="16" style="" src="images/watch_grey.png"></img> <span>'+homeList[i]["browse_num"]+'</span></li><li type="'+homeList[i]['type']+'" articleid="'+homeList[i]['id']+'" onclick="addToReadingList(this);"><img width="18" height="18" src="images/add_grey.png"></img></li><li onclick="displayShareForm();"><img width="18" height="18" src="images/share_grey.png"></img></li></ul></div><div style="'+teacherBrandCSS+'" class="teacher-brand"><img src="'+homeList[i]['arrange_image_url']+'"></div></div>'+isVipHTML+'</div>';
                 }else{
                   //不带视频
                   var papaerContent=homeList[i]['paper'];

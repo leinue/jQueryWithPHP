@@ -2,7 +2,7 @@
 
 <header>
 	<nav>
-		<div class="nav-content">
+		<div class="nav-content food-list-content">
 			<ul>
 				<li class="header-back"><span class="glyphicon glyphicon-menu-left"></span></li>
 				<li class="foodlist-menu">购物清单</li>

@@ -162,6 +162,16 @@ nav{
 .nav-content ul .foodlist-menu{
 	text-align: center;
 	font-size: 1em;
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	top: 8px;
+}
+
+.food-list-content ul li:first-child{
+	position: absolute!important;
+	top: 8px;
+	left: 4px;
 }
 
 .nav-content ul .delete-all{

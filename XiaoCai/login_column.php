@@ -19,6 +19,8 @@
 			<li class="left-menu-setting"><span class="glyphicon glyphicon-cog"></span>设置<div style="opacity:0;" id="response-flag"><span>·</span></div></li>
 		</ul>
 	</div>
+	<div class="stem-shadow">
+	</div>
 </div>
 
 <script type="text/javascript">

@@ -36,6 +36,15 @@ nav{
 	opacity: 0.6;
 }
 
+.stem-shadow{
+	display: none;
+	position: fixed;
+	width: 98%;
+	height: 30px;
+	background: #E6E4E7;
+	bottom: 0px;
+}
+
 .loading-main{
 	text-align: center;
 	width: 200px;
@@ -50,10 +59,13 @@ nav{
 
 .login-page{
 	height: 100%;
-	background: rgb(230,228,231);
+	background: rgb(231,229,232);
 	width: 74.55%;
-	box-shadow: -1px -1px 16px #bebec0 inset;
 	display: none;
+}
+
+.login_page_shadow{
+	box-shadow: -10px 4px 20px #BEBEC0;
 }
 
 .logo-area{
@@ -388,7 +400,7 @@ section{
 }
 
 .column-menu ul li{
-	border-top: 1px solid rgb(250,250,250);
+	border-top: 1px solid rgb(212,212,212);
 	padding-top: 4px;
 	padding-bottom: 4px;
 	padding-left: 12.552301%;
@@ -401,12 +413,12 @@ section{
 }
 
 .column-menu ul li:last-child{
-	border-bottom: 1px solid rgb(250,250,250);
+	border-bottom: 1px solid rgb(212,212,212);
 	padding-bottom: 22px;
 }
 
 .column-menu ul li:hover{
-	background: rgb(204,202,205);
+	background: rgb(210,208,211);
 	box-shadow: -1px 0px 20px 2px #BEBEC0 inset;
 }
 

@@ -18,7 +18,7 @@
 <div class="introduction-page">
     <div class="vip-enjoy vip-enjoy-padding">
       <div class="vip-video">
-        <video src="movie.ogg" controls="controls">
+        <video id="video-main" src="movie.ogg" controls="controls">
           您的浏览器不支持 video 标签。
         </video>
         <!--<img src="">-->
@@ -222,17 +222,23 @@
       $('.vip-menu ul li:nth-child(2)').attr('articleid',articleID);
 
       $('.recipes-introduction-footer ul li').click(function(){
-        displayALertForm('正在努力加载,请稍候...',4000);
-        var _this=$(this);
-        var type=_this.find('span').attr('id');
-        var elm;
-        $('.recipes-introduction-footer ul li').each(function(e){
-          var thisSpan=$(this).find('span');
-          if(thisSpan.hasClass('borderActive')){thisSpan.removeClass('borderActive');}
-        });
-        _this.find('span').addClass('borderActive');
-        if(type=='introduction'){loadPagesA('introduction.php','body');
-        }else{loadPagesA('pages/introduction/'+type+'.php','.introduction-page');}
+        if(!$(this).find('span').hasClass('borderActive')){
+          displayALertForm('正在努力加载,请稍候...',4000);
+          var _this=$(this);
+          var type=_this.find('span').attr('id');
+          var elm;
+          
+          $('.recipes-introduction-footer ul li').each(function(e){
+            var thisSpan=$(this).find('span');
+            if(thisSpan.hasClass('borderActive')){thisSpan.removeClass('borderActive');}
+          });
+          _this.find('span').addClass('borderActive');
+          if(type=='introduction'){
+            loadPagesA('introduction.php','body');
+          }else{
+            loadPagesA('pages/introduction/'+type+'.php','.introduction-page');
+          }
+        }
       });
 
       $('.introduction-comment-input-container').click(function(){
@@ -258,14 +264,34 @@
       }
 
       $(window).scroll(handleRecipesFooterEvent);
+      $('.main-footer').html('');
+      $('.introduction-page').css('marginTop','-7px');
+
+      var media=document.getElementById("video-main");
+      var eventListener=function(e){
+        media.addEventListener(e,function(){
+          switch(e){
+            case 'play':
+              $('.teacher-brand').hide();
+              break;
+            case 'pause':
+              $('.teacher-brand').show();
+              break;
+            case 'ended':
+              $('.teacher-brand').show();
+              break;
+            default:
+              break;
+            }
+        });
+      }
+
+      eventListener('play');
+      eventListener('pause');
+      eventListener('ended');
 
     });
 
   </script>
 
 <?php require('footer.php'); ?>
-
-<script>
-  $('.main-footer').html('');
-  $('.introduction-page').css('marginTop','-7px');
-</script>

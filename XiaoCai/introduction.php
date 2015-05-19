@@ -278,9 +278,9 @@
 
       function handleRecipesFooterEvent(){
           if(isUserAtBottom()){
-            $('.introduction-main-section').css('margin-bottom','70px');
+            $('.recipes-introduction-footer').css('position','relative');
           }else{
-            $('.introduction-main-section').css('margin-bottom','0px');
+            $('.recipes-introduction-footer').css('position','fixed');
           }
       }
 

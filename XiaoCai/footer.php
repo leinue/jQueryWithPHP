@@ -182,11 +182,13 @@
 			$('.logo-area').css('marginTop','50.273972%');
 			$('.logo-area').css('marginBottom','26.273972%');
 			$('.column-menu').show();
+			$('.profile-display').show();
 		}else{
 			$('.lo-re-area').css('display','block');
 			$('.logo-area').css('marginTop','20.920502%');
 			$('.logo-area').css('marginBottom','0');
 			$('.column-menu').hide();
+			$('.profile-display').hide();
 		}
 
 		$(window).scroll(floatMenuCase);

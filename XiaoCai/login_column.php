@@ -1,7 +1,17 @@
 
 <div class="login-page">
+	
+	<div class="profile-display">
+		<div class="profile-phtot-uploaded">
+            <img width="46" id="user-comment-photo" height="46" src="images/default_photo.png" />   
+        </div>
+        <div class="profile-display-name">
+        	<span>Carl Wong</span>
+        </div>
+	</div>
+
 	<div class="logo-area">
-		<img width="180" height="80" src="images/xiaocai_logo.svg" />
+		<img width="100%" height="16.666667%" src="images/xiaocai_logo.svg" />
 	</div>
 
 	<div class="lo-re-area">
@@ -72,6 +82,11 @@
 
 		$('.login-page-navigate').click(function(){
 			$('.nav-menu').click();
+		});
+
+		$('.profile-display-name').css({
+			'left':$('.profile-phtot-uploaded').width()+30,
+			'top':'24px'
 		});
 
 	</script>

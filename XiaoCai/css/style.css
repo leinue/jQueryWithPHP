@@ -74,18 +74,46 @@ nav{
 }
 
 .login_page_shadow{
-	box-shadow: -10px 4px 20px #BEBEC0;
+	box-shadow: -10px 6px 14px #BEBEC0;
 }
 
 .logo-area{
 	margin: 0 auto;
-	width: 180px;
+	width: 75.310831%;
 	margin-top: 50.920502%;
 	color: rgb(116,114,117);
 	font-size: 1.125em;
 	text-align: center;
 	letter-spacing: 8px;
 	font-style: italic;
+}
+
+.profile-display{
+	position: absolute;
+	top: 28px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	width: 50%;
+	left: 0px;
+	background: rgb(221,220,222);
+	filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr='rgb(221,220,222)',endColorStr='rgb(231,229,232)',gradientType='1');
+	background: -moz-linear-gradient(left, rgb(221,220,222), rgb(231,229,232));
+	background: -o-linear-gradient(left,rgb(221,220,222), rgb(231,229,232));
+	background: -webkit-gradient(linear, 0% 0%, 100% 0%, from(rgb(221,220,222)), to(rgb(231,229,232))); 
+	color: rgb(77,77,77);
+}
+
+.profile-display .profile-phtot-uploaded{
+	width: 50px;
+	height: 50px;
+	padding-left: 1px;
+	padding-top: 1px;
+	margin-left: 14px;
+}
+
+.profile-display-name{
+	position: absolute;
+	width: 100%;
 }
 
 .logo-area img{
@@ -235,7 +263,7 @@ nav{
 		font-size: 1.125em;
 	}
 	.nav-content ul li .search-input-icon{
-		top: 18px;
+		top: 17px;
 	}
 	.nav-content ul li #recipe-search-icon{
 		top: 16px!important;
@@ -457,8 +485,8 @@ section{
 #response-flag{
 	font-size: 3.125em;
 	color: rgb(255,0,0);
-	margin-top: -86px;
-	margin-left: 120px;
+	margin-top: -90px;
+	margin-left: 106px;
 	padding: 0px;
 	min-height: 10px;
 	width: 12px;
@@ -1487,6 +1515,10 @@ footer{
 
 .step-main-reco-content p span{
 	background-color: #E2E0E3!important;	
+}
+
+.step-main-reco-content p img{
+	width: 100%!important;	
 }
 
 /*formula*/

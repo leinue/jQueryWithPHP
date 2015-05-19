@@ -97,6 +97,10 @@
 				$('.main-page').animate({left:docWidth+'px'},300,function(){
 					$('.login-page').css('display','block');
 				});
+				$('.login-page-navigate').css({
+					'left':docWidth+'px',
+					'top':$('header').height()
+				}).show();
 				$('.main-page').addClass('login_page_shadow');
 				$('footer').slideUp();
 				setNoTouchMove();
@@ -109,6 +113,7 @@
 					$('header').css('position','fixed');
 				});
 				$('.login-page').css('display','none');
+				$('.login-page-navigate').hide();
 				$('.main-page').removeClass('login_page_shadow');
 				$('footer').slideDown();
 				setTouchMove();

@@ -55,7 +55,7 @@
             </li>
           </ul>
         </div>
-        <div class="teacher-brand introduction-teacher-brand"><img src=""></div>
+        <div class="display:none;" class="teacher-brand introduction-teacher-brand"><img src=""></div>
       </div>
     </div>
     
@@ -129,7 +129,12 @@
                 $('.introduction-time #enjoy-num').html(introInfo['enjoy_num']);
                 $('.vip-menu ul li #browser-num').html(introInfo['browse_num']);
                 $('.introduction-teacher-brand img').attr('src',introInfo['arrange_image_url']);
-                $('.vip-video video').attr('src',introInfo['video_url_480']);
+                if(introInfo['video_url_480']=''){
+                  $('.vip-video').html('');
+                  $('.vip-video').attr('style','background:url('+introInfo[i]['image']+') no-repeat scroll center center transparent;background-size:cover;');
+                }else{
+                  $('.vip-video video').attr('src',introInfo['video_url_480']);
+                }
               }
               if(introList['comments']!=''){
                 displayCommentsList(introList['comments']);
@@ -276,10 +281,10 @@
               $('.teacher-brand').hide();
               break;
             case 'pause':
-              $('.teacher-brand').show();
+              $('.teacher-brand').hide();
               break;
             case 'ended':
-              $('.teacher-brand').show();
+              $('.teacher-brand').hide();
               break;
             default:
               break;

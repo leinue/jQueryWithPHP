@@ -23,6 +23,8 @@
 	</div>
 </div>
 
+<div class="login-page-navigate"></div>
+
 <script type="text/javascript">
 	$('document').ready(function(){
 		var replyTotalCount;
@@ -67,5 +69,9 @@
 		}
 
 		getReplyListData();
+
+		$('.login-page-navigate').click(function(){
+			$('.nav-menu').click();
+		});
 	});
 </script>

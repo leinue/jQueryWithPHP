@@ -64,6 +64,15 @@ nav{
 	display: none;
 }
 
+.login-page-navigate{
+	position: absolute;
+	height: 100%;
+	display: none;
+	z-index: 655355;
+	top: 0;
+	width: 100%;
+}
+
 .login_page_shadow{
 	box-shadow: -10px 4px 20px #BEBEC0;
 }

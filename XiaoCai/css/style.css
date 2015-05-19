@@ -493,6 +493,7 @@ section{
 	cursor: pointer;
 	z-index: 65535;
 	position: absolute;
+	top: 9px;
 }
 
 .header-back:active{
@@ -653,6 +654,7 @@ section{
 .reading-list-all-footer ul li{
 	padding-right: 10px;
 	padding-left: 10px;
+	margin-top: 10px;
 }
 
 .reading-list-all-footer ul li:first-child{
@@ -713,7 +715,7 @@ section{
 .reading-list-all-foot{
 	margin-left: 102px;
 	padding-right: 10px;
-	margin-top: 50px;
+	margin-top: 30px!important;
 }
 
 .reversion-list-foot-table{

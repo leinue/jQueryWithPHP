@@ -41,7 +41,7 @@
 
         <div class="skeva-xiaocai">
             <div class="skeva-xiaocai-content">
-                晓菜
+                <img width="40" height="20" src="images/logo_small.png">
             </div>
         </div>
   </section>
@@ -96,7 +96,7 @@
                   paperTitle=cutReadingListTitle(paperTitle);
                   changeFontSizeCSS=changeReadingListSize(papaerContent);
                   papaerContent=cutReadingListPaper(papaerContent);
-                  homeListHtmlDOM+='<div ref="monograph.php?id='+homeList[i]['id']+'&type='+homeList[i]['type']+'" onclick="locateToIntroduction(this)" id="skills-'+homeList[i]['id']+'" style="height:120px;" class="reading-list-a"><div style="background:url('+homeList[i]['image']+') no-repeat scroll center center transparent;background-size:cover;" class="reading-list-img"></div><div class="reading-list-all-content"><div class="reading-list-all-title '+changeFontSizeCSS+'"><p>'+paperTitle+'</p></div><div class="reading-list-all-summary"><p>'+papaerContent+'</p></div></div><div class="reading-list-all-footer"><ul><li><span class="glyphicon glyphicon-bookmark"></span> 玩转厨房</li><li><span class="glyphicon glyphicon-time"></span> '+formatDate(homeList[i]['created_time'].split(' ')[0])+'</li></ul></div></div>';
+                  homeListHtmlDOM+='<div ref="monograph.php?id='+homeList[i]['id']+'&type='+homeList[i]['type']+'" onclick="locateToIntroduction(this)" id="skills-'+homeList[i]['id']+'" style="height:120px;" class="reading-list-a"><div style="background:url('+homeList[i]['image']+') no-repeat scroll center center transparent;background-size:cover;" class="reading-list-img"></div><div class="reading-list-all-content"><div class="reading-list-all-title '+changeFontSizeCSS+'"><p>'+paperTitle+'</p></div><div class="reading-list-all-summary"><p>'+papaerContent+'</p></div></div><div style="margin-top:0px!important;" class="reading-list-all-footer"><ul><li><span class="glyphicon glyphicon-bookmark"></span> 玩转厨房</li><li><span class="glyphicon glyphicon-time"></span> '+formatDate(homeList[i]['created_time'].split(' ')[0])+'</li></ul></div></div>';
                 }
               };
               $('#project-article').append(homeListHtmlDOM+'<div class="padding-div-row"></div>');

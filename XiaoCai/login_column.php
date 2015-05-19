@@ -25,8 +25,8 @@
 
 <div class="login-page-navigate"></div>
 
-<script type="text/javascript">
-	$('document').ready(function(){
+	<script type="text/javascript">
+
 		var replyTotalCount;
 		var replyDefaultCount=10;
 		var replyHasReadCount=0;
@@ -73,5 +73,5 @@
 		$('.login-page-navigate').click(function(){
 			$('.nav-menu').click();
 		});
-	});
-</script>
+
+	</script>

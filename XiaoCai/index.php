@@ -1,4 +1,5 @@
 <?php require('header.php'); ?>
+<?php include('login_column.php'); ?>
 
 <div class="main-page">
 

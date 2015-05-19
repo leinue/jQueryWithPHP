@@ -220,8 +220,9 @@
 		var articleType=$(obj).attr('type');
 		addReadingList(articleType,localStorage.tokenID,articleID,function(data){
 			var jsonData=JSON.parse(data);
-			if(jsonData['status']=='1'){
-				$(obj).find('span').css('color','rgb(230,0,39)');
+			if(jsonData['msg'].indexOf('重复')!=-1 || jsonData['msg'].indexOf('成功')!=-1){
+				localStorage.favourite=localStorage.favourite+'+'+articleType+'|'+articleID;
+				$(obj).find('img').attr('src','images/add_red.png');
 			}
 			displayALertForm(jsonData['msg']);
 		});

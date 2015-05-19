@@ -60,9 +60,11 @@
 								paperTitle=cutReadingListTitle(paperTitle);
 								changeFontSizeCSS=changeReadingListSize(papaerContent);
 								papaerContent=cutReadingListPaper(papaerContent);
-								homeListHtmlDOM+='<div style="height:'+0.27083333*$(document).height()+'px!important;" ref="'+reaingTypeURL[homeList[i]['type']]+'?id='+homeList[i]['article_id']+'&type='+homeList[i]['type']+'" onclick="locateToIntroduction(this)" type="'+homeList[i]['type']+'" articleid="'+homeList[i]['article_id']+'" class="reading-list-a"><div style="background:url('+homeList[i]['image']+') no-repeat scroll center center transparent;background-size:cover;" class="reading-list-img"></div><div class="reading-list-all-content"><div class="reading-list-all-title '+changeFontSizeCSS+'"><p>'+paperTitle+'</p></div><div class="reading-list-all-summary"><p>'+papaerContent+'</p></div></div><div class="reading-list-all-footer"><ul><li><span class="glyphicon glyphicon-bookmark"></span> 玩转厨房</li><li><span class="glyphicon glyphicon-time"></span> '+formatDate(homeList[i]['created_time'].split(' ')[0])+'</li></ul></div></div>';
+								localStorage.favourite=localStorage.favourite+'+'+homeList[i]['type']+'|'+homeList[i]['article_id'];
+								homeListHtmlDOM+='<div ref="'+reaingTypeURL[homeList[i]['type']]+'?id='+homeList[i]['article_id']+'&type='+homeList[i]['type']+'" onclick="locateToIntroduction(this)" type="'+homeList[i]['type']+'" articleid="'+homeList[i]['article_id']+'" class="reading-list-a"><div style="background:url('+homeList[i]['image']+') no-repeat scroll center center transparent;background-size:cover;" class="reading-list-img"></div><div class="reading-list-all-content"><div class="reading-list-all-title '+changeFontSizeCSS+'"><p>'+paperTitle+'</p></div><div class="reading-list-all-summary"><p>'+papaerContent+'</p></div></div><div class="reading-list-all-footer"><ul><li><span class="glyphicon glyphicon-bookmark"></span> 玩转厨房</li><li><span class="glyphicon glyphicon-time"></span> '+formatDate(homeList[i]['created_time'].split(' ')[0])+'</li></ul></div></div>';
 							};
 							$('.reading-all-list').append(homeListHtmlDOM+'<div class="padding-div-row"></div>');
+							$('.reading-list-a').css('height',$('.reading-list-img').width()+'px');
 						}else{
 							displayALertForm("暂无数据");
 							displayNoData('再怎么找都没有啦');

@@ -62,8 +62,14 @@
 				var homeList=jsonData['data']['list'];
 				if(homeList!=''){
 					var homeListHtmlDOM="";
+					if(typeof localStorage.favourite!='undefined'){
+						var favouriteList=localStorage.favourite;
+						favouriteList=favouriteList.substring(10,favouriteList.length);
+						favouriteList=favouriteList.split('+');
+					}
 					for (var i = 0; i < homeList.length; i++) {
 						if(homeList[i]['is_vip']!=null){
+							var favourite_icon='add_grey.png';
 							//带视频
 							var paperLength=homeList[i]['paper'].length;
 							if(paperLength<44){
@@ -79,8 +85,20 @@
 							}else if(paperLength>=45){
 								teacherBrandCSS='margin-top:-190px!important;';
 							}
+
+							if(typeof favouriteList!='undefined'){
+								for (var k = 0; k < favouriteList.length; k++) {
+									var collection=favouriteList[k].split('|');
+									var atype=collection[0];
+									var aid=collection[1];
+									if(homeList[i]['type']==atype && aid==homeList[i]['id']){
+										favourite_icon='add_red.png';
+										break;
+									}
+								};
+							}
 							var isVipHTML=homeList[i]['is_vip']=='1' ? '<div class="teacher-brand" id="monograph-member">会员专享</div>' : '';
-							homeListHtmlDOM+='<div idata="'+homeList[i]['id']+'" class="vip-enjoy"><div ref="introduction.php?id='+homeList[i]['id']+'" onclick="locateToIntroduction(this)" style="background:url('+homeList[i]['image']+') no-repeat scroll center center transparent;background-size:cover;" class="vip-video"></div><div class="vip-content"><div ref="introduction.php?id='+homeList[i]['id']+'" onclick="locateToIntroduction(this)" class="vip-title">'+homeList[i]["title"]+'</a></div><div ref="introduction.php?id='+homeList[i]['id']+'" onclick="locateToIntroduction(this)" class="vip-post">'+homeList[i]["paper"]+'</a></div><div class="vip-menu"><ul><li><img width="30" height="16" style="" src="images/watch_grey.png"></img> <span>'+homeList[i]["browse_num"]+'</span></li><li type="'+homeList[i]['type']+'" articleid="'+homeList[i]['id']+'" onclick="addToReadingList(this);"><img width="18" height="18" src="images/add_grey.png"></img></li><li onclick="displayShareForm();"><img width="18" height="18" src="images/share_grey.png"></img></li></ul></div><div style="'+teacherBrandCSS+'" class="teacher-brand"><img src="'+homeList[i]['arrange_image_url']+'"></div></div>'+isVipHTML+'</div>';
+							homeListHtmlDOM+='<div idata="'+homeList[i]['id']+'" class="vip-enjoy"><div ref="introduction.php?id='+homeList[i]['id']+'" onclick="locateToIntroduction(this)" style="background:url('+homeList[i]['image']+') no-repeat scroll center center transparent;background-size:cover;" class="vip-video"></div><div class="vip-content"><div ref="introduction.php?id='+homeList[i]['id']+'" onclick="locateToIntroduction(this)" class="vip-title">'+homeList[i]["title"]+'</a></div><div ref="introduction.php?id='+homeList[i]['id']+'" onclick="locateToIntroduction(this)" class="vip-post">'+homeList[i]["paper"]+'</a></div><div class="vip-menu"><ul><li><img width="30" height="16" style="" src="images/watch_grey.png"></img> <span>'+homeList[i]["browse_num"]+'</span></li><li type="'+homeList[i]['type']+'" articleid="'+homeList[i]['id']+'" onclick="addToReadingList(this);"><img width="18" height="18" src="images/'+favourite_icon+'"></img></li><li onclick="displayShareForm();"><img width="18" height="18" src="images/share_grey.png"></img></li></ul></div><div style="'+teacherBrandCSS+'" class="teacher-brand"><img src="'+homeList[i]['arrange_image_url']+'"></div></div>'+isVipHTML+'</div>';
 						}else{
 							//不带视频
 							var papaerContent=homeList[i]['paper'];

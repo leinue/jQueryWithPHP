@@ -572,8 +572,10 @@
 		var footerIsDisplayed=false;//底部是否被显示
 
 		//使用localSorage存储当前页面
-		var pages=new StorageStack('index.php','index.php');
-		localStorage.pageStack=pages;
+		if(localStorage.pageStack==''){
+			var pages=new StorageStack('index.php','index.php');
+			localStorage.pageStack=pages;
+		}
 
 		var postType=["一手好菜","玩转厨房","首页文章"];
 		var replyType=["一手好菜","玩转厨房","首页文章"];

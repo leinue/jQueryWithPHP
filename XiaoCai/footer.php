@@ -101,7 +101,7 @@
 					'left':docWidth+'px',
 					'top':$('header').height()
 				}).show();
-				$('.main-page').addClass('login_page_shadow');
+				$('.main-page').addClass('login_page_shadow').css('height','100%');
 				$('footer').slideUp();
 				setNoTouchMove();
 				isSlided=true;
@@ -114,7 +114,7 @@
 				});
 				$('.login-page').css('display','none');
 				$('.login-page-navigate').hide();
-				$('.main-page').removeClass('login_page_shadow');
+				$('.main-page').removeClass('login_page_shadow').css('height','auto');
 				$('footer').slideDown();
 				setTouchMove();
 				isSlided=false;

@@ -73,7 +73,12 @@
 						localStorage.loginByWechat=false;
 						localStorage.isLogin=true;
 						displayALertForm('登录成功,2秒后将自动跳转...',2000);
-						setTimeout("location.href='index.php'",2000);
+						if(browser.versions.iPhone){
+							alert('登录成功,点击确定跳转');
+							window.location.href="index.php";
+						}else{
+							setTimeout("location.href='index.php'",2000);
+						}
 					}else{
 						localStorage.isLogin=false;
 					}

@@ -43,7 +43,7 @@ nav{
 	margin: 0 auto;
 	padding-top: 61.666666%;
 	color: rgb(20,20,20);
-	font-size: 30px;
+	font-size: 1.875em;
 }
 
 /*侧边栏开始*/
@@ -61,7 +61,7 @@ nav{
 	width: 180px;
 	margin-top: 20.920502%;
 	color: rgb(116,114,117);
-	font-size: 18px;
+	font-size: 1.125em;
 	text-align: center;
 	letter-spacing: 8px;
 	font-style: italic;
@@ -79,13 +79,13 @@ nav{
 	letter-spacing: 4px;
 	text-align: center;
 	color: rgb(192,11,41);
-	font-size: 18px;
+	font-size: 1.125em;
 }
 
 .lo-re-area .fast-register{
 	font-style: italic;
 	padding-top: 20px;
-	font-size: 16px;
+	font-size: 1em;
 	cursor: pointer;
 }
 
@@ -127,11 +127,11 @@ nav{
 
 .nav-content ul li{
 	display: table-cell;
-	font-size: 16px;
+	font-size: 1em;
 }
 
 .nav-content ul li .search-input-icon{
-	font-size: 13px;
+	font-size: .8125em;
 	color: rgb(193,193,193);
 	position: absolute;
 	top: 17px;
@@ -149,12 +149,12 @@ nav{
 
 .nav-content ul .foodlist-menu{
 	text-align: center;
-	font-size: 16px;
+	font-size: 1em;
 }
 
 .nav-content ul .delete-all{
 	text-align: right;
-	font-size: 14px;
+	font-size: .875em;
 	padding-right: 24px;
 	width: 20%;
 	cursor: pointer;
@@ -167,7 +167,7 @@ nav{
 
 .nav-content ul .header-back{
 	float: none;
-	font-size: 16px;
+	font-size: 1em;
 }
 
 .nav-content ul li:first-child:active{
@@ -175,14 +175,14 @@ nav{
 }
 
 .nav-content ul li:first-child{
-	font-size: 16px;
+	font-size: 1em;
 	cursor: pointer;
 	width: 13.75%;
 }
 
 .nav-content ul .main-title{
 	width: 23.75%;
-	font-size: 18px;
+	font-size: 1.125em;
 }
 
 .nav-content ul .recipe-title{
@@ -191,7 +191,7 @@ nav{
 
 @media screen and (max-width: 800px){
 	.nav-content ul .recipe-title{
-		font-size: 22px;
+		font-size: 1.375em;
 	}
 
 	.nav-content ul li #recipe-search-icon{
@@ -226,9 +226,9 @@ nav{
 	height: 100%;
 	border: none;
 	border-radius: 4px;
-	font-size: 12px;
+	font-size: .75em;
 	color: rgb(0,0,0);
-	text-align: center;
+	text-align: center!important;
 }
 
 /*头部结束*/
@@ -313,7 +313,7 @@ section{
 }
 
 .vip-title{
-	font-size: 18px;
+	font-size: 1.125em;
 }
 
 .vip-title a{
@@ -332,7 +332,7 @@ section{
 
 .vip-menu{
 	color: rgb(139,139,139);
-	font-size: 18px;
+	font-size: 1.125em;
 	display: table;
 	margin-top: 10px;
 	width: 100%;
@@ -363,7 +363,7 @@ section{
 	margin-right: 20px;
 	color: rgb(255,255,255);
 	text-align: center;
-	font-size: 14px;
+	font-size: .875em;
 	right: 20px;
 	z-index: 10;
 }
@@ -378,7 +378,7 @@ section{
 .column-menu{
 	margin-top: 12.552301%;
 	color: rgb(97,95,98);
-	font-size: 16px;
+	font-size: 1em;
 	width: 99.98%;
 }
 
@@ -420,7 +420,7 @@ section{
 }
 
 #response-flag{
-	font-size: 50px;
+	font-size: 3.125em;
 	color: rgb(255,0,0);
 	margin-top: -86px;
 	margin-left: 120px;
@@ -443,7 +443,7 @@ section{
 .header-title{
 	width: 100%;
 	text-align: center;
-	font-size: 16px;
+	font-size: 1em;
 }
 
 .header-back{
@@ -461,7 +461,7 @@ section{
 }
 
 .header-reading-menu{
-	font-size: 13px;
+	font-size: .8125em;
 	display: table;
 	width: 90%;
 	text-align: center;
@@ -477,7 +477,7 @@ section{
 }
 
 .search-list-tips{
-	font-size: 9px;
+	font-size: .5625em;
 	position: absolute;
 	top: 44px;
 }
@@ -568,7 +568,7 @@ section{
 }
 
 .reading-list-all-title{
-	font-size: 16px;
+	font-size: 1em;
 	cursor: pointer;
 }
 
@@ -578,7 +578,7 @@ section{
 }
 
 .readling-list-title-small{
-	font-size: 13px;
+	font-size: .8125em;
 }
 
 .reading-list-all-title p a:hover{
@@ -586,7 +586,7 @@ section{
 }
 
 .reading-list-all-summary{
-	font-size: 12px;
+	font-size: .75em;
 	color: rgb(139,139,139);
 	padding-bottom: 4px;
 }
@@ -602,7 +602,7 @@ section{
 
 .reading-list-all-footer ul{
 	list-style: none;
-	font-size: 10px;
+	font-size: .625em;
 	margin: 0px;
 	width: 100%;
 }
@@ -676,7 +676,7 @@ section{
 .reversion-list-foot-table{
 	display: table;
 	color: #C8C8C8;
-	font-size: 10px;
+	font-size: .625em;
 	width: 100%;
 }
 
@@ -710,7 +710,7 @@ section{
 
 .setting-list{
 	color: rgb(79,79,79);
-	font-size: 16px;
+	font-size: 1em;
 	margin-top: 14px;
 	width: 100%;
 }
@@ -774,7 +774,7 @@ section{
 
 .food-list-detail{
 	display: none;
-	font-size: 14px;
+	font-size: .875em;
 }
 
 .food-list-detail ul li{
@@ -828,14 +828,14 @@ section{
 
 .change-password-submit-button{
 	padding: 36px;
-	font-size: 18px;
+	font-size: 1.125em;
 }
 
 .change-password-submit-button .fast-register{
 	padding-top: 20px;
 	color: rgb(178,176,179);
 	font-style: italic;
-	font-size: 16px;
+	font-size: 1em;
 	text-align: center;
 }
 
@@ -866,7 +866,7 @@ section{
 .change-password-input ul .send-ver-code{
 	width: auto;
 	position: absolute;
-	font-size: 12px;
+	font-size: .75em;
 	right: 14px;
 }
 
@@ -941,7 +941,7 @@ section{
 .nav-recipe-menu li{
 	display: table-cell;
 	text-align: center;
-	font-size: 16px;
+	font-size: 1em;
 }
 
 .nav-recipe-menu li a{
@@ -950,17 +950,17 @@ section{
 }
 
 .nav-recipe-menu li span{
-	font-size: 11px;
+	font-size: .6875em;
 }
 
 .nav-recipe-menu li:first-child{
 	cursor: pointer;
-	font-size: 14px;
+	font-size: .875em;
 }
 
 .nav-recipe-menu li:last-child{
 	cursor: pointer;
-	font-size: 14px;
+	font-size: .875em;
 }
 
 .recipe-menu-container{
@@ -977,7 +977,7 @@ section{
 	background: rgb(255,255,255);
 	opacity: 0.9;
 	color: rgb(10,0,0);
-	font-size: 14px;
+	font-size: .875em;
 	z-index: 65535;
 }
 
@@ -1019,7 +1019,7 @@ footer{
 	bottom: 0;
 	width: 100%;
 	background: rgb(241,241,241);
-	font-size: 12px;
+	font-size: .75em;
 	color: rgb(100,100,100);
 }
 
@@ -1161,14 +1161,14 @@ footer{
 	width: 65%;
 	color: rgb(31,31,31);
 	font-weight: bold;
-	font-size: 15px;
+	font-size: .9375em;
 	text-align: left;
 	padding-left: 0px;
 }
 
 .introduction-comment-title ul li:last-child{
 	color: rgb(148,148,148);
-	font-size: 12px;
+	font-size: .75em;
 	text-align: right;
 }
 
@@ -1208,7 +1208,7 @@ footer{
 }
 .recipes-introduction-footer ul li{
   display: table-cell;
-  font-size: 14px;
+  font-size: .875em;
   text-align: center;
   cursor: pointer;
   padding-top: 14px;
@@ -1269,7 +1269,7 @@ footer{
 
 }
 .skills-evaluating-title h3{
-	font-size: 20px;
+	font-size: 1.25em;
 }
 
 .skills-evaluating-title p{
@@ -1429,7 +1429,7 @@ footer{
 
 .step-main-recommended-title{
 	color: rgb(239,0,39);
-	font-size: 15px;
+	font-size: .9375em;
 }
 
 .step-main-reco-content{
@@ -1556,7 +1556,7 @@ footer{
 }
 .formula-juice-list ul li{
 	display: table-cell;
-	font-size: 14px;
+	font-size: .875em;
     padding-top: 15px;
 	padding-bottom: 15px;
 	color: rgb(93,91,94);
@@ -1604,7 +1604,7 @@ footer{
 	cursor: pointer;
 	padding-top: 16px;
 	padding-bottom: 10px;
-	font-size: 18px;
+	font-size: 1.125em;
 }
 
 .monograph-header ul li:first-child{
@@ -1648,7 +1648,7 @@ footer{
 	}
 
 	.monograph-header ul li{
-		font-size: 14px;
+		font-size: .875em;
 	}
 
 	.monograph-img1 img{

@@ -25,6 +25,12 @@
 			}
 		);
 
+		$('.search-form').hover(function(){
+			$(this).stop().animate({opacity:1},'fast');
+		},function(){
+			$(this).stop().animate({opacity:1},'fast');
+		});
+
 		//处理底部菜单滑动事件,若用户滑动到底部则自动隐藏
 		function handleFooterEvent(){
 			var footerHeight=$('footer').height();

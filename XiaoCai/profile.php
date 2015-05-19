@@ -102,7 +102,6 @@
 				displayALertForm('正在为您处理,请稍候...');
 				var tokenID=localStorage.tokenID;
 				var headimgURL=$('#user-profile-photo').attr('src');
-				console.log(headimgURL);
 				var nickname=$('.change-password-input ul #wechat-nickname input').val();
 				changeUserData(tokenID,nickname,headimgURL,function(data){
 					if(data!=''){
@@ -134,7 +133,6 @@
 		} else if(navigator.userAgent.indexOf("Chrome")>0) { // Chrome
 			url = window.URL.createObjectURL(document.getElementById(sourceId).files.item(0));
 		}
-		alert(url);
 		return url;
 	}
 

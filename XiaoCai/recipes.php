@@ -222,6 +222,8 @@
 			currentRecipesType=$(obj).attr('idata');
 			recipesDefaultPage=1;
 			recipeDefaultLimit=10;
+			$('.nav-recipe-menu-active').removeClass('nav-recipe-menu-active');
+			$(obj).addClass('nav-recipe-menu-active');
 			loadRecipesList(currentRecipesType,defaultPage,defaultLimit,true);
 		}
 

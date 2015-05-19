@@ -983,6 +983,10 @@ section{
 	display: table-row;
 }
 
+.nav-recipe-menu-active{
+	background:#C8C6C7;
+}
+
 .nav-recipe-menu li{
 	display: table-cell;
 	text-align: center;

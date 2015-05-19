@@ -129,7 +129,7 @@
                 $('.introduction-time #enjoy-num').html(introInfo['enjoy_num']);
                 $('.vip-menu ul li #browser-num').html(introInfo['browse_num']);
                 $('.introduction-teacher-brand img').attr('src',introInfo['arrange_image_url']);
-                if(introInfo['video_url_480']=''){
+                if(introInfo['video_url_480']==''){
                   $('.vip-video').html('');
                   $('.vip-video').attr('style','background:url('+introInfo[i]['image']+') no-repeat scroll center center transparent;background-size:cover;');
                 }else{

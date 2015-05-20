@@ -7,7 +7,7 @@
 	<nav>
 		<div class="nav-content">
 			<ul>
-				<li class="nav-menu"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></li>
+				<li class="nav-menu"><span><img style="margin-top:-1px;" src="images/menu.png"></span></li>
 				<li class="main-title">晓菜</li>
 				<li class="search-form">
 					<input type="search" placeholder="食谱 食材 工具 话题" />
@@ -82,6 +82,9 @@
 								teacherBrandCSS='margin-top:-190px!important;';
 							}
 
+							if(homeList[i]['paper'].length>=36){
+								homeList[i]['paper']=homeList[i]['paper'].substring(0,36)+'...';
+							}
 							if(typeof favouriteList!='undefined'){
 								for (var k = 0; k < favouriteList.length; k++) {
 									var collection=favouriteList[k].split('|');

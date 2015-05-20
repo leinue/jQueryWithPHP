@@ -3,7 +3,7 @@
 		<ul>
 			<li class="formula-li1"><span>食材用量</span></li>
 			<li class="formula-li2"><button class= "button-add">加入采购清单</button></li>
-			<li><span class="glyphicon glyphicon-menu-up"></span></li>
+			<li><span><img style="width:16px!important;" height="16" src="images/slide_to_top.png"></span></li>
 		</ul>
 	</div>
 
@@ -12,11 +12,11 @@
 <script type="text/javascript">
 
         $('.formula-buy ul li:last-child').click(function(){
-        	$('.formula-juice').slideToggle();
-        	if($(this).find('span').attr('class').split(' ')[1]=='glyphicon-menu-up'){
-        		$(this).find('span').attr('class','glyphicon glyphicon-menu-down');
+        	$('.formula-juice').slideToggle(300);
+        	if($(this).find('span').find('img').attr('src')=='images/slide_to_top.png'){
+        		$(this).find('span').find('img').attr('src','images/slide_to_bottom.png');
         	}else{
-        		$(this).find('span').attr('class','glyphicon glyphicon-menu-up');
+        		$(this).find('span').find('img').attr('src','images/slide_to_top.png');
         	}
           $('.recipes-introduction-footer').toggleClass('fixed-pos');
         });

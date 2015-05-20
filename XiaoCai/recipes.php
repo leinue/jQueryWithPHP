@@ -7,7 +7,7 @@
 	<nav>
 		<div class="nav-content">
 			<ul>
-				<li class="nav-menu"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></li>
+				<li class="nav-menu"><span><img src="images/menu.png"></span></li>
 				<li class="main-title recipe-title">一手好菜</li>
 				<li class="search-form">
 					<input type="search" placeholder="食谱 食材 工具 话题" />
@@ -167,7 +167,10 @@
 				var favouriteList=getFavourteList();
 				for (var i = 0; i < homeList.length; i++) {
 					var favourite_icon='add_grey.png';
-					var paperLength=homeList[i]['paper'].length;
+					if(homeList[i]['paper'].length>=36){
+						homeList[i]['paper']=homeList[i]['paper'].substring(0,36)+'...';
+					}
+					/*var paperLength=homeList[i]['paper'].length;
 					if(paperLength<44){
 						teacherBrandCSS='margin-top:-140px!important;'
 					}
@@ -180,7 +183,7 @@
 						teacherBrandCSS='margin-top:-170px!important;';
 					}else if(paperLength>=45){
 						teacherBrandCSS='margin-top:-190px!important;';
-					}
+					}*/
 
 					if(typeof favouriteList!='undefined'){
 						for (var k = 0; k < favouriteList.length; k++) {
@@ -195,7 +198,7 @@
 					}
 
 					var isVipHTML=homeList[i]['is_vip']=='1' ? '<div class="teacher-brand" id="monograph-member">会员专享</div>' : '';
-					homeListHtmlDOM+='<div idata="'+homeList[i]['id']+'" class="vip-enjoy"><div ref="introduction.php?id='+homeList[i]['id']+'" onclick="locateToIntroduction(this)" style="background:url('+homeList[i]['image']+') no-repeat scroll center center transparent;background-size:cover;" class="vip-video"><video id="video-main" src="'+homeList[i]['video_url_480']+'" controls="controls"></video></div><div class="vip-content"><div ref="introduction.php?id='+homeList[i]['id']+'" onclick="locateToIntroduction(this)" class="vip-title">'+homeList[i]["title"]+'</a></div><div ref="introduction.php?id='+homeList[i]['id']+'" onclick="locateToIntroduction(this)" class="vip-post">'+homeList[i]["paper"]+'</a></div><div class="vip-menu"><ul><li><img width="30" height="16" style="" src="images/watch_grey.png"></img> <span>'+homeList[i]["browse_num"]+'</span></li><li type="1" articleid="'+homeList[i]['id']+'" onclick="addToReadingList(this);"><img width="18" height="18" src="images/'+favourite_icon+'"></img></li><li onclick="displayShareForm();"><img width="18" height="18" src="images/share_grey.png"></img></li></ul></div><div style="'+teacherBrandCSS+'" class="teacher-brand"><img src="'+homeList[i]['arrange_image_url']+'"></div></div>'+isVipHTML+'</div>';
+					homeListHtmlDOM+='<div idata="'+homeList[i]['id']+'" class="vip-enjoy"><div ref="introduction.php?id='+homeList[i]['id']+'" onclick="locateToIntroduction(this)" style="background:url('+homeList[i]['image']+') no-repeat scroll center center transparent;background-size:cover;" class="vip-video"><video id="video-main" src="'+homeList[i]['video_url_480']+'" controls="controls"></video></div><div class="vip-content"><div ref="introduction.php?id='+homeList[i]['id']+'" onclick="locateToIntroduction(this)" class="vip-title">'+homeList[i]["title"]+'</a></div><div ref="introduction.php?id='+homeList[i]['id']+'" onclick="locateToIntroduction(this)" class="vip-post">'+homeList[i]['paper']+'</a></div><div class="vip-menu"><ul><li><img width="30" height="16" style="" src="images/watch_grey.png"></img> <span>'+homeList[i]["browse_num"]+'</span></li><li type="1" articleid="'+homeList[i]['id']+'" onclick="addToReadingList(this);"><img width="18" height="18" src="images/'+favourite_icon+'"></img></li><li onclick="displayShareForm();"><img width="18" height="18" src="images/share_grey.png"></img></li></ul></div><div style="'+teacherBrandCSS+'" class="teacher-brand"><img src="'+homeList[i]['arrange_image_url']+'"></div></div>'+isVipHTML+'</div>';
 				};
 				$('section').append(homeListHtmlDOM+'<div class="padding-div-row"></div>');
 			}else{

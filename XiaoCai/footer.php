@@ -3,7 +3,7 @@
 	<div class="main-footer">
 		<ul>
 			<li id="footer-menu-index" class="main-footer-active"><img src="images/index.png"><span>晓菜</span></li>
-			<li id="footer-menu-recipes"><img src="images/recipes.png"><span>一手好菜</span></li>
+			<li id="footer-menu-recipes"><img style="width:28px!important;height:24px!important;" src="images/recipes.png"><span>一手好菜</span></li>
 			<li id="footer-menu-skills"><img src="images/skills.png"><span>玩转厨房</span></li>
 			<!--<li id="footer-menu-review"><img src="images/review.png">测评</li>-->		
 		</ul>
@@ -97,12 +97,12 @@
 				$('.main-page').animate({left:docWidth+'px'},300,function(){
 					$('.login-page').css('display','block');
 				});
+				$('footer').animate({'left':docWidth+'px'},300);
 				$('.login-page-navigate').css({
 					'left':docWidth+'px',
 					'top':$('header').height()
 				}).show();
 				$('.main-page').addClass('login_page_shadow').css('height','100%');
-				$('footer').slideUp();
 				setNoTouchMove();
 				isSlided=true;
 			}else{
@@ -112,10 +112,10 @@
 				$('.main-page').animate({left:'0px'},300,function(){
 					$('header').css('position','fixed');
 				});
+				$('footer').animate({left:'0px'});
 				$('.login-page').css('display','none');
 				$('.login-page-navigate').hide();
 				$('.main-page').removeClass('login_page_shadow').css('height','auto');
-				$('footer').slideDown();
 				setTouchMove();
 				isSlided=false;
 			}	
@@ -182,7 +182,7 @@
 			$('.logo-area').css('marginTop','50.273972%');
 			$('.logo-area').css('marginBottom','26.273972%');
 			$('.column-menu').show();
-			$('.profile-display').show();
+			$('.profile-display').show();	
 		}else{
 			$('.lo-re-area').css('display','block');
 			$('.logo-area').css('marginTop','20.920502%');

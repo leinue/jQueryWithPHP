@@ -7,7 +7,7 @@
 	<nav>
 		<div class="nav-content">
 			<ul>
-				<li class="nav-menu"><span class="glyphicon glyphicon-list" aria-hidden="true"></span></li>
+				<li class="nav-menu"><span><img src="images/menu.png"></span></li>
 				<li class="main-title"></li>
 			</ul>
 		</div>

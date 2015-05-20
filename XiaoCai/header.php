@@ -82,6 +82,9 @@
 			setNoTouchMove();
 			var stackifyJSONStack=JSON2Stack(localStorage.pageStack);
 			var pageLoaded=stackifyJSONStack.pop();
+			if(pageLoaded==null){
+				pageLoaded='index.php';
+			}
 			$('body').load(pageLoaded,function(){
 				$('.loading').fadeOut();
 				setTouchMove();

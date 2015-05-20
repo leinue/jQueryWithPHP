@@ -63,7 +63,8 @@
       <ul>
         <li>
             <div class="profile-phtot-uploaded">
-              <img width="50" id="user-comment-photo" height="50" src="images/default_photo.png" />   
+              <!-- <img width="50" id="user-comment-photo" height="50" src="images/default_photo.png" />    -->
+                  <div id="user-comment-photo" style="background:url(images/first.jpg) no-repeat scroll 50% 50% transparent;background-size:cover;"></div>
             </div>
         </li>
         <li>
@@ -90,7 +91,7 @@
   <script type="text/javascript">
     $(document).ready(function() {
 
-      $('.profile-phtot-uploaded #user-comment-photo').attr('src',localStorage.headimgurl);
+      $('.profile-phtot-uploaded #user-comment-photo').attr('style',"background:url("+localStorage.headimgurl+") no-repeat scroll 50% 50% transparent;background-size:cover;");
 
       var favouriteList=getFavourteList();
 
@@ -101,7 +102,7 @@
         var username;
         commentsList.forEach(function(e){
           username=e['username']==''?'[undefined]':e['username'];
-          usereply='<ul><li><a id="com'+e['id']+'"></a><div class="profile-phtot-uploaded"><img width="50" id="user-comment-po" height="50" src="'+e['headimgurl']+'"></div></li><li><div class="introduction-comment-title"><ul><li>'+username+'</li><li>'+e['created_time']+'</li></ul></div><div class="introduction-comment-content"><span>'+e['content']+'</span></div>';
+          usereply='<ul><li><a id="com'+e['id']+'"></a><div class="profile-phtot-uploaded"><div id="user-comment-photo" style="background:url('+e['headimgurl']+') no-repeat scroll 50% 50% transparent;background-size:cover;"></div></div></li><li><div class="introduction-comment-title"><ul><li>'+username+'</li><li>'+e['created_time']+'</li></ul></div><div class="introduction-comment-content"><span>'+e['content']+'</span></div>';
           if(e['reply_username']==null){
             officalReply='';
           }else{
@@ -178,7 +179,7 @@
             displayALertForm(jsonData);
             if (jsonData['msg'] == '留言成功') {
               displayALertForm(jsonData['msg']);
-              var usereply='<ul><li><div class="profile-phtot-uploaded"><img width="50" id="user-comment-po" height="50" src="'+localStorage.headimgurl+'"></div></li><li><div class="introduction-comment-title"><ul><li>'+localStorage.nickname+'</li><li>'+getCurrentTime()+'</li></ul></div><div class="introduction-comment-content"><span>'+comments+'</span></div>';
+              var usereply='<ul><li><div class="profile-phtot-uploaded"><div id="user-comment-photo" style="background:url('+localStorage.headimgurl+') no-repeat scroll 50% 50% transparent;background-size:cover;"></div></div></li><li><div class="introduction-comment-title"><ul><li>'+localStorage.nickname+'</li><li>'+getCurrentTime()+'</li></ul></div><div class="introduction-comment-content"><span>'+comments+'</span></div>';
               $('.introduction-comment').append(usereply);
               $('html, body').animate({scrollTop: $(document).height()}, 300);
               $('.introduction-comment-input-container').html('<span>在此输入留言或内容</span><textarea style="display:none;width:100%;"></textarea><input style="margin:0 auto;display:none;margin-top:10px;" class="button button-caution button-pill" value="提交" type="button">');

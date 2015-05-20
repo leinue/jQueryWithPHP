@@ -247,7 +247,7 @@ nav{
 
 .nav-content ul .main-title{
 	width: 23.75%;
-	font-size: 1.125em;
+	font-size: 1.225em;
 }
 
 .nav-content ul .recipe-title{
@@ -992,10 +992,15 @@ section{
 
 .profile-upload-photo{
 	font-style: normal;
+	margin: 0 auto;
+	color: rgb(116,114,117);
+	font-size: 1.125em;
+	text-align: center;
+	letter-spacing: 8px;
 }
 
 .profile-upload-photo span{
-	padding-top: 2px;
+	padding-top: 9px;
 	cursor: pointer;
 }
 		
@@ -1011,6 +1016,12 @@ section{
 }
 
 .profile-phtot-uploaded img{
+	border-radius: 47.5px;
+	box-shadow: 0px 0px 4px 1px rgb(208,207,209);
+}
+
+.profile-phtot-uploaded div{
+	height: 100%;
 	border-radius: 47.5px;
 	box-shadow: 0px 0px 4px 1px rgb(208,207,209);
 }
@@ -1226,6 +1237,7 @@ footer{
 	padding-left: 4px;
 	padding-top: 4px;
 	margin-top: 16px;
+	margin: 14px 0px -20px;
 }
 
 .introduction-comment-input-container{

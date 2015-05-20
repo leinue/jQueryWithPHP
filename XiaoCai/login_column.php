@@ -3,7 +3,8 @@
 	
 	<div class="profile-display">
 		<div class="profile-phtot-uploaded main-panel-profile-photo">
-            <img width="46" id="user-comment-photo" height="46" src="images/default_photo.png" />   
+            <!-- <img width="46" id="user-comment-photo" height="46" src="images/default_photo.png" />    -->
+        	<div style="background:url(images/first.jpg) no-repeat scroll 50% 50% transparent;background-size:cover;"></div>
         </div>
         <div class="profile-display-name">
         	<span>Carl Wong</span>
@@ -53,7 +54,7 @@
 		});
 
 		if(localStorage.isLogin=='true'){
-			$('.main-panel-profile-photo').find('img').attr('src',localStorage.headimgurl);
+			$('.main-panel-profile-photo').find('div').attr('style','background:url('+localStorage.headimgurl+') no-repeat scroll 50% 50% transparent;background-size:cover;');
 			var nickname=localStorage.nickname=='' ?'[undefined]':localStorage.nickname;
 			$('.profile-display-name').find('span').html(nickname);
 		}

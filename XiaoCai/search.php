@@ -14,19 +14,19 @@
 			<ul id="search-menu">
 				<li id="reading-list-All">
 					<span class="header-reading-menu-active">全部</span>
-					<div id="All-result" style="left: 21.1555555%;" class="search-list-tips">0</div>
+					<div id="All-result" style="left: 17.1555555%;" class="search-list-tips">0</div>
 				</li>
 				<li id="reading-list-Home">
 					<span>首页</span>
-					<div id="Home-result" style="left: 43.1555555%;" class="search-list-tips">0</div>
+					<div id="Home-result" style="left: 42.1555555%;" class="search-list-tips">0</div>
 				</li>
 				<li id="reading-list-Recipe">
-					<span>一手好菜</span>
-					<div id="Recipe-result" style="left: 69.1555555%;" class="search-list-tips">0</div>
+					<span>食谱</span>
+					<div id="Recipe-result" style="left: 68.1555555%;" class="search-list-tips">0</div>
 				</li>
 				<li id="reading-list-Skills">
-					<span>玩转厨房</span>
-					<div id="Skills-result" style="left: 92.1555555%;" class="search-list-tips">0</div>
+					<span>技巧</span>
+					<div id="Skills-result" style="left: 93.1555555%;" class="search-list-tips">0</div>
 				</li>
 				<!--<li id="reading-list-Project"><span>专题</span></li>-->
 			</ul>
@@ -81,7 +81,11 @@
 		displayALertForm(jsonData['msg']);
 		if(jsonData['msg']=='成功'){
 			for(var key in jsonData['data']){
-				$('#search-menu li #'+key+'-result').html(jsonData['data'][key]['count']);
+				var searchCount=jsonData['data'][key]['count'];
+				if(searchCount>=100){
+					searchCount='99+';
+				}
+				$('#search-menu li #'+key+'-result').html(searchCount);
 			}
 			var listNum=jsonData['data'][fucktype]['count'];
 			if(listNum!==0){

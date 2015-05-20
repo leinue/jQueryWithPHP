@@ -1,5 +1,7 @@
 <?php require('header.php'); ?>
 
+<script type="text/javascript" src="extension/ajaxfileupload.js"></script>
+
 <div class="login-main-page">
 	
 <header>
@@ -39,7 +41,7 @@
 </div>
 
 		<iframe name="uploadfrm" id="uploadfrm" style="display: none;"></iframe>  
-        <form name="formHead" method="post" action="" id="formHead" enctype="multipart/form-data" target="uploadfrm">  
+        <form name="formHead" method="post" action="uppic.php" id="formHead" enctype="multipart/form-data" target="uploadfrm">  
       
             <div>  
                 <div>  
@@ -52,8 +54,39 @@
                 </div>  
             </div>
         </form>
-                
-        <script type="text/javascript">  
+
+<!--         <input type="file" name="fileToUpload" id="fileToUpload" class="inp_fileToUpload" multiple="multiple"/> 
+<img src="images/index.png" width="30px" height="30px" id="imgFile" class="img_upload" id="img" /> 
+ -->                
+        <script type="text/javascript">
+			// $(function() { 
+			// 	$(".inp_fileToUpload").on("change", function() {//现在这个已经适用于多个file表单。 
+			// 		ajaxFileUpload($(this).attr("id"), 'imgFile'); 
+			// 	}) 
+			// });
+
+			// function ajaxFileUpload(file_id, img_id) { 
+			// 	jQuery.ajaxFileUpload({ 
+			// 	url : 'uppic.php', //用于文件上传的服务器端请求地址 
+			// 	secureuri : false, //是否需要安全协议，一般设置为false 
+			// 	fileElementId : file_id, //文件上传域的ID 
+			// 	dataType : 'text', //返回值类型 一般设置为json 
+			// 	success : function(data, status)//服务器成功响应处理函数 
+			// 	{ 
+			// 	if (data.error == 0) { 
+			// 		$("#" + img_id).attr("src", data.url); 
+			// 	} else { 
+			// 		alert(data.message);
+			// 	} 
+			// 	}, 
+			// 	error : function(data, status, e)//服务器响应失败处理函数 
+			// 	{ 
+			// 		alert(e); 
+			// 	} 
+			// 	}) 
+			// 	return false; 
+			// };
+
             function setImagePreview() {  
                 var preview, img_txt, localImag, file_head = document.getElementById("file_head"),  
                 picture = file_head.value;  
@@ -72,7 +105,7 @@
                     localImag.style.height = "95px";  
                     try {  
                         localImag.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)",  
-                        localImag.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = img_txt  
+                        localImag.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = img_txt
                     } catch(f) {  
                         return alert("您上传的图片格式不正确，请重新选择！"),  
                         !1  

@@ -15,7 +15,7 @@
 	<div class="setting-list change-password-input">
 		<ul>
 			<li id="setting-list-phone-num-input">
-				<input id="find-pw-phone" placeholder="手机号" />
+				<input style="padding-top: 4px !important;padding-bottom: 4px !important;" id="find-pw-phone" placeholder="手机号" />
 				<button id="findpw-send-vercode" class="button button-caution button-pill button-small send-ver-code">发送验证码</button></li>
 			<li id="setting-list-password-o-input"><input type="password" placeholder="输入密码" /></li>
 			<li id="setting-list-password-new-input" class="setting-list-second"><input type="password" placeholder="确认密码" /></li>

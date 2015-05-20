@@ -50,7 +50,7 @@
 		}
 
 		/*幻灯片开始*/
-		var bannerHeight=0.3125*$(document).height();
+		var bannerHeight=0.25*$(document).height();
 		$('.banner ul li').css('height',bannerHeight+'px').css('background-size','100% '+bannerHeight+'px');
 
 		if(window.chrome) {$('.banner li').css('background-size', '100% 100%');}

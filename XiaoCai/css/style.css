@@ -321,7 +321,7 @@ section{
 
 .banner ul li{
 	float: left;
-	height: 150px;
+	height: 120px;
 	box-shadow: inset 0 -3px 6px rgba(0,0,0,.1);
 	background-size: 100% 150px;
 }
@@ -428,7 +428,7 @@ section{
 	width: 60px;
 	height: 60px;
 	background: rgb(230,0,39);
-	margin-top: -140px;
+	margin-top: -34px;
 	margin-right: 20px;
 	color: rgb(255,255,255);
 	text-align: center;
@@ -548,7 +548,7 @@ section{
 .header-reading-menu{
 	font-size: .8125em;
 	display: table;
-	width: 90%;
+	width: 100%;
 	text-align: center;
 	cursor: pointer;
 	margin: 0px auto;
@@ -563,8 +563,11 @@ section{
 
 .search-list-tips{
 	font-size: .5625em;
-	position: absolute;
+	/*position: absolute;*/
 	top: 44px;
+	margin-top: -16px;
+	margin-left: 30px;
+	z-index: 200;
 }
 
 

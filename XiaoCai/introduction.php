@@ -49,7 +49,7 @@
               <img width="16" height="16" src="images/add_grey.png"></img>
               </span>
             </li>
-            <li>
+            <li onclick="displayShareForm()">
               <img width="16" height="16" id="mono-share" src="images/share_grey.png"></img>
               </span>
             </li>
@@ -321,7 +321,6 @@
           'position':'fixed'
         });
       }else{
-        console.log('dsds');
         $('.recipes-introduction-footer').css({
           'position':'relative'
         });

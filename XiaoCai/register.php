@@ -30,7 +30,7 @@
 	</div>
 
 	<div class="change-password-submit-button">
-		<a id="btn-confirm-register" class="button button-caution button-pill">确认注册</a>
+		<a id="btn-confirm-register" style="background:rgb(229,0,45)" class="button button-caution button-pill">确认注册</a>
 		<div class="fast-register">————— 或 —————</div>
 		<div class="wechat-logo">
 			<img src="images/wechat.png">

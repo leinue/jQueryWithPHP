@@ -25,7 +25,7 @@
 			</li>
 			<li id="setting-list-password-o-input"><input type="password" placeholder="登录密码" /></li>
 			<li id="setting-list-password-new-input" class="setting-list-second"><input type="password" placeholder="确认密码" /></li>
-			<li id="se	tting-list-password-confrom-input"><input placeholder="手机验证码" /></li>
+			<li id="setting-list-password-confrom-input"><input placeholder="手机验证码" /></li>
 		</ul>
 	</div>
 
@@ -83,6 +83,7 @@
 				var password=$('.change-password-input ul #setting-list-password-o-input input').val();
 				var repassword=$('.change-password-input ul #setting-list-password-new-input input').val();
 				var code=$('.change-password-input ul #setting-list-password-confrom-input input').val();
+				console.log(code);
 				regByMobile(smobile,password,repassword,code,function(data){
 					var jsonData=JSON.parse(data);
 					displayALertForm(jsonData['msg']);

@@ -1,15 +1,20 @@
 
 	<div class="formula-buy">
 		<ul>
-			<li class="formula-li1"><span>食材用量</span></li>
-			<li class="formula-li2"><button class= "button-add">加入采购清单</button></li>
-			<li><span><img style="width:16px!important;" height="16" src="images/slide_to_top.png"></span></li>
-		</ul>
+			<!-- <li class="formula-li1"><span>食材用量</span></li> -->
+			<li class="formula-li2">
+        <button style="font-style:italic;background:rgb(229,0,45)" class= "button-add">加入采购清单</button>
+        <div class="formula-buy-icon" style="background:url(images/foodlist_white.png) no-repeat scroll center center transparent;background-size:cover;" ></div>
+      </li>
+			<!-- <li><span><img style="width:16px!important;" height="16" src="images/slide_to_top.png"></span></li> -->
+    </ul>
 	</div>
 
 	<section></section>
 
 <script type="text/javascript">
+
+        $('.formula-buy-icon').css('left',$(document).width()/2-56);
 
         $('.formula-buy ul li:last-child').click(function(){
         	$('.formula-juice').slideToggle(300);

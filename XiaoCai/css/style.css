@@ -1284,7 +1284,7 @@ footer{
   color: rgb(117,115,118);
   margin-top: 20px;
   background: rgb(241,241,241);
-  position: fixed;
+  position: relative;
   bottom: 0;
 }
 
@@ -1541,8 +1541,8 @@ footer{
      width: 100%;
      display: table;
      text-align: center;
-     background:rgb(215,215,215);
-     margin-top: 2px;
+     /*background:rgb(215,215,215);*/
+     margin-top: 10px;
         /*position: fixed;*/
 }
 
@@ -1599,20 +1599,29 @@ footer{
 	  width: 20%;
 }
 .formula-li2{
-	   width: 60%;
+	   width: 30%;
 	   height: 30px;
 }
 .button-add{
-	  width: 60%;
+	  width: 46%;
       border-radius: 30px;
       margin-top: 6px;
       margin-bottom: 6px;
       padding-top: 6px;
+      padding-left: 16px;
       padding-bottom: 6px;
       text-align: center;
       background: rgb(230,0,39);
       color: rgb(255,255,255);
       border:none;
+      margin-top: 20px;
+}
+
+.formula-buy-icon{
+	width: 14px;
+	height: 14px;
+	top: 66px;
+	position: absolute;
 }
 
 .button-add:hover{

@@ -276,15 +276,20 @@
         }
       });
 
-      function handleRecipesFooterEvent(){
+      /*function handleRecipesFooterEvent(){
           if(isUserAtBottom()){
-            $('.recipes-introduction-footer').css('position','relative');
+            $('.recipes-introduction-footer').css({
+              'position':'relative',
+              'margin-top':'40px'
+            });
           }else{
             $('.recipes-introduction-footer').css('position','fixed');
           }
-      }
+      }*/
 
-      $(window).scroll(handleRecipesFooterEvent);
+
+
+      // $(window).scroll(handleRecipesFooterEvent);
       $('.main-footer').html('');
       $('.introduction-page').css('margin-top','-7px');
 
@@ -310,6 +315,17 @@
       eventListener('play');
       eventListener('pause');
       eventListener('ended');
+
+      if($('section').height()<=$(window).height()-82){
+        $('.recipes-introduction-footer').css({
+          'position':'fixed'
+        });
+      }else{
+        console.log('dsds');
+        $('.recipes-introduction-footer').css({
+          'position':'relative'
+        });
+      }
 
     });
 

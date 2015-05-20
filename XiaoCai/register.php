@@ -20,7 +20,7 @@
 	<div class="setting-list change-password-input">
 		<ul>
 			<li id="setting-list-phone-num-input">
-				<input id="reg-mobile" type="tel" max="11" placeholder="手机号" />
+				<input style="padding-top: 4px!important;padding-bottom: 4px!important;" id="reg-mobile" type="tel" max="11" placeholder="手机号" />
 				<a style="color:#FFF" class="button button-caution button-pill button-small send-ver-code">发送验证码</a>
 			</li>
 			<li id="setting-list-password-o-input"><input type="password" placeholder="登录密码" /></li>
@@ -64,12 +64,12 @@
 						displayALertForm('注册成功,2秒后将自动跳转...',2000);
 						localStorage.uid=jsonData['data']['uid'];
 						localStorage.tokenID=jsonData['data']['token_id'];
-						localStorage.mobileNum=jsonData['data'['mobile'];
+						localStorage.mobileNum=jsonData['data']['mobile'];
 						localStorage.loginByWechat=false;
 						localStorage.isLogin=true;
 						setTimeout(function(){
 							window.location.href="profile.php";
-						},3000);
+						},2000);
 					}
 				});
 			}else{

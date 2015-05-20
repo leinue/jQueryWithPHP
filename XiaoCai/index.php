@@ -112,10 +112,10 @@
 					$('section').append(homeListHtmlDOM+'<div class="padding-div-row"></div>');
 					$('.reading-list-a').css('height',$('.reading-list-img').width()+'px');
 				}else{
-					displayALertForm('没有数据了');
+					// displayALertForm('没有数据了');
 				}
 			}else{
-					displayALertForm('没有数据了');
+				// displayALertForm('没有数据了');
 			}
 		}
 
@@ -158,7 +158,7 @@
 
 		function handleHomePagination(){
 			if(isUserAtBottom() && isIndex){
-				displayALertForm('加载中...');
+				// displayALertForm('加载中...');
 				loadHomeArticle(++defaultPage,defaultLimit,false);
 			}	
 		}

@@ -15,7 +15,7 @@
 	</div>
 
 	<div class="lo-re-area">
-		<a class="button button-caution button-pill">登录</a>
+		<a style="background:rgb(229,0,45)" class="button button-caution button-pill">登录</a>
 		<div class="fast-register">快速注册</div>
 	</div>
 	<div class="column-menu">

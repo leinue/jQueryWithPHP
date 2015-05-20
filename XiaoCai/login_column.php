@@ -37,48 +37,11 @@
 
 	<script type="text/javascript">
 
-		var replyTotalCount;
-		var replyDefaultCount=10;
-		var replyHasReadCount=0;
-		var jsonReplyList;
-
-		function getReplyListData(){
-			getReply(localStorage.tokenID,function(data){
-				if(data!=''){
-					var jsonData=JSON.parse(data);
-					var replyList=jsonData['data'];
-					jsonReplyList=replyList;
-					loadReversionList(replyList);
-				}else{
-					displayALertForm('获取新消息失败,请重试');
-				}
-			});
+		if(localStorage.isReply=='1'){
+			$('#response-flag').css('opacity','1');
+		}else{
+			$('#response-flag').css('opacity','0');
 		}
-
-		function loadReversionList(replyList){
-			var replyListHTMLDom='';
-			replyTotalCount=replyList.length;
-			var count;
-			if(replyList!=null || replyList!='' || replyList!='null'){
-				var reversionStatus;
-				var reversionTips;
-				if(replyTotalCount-replyHasReadCount<10){
-					count=replyTotalCount;
-				}else{
-					count=replyDefaultCount+replyHasReadCount;
-				}
-				for (var i = replyHasReadCount; i < count; i++) {
-					if(replyList[i]['status']==='1'){
-						$('#response-flag').css('opacity','1');
-					}else{
-						$('#response-flag').css('opacity','0');	
-					}
-					replyHasReadCount++;
-				};	
-			}
-		}
-
-		getReplyListData();
 
 		$('.login-page-navigate').click(function(){
 			$('.nav-menu').click();

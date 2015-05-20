@@ -62,8 +62,13 @@
 					displayALertForm(jsonData['msg']);
 					if(jsonData['msg']=='注册成功'){
 						displayALertForm('注册成功,2秒后将自动跳转...',2000);
+						localStorage.uid=jsonData['data']['uid'];
+						localStorage.tokenID=jsonData['data']['token_id'];
+						localStorage.mobileNum=jsonData['data'['mobile'];
+						localStorage.loginByWechat=false;
+						localStorage.isLogin=true;
 						setTimeout(function(){
-							window.location.href="login.php";
+							window.location.href="profile.php";
 						},3000);
 					}
 				});

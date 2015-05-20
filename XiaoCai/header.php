@@ -581,11 +581,9 @@
 		var footerIsDisplayed=false;//底部是否被显示
 
 		//使用localSorage存储当前页面
-		if(localStorage.pageStack==''){
-			var pages=new StorageStack('index.php','index.php');
-			localStorage.pageStack=pages;
-		}
-
+		var pages=new StorageStack('index.php','index.php');
+		localStorage.pageStack=pages;
+		
 		var postType=["一手好菜","玩转厨房","首页文章"];
 		var replyType=["一手好菜","玩转厨房","首页文章"];
 		var replyStatus=["正常","后台回复未读","用户已读"];

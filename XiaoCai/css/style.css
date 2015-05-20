@@ -606,6 +606,7 @@ section{
 
 .header-reading-menu ul li{
 	display: table-cell;
+	width: 25%;
 }
 
 /*阅读列表正列表开始*/

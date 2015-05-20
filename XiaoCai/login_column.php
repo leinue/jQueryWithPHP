@@ -2,7 +2,7 @@
 <div class="login-page">
 	
 	<div class="profile-display">
-		<div class="profile-phtot-uploaded">
+		<div class="profile-phtot-uploaded main-panel-profile-photo">
             <img width="46" id="user-comment-photo" height="46" src="images/default_photo.png" />   
         </div>
         <div class="profile-display-name">
@@ -51,5 +51,11 @@
 			'left':$('.profile-phtot-uploaded').width()+30,
 			'top':'24px'
 		});
+
+		if(localStorage.isLogin=='true'){
+			$('.main-panel-profile-photo').find('img').attr('src',localStorage.headimgurl);
+			var nickname=localStorage.nickname=='' ?'[undefined]':localStorage.nickname;
+			$('.profile-display-name').find('span').html(nickname);
+		}
 
 	</script>

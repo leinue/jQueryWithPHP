@@ -108,6 +108,10 @@
 					if(data!=''){
 						var jsonData=JSON.parse(data);
 						displayALertForm(jsonData['msg']);
+						if(jsonData['error']=='1'){
+							localStorage.nickname=nickname;
+							localStorage.headimgURL=headimgurl;
+						}
 					}else{
 						displayALertForm('获取失败,请重试');
 					}

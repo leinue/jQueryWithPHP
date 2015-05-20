@@ -5,7 +5,7 @@
 <header>
 	<nav>
 		<div class="header-title">
-			<div class="header-back"><span class="glyphicon glyphicon-menu-left"></span></div>
+			<div class="header-back" style="top: 14px;"><span class="glyphicon glyphicon-menu-left"></span></div>
 			<div style="position:relative" class="header-main-title search-form search-page">
 					<input type="search" placeholder="食谱 食材 工具 话题" />
 			</div>
@@ -14,19 +14,19 @@
 			<ul id="search-menu">
 				<li id="reading-list-All">
 					<span class="header-reading-menu-active">全部</span>
-					<div id="All-result" style="left: 17.1555555%;" class="search-list-tips">0</div>
+					<div id="All-result" style="left: 21.1555555%;" class="search-list-tips">0</div>
 				</li>
 				<li id="reading-list-Home">
 					<span>首页</span>
-					<div id="Home-result" style="left: 32.1555555%;" class="search-list-tips">0</div>
+					<div id="Home-result" style="left: 43.1555555%;" class="search-list-tips">0</div>
 				</li>
 				<li id="reading-list-Recipe">
 					<span>一手好菜</span>
-					<div id="Recipe-result" style="left: 59.1555555%;" class="search-list-tips">0</div>
+					<div id="Recipe-result" style="left: 69.1555555%;" class="search-list-tips">0</div>
 				</li>
 				<li id="reading-list-Skills">
 					<span>玩转厨房</span>
-					<div id="Skills-result" style="left: 89.1555555%;" class="search-list-tips">0</div>
+					<div id="Skills-result" style="left: 92.1555555%;" class="search-list-tips">0</div>
 				</li>
 				<!--<li id="reading-list-Project"><span>专题</span></li>-->
 			</ul>

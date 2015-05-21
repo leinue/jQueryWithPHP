@@ -161,7 +161,7 @@
 		}
 
 		function displayShareForm(){
-			var dom='<div onclick="hideShareForm()" class="monoshare"></div><div class="monoshare-outer"><div class="monoshareDiv"><ul id="line"><li id="shareTofriend"><img src="images/send.png"><div style="margin-top:10px;">发送给朋友</div></li><li id="shareTocircle"><img src="images/share.png"><div style="margin-top:10px;">分享至朋友圈</div></li></ul></div></div>';
+			var dom='<div onclick="hideShareForm()" class="monoshare"></div><div class="monoshare-outer"><div class="monoshareDiv"><ul id="line"><li onclick="handleShareRequest(this)" id="shareTofriend"><img src="images/send.png"><div style="margin-top:10px;">发送给朋友</div></li><li onclick="handleShareRequest(this)" id="shareTocircle"><img src="images/share.png"><div style="margin-top:10px;">分享至朋友圈</div></li></ul></div></div>';
 			$('body').append(dom);
 			$('.monoshare').fadeIn(200);
 			$('.monoshare-outer').fadeIn(200);
@@ -171,6 +171,22 @@
 			var topval=($(window).height()-$('.monoshare-outer').height())/2.5;
 			$('.monoshare-outer').css('left',leftRate).css('top',topval);
 			docIsMoved=0;
+		}
+
+		function handleShareRequest(obj){
+			var _this=$(obj);
+			var thisID=_this.attr('id');
+			switch(thisID){
+				case 'shareTofriend':
+
+					break;
+				case 'shareTocircle':
+					
+					break;
+				default:
+					break;
+			}
+			hideShareForm();
 		}
 
 		function getCurrentTime(){

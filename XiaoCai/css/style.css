@@ -1904,7 +1904,6 @@ footer{
 
 .monoshare-outer{
 	display: none;
-	padding: 16px 22px;
 	position: absolute;
 	background: rgb(241,241,241);
 	width: 80%;
@@ -1918,6 +1917,7 @@ footer{
 	background: rgb(241,241,241);
 	/*padding:16px 22px;*/
     z-index: 65535;
+    border-radius: 4px;
 }
 .monoshareDiv ul{
 	display: table-row;
@@ -1930,6 +1930,7 @@ footer{
 	text-align: center;
 	cursor: pointer;
 	font-size: 1em;
+	padding: 16px 22px;
 }
 
 .monoshareDiv ul li:nth-child(1){

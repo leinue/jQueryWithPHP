@@ -167,8 +167,8 @@
 			$('.monoshare-outer').fadeIn(200);
 			$('.monoshare,.monoshare-outer').css('position','fixed').css('z-index','65535');
 			$('.monoshare-outer ul li img').css('height',$('.monoshare-outer ul li img').width());
-			var leftRate=($(document).width()-$('.monoshare-outer').width())/2-20;
-			var topval=($(window).height()-$('.monoshare-outer').height())/2.5;
+			var leftRate=($(document).width()-$('.monoshare-outer').width())/2;
+			var topval=($(window).height()-$('.monoshare-outer').height())/2;
 			$('.monoshare-outer').css('left',leftRate).css('top',topval);
 			docIsMoved=0;
 		}
@@ -176,12 +176,13 @@
 		function handleShareRequest(obj){
 			var _this=$(obj);
 			var thisID=_this.attr('id');
+			_this.css('background','rgb(205,205,205)');
 			switch(thisID){
 				case 'shareTofriend':
 
 					break;
 				case 'shareTocircle':
-					
+
 					break;
 				default:
 					break;

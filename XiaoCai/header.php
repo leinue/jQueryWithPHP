@@ -161,7 +161,8 @@
 		}
 
 		function displayShareForm(){
-			var dom='<div onclick="hideShareForm()" class="monoshare"><div class="monoshareDiv"><ul id="line"><li id="shareTofriend"><img src=""></li><li id="shareTocircle"><img src=""></li></ul><ul id="monoshare-content"><li>发送给朋友</li><li>分享至朋友圈</li></ul></div></div>';
+			$('.monoshare').remove();
+			var dom='<div onclick="hideShareForm()" class="monoshare"><div class="monoshareDiv"><ul id="line"><li id="shareTofriend"><img src="images/send.png"></li><li id="shareTocircle"><img src="images/share.png"></li></ul><ul id="monoshare-content"><li>发送给朋友</li><li>分享至朋友圈</li></ul></div></div>';
 			$('body').append(dom);
 			$('.monoshare').fadeIn();
 			$('.monoshare').css('position','fixed').css('z-index','65535');
@@ -544,7 +545,6 @@
 				var paperTitle=homeList[i]['title'];
 				var changeFontSizeCSS;
 				paperTitle=cutReadingListTitle(paperTitle);
-				// changeFontSizeCSS=changeReadingListSize(papaerContent);
 				papaerContent=cutReadingListPaper(papaerContent);
 				homeListHtmlDOM+='<div ref="monograph.php?id='+homeList[i]['id']+'&type=2" onclick="locateToIntroduction(this)" id="skills-'+homeList[i]['id']+'" class="reading-list-a"><div style="background:url('+homeList[i]['image']+') no-repeat scroll center center transparent;background-size:cover;" class="reading-list-img"></div><div class="reading-list-all-content"><div class="reading-list-all-title '+changeFontSizeCSS+'"><p>'+paperTitle+'</p></div><div class="reading-list-all-summary"><p>'+papaerContent+'</p></div></div><div class="reading-list-all-footer"><ul><li><span class="glyphicon glyphicon-bookmark"></span> 玩转厨房</li><li><span class="glyphicon glyphicon-time"></span> '+formatDate(homeList[i]['created_time'].split(' ')[0])+'</li></ul></div></div>';
 			};

@@ -343,10 +343,11 @@ section{
 }
 
 .vip-video{
+	width: 100%;
 	height: 200px;
 	border-top-left-radius: 4px;
 	border-top-right-radius: 4px;
-	border-bottom: px solid rgb(226,224,227);
+	border-bottom: 1px solid rgb(226,224,227);
 }
 
 .vip-video video{
@@ -428,7 +429,7 @@ section{
 	width: 60px;
 	height: 60px;
 	background: rgb(230,0,39);
-	margin-top: -34px;
+	margin-top: -40px;
 	margin-right: 20px;
 	color: rgb(255,255,255);
 	text-align: center;
@@ -1234,8 +1235,7 @@ footer{
 	width: 60px;
 	height: 60px;
 	margin:0px;
-	padding-left: 4px;
-	padding-top: 4px;
+	padding: 4px;
 	margin-top: 16px;
 	margin: 14px 0px -20px;
 }
@@ -1532,6 +1532,7 @@ footer{
 	padding-left: 25px;
 	padding-right: 25px;
 	padding-bottom: 25px;
+	padding-top: 25px;
 }
 
 .step-main-recommended-title{
@@ -1574,10 +1575,17 @@ footer{
     .formula-buy ul li button,.formula-buy ul li span{
     	   font-size: 1em;
     }
+    .formula-buy-icon{
+    	top: 70px!important;
+    }	
 }
 @media screen and (max-width:600px){
     .formula-buy ul li button,.formula-buy ul li span{
     	   font-size: 0.8em;
+    }
+
+    .formula-buy-icon{
+    	top: 66px!important;
     }
 
 }
@@ -1589,10 +1597,18 @@ footer{
     .reading-list-all-foot{
     	margin-top: 40px;
     }
+
+    .formula-buy-icon{
+    	top: 66px!important;
+    }
 }
 @media screen and (max-width:1900px){
     .formula-buy ul li{
     	   font-size: 1.3em;
+    }
+
+    .formula-buy-icon{
+    	/*	top: 70px!important;*/
     }
 }
  .formula-buy ul{ 
@@ -1631,13 +1647,18 @@ footer{
       color: rgb(255,255,255);
       border:none;
       margin-top: 20px;
+      z-index: -100;
 }
 
 .formula-buy-icon{
 	width: 14px;
 	height: 14px;
-	top: 66px;
 	position: absolute;
+	top: 64px;
+	/*margin-top: -30px;
+	margin-left: 86px;*/
+	z-index: 300;
+	cursor: pointer;
 }
 
 .button-add:hover{
@@ -1814,15 +1835,35 @@ footer{
 	cursor: pointer;
 }
 #monograph-member{
+	position: absolute;
+	z-index: 999;
 	background: rgb(230,0,39);
 	font-style: italic;
 	width: 80px;
 	height: 40px;
-	padding-top: 10px;
+	padding-top: 13px;
 	margin-top: -280px;
 	left: 6px;
 	box-shadow: 1px 1px 1px rgb(119,119,119);
 }
+
+.monograph-vip-img{
+	position: absolute;
+	height: 40px;
+	width: 8px;
+	margin-left: -26px;
+	/*margin-top: -4px;*/
+	margin-top: -275px;
+	left: 32px;
+	z-index: -999;
+	/*background: url(../images/vip.png);*/
+}
+
+.monograph-vip-img img{
+	width: 100%;
+	height: 100%;
+}
+
 .monograph-title{
 	padding-left: 18px;
 }
@@ -1844,6 +1885,8 @@ footer{
 	display: table;
 	background: rgb(241,241,241);
 	padding: 6%;
+	padding-top: 6%;
+	padding-bottom: 10%;
     border-radius: 8px;
     z-index: 65535;
 }
@@ -1853,7 +1896,7 @@ footer{
 }
 .monoshareDiv ul li{
 	   display: table-cell;
-	   width: 50%;
+	   width: 60%;
 	   text-align: center;
 	   cursor: pointer;
 	   z-index: 65535;
@@ -1866,7 +1909,7 @@ footer{
 }
 @media screen and (max-width:800px){
     .monoshareDiv ul li img,.monoshareDiv ul li{
-    	   width: 80px;
+    	   width: 60px;
     	   font-size: 1.2em;
     }
 }
@@ -1878,7 +1921,7 @@ footer{
 }
 @media screen and (max-width:400px){
     .monoshareDiv ul li img,.monoshareDiv ul li{
-    	   width: 80px;
+    	   width: 60px;
     	   font-size: 0.8em;
     }
 }

@@ -1,7 +1,31 @@
 <?php require('header.php'); ?>
 <?php error_reporting(E_ALL & ~E_NOTICE); ?>
 
-<script type="text/javascript" src="extension/ajaxfileupload.js"></script>
+<script src="extension/ajaxfileupload.js"></script>
+
+<script type="text/javascript">
+	 function ajaxFileUpload()
+{
+$.ajaxFileUpload
+(
+  {
+ url:'doajaxfileupload.php', //你处理上传文件的服务端
+ secureuri:false,
+ fileElementId:'img',
+ dataType: 'json',
+ success: function (data)
+ {
+alert(data.file_infor);
+ }
+ }
+ )
+  return false;
+  } 
+
+</script>
+
+  <input style="margin-top:100px;" id="img" type="file" size="45" name="img" class="input">
+  <button class="button" id="buttonUpload" onclick="return ajaxFileUpload();">Upload</button>
 
 <div class="login-main-page">
 	
@@ -14,8 +38,20 @@
 	</nav>
 </header>
 
+<form style="display:none" class="uploadhhh" action="http://114.215.189.210/api.php/Api/Public/changeData" method="post" enctype="multipart/form-data">
+	<input type="text" name="token_id">
+	<input type="text" name="nickname">
+	<input type="text" name="image" />
+	<input type="submit">
+</form>
+
+<script type="text/javascript">
+	$('.uploadhhh input:first-child').attr('value',localStorage.tokenID);
+	$('.uploadhhh input:nth-child(2)').attr('value',localStorage.nickname);
+</script>
+
 <section style="margin-top: -84px!important;">
-	<div style="margin-top: 20.274%;" class="logo-area_ register-area profile-upload-photo">
+	<div style="margin-top: 50.274%;" class="logo-area register-area profile-upload-photo">
 		<div class="profile-phtot-uploaded" style="padding-top:8px;padding-left:6px;" id="localImag">
 		    <?php  
   
@@ -157,7 +193,8 @@
 			    	$root=explode('profile.php', $_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']);
 			    	$root='http://'.$root[0];
 				    // echo "<img width=\"95\" id=\"user-profile-photo\" height=\"95\" src=\"".$root."$destination\" \/>";
-				    echo "<div style=\"width:95px!important;height:95px!important;background:url(".$root.$destination.") no-repeat scroll 50% 50% transparent;background-size:cover;\"></div>"; 
+				    echo "<div src=".$root.$destination." style=\"width:95px!important;height:95px!important;background:url(".$root.$destination.") no-repeat scroll 50% 50% transparent;background-size:cover;\"></div>"; 
+			    	echo "<script>$('.uploadhhh input:nth-child(3)').attr('value','".$root.$destination."');</script>";
 			    }
 			}
 
@@ -211,8 +248,7 @@
 			if(inputInfoIsNull('.change-password-input ul li')){
 				displayALertForm('正在为您处理,请稍候...');
 				var tokenID=localStorage.tokenID;
-				var headimgURL=$('#user-profile-photo').attr('src');
-				alert(headimgURL);
+				var headimgURL=$('.profile-phtot-uploaded div').attr('src');
 				var nickname=$('.change-password-input ul #wechat-nickname input').val();
 				changeUserData(tokenID,nickname,headimgURL,function(data){
 					if(data!=''){

@@ -3,20 +3,21 @@
 		<ul>
 			<!-- <li class="formula-li1"><span>食材用量</span></li> -->
 			<li class="formula-li2">
-        <button style="font-style:italic;background:rgb(229,0,45)" class= "button-add">加入采购清单</button>
-        <div class="formula-buy-icon" style="background:url(images/foodlist_white.png) no-repeat scroll center center transparent;background-size:cover;" ></div>
+        <button style="font-style:italic;background:rgb(229,0,45)" class= "button-add">加入购买清单</button>
       </li>
 			<!-- <li><span><img style="width:16px!important;" height="16" src="images/slide_to_top.png"></span></li> -->
     </ul>
+    <div class="formula-buy-icon" style="background:url(images/foodlist_white.png) no-repeat scroll center center transparent;background-size:cover;" ></div>
+
 	</div>
 
 	<section></section>
 
 <script type="text/javascript">
 
-        $('.formula-buy-icon').css('left',$(document).width()/2-56);
+        $('.formula-buy-icon').css('left',$(document).width()/2-$('button-add').width()-56);
 
-        $('.formula-buy ul li:last-child').click(function(){
+        /*$('.formula-buy ul li:last-child').click(function(){
         	$('.formula-juice').slideToggle(300);
         	if($(this).find('span').find('img').attr('src')=='images/slide_to_top.png'){
         		$(this).find('span').find('img').attr('src','images/slide_to_bottom.png');
@@ -24,7 +25,7 @@
         		$(this).find('span').find('img').attr('src','images/slide_to_top.png');
         	}
           $('.recipes-introduction-footer').toggleClass('fixed-pos');
-        });
+        });*/
       
       	displayALertForm('正在加载...',2000);
 
@@ -66,7 +67,7 @@
           formulaIDList=formulaIDList.slice(0,formulaIDList.length-1);
         }
         
-        $('.formula-buy ul li .button-add').click(function(){
+        $('.formula-buy ul li .button-add,.formula-buy-icon').click(function(){
           if(formulaIDList!=''){
             formulaIDList.forEach(function(formulaID){
               addFoodList(recipeID,formulaID,localStorage.tokenID,function(data){

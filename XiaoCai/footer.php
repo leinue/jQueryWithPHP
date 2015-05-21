@@ -233,7 +233,16 @@
 	function locateToIntroduction(obj){
 		displayALertForm('正在为您跳转...');
 		var ref=$(obj).attr('ref');
-		window.location.href=ref;
+		if(typeof $(obj).attr('isvip')!='undefined'){
+			if($(obj).attr('isvip')=='1'){
+				// displayALertForm('您不是会员,无权限查看此文章');
+				window.location.href=ref;
+			}else{
+				window.location.href=ref;
+			}
+		}else{
+			window.location.href=ref;			
+		}
 	}
 
 	$('.search-form input').focus(function(){
@@ -256,5 +265,14 @@
 	$('.search-form input').blur(function(){$('.nav-content ul li .search-input-icon').show();});
 	//$('html:not(div)').click(function(){$('footer').slideToggle();});
 
+</script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?03b655aed069ecf3913ba00fde59c325";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
 </script>
 </html>

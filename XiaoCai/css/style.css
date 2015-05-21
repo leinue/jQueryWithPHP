@@ -1933,21 +1933,10 @@ footer{
 	padding: 16px 22px;
 }
 
-.monoshareDiv ul li:nth-child(1){
-	padding-right: 10px;
-}
-
-.monoshareDiv ul li:nth-child(2){
-	padding-left: 10px;
-}
-
 .monoshareDiv ul li img{
 	width: 40%;
 }
 
-.monoshareDiv #line li:first-child{
-	border-right: 1px solid rgb(212,212,212);
-}
 .monoshareDiv #monoshare-content li{
 	  padding-top: 10px;
 	  padding-bottom: 10px;

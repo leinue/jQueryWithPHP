@@ -161,7 +161,7 @@
 		}
 
 		function displayShareForm(){
-			var dom='<div onclick="hideShareForm()" class="monoshare"></div><div class="monoshare-outer"><div class="monoshareDiv"><ul id="line"><li onclick="handleShareRequest(this)" id="shareTofriend"><img src="images/send.png"><div style="margin-top:10px;">发送给朋友</div></li><li onclick="handleShareRequest(this)" id="shareTocircle"><img src="images/share.png"><div style="margin-top:10px;">分享至朋友圈</div></li></ul></div></div>';
+			var dom='<div onclick="hideShareForm()" class="monoshare"></div><div class="monoshare-outer"><div class="monoshareDiv"><ul id="line"><li onclick="handleShareRequest(this)" id="shareTofriend"><img src="images/send.png"><div style="margin-top:10px;">发送给朋友</div></li><li style="border-right:1px solid #D4D4D4;padding:4px 0px;width:1px;"></li><li onclick="handleShareRequest(this)" id="shareTocircle"><img src="images/share.png"><div style="margin-top:10px;">分享至朋友圈</div></li></ul></div></div>';
 			$('body').append(dom);
 			$('.monoshare').fadeIn(200);
 			$('.monoshare-outer').fadeIn(200);

@@ -55,7 +55,7 @@
 
 		if(localStorage.isLogin=='true'){
 			$('.main-panel-profile-photo').find('div').attr('style','background:url('+localStorage.headimgurl+') no-repeat scroll 50% 50% transparent;background-size:cover;');
-			var nickname=localStorage.nickname=='' ?'[undefined]':localStorage.nickname;
+			var nickname=localStorage.nickname=='' ? '[undefined]':localStorage.nickname;
 			$('.profile-display-name').find('span').html(nickname);
 		}
 

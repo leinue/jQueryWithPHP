@@ -68,6 +68,7 @@
 		var recipeMenuIsSlided=false;
 		var recipeLeftMenuIsSlided=false;
 		var recipeRightMenuIsSlided=false;
+		var defaultPage=1;
 
 		function toggleSlideMenu(obj){
 			var typeClicked=$(obj).attr('id').split('-');
@@ -155,7 +156,7 @@
 			
 		});
 
-		var currentRecipesType=10;
+		var currentRecipesType=0;
 
 		function dsiplayRecipePost(data){
 			var jsonData=JSON.parse(data);

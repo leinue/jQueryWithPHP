@@ -67,7 +67,7 @@
 						localStorage.uid=jsonData['data']['uid'];
 						localStorage.nickname=jsonData['data']['nickname'];
 						localStorage.tokenID=jsonData['data']['token_id'];
-						localStorage.headimgurl=jsonData['data']['headimgurl'];
+						localStorage.headimgurl=jsonData['data']['headimgurl']==''?'images/default_photo.png':jsonData['data']['headimgurl'];
 						localStorage.isReply=jsonData['data']['is_reply'];
 						localStorage.mobileNum=smobile;
 						localStorage.loginByWechat=false;

@@ -40,7 +40,6 @@
 					<li id=\"slide-5\" style=\"background-image: url(http://7xid1a.com2.z0.glb.qiniucdn.com/Project/85dda3251a58dc48fd82ab9697e293df.png?imageView2/2/w/750);\"></li>";
 				}
 			?>
-			<li id="slide-1" style="background-image: url('images/first.jpg');"></li>
 		</ul>
 	</div>
 

@@ -21,13 +21,13 @@
      </div>
 
       <div class="skills-evaluating-title">
-          <h4>0</h4>
-          <p>0</p>
+          <h4>loading</h4>
+          <p>loading</p>
         </div>
 
         <div class="content-summary">
          <div class="content-summaryIn">
-           内容摘要
+           loading
          </div>
        </div>
 

@@ -203,6 +203,10 @@ alert(data.file_infor);
 		<span>上传头像</span>
 	</div>
 
+	<div class="profile_update_camera">
+		<img src="images/camera.png">
+	</div>
+
 	<form style="display:none;" enctype="multipart/form-data" method="post" name="upform">  
 		<input name="upfile" id="file_head" style="display:none" onchange="javascript:setImagePreview();" type="file">  
 		<input type="submit" id="upload_btn" style="display:none" value="上传"><br> 
@@ -210,7 +214,7 @@ alert(data.file_infor);
 	
 	<div class="setting-list change-password-input">
 		<ul>
-			<li id="wechat-nickname"><input placeholder="微信昵称" /></li>
+			<li id="wechat-nickname"><input placeholder="昵称" /></li>
 		</ul>
 	</div>
 
@@ -234,6 +238,15 @@ alert(data.file_infor);
 	}
 
 	$(document).ready(function(){
+
+		var pupMarginTop=$('.profile-upload-photo').css('margin-top');
+		pupMarginTop=pupMarginTop.substring(0,3);
+		var cameraDocHeight=$(document).width()/2;
+
+		$('.profile_update_camera').css({
+			'top':parseInt(pupMarginTop)+$('.profile-upload-photo').height()+140+'px',
+			'left':($(document).width()/2)+20+'px'
+		});
 
 		var fileInput=document.getElementById("file_head");
 
@@ -267,7 +280,7 @@ alert(data.file_infor);
 			}
 		});
 
-		$('.profile-upload-photo').click(function(){
+		$('.profile-upload-photo,.profile_update_camera,.profile_update_camera img').click(function(){
 			fileInput.click();
 		});
 

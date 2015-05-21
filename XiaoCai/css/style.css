@@ -342,6 +342,10 @@ section{
 	background: rgb(205,205,205);
 }
 
+.vip-enjoy-content:active{
+	background: rgb(249,249,249);
+}
+
 .vip-video{
 	width: 100%;
 	height: 200px;
@@ -1014,6 +1018,23 @@ section{
 	border: 1px solid rgb(208,206,208);
 	margin: 0 auto;
 	box-shadow: 0px 0px 16px 8px rgb(208,207,209) inset;
+}
+
+.profile_update_camera{
+	position: absolute;
+	padding-top: 3px;
+	padding-bottom: 7px;
+	padding-left: 7px;
+	padding-right: 5px;
+	border-radius: 15px;
+	margin-top: -32px;
+	background:rgb(230,0,39);
+	cursor: pointer;
+}
+
+.profile_update_camera img{
+	width: 18px;
+	height: 14px;
 }
 
 .profile-phtot-uploaded img{
@@ -1753,7 +1774,10 @@ footer{
 .monograph-header ul li:first-child{
 	padding-left: 0px;
 	padding-right: 0px;
-	
+}
+
+.monograph-header ul li:nth-child(2){
+	width: 20%;
 }
 
 .monograph-header ul li img{
@@ -1884,6 +1908,7 @@ footer{
 	position: absolute;
 	background: rgb(241,241,241);
 	width: 80%;
+	border-radius: 4px;
 }
 
 .monoshareDiv{
@@ -1892,7 +1917,6 @@ footer{
 	display: table;
 	background: rgb(241,241,241);
 	/*padding:16px 22px;*/
-    border-radius: 4px;
     z-index: 65535;
 }
 .monoshareDiv ul{

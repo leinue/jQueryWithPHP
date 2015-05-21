@@ -16,7 +16,7 @@
 
 <section class="introduction-main-section">
 <div class="introduction-page">
-    <div class="vip-enjoy vip-enjoy-padding">
+    <div class="vip-enjoy vip-enjoy-padding vip-enjoy-content">
       <div class="vip-video">
         <video style="visibility:hidden" id="video-main" src="movie.ogg" controls="controls">
           您的浏览器不支持 video 标签。
@@ -25,10 +25,10 @@
       </div>
       <div class="vip-content">
         <div class="vip-title">
-          标题标题标题
+          loading
         </div>
         <div class="vip-post">
-          内容标题内容标题内容标题内容标题内容标题内容标题内容标题内容标题
+          loading
         </div>
         <div class="vip-content-time">
           <ul id="introduction-time-list1" class="introduction-time">
@@ -37,9 +37,9 @@
             <li>享用份量</li>
           </ul>
           <ul id="introduction-time-list2" class="introduction-time">
-            <li id="prepare-time">0分钟</li>
-            <li id="cooking-time">0分钟</li>
-            <li id="enjoy-num">0人份</li>
+            <li id="prepare-time">loaing</li>
+            <li id="cooking-time">loading</li>
+            <li id="enjoy-num">loading</li>
           </ul>
         </div>
         <div class="vip-menu">
@@ -106,7 +106,7 @@
           if(e['reply_username']==null){
             officalReply='';
           }else{
-          officalReply='<div class="introduction-comment-reply"><div class="introduction-comment-title"><ul><li>'+e['reply_username']+'</li><li>'+e['reply_time']+'</li></ul></div><div class="introduction-comment-content comment-reply-content"><span>'+e['reply_content']+'</span></div></div></li></ul>';            
+            officmalReply='<div class="introduction-comment-reply"><div class="introduction-comment-title"><ul><li>'+e['reply_username']+'</li><li>'+e['reply_time']+'</li></ul></div><div class="introduction-comment-content comment-reply-content"><span>'+e['reply_content']+'</span></div></div></li></ul>';            
           }
           $('.introduction-comment').append(usereply+officalReply);
         });
@@ -288,9 +288,7 @@
           }
       }*/
 
-
-
-      // $(window).scroll(handleRecipesFooterEvent);
+      //$(window).scroll(handleRecipesFooterEvent);
       $('.main-footer').html('');
       $('.introduction-page').css('margin-top','-7px');
 

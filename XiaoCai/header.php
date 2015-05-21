@@ -154,21 +154,22 @@
 		}
 
 		function hideShareForm(){
-			$('.monoshare').fadeOut(function(){
-				$('.monoshare').remove();
+			$('.monoshare,.monoshare-outer').fadeOut(function(){
+				$('.monoshare,.monoshare-outer').remove();
 			});
 			docIsMoved=1;
 		}
 
 		function displayShareForm(){
-			$('.monoshare').remove();
-			var dom='<div onclick="hideShareForm()" class="monoshare"><div class="monoshareDiv"><ul id="line"><li id="shareTofriend"><img src="images/send.png"></li><li id="shareTocircle"><img src="images/share.png"></li></ul><ul id="monoshare-content"><li>发送给朋友</li><li>分享至朋友圈</li></ul></div></div>';
+			var dom='<div onclick="hideShareForm()" class="monoshare"></div><div class="monoshare-outer"><div class="monoshareDiv"><ul id="line"><li id="shareTofriend"><img src="images/send.png"><div style="margin-top:10px;">发送给朋友</div></li><li id="shareTocircle"><img src="images/share.png"><div style="margin-top:10px;">分享至朋友圈</div></li></ul></div></div>';
 			$('body').append(dom);
-			$('.monoshare').fadeIn();
-			$('.monoshare').css('position','fixed').css('z-index','65535');
-			var leftRate=($('.monoshareDiv').width()/$(document).width()-10).toFixed(8);
-			leftRate=leftRate.slice(2,4)+"."+leftRate.slice(4,8)+"%";
-			$('.monoshareDiv').css('left',leftRate);
+			$('.monoshare').fadeIn(200);
+			$('.monoshare-outer').fadeIn(200);
+			$('.monoshare,.monoshare-outer').css('position','fixed').css('z-index','65535');
+			$('.monoshare-outer ul li img').css('height',$('.monoshare-outer ul li img').width());
+			var leftRate=($(document).width()-$('.monoshare-outer').width())/2-20;
+			var topval=($(window).height()-$('.monoshare-outer').height())/2.5;
+			$('.monoshare-outer').css('left',leftRate).css('top',topval);
 			docIsMoved=0;
 		}
 

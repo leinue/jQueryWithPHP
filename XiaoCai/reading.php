@@ -9,7 +9,7 @@
 		<div class="header-reading-menu">
 			<ul>
 				<li id="reading-list-all"><span class="header-reading-menu-active">首页文章</span></li>
-				<li id="reading-list-receip"><span>一手好菜</span></li>
+				<li id="reading-list-receip"><span>全部文章</span></li>
 				<li id="reading-list-skills"><span>玩转厨房</span></li>
 				<li id="reading-list-review"><span>专题文章</span></li>
 			</ul>

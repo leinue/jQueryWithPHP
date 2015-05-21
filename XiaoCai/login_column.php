@@ -2,9 +2,9 @@
 <div class="login-page">
 	
 	<div class="profile-display">
-		<div class="profile-phtot-uploaded main-panel-profile-photo">
+		<div style="padding:4px;" class="profile-phtot-uploaded main-panel-profile-photo">
             <!-- <img width="46" id="user-comment-photo" height="46" src="images/default_photo.png" />    -->
-        	<div style="background:url(images/first.jpg) no-repeat scroll 50% 50% transparent;background-size:cover;"></div>
+        	<div style="background:url(images/default_photo.png) no-repeat scroll 50% 50% transparent;background-size:cover;"></div>
         </div>
         <div class="profile-display-name">
         	<span>Carl Wong</span>

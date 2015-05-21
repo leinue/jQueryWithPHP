@@ -94,15 +94,11 @@
 				$('.reading-all-list').html('');
 				for (var i = 0; i < homeList.length; i++) {
 					var charCount=homeList[i]['paper'].length;
-					var changeFontSizeCSS='';
-					if(charCount>=20){
-						changeFontSizeCSS="readling-list-title-small";
-					}else{
-						changeFontSizeCSS='';
-					}
-					homeListHtmlDOM+='<div style="height:'+0.25*$(document).height()+'px!important;" ref="'+searchPostType[homeList[i]['type']]+'?id='+homeList[i]['id']+'&type=2" onclick="locateToIntroduction(this)" id="skills-'+homeList[i]['id']+'" class="reading-list-a"><div class="reading-list-img"><img src="'+homeList[i]['image']+'"></div><div class="reading-list-all-content"><div class="reading-list-all-title '+changeFontSizeCSS+'"><p>'+homeList[i]['title']+'</p></div><div class="reading-list-all-summary"><p>'+homeList[i]['paper']+'</p></div></div><div class="reading-list-all-footer"><ul><li><span class="glyphicon glyphicon-bookmark"></span> 玩转厨房</li><li><span class="glyphicon glyphicon-time"></span> '+homeList[i]['created_time'].split(' ')[0]+'</li></ul></div></div>';
+					homeList[i]['paper']=cutReadingListPaper(homeList[i]['paper']);
+					homeListHtmlDOM+='<div ref="'+searchPostType[homeList[i]['type']]+'?id='+homeList[i]['id']+'&type=2" onclick="locateToIntroduction(this)" id="skills-'+homeList[i]['id']+'" class="reading-list-a"><div style="background:url('+homeList[i]['image']+') no-repeat scroll center center transparent;background-size:cover;" class="reading-list-img"></div><div class="reading-list-all-content"><div class="reading-list-all-title"><p>'+homeList[i]['title']+'</p></div><div class="reading-list-all-summary"><p>'+homeList[i]['paper']+'</p></div></div><div class="reading-list-all-footer"><ul><li><span class="glyphicon glyphicon-bookmark"></span> 玩转厨房</li><li><span class="glyphicon glyphicon-time"></span> '+homeList[i]['created_time'].split(' ')[0]+'</li></ul></div></div>';
 				};
 				$('.reading-all-list').append(homeListHtmlDOM+'<div class="padding-div-row"></div>');
+				$('.reading-list-a').css('height',$('.reading-list-img').width()+'px');
 			}else{
 				displayNoData('再怎么找都没有啦');
 			}

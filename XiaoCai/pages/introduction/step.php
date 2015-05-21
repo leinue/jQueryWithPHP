@@ -19,7 +19,7 @@
 				stepsChild.forEach(function(child){
 					if(child['type']=='1'){
 						//文字
-						stepsHTMLDOM+='<ul type='+child['type']+' id="'+child['id']+'"><li>'+ichild+'</li><li>'+child['content']+'<span class="glyphicon glyphicon-triangle-top"></span></li></ul>';
+						stepsHTMLDOM+='<ul type='+child['type']+' id="'+child['id']+'"><li>'+ichild+'</li><li>'+child['content']+'</li></ul>';
 					}else if(child['type']=='2'){
 						//图片
 						stepsImgHTMLDOM+='<li><img src="'+child['content']+'"></li>'

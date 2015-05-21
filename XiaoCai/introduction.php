@@ -18,7 +18,7 @@
 <div class="introduction-page">
     <div class="vip-enjoy vip-enjoy-padding">
       <div class="vip-video">
-        <video id="video-main" src="movie.ogg" controls="controls">
+        <video style="visibility:hidden" id="video-main" src="movie.ogg" controls="controls">
           您的浏览器不支持 video 标签。
         </video>
         <!--<img src="">-->
@@ -64,7 +64,7 @@
         <li>
             <div class="profile-phtot-uploaded">
               <!-- <img width="50" id="user-comment-photo" height="50" src="images/default_photo.png" />    -->
-                  <div id="user-comment-photo" style="background:url(images/first.jpg) no-repeat scroll 50% 50% transparent;background-size:cover;"></div>
+                  <div id="user-comment-photo" style="background:url(images/default_photo.png) no-repeat scroll 50% 50% transparent;background-size:cover;"></div>
             </div>
         </li>
         <li>
@@ -132,12 +132,12 @@
                 $('.vip-menu ul li #browser-num').html(introInfo['browse_num']);
                 $('.introduction-teacher-brand img').attr('src',introInfo['arrange_image_url']);
                 if(introInfo['video_url_480']==''){
-                  $('.vip-video').attr('style','background:url('+introInfo['image']+') no-repeat scroll center center transparent;background-size:cover;width:100%;'+'padding-top:'+$('.vip-video video').height());
-                  if(!browser.versions.iPad){
-                    $('.vip-video video').hide();
+                  $('.vip-video').attr('style','background:url('+introInfo['image']+') no-repeat scroll center center transparent;background-size:cover;width:'+$(document).width()+'px!important;');
+                  if(browser.versions.iPad || browser.versions.iPhone){
                   }
                 }else{
                   $('.vip-video video').attr('src',introInfo['video_url_480']);
+                  $('.vip-video video').show();
                 }
               }
               if(introList['comments']!=''){

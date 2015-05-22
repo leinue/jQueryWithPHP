@@ -1,5 +1,5 @@
 
-<div class="step-page">
+<div style="padding-bottom: 30px;" class="step-page">
 
 </div>
 

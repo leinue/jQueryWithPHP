@@ -124,6 +124,10 @@
 			}	
 		}
 
+		if(getQueryString('redirect')=='profile'){
+			toggleLeftMenu();
+		}
+
 		$('.nav-menu').click(function(){
 			toggleLeftMenu();
 		});

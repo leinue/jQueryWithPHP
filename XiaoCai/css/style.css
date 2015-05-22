@@ -1232,7 +1232,7 @@ footer{
 .introduction-comment{
 	display: table;
 	width: 100%;
-	margin-bottom: 16px;
+	margin-bottom: 46px;
 	margin-top: 4px;
 }
 
@@ -1258,7 +1258,7 @@ footer{
 	margin:0px;
 	padding: 4px;
 	margin-top: 16px;
-	margin: 14px 0px -20px;
+	margin: 14px 0px -40px;
 }
 
 .introduction-comment-input-container{

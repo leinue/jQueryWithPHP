@@ -202,6 +202,8 @@
 	<div class="loading">
 		<div class="loading-main"><span class="glyphicon glyphicon-option-horizontal"></span><span class="glyphicon glyphicon-option-horizontal"></span></div>
 	</div>
+
+	<img style="display:none" id="preview" src="">
 	
 </section>
 
@@ -209,15 +211,48 @@
 
 <script type="text/javascript">
 
-	function setImagePreview(){
-		var submitUploadBtn=document.getElementById('upload_btn');
-		submitUploadBtn.click();
+	function setImagePreview() {  
+	    var docObj=document.getElementById("file_head");  
+	    var imgObjPreview=document.getElementById("preview");  
+	    if(docObj.files && docObj.files[0]){  
+	        //火狐下，直接设img属性  
+	        imgObjPreview.style.display = 'none';  
+	        imgObjPreview.style.width = '300px';  
+	        imgObjPreview.style.height = '120px';                      
+	        //imgObjPreview.src = docObj.files[0].getAsDataURL();  
+	          
+	        //火狐7以上版本不能用上面的getAsDataURL()方式获取，需要一下方式    
+	        imgObjPreview.src = window.URL.createObjectURL(docObj.files[0]);
+
+	        $('.profile-phtot-uploaded div').remove();
+	        $('.profile-phtot-uploaded').append('<div src="'+imgObjPreview.src+'" style="width:95px!important;height:95px!important;background:url('+imgObjPreview.src+') no-repeat scroll 50% 50% transparent;background-size:cover;"></div>');
+	    }else{  
+	        //IE下，使用滤镜  
+	        docObj.select();  
+	        var imgSrc = document.selection.createRange().text;  
+	        // var localImagId = document.getElementById("localImag");  
+	        // //必须设置初始大小  
+	        // localImagId.style.width = "300px";  
+	        // localImagId.style.height = "120px";  
+	        //图片异常的捕捉，防止用户修改后缀来伪造图片  
+	        try{  
+	            localImagId.style.filter="progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";  
+	            localImagId.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = imgSrc;  
+	        }catch(e){  
+	            alert("您上传的图片格式不正确，请重新选择!");  
+	            return false;  
+	        }  
+	        imgObjPreview.style.display = 'none';  
+	        document.selection.empty();  
+	    }  
+	    return true;  
 	}
 
 	var isFileChanged=false;
 
 	function fileChanged(){
 		isFileChanged=true;
+		setImagePreview();
 	}
 
 	$(document).ready(function(){
@@ -228,6 +263,7 @@
 		if(_error=='1'){
 			localStorage.nickname=localStorage.nickname_;
 			localStorage.headimgurl=_headimgurl;
+			window.location.href="index.php?redirect=profile";
 		}else{
 			if(_error!=null){
 				displayALertForm('设置失败,请检查是否登录或图片名是否包含中文',3000);

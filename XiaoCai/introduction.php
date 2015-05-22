@@ -15,7 +15,7 @@
   </header>
 
 <section class="introduction-main-section">
-<div style="margin-bottom: 30px;" class="introduction-page">
+<div style="margin-bottom: 46px;" class="introduction-page">
     <div class="vip-enjoy vip-enjoy-padding vip-enjoy-content">
       <div class="vip-video">
         <video style="visibility:hidden" id="video-main" src="movie.ogg" controls="controls">
@@ -62,13 +62,13 @@
     <div class="introduction-comment">
       <ul>
         <li>
-            <div class="profile-phtot-uploaded">
+            <div style="margin-top: -34px;" class="profile-phtot-uploaded">
               <!-- <img width="50" id="user-comment-photo" height="50" src="images/default_photo.png" />    -->
                   <div id="user-comment-photo" style="background:url(images/default_photo.png) no-repeat scroll 50% 50% transparent;background-size:cover;"></div>
             </div>
         </li>
         <li>
-          <div class="introduction-comment-input-container">
+          <div style="margin-top:14px;margin-bottom:14px" class="introduction-comment-input-container">
             <span>在此输入留言或内容</span>
             <textarea style="display:none;width:100%;"></textarea>
             <input style="margin:0 auto;display:none;margin-top:10px;" class="button button-caution button-pill" value="提交" type="button">

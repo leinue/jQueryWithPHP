@@ -137,7 +137,8 @@
                   }
                 }else{
                   $('.vip-video video').attr('src',introInfo['video_url_480']);
-                  $('.vip-video video').show();
+                  console.log('dssd');
+                  $('.vip-video video').css('visibility','visible');
                 }
               }
               if(introList['comments']!=''){
@@ -186,8 +187,9 @@
               $('.introduction-comment-input-container').html('<span>在此输入留言或内容</span><textarea style="display:none;width:100%;"></textarea><input style="margin:0 auto;display:none;margin-top:10px;" class="button button-caution button-pill" value="提交" type="button">');
               flag = true;
             } else {
-              if(jsonData['msg'].indexOf('不存在')!=-1){
-                self.location='login.php';
+              var _msg=jsonData['msg'];
+              if(_msg.indexOf('不存在')!=-1){
+                window.location.href='login.php';
               }else{
                 displayALertForm(jsonData['msg']);
               }
@@ -224,6 +226,7 @@
             }
           }else{
             displayALertForm('请登录');
+            window.location.href="login.php";
           }
         }
       });
@@ -238,6 +241,7 @@
           }
         }else{
           displayALertForm('请登录');
+          window.location.href="login.php";
         }
       });
 

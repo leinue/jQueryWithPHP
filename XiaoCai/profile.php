@@ -1,32 +1,6 @@
 <?php require('header.php'); ?>
 <?php error_reporting(E_ALL & ~E_NOTICE); ?>
 
-<script src="extension/ajaxfileupload.js"></script>
-
-<script type="text/javascript">
-	 function ajaxFileUpload()
-{
-$.ajaxFileUpload
-(
-  {
- url:'doajaxfileupload.php', //你处理上传文件的服务端
- secureuri:false,
- fileElementId:'img',
- dataType: 'json',
- success: function (data)
- {
-alert(data.file_infor);
- }
- }
- )
-  return false;
-  } 
-
-</script>
-
-  <input style="margin-top:100px;" id="img" type="file" size="45" name="img" class="input">
-  <button class="button" id="buttonUpload" onclick="return ajaxFileUpload();">Upload</button>
-
 <div class="login-main-page">
 	
 <header>
@@ -37,17 +11,20 @@ alert(data.file_infor);
 		</div>
 	</nav>
 </header>
-
-<form style="display:none" class="uploadhhh" action="http://114.215.189.210/api.php/Api/Public/changeData" method="post" enctype="multipart/form-data">
+<?php 
+	$root=explode('profile.php', $_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']);
+	$root='http://'.$root[0];
+	//http://114.215.189.210/api.php/Api/Public/changeData1
+?>
+<form style="visibility:hidden;margin-top:-100px;" class="uploadhhh" action="changedata1.php" method="post" enctype="multipart/form-data">
 	<input type="text" name="token_id">
 	<input type="text" name="nickname">
-	<input type="text" name="image" />
-	<input type="submit">
+	<input type="file" id="file_head" name="image" onchange="fileChanged()">
+	<input type="submit" id="confirm_update">
 </form>
 
 <script type="text/javascript">
 	$('.uploadhhh input:first-child').attr('value',localStorage.tokenID);
-	$('.uploadhhh input:nth-child(2)').attr('value',localStorage.nickname);
 </script>
 
 <section style="margin-top: -84px!important;">
@@ -55,7 +32,7 @@ alert(data.file_infor);
 		<div class="profile-phtot-uploaded" style="padding-top:8px;padding-left:6px;" id="localImag">
 		    <?php  
   
-			//上传文件类型列表  
+			/*//上传文件类型列表  
 			$uptypes=array(  
 			    'image/jpg',  
 			    'image/jpeg',  
@@ -196,7 +173,7 @@ alert(data.file_infor);
 				    echo "<div src=".$root.$destination." style=\"width:95px!important;height:95px!important;background:url(".$root.$destination.") no-repeat scroll 50% 50% transparent;background-size:cover;\"></div>"; 
 			    	echo "<script>$('.uploadhhh input:nth-child(3)').attr('value','".$root.$destination."');</script>";
 			    }
-			}
+			}*/
 
 			?>		
 		</div>
@@ -207,10 +184,10 @@ alert(data.file_infor);
 		<img src="images/camera.png">
 	</div>
 
-	<form style="display:none;" enctype="multipart/form-data" method="post" name="upform">  
+	<!-- <form style="display:none;" enctype="multipart/form-data" method="post" name="upform">  
 		<input name="upfile" id="file_head" style="display:none" onchange="javascript:setImagePreview();" type="file">  
 		<input type="submit" id="upload_btn" style="display:none" value="上传"><br> 
-	</form>  
+	</form> -->
 	
 	<div class="setting-list change-password-input">
 		<ul>
@@ -237,50 +214,67 @@ alert(data.file_infor);
 		submitUploadBtn.click();
 	}
 
+	var isFileChanged=false;
+
+	function fileChanged(){
+		isFileChanged=true;
+	}
+
 	$(document).ready(function(){
+
+		var _headimgurl=getQueryString('headimgurl');
+		var _error=getQueryString('error');
+
+		if(_error=='1'){
+			localStorage.nickname=localStorage.nickname_;
+			localStorage.headimgurl=_headimgurl;
+		}else{
+			if(_error!=null){
+				displayALertForm('设置失败,请检查是否登录或图片名是否包含中文',3000);
+			}
+		}
 
 		var pupMarginTop=$('.profile-upload-photo').css('margin-top');
 		pupMarginTop=pupMarginTop.substring(0,3);
 		var cameraDocHeight=$(document).width()/2;
 
 		$('.profile_update_camera').css({
-			'top':parseInt(pupMarginTop)+$('.profile-upload-photo').height()+140+'px',
+			'top':parseInt(pupMarginTop)+$('.profile-upload-photo').height()-130+'px',
 			'left':($(document).width()/2)+20+'px'
 		});
 
 		var fileInput=document.getElementById("file_head");
+		var confirm=document.getElementById('confirm_update');
 
 		$('.header-back').click(function(){
 			history.go(-1);
 		});
 
-		//$('.profile-phtot-uploaded img').attr('src',localStorage.headimgurl);
+		$('.profile-phtot-uploaded').append('<div src="'+localStorage.headimgurl+'" style="width:95px!important;height:95px!important;background:url('+localStorage.headimgurl+') no-repeat scroll 50% 50% transparent;background-size:cover;"></div>');
 		$('.change-password-input #wechat-nickname input').attr('value',localStorage.nickname);
 
 		$('#profile-confirm').click(function(){
 			if(inputInfoIsNull('.change-password-input ul li')){
 				displayALertForm('正在为您处理,请稍候...');
-				var tokenID=localStorage.tokenID;
-				var headimgURL=$('.profile-phtot-uploaded div').attr('src');
 				var nickname=$('.change-password-input ul #wechat-nickname input').val();
-				changeUserData(tokenID,nickname,headimgURL,function(data){
-					if(data!=''){
-						var jsonData=JSON.parse(data);
-						displayALertForm(jsonData['msg']);
-						if(jsonData['error']=='1'){
-							localStorage.nickname=nickname;
-							localStorage.headimgURL=jsonData['data']['headimgurl'];
-						}
-					}else{
-						displayALertForm('获取失败,请重试');
-					}
-				});
+				localStorage.nickname_=nickname;
+				if($('.uploadhhh input:nth-child(3)').attr('value')==''){
+					$('.uploadhhh input:nth-child(3)').attr('value',localStorage.headimgurl);
+				}
+				$('.uploadhhh input:nth-child(2)').attr('value',nickname);
+				console.log($('.uploadhhh input:nth-child(3)').attr('value'));
+				if(!isFileChanged){
+					displayALertForm('您未选择图片');
+					return;
+				}else{
+					confirm.click();
+				}
 			}else{
 				displayALertForm('请完整填写信息');
 			}
 		});
 
-		$('.profile-upload-photo,.profile_update_camera,.profile_update_camera img').click(function(){
+		$('.profile-upload-photo,.profile_update_camera img').click(function(){
 			fileInput.click();
 		});
 

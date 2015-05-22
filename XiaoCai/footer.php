@@ -50,8 +50,9 @@
 		}
 
 		/*幻灯片开始*/
-		var bannerHeight=0.25*$(document).height();
-		$('.banner ul li').css('height',bannerHeight+'px').css('background-size','100% '+bannerHeight+'px');
+		var bannerHeight=($(document).width()/750)*220+'px';
+		// $('.banner ul li').css('height',bannerHeight+'px').css('background-size','100% '+bannerHeight+'px');
+		$('.banner ul li').css('height',bannerHeight).css('background-size','100% '+bannerHeight);
 
 		if(window.chrome) {$('.banner li').css('background-size', '100% 100%');}
 		$(function() {$('.banner').unslider();});

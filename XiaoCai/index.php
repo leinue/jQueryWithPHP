@@ -151,7 +151,20 @@
 		var startX, startY, endX, endY;
 		var slidey = $('.banner').unslider(),
     	slideyData = slidey.data('unslider');
-    	
+
+      	// var islide = 0;
+
+       //      slidey.on('swipeleft', function(e) {
+
+       //          slideyData.prev();
+
+       //              }).on('swiperight', function(e) {
+
+       //                  slideyData.next();
+
+       //              });
+
+
         document.getElementById("slide-banner").addEventListener("touchstart", touchStart, false);
         document.getElementById("slide-banner").addEventListener("touchmove", handleSlideMove, false);
         document.getElementById("slide-banner").addEventListener("touchend", touchEnd, false);
@@ -167,7 +180,7 @@
             var touch = event.touches[0];
             endX = touch.pageX;
             if(!isSlided){
-            	if ((startX - endX) > 100) {
+            	if ((startX - endX) > 1) {
 	               	slideyData.prev();
 	            }else{
 	            	slideyData.next();

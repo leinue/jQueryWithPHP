@@ -78,8 +78,8 @@
 		}
 
 		/*菜单按钮被点击*/
+		var needScrollToTop=false;
 		function toggleLeftMenu(){
-			var needScrollToTop=false;
 			if($(window).scrollTop()!=0){
 				$('html,body').animate({scrollTop:0}, 'slow');
 				needScrollToTop=true;
@@ -97,6 +97,11 @@
 				$('.main-page').animate({left:docWidth+'px'},300,function(){
 					$('.login-page').css('display','block');
 				});
+				if(needScrollToTop && isSlided){
+					$('header').animate({left:'0px'},300);
+					needScrollToTop=false;
+					// alert('saa');
+				}
 				$('footer').animate({'left':docWidth+'px'},300);
 				$('.login-page-navigate').css({
 					'left':docWidth+'px',
@@ -106,11 +111,8 @@
 				setNoTouchMove();
 				isSlided=true;
 			}else{
-				if(needScrollToTop){
-					$('header').animate({left:'0px'},300);
-				}
 				$('.main-page').animate({left:'0px'},300,function(){
-					$('header').css('position','fixed');
+					// $('header').css('position','fixed');
 				});
 				$('footer').animate({left:'0px'});
 				$('.login-page').css('display','none');

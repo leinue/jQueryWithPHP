@@ -15,7 +15,7 @@
   </header>
 
 <section class="introduction-main-section">
-<div class="introduction-page">
+<div style="margin-bottom: 30px;" class="introduction-page">
     <div class="vip-enjoy vip-enjoy-padding vip-enjoy-content">
       <div class="vip-video">
         <video style="visibility:hidden" id="video-main" src="movie.ogg" controls="controls">
@@ -26,7 +26,7 @@
       <div class="vip-content">
         <div class="vip-title">
           loading
-        </div>
+        </div> 
         <div class="vip-post">
           loading
         </div>
@@ -80,7 +80,7 @@
     </div>
     </section>
     
-    <div class="recipes-introduction-footer">
+    <div style="position:fixed" class="recipes-introduction-footer">
       <ul id="recipes-introduction-footer-ul">
         <li><span id="introduction" class="borderActive">介绍</span></li>
         <li><span id="formula">配方</span></li>
@@ -149,6 +149,7 @@
                 }
               }else{
                 $('#comment-show-area').hide();
+                $('.introduction-comment').css('margin-bottom','60px');
               }
             }
           }else{
@@ -315,15 +316,17 @@
       eventListener('pause');
       eventListener('ended');
 
-      if($('section').height()<=$(window).height()-82){
-        $('.recipes-introduction-footer').css({
-          'position':'fixed'
-        });
-      }else{
-        $('.recipes-introduction-footer').css({
-          'position':'relative'
-        });
-      }
+      $(window).scroll(function () {
+        // if($(document).scrollTop() + $(window).height() >= $(document).height()){
+        //   $('.recipes-introduction-footer').css({
+        //     'position':'relative'
+        //   });
+        // }else{
+        //   $('.recipes-introduction-footer').css({
+        //     'position':'fixed'
+        //   });
+        // }
+      });
 
     });
 

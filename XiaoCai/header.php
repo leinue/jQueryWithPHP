@@ -8,6 +8,9 @@
 	<link rel="stylesheet" href="extension/bootstrap.min.css" />
 	<script type="text/javascript" src="extension/jquery-2.1.3.min.js"></script>
 	<script type="text/javascript" src="extension/unslider.min.js"></script>
+	<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<!-- // <script type="text/javascript" src="extension/jquery.event.move.js"></script> -->
+	<!-- // <script type="text/javascript" src="extension/jquery.event.swipe.js"></script> -->
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="extension/buttons.css">
 	<script type="text/javascript">
@@ -161,7 +164,8 @@
 		}
 
 		function displayShareForm(){
-			var dom='<div onclick="hideShareForm()" class="monoshare"></div><div class="monoshare-outer"><div class="monoshareDiv"><ul id="line"><li onclick="handleShareRequest(this)" id="shareTofriend"><img src="images/send.png"><div style="margin-top:10px;">发送给朋友</div></li><li style="border-right:1px solid #D4D4D4;padding:4px 0px;width:1px;"></li><li onclick="handleShareRequest(this)" id="shareTocircle"><img src="images/share.png"><div style="margin-top:10px;">分享至朋友圈</div></li></ul></div></div>';
+			//<li style="border-right:1px solid #D4D4D4;padding:4px 0px;width:1px;">
+			var dom='<div onclick="hideShareForm()" class="monoshare"></div><div class="monoshare-outer"><div class="monoshareDiv"><ul id="line"><li onclick="handleShareRequest(this)" id="shareTofriend"><img src="images/send.png"><div style="margin-top:10px;">发送给朋友</div><div class="shareform_splitcol"></div></li></li><li onclick="handleShareRequest(this)" id="shareTocircle"><img src="images/share.png"><div style="margin-top:10px;">分享至朋友圈</div></li></ul></div></div>';
 			$('body').append(dom);
 			$('.monoshare').fadeIn(200);
 			$('.monoshare-outer').fadeIn(200);
@@ -177,12 +181,45 @@
 			var _this=$(obj);
 			var thisID=_this.attr('id');
 			_this.css('background','rgb(205,205,205)');
+			var thisDbParent=_this.parent().parent();
+			var thisDbParentPrev=thisDbParent.prev();
+			var thisTitle=thisDbParentPrev.html();
+			var thisDesc=thisDbParentPrev.prev().html();
+			var thisRef='http://'+window.location.host+'/'+thisDbParentPrev.attr('ref');
+			console.log(thisRef);
 			switch(thisID){
 				case 'shareTofriend':
-
+					wx.onMenuShareAppMessage({
+					    title: thisTitle, // 分享标题
+					    desc: thisDesc, // 分享描述
+					    link: thisRef, // 分享链接
+					    imgUrl: '', // 分享图标
+					    type: 'link', // 分享类型,music、video或link，不填默认为link
+					    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+					    success: function () {
+					    	// 用户确认分享后执行的回调函数
+					        displayALertForm('分享成功');
+					    },
+					    cancel: function () { 
+					        // 用户取消分享后执行的回调函数
+					        displayALertForm('取消分享');
+					    }
+					});
 					break;
 				case 'shareTocircle':
-
+					wx.onMenuShareTimeline({
+					    title: thisTitle, // 分享标题
+					    link: thisRef, // 分享链接
+					    imgUrl: '', // 分享图标
+					    success: function () { 
+					        // 用户确认分享后执行的回调函数
+					        displayALertForm('分享成功');
+					    },
+					    cancel: function () {
+					    	displayALertForm('取消分享');
+					        // 用户取消分享后执行的回调函数
+					    }
+					});
 					break;
 				default:
 					break;
@@ -625,6 +662,14 @@
 		var WECHAT_IS_ACCESS_TOKEN_VALID="https://api.weixin.qq.com/sns/auth?access_token=ACCESS_TOKEN&openid=OPENID";
 		var WECHAT_GET_USER_INFO="https://api.weixin.qq.com/sns/userinfo?access_token=ACCESS_TOKEN&openid=OPENID";
 
+		wx.config({
+		    debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+		    appId: WECHAT_APPID, // 必填，公众号的唯一标识
+		    timestamp: Date.parse(new Date()), // 必填，生成签名的时间戳
+		    nonceStr: '', // 必填，生成签名的随机串
+		    signature: '',// 必填，签名，见附录1
+		    jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+		});
 		/*******************************全局变量区域*******************************/
 
 	</script>

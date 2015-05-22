@@ -1592,12 +1592,24 @@ footer{
 	color: rgb(230,0,39);
 }
 
+.shareform_splitcol{
+	width: 1px;
+	border-right: 1px solid #D4D4D4;
+	padding-top: 20%;
+	position: absolute;
+	left: 50%;
+	top: 20%;
+}
+
 @media screen and (max-width:800px){
     .formula-buy ul li button,.formula-buy ul li span{
     	   font-size: 1em;
     }
     .formula-buy-icon{
     	top: 70px!important;
+    }
+    .shareform_splitcol{
+    	padding-top: -50%!important;
     }	
 }
 @media screen and (max-width:600px){
@@ -1608,6 +1620,10 @@ footer{
     .formula-buy-icon{
     	top: 66px!important;
     }
+
+    .shareform_splitcol{
+    	padding-top: -50%!important;
+    }	
 
 }
 @media screen and (max-width:400px){

@@ -298,9 +298,11 @@
 					$('.uploadhhh input:nth-child(3)').attr('value',localStorage.headimgurl);
 				}
 				$('.uploadhhh input:nth-child(2)').attr('value',nickname);
-				console.log($('.uploadhhh input:nth-child(3)').attr('value'));
 				if(!isFileChanged){
 					displayALertForm('您未选择图片');
+					if(getQueryString('register')=='1'){
+						window.location.href="index.php?redirect=profile";
+					}
 					return;
 				}else{
 					confirm.click();

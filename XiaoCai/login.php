@@ -1,4 +1,11 @@
-<?php  require('header.php'); ?>
+<?php 
+
+	require('header.php'); 
+	require('packages/wechat.php');
+
+  	oauth2(0);
+
+?>
 
 <div class="login-main-page">
 	
@@ -93,6 +100,13 @@
 	
 		$('section').css('marginTop',$('header').height()+50);
 		$('footer').hide();
+
+		$('.wechat-logo').click(function(){
+			displayALertForm('正在为您跳转到微信登录...');
+			WECHAT_REDIRECT_URI=window.location.href;
+			var WECHAT_GET_CODE="https://open.weixin.qq.com/connect/qrconnect?appid="+WECHAT_APPID+"&redirect_uri="+WECHAT_REDIRECT_URI+"&response_type=code&scope=snsapi_login#wechat_redirect";
+			window.location.href=WECHAT_GET_CODE;
+		});
 
 	});
 

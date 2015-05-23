@@ -6,7 +6,7 @@ $openid=$_POST['openid'];
 $nickname=$_POST['nickname'];
 $headimgurl=$_POST['headimgurl'];
 
-$url="http://114.215.189.210/api.php/Api/Public/login";
+$url="http://114.215.189.210/api.php/Api/Public/weixin";
 $post_data=array(
 	"openid"=>$openid,
 	"nickname"=>$nickname,

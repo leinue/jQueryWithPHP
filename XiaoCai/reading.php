@@ -8,8 +8,8 @@
 		</div>
 		<div class="header-reading-menu">
 			<ul>
-				<li id="reading-list-all"><span class="header-reading-menu-active">首页文章</span></li>
-				<li id="reading-list-receip"><span>全部文章</span></li>
+				<li id="reading-list-all"><span class="header-reading-menu-active">全部文章</span></li>
+				<li id="reading-list-receip"><span>一手好菜</span></li>
 				<li id="reading-list-skills"><span>玩转厨房</span></li>
 				<li id="reading-list-review"><span>专题文章</span></li>
 			</ul>
@@ -79,10 +79,10 @@
 			});
 		}
 
-		var readingType={'receip':'1','skills':'2','all':'3','review':'4'};
+		var readingType={'receip':'1','skills':'2','all':'0','review':'4'};
 
 		$('.loading').fadeIn();
-		loadReadingList(readingType['all'],function(){
+		loadReadingList('0',function(){
 			$('.loading').fadeOut();
 		});
 

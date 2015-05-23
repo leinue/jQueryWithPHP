@@ -62,7 +62,7 @@
     <div class="introduction-comment">
       <ul>
         <li>
-            <div class="profile-phtot-uploaded">
+            <div style="margin-bottom:-24px" class="profile-phtot-uploaded">
               <!-- <img width="50" id="user-comment-photo" height="50" src="images/default_photo.png" />    -->
                   <div id="user-comment-photo" style="background:url(images/default_photo.png) no-repeat scroll 50% 50% transparent;background-size:cover;"></div>
             </div>

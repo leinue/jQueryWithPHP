@@ -202,8 +202,6 @@
 				thisIcon=_this.parent().find('.vip-video').attr('style').split('background:url(')[1];
 				thisIcon=thisIcon.split(') no-repeat')[0];
 			}
-			console.log(thisTitle,thisDesc,thisRef,thisIcon);
-
 			switch(thisID){
 				case 'shareTofriend':
 					wx.onMenuShareAppMessage({

@@ -191,8 +191,19 @@
 			var thisTitle=_this.find('.vip-title').html();
 			var thisDesc=_this.find('.vip-post').html();
 			var thisRef='http://'+window.location.host+'/'+_this.find('.vip-title').attr('ref');
-			var thisIcon=_this.parent().find('.vip-video').attr('style').split('background:url(')[1];
-			thisIcon=thisIcon.split(') no-repeat')[0];
+			var thisIcon;
+			var currentURL=window.location.href;
+			if (currentURL.indexOf('monograph')!=-1 && _this.hasClass('header-title')) {
+				thisTitle=$('.skills-evaluating-title').find('h4').html();
+				thisDesc=$('.content-summaryIn').html();
+				thisIcon=$('.monograph-img1').find('img').attr('src');
+				thisRef=window.location.href;
+			}else{
+				thisIcon=_this.parent().find('.vip-video').attr('style').split('background:url(')[1];
+				thisIcon=thisIcon.split(') no-repeat')[0];
+			}
+			console.log(thisTitle,thisDesc,thisRef,thisIcon);
+
 			switch(thisID){
 				case 'shareTofriend':
 					wx.onMenuShareAppMessage({

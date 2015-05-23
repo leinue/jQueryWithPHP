@@ -24,7 +24,7 @@
         <!--<img src="">-->
       </div>
       <div class="vip-content">
-        <div class="vip-title">
+        <div ref="" class="vip-title">
           loading
         </div> 
         <div class="vip-post">
@@ -49,7 +49,7 @@
               <img width="16" height="16" src="images/add_grey.png"></img>
               </span>
             </li>
-            <li onclick="displayShareForm()">
+            <li onclick="displayShareForm(this)">
               <img width="16" height="16" id="mono-share" src="images/share_grey.png"></img>
               </span>
             </li>
@@ -62,7 +62,7 @@
     <div class="introduction-comment">
       <ul>
         <li>
-            <div style="margin-top: -34px;" class="profile-phtot-uploaded">
+            <div class="profile-phtot-uploaded">
               <!-- <img width="50" id="user-comment-photo" height="50" src="images/default_photo.png" />    -->
                   <div id="user-comment-photo" style="background:url(images/default_photo.png) no-repeat scroll 50% 50% transparent;background-size:cover;"></div>
             </div>
@@ -125,6 +125,7 @@
               if(introList['info']!=''){
                 var introInfo=introList['info'];
                 $('.vip-title').html(introInfo['title']);
+                $('.vip-title').attr('ref','introduction.php?id='+articleID);
                 $('.vip-post').html(introInfo['paper']);
                 $('.introduction-time #prepare-time').html(introInfo['prepare_time']);
                 $('.introduction-time #cooking-time').html(introInfo['cooking_time']);

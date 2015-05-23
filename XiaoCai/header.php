@@ -186,6 +186,11 @@
 			docIsMoved=0;
 		}
 
+		function isMonograph(){
+			var c=window.location.href;
+			return c.indexOf('monograph')!=-1;
+		}
+
 		function handleShareRequest(obj){
 			var _this=$('.share_form_active');
 			var thisID=$(obj).attr('id');

@@ -231,14 +231,21 @@
 			var jsonData=JSON.parse(data);
 			if(jsonData['msg'].indexOf('重复')!=-1){
 				localStorage.favourite=localStorage.favourite+'+'+articleType+'|'+articleID;
-				$(obj).find('img').attr('src','images/add_red.png');
+				if(isMonograph()){
+					$(obj).addClass('header-skillsEvaluating-active');
+				}else{
+					$(obj).find('img').attr('src','images/add_red.png');
+				}
 				deleteReadingList(articleType,localStorage.tokenID,articleID,function(data){
 					if(data!=''){
 						var jsonData=JSON.parse(data);
 						if(jsonData['error']=='1'){
-							$(obj).find('img').attr('src','images/add_grey.png');
+							if(isMonograph()){
+								$(obj).removeClass('header-skillsEvaluating-active');
+							}else{
+								$(obj).find('img').attr('src','images/add_grey.png');
+							}
 							displayALertForm(jsonData['msg']);
-							console.log(localStorage.favourite);
 							deleteFavourite(localStorage.favourite,articleID,articleType);
 						}else{
 							displayALertForm(jsonData['msg']);
@@ -252,7 +259,11 @@
 			}
 			if(jsonData['msg'].indexOf('成功')!=-1){
 				localStorage.favourite=localStorage.favourite+'+'+articleType+'|'+articleID;
-				$(obj).find('img').attr('src','images/add_red.png');
+				if(isMonograph()){
+					$(obj).addClass('header-skillsEvaluating-active');
+				}else{
+					$(obj).find('img').attr('src','images/add_red.png');
+				}
 			}
 			displayALertForm(jsonData['msg']);
 		});

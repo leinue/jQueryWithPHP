@@ -61,7 +61,7 @@
             var atype=collection[0];
             var aid=collection[1];
             if(aid==articleID && atype==tag){
-              $('.monograph-header ul li:nth-child(2)').css('background','rgb(187,0,37)');
+              $('.monograph-header ul li:nth-child(2)').addClass('header-skillsEvaluating-active');
               break;
             }
           };

@@ -333,6 +333,10 @@
         // }
       });
 
+      if(localStorage.isLogin=='false'){
+        $('#user-comment-photo').attr('style',"background:url(images/default_photo.png) no-repeat scroll 50% 50% transparent;background-size:cover;");
+      }
+
     });
 
   </script>

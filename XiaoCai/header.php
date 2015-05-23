@@ -528,6 +528,16 @@
 	            },callback);
 	    }
 
+	    function deleteReadingList(p_type,p_token_id,p_article_id,callback){
+	    	$.post(
+	            rootURL+'deleteReadingList.php',
+	            {
+	                type:p_type,
+	                token_id:p_token_id,
+	                article_id:p_article_id
+	            },callback);
+	    }
+
 	    function getReadingList(p_type,p_token_id,callback){
 	    	$.post(
 	            rootURL+'readinglist.php',
@@ -645,6 +655,25 @@
 			}
 			return favouriteList;
       	}
+
+      	function deleteFavourite(data,article_id,article_type){
+			var favouriteList=getFavourteList();
+			// console.log(favouriteList);
+			if(typeof data!='undefined'){
+				for (var k = 0; k < favouriteList.length; k++) {
+					if(favouriteList[k]==article_type+'|'+article_id){
+						favouriteList[k]='';
+					}
+				};
+			}
+			var newFavouriteList="";
+			for (var i = 0; i < favouriteList.length; i++) {
+				newFavouriteList+=favouriteList[i]+"+";
+				// console.log(newFavouriteList);
+			};
+			localStorage.favourite=newFavouriteList;
+			// console.log(localStorage.favourite);
+		}
 
       	function createNonceStr(len) {
 		    len = len || 16;

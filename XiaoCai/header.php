@@ -1,3 +1,8 @@
+<?php
+	require_once "packages/wxjssdk.php";
+	$jssdk = new JSSDK("wxcd5e8635095ba695", "114f18ef6fac879b406821f0e084620c");
+	$signPackage = $jssdk->GetSignPackage();
+?>
 <!DOCTYPE html>
 <html manifest="xiaocai.appcache">
 <head>
@@ -674,30 +679,13 @@
 		var WECHAT_IS_ACCESS_TOKEN_VALID="https://api.weixin.qq.com/sns/auth?access_token=ACCESS_TOKEN&openid=OPENID";
 		var WECHAT_GET_USER_INFO="https://api.weixin.qq.com/sns/userinfo?access_token=ACCESS_TOKEN&openid=OPENID";
 
-		var _token;
-      	var _timestamp=Date.parse(new Date());
-      	var _noncestr = createNonceStr();
-      	var jsapiTicket;
-      	var url = window.location.href;
-      	$.getJSON("https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid="+WECHAT_APPID+"&secret="+WECHAT_SECRECT, function(data){
-			_token = data.access_token;
-			console.log('dssd');
-			console.log(_token);
-		});
-		$.getJSON("https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token="+_token+"&type=jsapi", function(data){
-			jsapiTicket = data.ticket;
-		});
-		var _String1="jsapi_ticket="+jsapiTicket+"&noncestr="+_noncestr+"&timestamp="+_timestamp+"&url="+url;
-		$.get('sha1.php?str='+_String1,function(data){
-			localStorage.signature=data;
-		});
 		wx.config({
-		    debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-		    appId: WECHAT_APPID, // 必填，公众号的唯一标识
-		    timestamp: _timestamp, // 必填，生成签名的时间戳
-		    nonceStr: _noncestr, // 必填，生成签名的随机串
-		    signature: localStorage.signature,// 必填，签名，见附录1
-		    jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+			debug: true,
+		    appId: '<?php echo $signPackage["appId"];?>',
+		    timestamp: <?php echo $signPackage["timestamp"];?>,
+		    nonceStr: '<?php echo $signPackage["nonceStr"];?>',
+		    signature: '<?php echo $signPackage["signature"];?>',
+		    jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage']
 		});
 
 		/*******************************全局变量区域*******************************/

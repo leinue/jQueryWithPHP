@@ -1,6 +1,6 @@
 <?php
-	require_once "packages/wxjssdk.php";
-	$jssdk = new JSSDK("wxcd5e8635095ba695", "114f18ef6fac879b406821f0e084620c");
+	require_once "./packages/wxjssdk.php";
+	$jssdk = new JSSDK("wx718e0f1656150441", "b3b98d056eaf9be01912725ecce32b1e");
 	$signPackage = $jssdk->GetSignPackage();
 ?>
 <!DOCTYPE html>
@@ -20,6 +20,7 @@
 	<link rel="stylesheet" type="text/css" href="extension/buttons.css">
 	<script type="text/javascript">
 		/******************************页面访问记录栈******************************/
+		// alert(location.href.split('#')[0]);
 		//构造函数
 		function StorageStack(current,prev){
 			this.currentPage=current;
@@ -172,7 +173,7 @@
 		function displayShareForm(obj){
 			//<li style="border-right:1px solid #D4D4D4;padding:4px 0px;width:1px;">
 			$(obj).parent().parent().parent().addClass('share_form_active');
-			var onclickEvent='onclick="handleShareRequest()"';
+			var onclickEvent='onclick="handleShareRequest(this)"';
 			var dom='<div onclick="hideShareForm()" class="monoshare"></div><div class="monoshare-outer"><div class="monoshareDiv"><ul id="line"><li '+onclickEvent+' id="shareTofriend"><img src="images/send.png"><div style="margin-top:10px;">发送给朋友</div><div class="shareform_splitcol"></div></li></li><li '+onclickEvent+' id="shareTocircle"><img src="images/share.png"><div style="margin-top:10px;">分享至朋友圈</div></li></ul></div></div>';
 			$('body').append(dom);
 			$('.monoshare').fadeIn(200);
@@ -185,9 +186,9 @@
 			docIsMoved=0;
 		}
 
-		function handleShareRequest(){
+		function handleShareRequest(obj){
 			var _this=$('.share_form_active');
-			var thisID=_this.attr('id');
+			var thisID=$(obj).attr('id');
 			var thisTitle=_this.find('.vip-title').html();
 			var thisDesc=_this.find('.vip-post').html();
 			var thisRef='http://'+window.location.host+'/'+_this.find('.vip-title').attr('ref');
@@ -220,6 +221,7 @@
 					        displayALertForm('取消分享');
 					    }
 					});
+					displayALertForm('成功获取分享信息,请点击右上角进行分享');
 					break;
 				case 'shareTocircle':
 					wx.onMenuShareTimeline({
@@ -235,6 +237,7 @@
 					        displayALertForm('取消分享');
 					    }
 					});
+					displayALertForm('成功获取分享信息,请点击右上角进行分享');
 					break;
 				default:
 					break;
@@ -669,10 +672,8 @@
 			var newFavouriteList="";
 			for (var i = 0; i < favouriteList.length; i++) {
 				newFavouriteList+=favouriteList[i]+"+";
-				// console.log(newFavouriteList);
 			};
 			localStorage.favourite=newFavouriteList;
-			// console.log(localStorage.favourite);
 		}
 
       	function createNonceStr(len) {
@@ -706,11 +707,11 @@
 
 		var isIndex=false;
 
-		var WECHAT_APPID="wxcd5e8635095ba695";
+		var WECHAT_APPID="wx718e0f1656150441";
 		var WECHAT_REDIRECT_URI;
 		var WECHAT_SCOPE='snsapi_login';
 		var WECHAT_STATE=Math.ceil(Math.random()*100);
-		var WECHAT_SECRECT="114f18ef6fac879b406821f0e084620c";
+		var WECHAT_SECRECT="b3b98d056eaf9be01912725ecce32b1e";
 		var WECHAT_GET_CODE="https://open.weixin.qq.com/connect/qrconnect?appid="+WECHAT_APPID+"&redirect_uri="+WECHAT_REDIRECT_URI+"&response_type=code&scope="+WECHAT_SCOPE+"&state="+WECHAT_STATE+"#wechat_redirect";
 		var WECHAT_GET_ACCESS_TOKEN="https://api.weixin.qq.com/sns/oauth2/access_token?appid="+WECHAT_APPID+"&secret="+WECHAT_SECRECT+"&code=CODE&grant_type=authorization_code";
 		var WECHAT_REFRESH_TOKEN="https://api.weixin.qq.com/sns/oauth2/refresh_token?appid="+WECHAT_APPID+"&grant_type=refresh_token&refresh_token=REFRESH_TOKEN";
@@ -718,7 +719,7 @@
 		var WECHAT_GET_USER_INFO="https://api.weixin.qq.com/sns/userinfo?access_token=ACCESS_TOKEN&openid=OPENID";
 
 		wx.config({
-			debug: true,
+			debug: false,
 		    appId: '<?php echo $signPackage["appId"];?>',
 		    timestamp: <?php echo $signPackage["timestamp"];?>,
 		    nonceStr: '<?php echo $signPackage["nonceStr"];?>',
@@ -726,9 +727,23 @@
 		    jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage']
 		});
 
+		wx.ready(function () {
+		    // alert("config ok...");
+		});
+
+		wx.error(function (res) {
+		  	// alert("err....:"+res.errMsg);
+		});
+
+		// alert("js="+location.href.split('#')[0]);
+
 		/*******************************全局变量区域*******************************/
 
 	</script>
+
+	<?php 
+			// echo "<script>alert('".$signPackage["timestamp"]."-".$signPackage["nonceStr"]."-".$signPackage["signature"]."')</script>";
+	?>
 </head>
 
 <body>

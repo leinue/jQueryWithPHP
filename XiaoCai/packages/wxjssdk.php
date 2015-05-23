@@ -18,6 +18,9 @@ class JSSDK {
     $timestamp = time();
     $nonceStr = $this->createNonceStr();
 
+    // echo "<script>alert('".$jsapiTicket."-".$url."')</script>";
+    
+
     // 这里参数的顺序要按照 key 值 ASCII 码升序排序
     $string = "jsapi_ticket=$jsapiTicket&noncestr=$nonceStr&timestamp=$timestamp&url=$url";
 
@@ -105,6 +108,6 @@ class JSSDK {
   }
 }
 
-  // $jssdk = new JSSDK("wxcd5e8635095ba695", "114f18ef6fac879b406821f0e084620c");
+  // $jssdk = new JSSDK("wx718e0f1656150441", "b3b98d056eaf9be01912725ecce32b1e");
   // $signPackage = $jssdk->GetSignPackage();
 ?>

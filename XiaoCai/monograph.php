@@ -3,9 +3,9 @@
   <nav style="padding-bottom:0px;padding-top: 8px;padding-bottom:37px;">
     <div class="header-title">
       <div class="header-back monograph-back"><span class="glyphicon glyphicon-menu-left"></span></div>
-      <div class="header-main-title monograph-header">
+      <div style="padding-left:40.8308%" class="header-main-title monograph-header">
           <ul>
-            <li class="header-skillsEvaluating-li"><img width="28" height="14" src="images/watch_white.png"></img> <span id="viewer-count">0</span></li>
+            <li class="header-skillsEvaluating-li"><img width="22" height="14" src="images/watch_white.png"></img> <span id="viewer-count">0</span></li>
             <li onclick="addToReadingList(this)" class="header-skillsEvaluating-li"><img width="16" height="16" src="images/add_white.png"></img></li>
             <li class="header-skillsEvaluating-li"></span><img width="16" height="16" id="mono-share" src="images/share_white.png"></img></li>
           </ul>

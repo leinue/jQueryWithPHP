@@ -16,7 +16,7 @@
 	$(document).ready(function(){
 
 		//添加动画效果
-		$('ul li,a,h1,h2,h3,h4,h5,h6,p,span,.fast-register,.button-add').hover(
+		$('a,h1,h2,h3,h4,h5,h6,p,span,.fast-register,.button-add').hover(
 			function(){
 				$(this).stop().animate({opacity:0.9},'fast');
 			},

@@ -76,7 +76,40 @@
 			return lsObj;
 		}
 		/******************************页面访问记录栈******************************/
+		/***************************用户页面访问权限检测***************************/
 
+		function stopAccessing(type){
+			var currentURL=window.location.href;
+			switch(type){
+				case 'login':
+					var noAccessingList=['register.php'];
+					for (var i = 0; i < noAccessingList.length; i++) {
+						if(currentURL.indexOf(noAccessingList[i])!=-1){
+							window.location.href="index.php";
+						}
+					};
+					break;
+				case 'nonLogin':
+					var noAccessingList=['setting.php','foodlist.php','password_find.php','profile.php'];
+					for (var i = 0; i < noAccessingList.length; i++) {
+						if(currentURL.indexOf(noAccessingList[i])!=-1){
+							window.location.href="login.php";
+						}
+					};
+					break;
+			}
+		}
+		
+		if(typeof localStorage.isLogin!='undefined'){
+			// stopAccessing('nonLogin');
+		}else{
+			if(localStorage.isLogin=='true'){
+				// stopAccessing('login');
+			}else{
+				// stopAccessing('nonLogin');
+			}
+		}
+		/***************************用户页面访问权限检测***************************/
 		/**********************************函数库**********************************/
 		
 		//当前页面可否滚动,在加载页面和弹出右侧工具栏的时候禁止滚动,默认可滚动

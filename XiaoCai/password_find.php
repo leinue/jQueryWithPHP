@@ -42,6 +42,10 @@
 		});
 
 		$('#findpw-send-vercode').click(function(){
+			if(localStorage.loginByWechat=='true'){
+				displayALertForm('您是微信注册用户,无法使用本功能');
+				return;
+			}
 			var sMobile=$('.change-password-input ul li #find-pw-phone').val();
 			if(checkMobile(sMobile)){
 				displayALertForm('正在为您处理,请稍候...');
@@ -59,8 +63,12 @@
 		});
 
 		$('#btn-find-pw').click(function(){
+			if(localStorage.loginByWechat=='true'){
+				displayALertForm('您是微信登录用户,无法使用本功能',3000);
+				return;
+			}
 			if(!inputInfoIsNull('.change-password-input ul li')){
-				displayALertForm('请完整填写信息');
+				displayALertForm('请完整填写信息',3000);
 			}else{
 				var originPW=$('.change-password-input ul #setting-list-password-o-input input').val();
 				var confirmPW=$('.change-password-input ul #setting-list-password-new-input input').val();
@@ -70,7 +78,7 @@
 						var jsonData=JSON.parse(data);
 						displayALertForm(jsonData['msg']);
 					}else{
-						displayALertForm('获取失败,请重试');
+						displayALertForm('获取失败,请重试',3000);
 					}
 				});
 			}

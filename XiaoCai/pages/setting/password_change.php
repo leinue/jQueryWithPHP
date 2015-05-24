@@ -37,10 +37,14 @@
 		});
 
 		$('#confirm-to-change-pw').click(function(){
+			if(localStorage.loginByWechat=='true'){
+				displayALertForm('您是微信登录用户,无法使用本功能',3000);
+				return;
+			}
 			if(!inputInfoIsNull('.change-password-input ul li')){
-				displayALertForm('请完整填写信息');
+				displayALertForm('请完整填写信息',3000);
 			}else{
-				displayALertForm('正在为您处理,请稍候...');
+				displayALertForm('正在为您处理,请稍候...',3000);
 				var originPW=$('.change-password-input ul #setting-list-password-o-input input').val();
 				var newPW=$('.change-password-input ul #setting-list-password-new-input input').val();
 				var confirmPW=$('.change-password-input ul #setting-list-password-confrom-input input').val();

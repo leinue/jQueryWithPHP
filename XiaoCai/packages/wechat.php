@@ -29,7 +29,7 @@ class weChatSDK{
     //获取用户基本信息
     public function get_user_info($access_token,$openid)
     {
-      $url = "https://api.weixin.qq.com/sns/userinfo?access_token=$access_token&openid=$openid";
+      $url = "https://api.weixin.qq.com/sns/userinfo?access_token=$access_token&openid=$openid&lang=zh_CN";
       $res = $this->https_request($url);
       return json_decode($res, true);
     }
@@ -66,7 +66,7 @@ class weChatSDK{
       $wechat=new weChatSDK(APP_ID,APP_SECRET);
       if(isset($_GET['code'])){
         //https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code=CODE&grant_type=authorization_code
-        $url="https://api.weixin.qq.com/sns/oauth2/access_token?appid=".APP_ID."&secret=".APP_SECRET."&code=".$_GET['code']."&grant_type=authorization_code";
+        $url="https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=".APP_ID."&secret=".APP_SECRET;
         $res=$wechat->https_request($url);
         $res=(json_decode($res, true));
         $row=$wechat->get_user_info($res['access_token'],$res['openid']);

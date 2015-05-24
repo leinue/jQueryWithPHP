@@ -114,6 +114,7 @@ nav{
 .profile-display-name{
 	position: absolute;
 	width: 100%;
+	overflow: hidden;
 }
 
 .logo-area img{

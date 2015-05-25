@@ -312,7 +312,12 @@
 			}else if(date==globalDateList[1]){
 				return '昨天';
 			}else{
-				return date;
+				var dateYear=date.split('-');
+				if(dateYear[0]==uom.getFullYear()){
+					return  dateYear[1]+"-"+dateYear[2];
+				}else{
+					return date;
+				}
 			}
       	}
 

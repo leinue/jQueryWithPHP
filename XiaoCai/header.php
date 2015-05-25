@@ -313,7 +313,7 @@
 				return '昨天';
 			}else{
 				var dateYear=date.split('-');
-				if(dateYear[0]==uom.getFullYear()){
+				if(dateYear[0]==uom.split('-')[0]){
 					return  dateYear[1]+"-"+dateYear[2];
 				}else{
 					return date;
